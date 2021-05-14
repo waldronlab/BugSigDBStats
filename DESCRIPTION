@@ -28,7 +28,7 @@ Suggests:
     knitr,
     lubridate,
     pkgdown,
-    rmarkdown,
+    rmarkdown
 Remotes:
     waldronlab/bugsigdbr
 License: GPL (>= 3)

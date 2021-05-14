@@ -43,12 +43,13 @@ jobs:
         run: |
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           Rscript -e "install.packages('pkgdown')"
+          Rscript -e "install.packages('BiocManager')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
 
       - name: Install dependencies
         run: |
-          options(repos = c(CRAN = "https://cran.r-project.org"))
+          options(repos = BiocManager::repositories())
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
