@@ -1,0 +1,10 @@
+pandoc: 2.11.3.2
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  BugSigDBStats: BugSigDBStats.html
+last_built: 2021-05-14T17:12Z
+urls:
+  reference: http://waldronlab.io/BugSigDBStats/reference
+  article: http://waldronlab.io/BugSigDBStats/articles
+

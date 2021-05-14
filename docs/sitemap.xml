@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/index.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/paperStat.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/plotCuratorStats.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/plotProgressOverTime.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/pmid2pubyear.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/sigStat.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/stratifyByCurator.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/stripEmptySignatures.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/articles/BugSigDBStats.html</loc>
+  </url>
+</urlset>

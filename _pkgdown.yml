@@ -1,0 +1,21 @@
+home:
+  strip_header: true
+
+title: BugSigDB Stats and Analysis
+
+url: http://waldronlab.io/BugSigDBStats
+
+template:
+  params:
+    bootswatch: flatly
+
+navbar:
+  title: ~
+  type: default
+  left:
+    - text: BugSigDB Stats
+      href: articles/BugSigDBStats.html
+  right:
+    - icon: fa-github
+      href: https://github.com/waldronlab/BugSigDBStats
+

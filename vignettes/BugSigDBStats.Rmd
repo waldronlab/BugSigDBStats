@@ -1,0 +1,89 @@
+---
+vignette: >
+  % \VignetteIndexEntry{BugSigDB Stats and Analysis}
+  % \VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+output:
+  html_document:
+    mathjax: null   
+---
+
+# Setup
+```{r setup, message=FALSE, warning=FALSE}
+library(bugsigdbr)
+library(BugSigDBStats)
+library(ggpubr)
+```
+
+# Reading data
+
+Get bulk export from bugsigdb.org:
+
+```{r curationFile}
+full.dat <- bugsigdbr::importBugSigDB()
+dim(full.dat)
+colnames(full.dat)
+```
+
+# Curation output
+
+Number of papers and signatures curated:
+
+```{r nrPapers}
+pmids <- unique(full.dat[,"PMID"])
+length(pmids)
+nrow(full.dat)
+```
+
+Publication date of the curated papers:
+
+```{r pubDate}
+pmids <- pmids[!is.na(pmids)]
+pubyear1 <- pmid2pubyear(pmids[1:361])
+pubyear2 <- pmid2pubyear(pmids[362:length(pmids)])
+pubyear <- c(pubyear1, pubyear2)
+head(cbind(pmids, pubyear))
+```
+
+```{r pubDate2}
+tab <- table(pubyear)
+tab <- tab[-length(tab)]
+tab <- tab[order(as.integer(names(tab)))]
+df <- data.frame(year = names(tab), papers = as.integer(tab))
+ggbarplot(df, x = "year", y = "papers", 
+          label = TRUE, fill = "steelblue",
+          ggtheme = theme_bw())
+``` 
+
+Stripping empty signatures:
+
+```{r} 
+# contains empty UP / DOWN rows
+# more realistic estimation of number of signatures curated
+dat <- stripEmptySignatures(full.dat)
+nrow(dat)
+```
+
+Papers containing only empty UP and DOWN signatures (under curation?):
+```{r}
+setdiff(pmids, unique(dat[,"PMID"]))
+```
+
+Progress over time:
+```{r, fig.width=10, fig.height=10}
+dat[,"Curated date"] <- as.character(lubridate::dmy(dat[,"Curated date"]))
+plotProgressOverTime(dat)
+plotProgressOverTime(dat, diff = TRUE)
+```
+
+Stratified by curator:
+```{r curatorOutput, fig.width=10, fig.height=10}
+npc <- stratifyByCurator(dat)
+plotCuratorStats(dat, npc)
+```
+
+Number of revised signatures:
+```{r}
+table(dat[,"Revision editor"])
+```
+
