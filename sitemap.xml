@@ -4,6 +4,12 @@
     <loc>http://waldronlab.io/BugSigDBStats/index.html</loc>
   </url>
   <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/calcPairwiseOverlaps.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/makeDist.html</loc>
+  </url>
+  <url>
     <loc>http://waldronlab.io/BugSigDBStats/reference/paperStat.html</loc>
   </url>
   <url>
