@@ -1,5 +1,5 @@
 Package: BugSigDBStats
-Version: 0.99.0
+Version: 0.99.1
 Title: BugSigDB Stats and Analysis
 Authors@R: c(
     person(given = "Ludwig",
@@ -28,7 +28,8 @@ Suggests:
     knitr,
     lubridate,
     pkgdown,
-    rmarkdown
+    rmarkdown,
+    testthat
 Remotes:
     waldronlab/bugsigdbr
 License: GPL (>= 3)

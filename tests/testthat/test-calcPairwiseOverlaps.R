@@ -1,4 +1,5 @@
 test_that("calcPairwiseOverlaps", {
+  library(BugSigDBStats)
   testlist <- list(a = 1:3, b = 3, c = 3:4)
   r <- calcPairwiseOverlaps(testlist)
   expect_identical(r$name1, c("a", "a", "b"))
