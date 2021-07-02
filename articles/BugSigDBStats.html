@@ -85,7 +85,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## using temporary cache /tmp/RtmpaErV4m/BiocFileCache</code></pre>
+<pre><code>## using temporary cache /tmp/RtmpIKr9X2/BiocFileCache</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -129,7 +129,7 @@
 ## )</code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1840   45</code></pre>
+<pre><code>## [1] 1853   45</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -163,10 +163,10 @@
 <div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 463</code></pre>
+<pre><code>## [1] 464</code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1840</code></pre>
+<pre><code>## [1] 1853</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit">
 <span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -196,31 +196,27 @@
 <span class="co"># more realistic estimation of number of signatures curated</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stripEmptySignatures.html">stripEmptySignatures</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1789</code></pre>
+<pre><code>## [1] 1803</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb20"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></pre></div>
 <pre><code>##  [1] 32295867 32937864 32415070 32728349 33903709 33851179 33833065 31910227
-##  [9] 33603076 33986253 32192080</code></pre>
+##  [9] 33603076 33986253</code></pre>
 <p>Progress over time:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit">
 <span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/plotProgressOverTime.html">plotProgressOverTime</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></pre></div>
-<pre><code>## Warning in rbind(cdbm, cpbm): number of columns of result is not a multiple of
-## vector length (arg 2)</code></pre>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-3-1.png" width="960"></p>
-<div class="sourceCode" id="cb24"><pre class="downlit">
+<div class="sourceCode" id="cb23"><pre class="downlit">
 <span class="fu"><a href="../reference/plotProgressOverTime.html">plotProgressOverTime</a></span><span class="op">(</span><span class="va">dat</span>, diff <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
-<pre><code>## Warning in rbind(cdbm, cpbm): number of columns of result is not a multiple of
-## vector length (arg 2)</code></pre>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-3-2.png" width="960"></p>
 <p>Stratified by curator:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit">
+<div class="sourceCode" id="cb24"><pre class="downlit">
 <span class="va">npc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stratifyByCurator.html">stratifyByCurator</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
 <span class="fu"><a href="../reference/plotCuratorStats.html">plotCuratorStats</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">npc</span><span class="op">)</span></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/curatorOutput-1.png" width="960"></p>
 <p>Number of revised signatures:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit">
+<div class="sourceCode" id="cb25"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Revision editor"</span><span class="op">]</span><span class="op">)</span></pre></div>
 <pre><code>## 
 ##                        Claregrieve1                    Cynthia Anderson 
@@ -238,7 +234,7 @@
 ##                       Madhubani Dey                             Manuela 
 ##                                  16                                  11 
 ##                 Rimsha,WikiWorks743                         Samara.Khan 
-##                                   1                                   1 
+##                                   1                                   3 
 ##                              Tislam                           Valentina 
 ##                                   2                                   2 
 ## WikiWorks,WikiWorks743,WikiWorks753                        WikiWorks743 
@@ -249,13 +245,13 @@
 <h2 class="hasAnchor">
 <a href="#distances-between-signatures" class="anchor"></a>Distances between signatures</h2>
 <p>The <code>calcPairwiseOverlaps</code> function works quickly on all of bugsigdb currently, but <code>makeDist</code> is slow and surely could be improved for efficiency. For now, use only nasal samples:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit">
+<div class="sourceCode" id="cb27"><pre class="downlit">
 <span class="va">dat_subset</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">`Body site`</span> <span class="op">%in%</span> <span class="st">"nasal cavity"</span>, <span class="op">]</span>
 <span class="va">sigs_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">dat_subset</span><span class="op">)</span>
 <span class="va">paircomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calcPairwiseOverlaps.html">calcPairwiseOverlaps</a></span><span class="op">(</span><span class="va">sigs_subset</span><span class="op">)</span>
 <span class="va">jdist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeDist.html">makeDist</a></span><span class="op">(</span><span class="va">paircomp</span>, <span class="st">"jaccard"</span><span class="op">)</span></pre></div>
 <p>Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures).</p>
-<div class="sourceCode" id="cb30"><pre class="downlit">
+<div class="sourceCode" id="cb28"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">jdist</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
 </div>
