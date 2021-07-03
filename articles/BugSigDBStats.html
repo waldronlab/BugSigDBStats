@@ -85,7 +85,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## using temporary cache /tmp/RtmpIKr9X2/BiocFileCache</code></pre>
+<pre><code>## using temporary cache /tmp/RtmpeAHIKd/BiocFileCache</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -107,7 +107,7 @@
 ##   .default = col_character(),
 ##   `Group 0 sample size` = col_double(),
 ##   `Group 1 sample size` = col_number(),
-##   `16s variable region` = col_number(),
+##   `16s variable region` = col_logical(),
 ##   `Significance threshold` = col_double(),
 ##   `MHT correction` = col_logical(),
 ##   `LDA Score above` = col_double()
@@ -129,7 +129,7 @@
 ## )</code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1853   45</code></pre>
+<pre><code>## [1] 1865   45</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -163,10 +163,10 @@
 <div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 464</code></pre>
+<pre><code>## [1] 467</code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1853</code></pre>
+<pre><code>## [1] 1865</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit">
 <span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -196,7 +196,7 @@
 <span class="co"># more realistic estimation of number of signatures curated</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stripEmptySignatures.html">stripEmptySignatures</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1803</code></pre>
+<pre><code>## [1] 1815</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb20"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></pre></div>
@@ -219,28 +219,28 @@
 <div class="sourceCode" id="cb25"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Revision editor"</span><span class="op">]</span><span class="op">)</span></pre></div>
 <pre><code>## 
-##                        Claregrieve1                    Cynthia Anderson 
-##                                  32                                  33 
-##       Cynthia Anderson,WikiWorks743                              Fatima 
-##                                   3                                   5 
-##          Fatima,Rimsha,WikiWorks743                 Fatima,WikiWorks743 
-##                                   1                                   8 
-##                      Fatima,Yu Wang                         Itslanapark 
-##                                   6                                   1 
-##                           Kwekuamoo                       Lorakasselman 
-##                                   1                                   2 
-##                            Lwaldron               Lwaldron,WikiWorks743 
+##                        Claregrieve1                 Claregrieve1,Fatima 
+##                                  70                                   2 
+##                    Cynthia Anderson       Cynthia Anderson,WikiWorks743 
+##                                  33                                   3 
+##                              Fatima          Fatima,Rimsha,WikiWorks743 
+##                                   5                                   1 
+##                 Fatima,WikiWorks743                      Fatima,Yu Wang 
+##                                   8                                   6 
+##                         Itslanapark                           Kwekuamoo 
 ##                                   2                                   1 
-##                       Madhubani Dey                             Manuela 
-##                                  16                                  11 
-##                 Rimsha,WikiWorks743                         Samara.Khan 
-##                                   1                                   3 
-##                              Tislam                           Valentina 
-##                                   2                                   2 
-## WikiWorks,WikiWorks743,WikiWorks753                        WikiWorks743 
-##                                   1                                1609 
-##           WikiWorks743,WikiWorks753 
-##                                   1</code></pre>
+##                       Lorakasselman                            Lwaldron 
+##                                   2                                   5 
+##               Lwaldron,WikiWorks743                       Madhubani Dey 
+##                                   1                                  29 
+##                             Manuela                 Rimsha,WikiWorks743 
+##                                  11                                   1 
+##                         Samara.Khan                              Tislam 
+##                                  10                                   7 
+##                           Valentina WikiWorks,WikiWorks743,WikiWorks753 
+##                                   2                                   1 
+##                        WikiWorks743           WikiWorks743,WikiWorks753 
+##                                1609                                   1</code></pre>
 <div id="distances-between-signatures" class="section level2">
 <h2 class="hasAnchor">
 <a href="#distances-between-signatures" class="anchor"></a>Distances between signatures</h2>
