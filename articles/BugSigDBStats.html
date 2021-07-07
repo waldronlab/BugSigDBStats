@@ -85,7 +85,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## using temporary cache /tmp/Rtmpbb74Ga/BiocFileCache</code></pre>
+<pre><code>## using temporary cache /tmp/RtmppS5x2T/BiocFileCache</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -129,7 +129,7 @@
 ## )</code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1911   45</code></pre>
+<pre><code>## [1] 1922   45</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -166,7 +166,7 @@
 <pre><code>## [1] 479</code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1911</code></pre>
+<pre><code>## [1] 1922</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit">
 <span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -196,7 +196,7 @@
 <span class="co"># more realistic estimation of number of signatures curated</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stripEmptySignatures.html">stripEmptySignatures</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1854</code></pre>
+<pre><code>## [1] 1864</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb20"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></pre></div>
@@ -220,7 +220,7 @@
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Revision editor"</span><span class="op">]</span><span class="op">)</span></pre></div>
 <pre><code>## 
 ##                        Claregrieve1                 Claregrieve1,Fatima 
-##                                  73                                   2 
+##                                  74                                   2 
 ##                    Cynthia Anderson       Cynthia Anderson,WikiWorks743 
 ##                                  33                                   3 
 ##                              Fatima          Fatima,Rimsha,WikiWorks743 
@@ -228,11 +228,11 @@
 ##                 Fatima,WikiWorks743                      Fatima,Yu Wang 
 ##                                   8                                   6 
 ##                         Itslanapark                           Kwekuamoo 
-##                                   3                                   3 
+##                                   4                                   3 
 ##                       Lorakasselman                            Lwaldron 
 ##                                   2                                   7 
 ##               Lwaldron,WikiWorks743                       Madhubani Dey 
-##                                   1                                  38 
+##                                   1                                  37 
 ##                             Manuela                 Rimsha,WikiWorks743 
 ##                                  11                                   1 
 ##                         Samara.Khan                              Tislam 
