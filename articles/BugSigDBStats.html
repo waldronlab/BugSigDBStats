@@ -85,7 +85,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
 <span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## using temporary cache /tmp/RtmpZbO1NI/BiocFileCache</code></pre>
+<pre><code>## using temporary cache /tmp/Rtmpy4Duwx/BiocFileCache</code></pre>
 <pre><code>## 
 ## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
@@ -129,7 +129,7 @@
 ## )</code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 2013   45</code></pre>
+<pre><code>## [1] 2073   45</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -163,10 +163,10 @@
 <div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 494</code></pre>
+<pre><code>## [1] 514</code></pre>
 <div class="sourceCode" id="cb13"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 2013</code></pre>
+<pre><code>## [1] 2073</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit">
 <span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -196,12 +196,12 @@
 <span class="co"># more realistic estimation of number of signatures curated</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stripEmptySignatures.html">stripEmptySignatures</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></pre></div>
-<pre><code>## [1] 1947</code></pre>
+<pre><code>## [1] 2004</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb20"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></pre></div>
-<pre><code>##  [1] 32295867 32937864 32415070 32728349 33903709 33851179 33833065 31910227
-##  [9] 33603076 31917273 22986438 30714619 32978483</code></pre>
+<pre><code>##  [1] 32295867 32937864 32415070 32728349 33903709 33851179 33833065 33603076
+##  [9] 31917273 22986438 30714619 32978483 31887116 30057153</code></pre>
 <p>Progress over time:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit">
 <span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
@@ -220,9 +220,11 @@
 <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Revision editor"</span><span class="op">]</span><span class="op">)</span></pre></div>
 <pre><code>## 
 ##                                      Chloe 
-##                                          1 
+##                                          2 
+##                         Chloe,Claregrieve1 
+##                                          2 
 ##                               Claregrieve1 
-##                                        117 
+##                                        130 
 ##                        Claregrieve1,Fatima 
 ##                                          4 
 ##                           Cynthia Anderson 
@@ -238,11 +240,13 @@
 ##    Fatima,LGeistlinger,Rimsha,WikiWorks743 
 ##                                          1 
 ##               Fatima,Lwaldron,WikiWorks743 
-##                                          1 
+##                                          3 
 ##                 Fatima,Rimsha,WikiWorks743 
 ##                                          1 
+##                              Fatima,Tislam 
+##                                          3 
 ##                        Fatima,WikiWorks743 
-##                                         23 
+##                                         50 
 ##                             Fatima,Yu Wang 
 ##                                          6 
 ##                                       Gina 
@@ -257,22 +261,24 @@
 ##                                          2 
 ##                                   Lwaldron 
 ##                                          7 
+##                     Lwaldron,Madhubani Dey 
+##                                          1 
 ##                      Lwaldron,WikiWorks743 
-##                                         19 
+##                                         21 
 ##                              Madhubani Dey 
-##                                         39 
+##                                         46 
 ##                                    Manuela 
 ##                                         11 
 ##                                Samara.Khan 
-##                                         10 
+##                                         30 
 ##                                     Tislam 
-##                                         13 
+##                                         11 
 ##                                  Valentina 
 ##                                          2 
 ##        WikiWorks,WikiWorks743,WikiWorks753 
 ##                                          1 
 ##                               WikiWorks743 
-##                                       1573 
+##                                       1542 
 ##                  WikiWorks743,WikiWorks753 
 ##                                          1</code></pre>
 <div id="distances-between-signatures" class="section level2">
