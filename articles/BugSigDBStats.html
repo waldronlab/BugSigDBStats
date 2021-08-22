@@ -58,12 +58,12 @@
 
       
 
-      </header><script src="BugSigDBStats_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="BugSigDBStats_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">August 21, 2021</h4>
+            <h4 class="date">August 22, 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -75,64 +75,23 @@
 <div id="setup" class="section level1">
 <h1 class="hasAnchor">
 <a href="#setup" class="anchor"></a>Setup</h1>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugsigdbr">bugsigdbr</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugsigdbr">bugsigdbr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/BugSigDBStats">BugSigDBStats</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/ggpubr/">ggpubr</a></span><span class="op">)</span></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/ggpubr/">ggpubr</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="reading-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#reading-data" class="anchor"></a>Reading data</h1>
 <p>Get bulk export from bugsigdb.org:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></pre></div>
-<pre><code>## using temporary cache /tmp/RtmpMxfYPe/BiocFileCache</code></pre>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   `Signature page name` = col_character(),
-##   Experiment = col_character(),
-##   Study = col_character(),
-##   Source = col_character(),
-##   `Curated date` = col_character(),
-##   Curator = col_character(),
-##   `Revision editor` = col_character(),
-##   Description = col_character(),
-##   `Abundance in Group 1` = col_character(),
-##   `MetaPhlAn taxon names` = col_character(),
-##   `NCBI Taxonomy IDs` = col_character()
-## )</code></pre>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   .default = col_character(),
-##   `Group 0 sample size` = col_double(),
-##   `Group 1 sample size` = col_number(),
-##   `16s variable region` = col_logical(),
-##   `Significance threshold` = col_double(),
-##   `MHT correction` = col_logical(),
-##   `LDA Score above` = col_double()
-## )
-## ℹ Use `spec()` for the full column specifications.</code></pre>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   `Study page name` = col_character(),
-##   `Study design` = col_character(),
-##   PMID = col_double(),
-##   DOI = col_character(),
-##   URL = col_character(),
-##   Authors = col_character(),
-##   Title = col_character(),
-##   Journal = col_character(),
-##   Year = col_double(),
-##   Abstract = col_character()
-## )</code></pre>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## Using cached version from 2021-08-22 14:13:26</code></pre>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2073   45</code></pre>
-<div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
 ##  [3] "PMID"                       "DOI"                       
 ##  [5] "URL"                        "Authors"                   
@@ -161,20 +120,20 @@
 <h1 class="hasAnchor">
 <a href="#curation-output" class="anchor"></a>Curation output</h1>
 <p>Number of papers and signatures curated:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 514</code></pre>
-<div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2073</code></pre>
 <p>Publication date of the curated papers:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit">
-<span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
 <span class="va">pubyear1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pmid2pubyear.html">pmid2pubyear</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">361</span><span class="op">]</span><span class="op">)</span>
 <span class="va">pubyear2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pmid2pubyear.html">pmid2pubyear</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">[</span><span class="fl">362</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
 <span class="va">pubyear</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">pubyear1</span>, <span class="va">pubyear2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="va">pubyear</span><span class="op">)</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="va">pubyear</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##      pmids      pubyear
 ## [1,] "28038683" "2016" 
 ## [2,] "28173873" "2017" 
@@ -182,43 +141,43 @@
 ## [4,] "27625705" "2016" 
 ## [5,] "23071781" "2012" 
 ## [6,] "28467925" "2017"</code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit">
-<span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">pubyear</span><span class="op">)</span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">pubyear</span><span class="op">)</span>
 <span class="va">tab</span> <span class="op">&lt;-</span> <span class="va">tab</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span><span class="op">]</span>
 <span class="va">tab</span> <span class="op">&lt;-</span> <span class="va">tab</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span>, papers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggbarplot.html">ggbarplot</a></span><span class="op">(</span><span class="va">df</span>, x <span class="op">=</span> <span class="st">"year"</span>, y <span class="op">=</span> <span class="st">"papers"</span>, 
           label <span class="op">=</span> <span class="cn">TRUE</span>, fill <span class="op">=</span> <span class="st">"steelblue"</span>,
-          ggtheme <span class="op">=</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></pre></div>
+          ggtheme <span class="op">=</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/pubDate2-1.png" width="700"></p>
 <p>Stripping empty signatures:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit">
-<span class="co"># contains empty UP / DOWN rows</span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># contains empty UP / DOWN rows</span>
 <span class="co"># more realistic estimation of number of signatures curated</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stripEmptySignatures.html">stripEmptySignatures</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2004</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
-<div class="sourceCode" id="cb20"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] 32295867 32937864 32415070 32728349 33903709 33851179 33833065 33603076
 ##  [9] 31917273 22986438 30714619 32978483 31887116 30057153</code></pre>
 <p>Progress over time:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit">
-<span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plotProgressOverTime.html">plotProgressOverTime</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/plotProgressOverTime.html">plotProgressOverTime</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-3-1.png" width="960"></p>
-<div class="sourceCode" id="cb23"><pre class="downlit">
-<span class="fu"><a href="../reference/plotProgressOverTime.html">plotProgressOverTime</a></span><span class="op">(</span><span class="va">dat</span>, diff <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plotProgressOverTime.html">plotProgressOverTime</a></span><span class="op">(</span><span class="va">dat</span>, diff <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-3-2.png" width="960"></p>
 <p>Stratified by curator:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit">
-<span class="va">npc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stratifyByCurator.html">stratifyByCurator</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plotCuratorStats.html">plotCuratorStats</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">npc</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">npc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stratifyByCurator.html">stratifyByCurator</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
+<span class="fu"><a href="../reference/plotCuratorStats.html">plotCuratorStats</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">npc</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/curatorOutput-1.png" width="960"></p>
 <p>Number of revised signatures:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Revision editor"</span><span class="op">]</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Revision editor"</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ##                                      Chloe 
 ##                                          2 
@@ -286,14 +245,14 @@
 <h2 class="hasAnchor">
 <a href="#distances-between-signatures" class="anchor"></a>Distances between signatures</h2>
 <p>The <code>calcPairwiseOverlaps</code> function works quickly on all of bugsigdb currently, but <code>makeDist</code> is slow and surely could be improved for efficiency. For now, use only nasal samples:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit">
-<span class="va">dat_subset</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">`Body site`</span> <span class="op">%in%</span> <span class="st">"nasal cavity"</span>, <span class="op">]</span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat_subset</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[</span><span class="va">dat</span><span class="op">$</span><span class="va">`Body site`</span> <span class="op">%in%</span> <span class="st">"nasal cavity"</span>, <span class="op">]</span>
 <span class="va">sigs_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">dat_subset</span><span class="op">)</span>
 <span class="va">paircomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calcPairwiseOverlaps.html">calcPairwiseOverlaps</a></span><span class="op">(</span><span class="va">sigs_subset</span><span class="op">)</span>
-<span class="va">jdist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeDist.html">makeDist</a></span><span class="op">(</span><span class="va">paircomp</span>, <span class="st">"jaccard"</span><span class="op">)</span></pre></div>
+<span class="va">jdist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeDist.html">makeDist</a></span><span class="op">(</span><span class="va">paircomp</span>, <span class="st">"jaccard"</span><span class="op">)</span></code></pre></div>
 <p>Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures).</p>
-<div class="sourceCode" id="cb28"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">jdist</span><span class="op">)</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">jdist</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-6-1.png" width="768"></p>
 </div>
 </div>
