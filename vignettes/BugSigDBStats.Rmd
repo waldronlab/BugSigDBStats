@@ -3,6 +3,7 @@ vignette: >
   % \VignetteIndexEntry{BugSigDB Stats and Analysis}
   % \VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+date: '`r format(Sys.Date(), "%B %e, %Y")`'
 output:
   html_document:
     mathjax: null   
