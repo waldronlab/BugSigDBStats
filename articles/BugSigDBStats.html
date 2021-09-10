@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">September 9, 2021</h4>
+            <h4 class="date">September 10, 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -86,7 +86,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2021-09-09 05:06:32</code></pre>
+<pre><code>## Using cached version from 2021-09-10 05:07:00</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2123   48</code></pre>
@@ -147,7 +147,7 @@
 <span class="va">tab</span> <span class="op">&lt;-</span> <span class="va">tab</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span><span class="op">]</span>
 <span class="va">tab</span> <span class="op">&lt;-</span> <span class="va">tab</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span>, papers <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">tab</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/ggbarplot.html">ggbarplot</a></span><span class="op">(</span><span class="va">df</span>, x <span class="op">=</span> <span class="st">"year"</span>, y <span class="op">=</span> <span class="st">"papers"</span>, 
+<span class="fu"><a href="https://rdrr.io/pkg/ggpubr/man/ggbarplot.html">ggbarplot</a></span><span class="op">(</span><span class="va">df</span>, x <span class="op">=</span> <span class="st">"year"</span>, y <span class="op">=</span> <span class="st">"papers"</span>, 
           label <span class="op">=</span> <span class="cn">TRUE</span>, fill <span class="op">=</span> <span class="st">"steelblue"</span>,
           ggtheme <span class="op">=</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/pubDate2-1.png" width="700"></p>
