@@ -27,6 +27,8 @@ Suggests:
     ggpubr,
     knitr,
     lubridate,
+    ontologyIndex,
+    ontologySimilarity,
     pkgdown,
     rmarkdown,
     testthat

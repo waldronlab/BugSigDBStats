@@ -26,6 +26,14 @@ dim(full.dat)
 colnames(full.dat)
 ```
 
+Stripping illformed entries:
+
+```{r}
+is.study <- grepl("^Study [0-9]+$", full.dat[["Study"]])
+is.exp <- grepl("^Experiment [0-9]+$", full.dat[["Experiment"]])
+full.dat <- full.dat[is.study & is.exp, ]
+```
+
 # Curation output
 
 Number of papers and signatures curated:
@@ -59,9 +67,9 @@ ggbarplot(df, x = "year", y = "papers",
 Stripping empty signatures:
 
 ```{r} 
-# contains empty UP / DOWN rows
-# more realistic estimation of number of signatures curated
-dat <- stripEmptySignatures(full.dat)
+ind1 <- lengths(full.dat[["MetaPhlAn taxon names"]]) > 0
+ind2 <- lengths(full.dat[["NCBI Taxonomy IDs"]]) > 0
+dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
@@ -83,25 +91,106 @@ npc <- stratifyByCurator(dat)
 plotCuratorStats(dat, npc)
 ```
 
-Number of revised signatures:
+Number of complete and revised signatures:
 ```{r}
+table(df[["State"]])
 table(dat[,"Revision editor"])
 ```
 
+# Signature stats
 
-## Distances between signatures
-
-The `calcPairwiseOverlaps` function works quickly on all of bugsigdb currently, but `makeDist` is slow and surely could be improved for efficiency. For now, use only nasal samples:
 ```{r}
-dat_subset <- dat[dat$`Body site` %in% "nasal cavity", ]
-sigs_subset <- getSignatures(dat_subset)
+sigs <- bugsigdbr::getSignatures(dat, tax.id.type = "metaphlan")
+```
+
+## Signature similarity
+
+### Jaccard index
+
+The `calcPairwiseOverlaps` function works quickly on all of bugsigdb currently, 
+but `makeDist` is slow and surely could be improved for efficiency. For now,
+use only nasal samples:
+
+```{r}
+dat_subset <- subset(dat, `Body site` == "nasal cavity")
+sigs_subset <- bugsigdbr::getSignatures(dat_subset)
 paircomp <- calcPairwiseOverlaps(sigs_subset)
 jdist <- makeDist(paircomp, "jaccard")
 ```
 
 Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures). 
+
 ```{r, fig.height=15, fig.width=8}
 plot(hclust(jdist))
 ```
 
+### Semantic similarity
 
+Semantic similarity measures have been proposed for comparing concepts within an
+ontology [Schlicker et al., 2006](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-302).
+We therefore treat the NCBI taxonomy as an ontology, and compute semantic similarity
+between signatures.
+
+```{r, eval = FALSE}
+onto <- ontologyIndex::get_ontology("http://purl.obolibrary.org/obo/ncbitaxon.obo")
+```
+
+```{r heinzcache, echo = FALSE} 
+onto <- BugSigDBStats:::.getResourceFromCache("ncbi.onto")
+if(is.null(onto))
+{
+    onto <- ontologyIndex::get_ontology("http://purl.obolibrary.org/obo/ncbitaxon.obo")
+    BugSigDBStats:::.cacheResource(onto, "ncbi.onto")
+} 
+```
+
+```{r}
+onto
+head(onto$id)
+```
+
+We add the corresponding ID prefix:
+
+```{r}
+sigs <- bugsigdbr::getSignatures(dat, tax.id.type = "ncbi")
+sigs <- lapply(sigs, function(s) paste0("NCBITaxon:", s))
+```            
+
+We remove taxa that are not in the NCBI Taxonomy:
+
+```{r}
+utax <- unique(unlist(sigs))
+nt <- utax[!(utax %in% onto$id)]
+sigs <- lapply(sigs, function(s) setdiff(s, nt))
+```
+
+Now, we compute pairwise semantic similarity for all signatures:
+
+```{r}
+sim.mat <- ontologySimilarity::get_sim_grid(ontology = onto, term_sets = sigs)
+sim.mat[1:5,1:5]
+```
+
+Given the matrix of pairwise semantic similarity between signatures, we can also
+compute the semantic similarity of a group of signatures by eg. taking the average
+similarity between all pairs of signatures.
+
+Here, we compute the semantic similarity of all colorectal cancer signatures in
+the database for which abundance is increased in the cases. 
+
+```{r}
+ind <- !is.na(dat[["Condition"]]) &
+       dat[["Condition"]] == "colorectal cancer" & 
+       dat[["Body site"]] == "feces" & 
+       dat[["Abundance in Group 1"]] == "increased"
+ontologySimilarity::get_sim(sim.mat, group = which(ind))
+```
+
+Furthermore, we can compute a p-value for assessing the statistical
+significance of the similiarity of a group of signatures. The p-value is calculated
+by random sampling of groups ofthe same size as ‘group’, and calculating how many
+random groups have at least as great group similarity than does ‘group’.
+
+```{r}
+ontologySimilarity::get_sim_p(sim.mat, group = which(ind))
+```
