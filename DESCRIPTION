@@ -32,6 +32,8 @@ Suggests:
     pkgdown,
     rmarkdown,
     testthat
+Remotes:
+    waldronlab/bugsigdbr
 License: GPL (>= 3)
 VignetteBuilder: knitr
 LazyData: true
