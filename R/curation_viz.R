@@ -70,4 +70,32 @@ plotCuratorStats <- function(dat, npc)
     for(i in 1:ncol(npc)) text(y=bp[,i], x=npc[,i], labels=npc[,i], pos=4) 
 }
 
+#' Plot curation output for each curator
+#'
+#' @param dat a \code{data.frame} storing BugSigDB data.
+#' @param date.col character. A column of \code{dat} that contain the curation date
+#' in dmy format. 
+#' @return None. Plots to a graphics device.
+#' @export
+plotUniqueMicrobesOverTime <- function(dat,
+                                       date.col = "Curated date")
+{
+    dat <- dat[dat[,date.col] != "",]
+    msc <- dat[["MetaPhlAn taxon names"]]
+    dates <- dat[,date.col]
+    dbm <- substring(dates, 1, 7)
+    msc.spl <- split(msc, dbm)
+    
+    msc.spl <- lapply(msc.spl, function(x) unique(unname(unlist(x))))
+    for(i in 2:length(msc.spl)) msc.spl[[i]] <- union(msc.spl[[i - 1]], msc.spl[[i]]) 
+    nums <- lengths(msc.spl)
+    df <- data.frame(date = names(nums), nr.microbes = nums)
+
+    ggpubr::ggscatter(df[-nrow(df),], x = "date", y = "nr.microbes", 
+                      ylab = "Number of unique microbes", xlab = "", 
+                      ggtheme = ggplot2::theme_bw(), color = "darkblue") + 
+                      ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
+}
+
+
 

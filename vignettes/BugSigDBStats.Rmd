@@ -103,6 +103,27 @@ table(dat[,"Revision editor"])
 sigs <- bugsigdbr::getSignatures(dat, tax.id.type = "metaphlan")
 ```
 
+## Unique microbes
+
+Number unique microbes contained in the signatures:
+```{r ubugs}
+(nuniq <- length(unique(unlist(sigs))))
+```
+
+Development of unique microbes captured over time:
+```{r}
+plotUniqueMicrobesOverTime(dat)
+```
+
+## Microbe set size distribution
+
+```{r setSize}
+summary(lengths(sigs))
+gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
+    xlab = "signature size", fill = "#00AFBB", ggtheme = theme_bw())
+sum(lengths(sigs) > 4)
+```
+
 ## Signature similarity
 
 ### Jaccard index
@@ -124,73 +145,4 @@ Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are iden
 plot(hclust(jdist))
 ```
 
-### Semantic similarity
 
-Semantic similarity measures have been proposed for comparing concepts within an
-ontology [Schlicker et al., 2006](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-302).
-We therefore treat the NCBI taxonomy as an ontology, and compute semantic similarity
-between signatures.
-
-```{r, eval = FALSE}
-onto <- ontologyIndex::get_ontology("http://purl.obolibrary.org/obo/ncbitaxon.obo")
-```
-
-```{r heinzcache, echo = FALSE} 
-onto <- BugSigDBStats:::.getResourceFromCache("ncbi.onto")
-if(is.null(onto))
-{
-    onto <- ontologyIndex::get_ontology("http://purl.obolibrary.org/obo/ncbitaxon.obo")
-    BugSigDBStats:::.cacheResource(onto, "ncbi.onto")
-} 
-```
-
-```{r}
-onto
-head(onto$id)
-```
-
-We add the corresponding ID prefix:
-
-```{r}
-sigs <- bugsigdbr::getSignatures(dat, tax.id.type = "ncbi")
-sigs <- lapply(sigs, function(s) paste0("NCBITaxon:", s))
-```            
-
-We remove taxa that are not in the NCBI Taxonomy:
-
-```{r}
-utax <- unique(unlist(sigs))
-nt <- utax[!(utax %in% onto$id)]
-sigs <- lapply(sigs, function(s) setdiff(s, nt))
-```
-
-Now, we compute pairwise semantic similarity for all signatures:
-
-```{r}
-sim.mat <- ontologySimilarity::get_sim_grid(ontology = onto, term_sets = sigs)
-sim.mat[1:5,1:5]
-```
-
-Given the matrix of pairwise semantic similarity between signatures, we can also
-compute the semantic similarity of a group of signatures by eg. taking the average
-similarity between all pairs of signatures.
-
-Here, we compute the semantic similarity of all colorectal cancer signatures in
-the database for which abundance is increased in the cases. 
-
-```{r}
-ind <- !is.na(dat[["Condition"]]) &
-       dat[["Condition"]] == "colorectal cancer" & 
-       dat[["Body site"]] == "feces" & 
-       dat[["Abundance in Group 1"]] == "increased"
-ontologySimilarity::get_sim(sim.mat, group = which(ind))
-```
-
-Furthermore, we can compute a p-value for assessing the statistical
-significance of the similiarity of a group of signatures. The p-value is calculated
-by random sampling of groups ofthe same size as ‘group’, and calculating how many
-random groups have at least as great group similarity than does ‘group’.
-
-```{r}
-ontologySimilarity::get_sim_p(sim.mat, group = which(ind))
-```

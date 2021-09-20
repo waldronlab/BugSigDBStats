@@ -18,22 +18,20 @@ Authors@R: c(
 Description: Utilities for overview stats for microbiome signatures from BugSigDB.
 URL: https://github.com/waldronlab/BugSigDBStats
 BugReports: https://github.com/waldronlab/BugSigDBStats/issues
-Depends: R (>= 4.0.0)
+Depends: R (>= 4.1.0)
 Imports:
     annotate,
+    ggplot2,
+    ggpubr,
+    BiocFileCache,
     XML
 Suggests:
     bugsigdbr,
-    ggpubr,
     knitr,
     lubridate,
-    ontologyIndex,
-    ontologySimilarity,
     pkgdown,
     rmarkdown,
     testthat
-Remotes:
-    waldronlab/bugsigdbr
 License: GPL (>= 3)
 VignetteBuilder: knitr
 LazyData: true
