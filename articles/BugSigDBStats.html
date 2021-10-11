@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">October 10, 2021</h4>
+            <h4 class="date">October 11, 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -86,7 +86,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2021-10-10 05:08:57</code></pre>
+<pre><code>## Using cached version from 2021-10-11 05:08:16</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2050   48</code></pre>
@@ -189,40 +189,62 @@
 <pre><code>## 
 ##                                      Chloe 
 ##                                          1 
+##                         Chloe,Claregrieve1 
+##                                          1 
+##            Chloe,Claregrieve1,WikiWorks743 
+##                                          1 
 ##                               Claregrieve1 
 ##                                        126 
-##                         Claregrieve1,Chloe 
-##                                          1 
-##            Claregrieve1,Chloe,WikiWorks743 
-##                                          1 
 ##                        Claregrieve1,Fatima 
-##                                          3 
+##                                          5 
 ##                      Claregrieve1,Lwaldron 
 ##                                          1 
 ##                           Cynthia Anderson 
 ##                                         21 
+## Cynthia Anderson,LGeistlinger,WikiWorks743 
+##                                          2 
+##     Cynthia Anderson,Lwaldron,WikiWorks743 
+##                                          1 
 ##                                     Fatima 
 ##                                          3 
-##                        Fatima,Claregrieve1 
+##              Fatima,Kwekuamoo,WikiWorks743 
 ##                                          2 
+##    Fatima,LGeistlinger,Rimsha,WikiWorks743 
+##                                          1 
+##               Fatima,Lwaldron,WikiWorks743 
+##                                          4 
+##                       Fatima,Madhubani Dey 
+##                                          2 
+##                 Fatima,Rimsha,WikiWorks743 
+##                                          1 
+##                              Fatima,Tislam 
+##                                          6 
+##                        Fatima,WikiWorks743 
+##                                         49 
+##                             Fatima,Yu Wang 
+##                                          6 
 ##                                   Fcuevas3 
 ##                                         15 
 ##                                       Gina 
-##                                          9 
+##                                         14 
 ##                                Itslanapark 
 ##                                         21 
 ##                                  Kwekuamoo 
 ##                                         37 
+##                     Kwekuamoo,WikiWorks743 
+##                                          1 
 ##                              Lorakasselman 
 ##                                          2 
 ##                                   Lwaldron 
 ##                                          7 
+##                     Lwaldron,Madhubani Dey 
+##                                          1 
+##                             Lwaldron,Titas 
+##                                          1 
+##                      Lwaldron,WikiWorks743 
+##                                         34 
 ##                              Madhubani Dey 
 ##                                         44 
-##                       Madhubani Dey,Fatima 
-##                                          2 
-##                     Madhubani Dey,Lwaldron 
-##                                          1 
 ##                                    Manuela 
 ##                                         11 
 ##                                     Mmarin 
@@ -230,43 +252,17 @@
 ##                                Samara.Khan 
 ##                                         47 
 ##                                     Tislam 
-##                                          9 
-##                              Tislam,Fatima 
-##                                          6 
+##                                         11 
 ##                                      Titas 
 ##                                          8 
-##                             Titas,Lwaldron 
-##                                          1 
 ##                                  Valentina 
 ##                                          2 
+##        WikiWorks,WikiWorks743,WikiWorks753 
+##                                          1 
 ##                               WikiWorks743 
 ##                                       1551 
-## WikiWorks743,Cynthia Anderson,LGeistlinger 
-##                                          2 
-##     WikiWorks743,Cynthia Anderson,Lwaldron 
-##                                          1 
-##                        WikiWorks743,Fatima 
-##                                         49 
-##              WikiWorks743,Fatima,Kwekuamoo 
-##                                          2 
-##               WikiWorks743,Fatima,Lwaldron 
-##                                          3 
-##                     WikiWorks743,Kwekuamoo 
-##                                          1 
-##                      WikiWorks743,Lwaldron 
-##                                         34 
-##               WikiWorks743,Lwaldron,Fatima 
-##                                          1 
-##                 WikiWorks743,Rimsha,Fatima 
-##                                          1 
-##    WikiWorks743,Rimsha,Fatima,LGeistlinger 
-##                                          1 
 ##                  WikiWorks743,WikiWorks753 
-##                                          1 
-##        WikiWorks743,WikiWorks753,WikiWorks 
-##                                          1 
-##                             Yu Wang,Fatima 
-##                                          6</code></pre>
+##                                          1</code></pre>
 </div>
 <div id="signature-stats" class="section level1">
 <h1 class="hasAnchor">
