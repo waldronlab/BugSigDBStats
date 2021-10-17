@@ -1,3 +1,22 @@
+---
+vignette: >
+  % \VignetteIndexEntry{Semantic similarity of BugSigDB signatures}
+  % \VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+date: '`r format(Sys.Date(), "%B %e, %Y")`'
+output:
+  html_document:
+    mathjax: null   
+---
+
+# Setup
+```{r setup, message=FALSE, warning=FALSE}
+library(bugsigdbr)
+library(ggtree)
+library(ontologyIndex)
+library(ontologySimilarity)
+```
+
 # Semantic similarity
 
 Semantic similarity measures have been proposed for comparing concepts within an
@@ -23,9 +42,16 @@ onto
 head(onto$id)
 ```
 
-We add the corresponding ID prefix:
+One challenge here is that this needs quite some memory (kills your GHA):
 
 ```{r}
+pryr::object_size(onto)
+```
+
+We add the corresponding ID prefix:
+
+```{r, message = FALSE}
+dat <- bugsigdbr::importBugSigDB()
 sigs <- bugsigdbr::getSignatures(dat, tax.id.type = "ncbi")
 sigs <- lapply(sigs, function(s) paste0("NCBITaxon:", s))
 ```            
@@ -38,11 +64,16 @@ nt <- utax[!(utax %in% onto$id)]
 sigs <- lapply(sigs, function(s) setdiff(s, nt))
 ```
 
-Now, we compute pairwise semantic similarity for all signatures:
+Now, we compute pairwise semantic similarity for all signatures 
+(which is reasonably fast btw):
 
 ```{r}
-sim.mat <- ontologySimilarity::get_sim_grid(ontology = onto, term_sets = sigs)
+system.time(
+    sim.mat <- ontologySimilarity::get_sim_grid(ontology = onto, term_sets = sigs)
+)
+dim(sim.mat)
 sim.mat[1:5,1:5]
+summary(as.vector(sim.mat))
 ```
 
 Given the matrix of pairwise semantic similarity between signatures, we can also
@@ -57,14 +88,92 @@ ind <- !is.na(dat[["Condition"]]) &
        dat[["Condition"]] == "colorectal cancer" & 
        dat[["Body site"]] == "feces" & 
        dat[["Abundance in Group 1"]] == "increased"
+sum(ind)
 ontologySimilarity::get_sim(sim.mat, group = which(ind))
 ```
 
 Furthermore, we can compute a p-value for assessing the statistical
 significance of the similiarity of a group of signatures. The p-value is calculated
-by random sampling of groups ofthe same size as ‘group’, and calculating how many
-random groups have at least as great group similarity than does ‘group’.
+by random sampling of groups of the same size as `group`, and calculating how many
+random groups have at least as great group similarity than does `group`.
 
 ```{r}
 ontologySimilarity::get_sim_p(sim.mat, group = which(ind))
+```
+
+Cluster similarity and visualize signature:
+
+```{r, warning = FALSE}
+sm.grp <- sim.mat[ind,ind]
+hc <- stats::hclust(stats::as.dist(1 - sm.grp), method = "ward.D")
+clus <- stats::cutree(hc, 5)
+d <- data.frame(label = names(clus), count = lengths(sigs[names(clus)]))
+p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
+                             offset_tiplab = 0.35, label_format = 30, nWords = 0,
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4)
+p + coord_cartesian(xlim = xlim) +
+    ggnewscale::new_scale_colour() + 
+    geom_tippoint(aes(size = count))
+```
+
+Chunk up entire BugSigDB by body site:
+
+```{r}
+ind <- !is.na(dat[["Body site"]]) & !grepl(",", dat[["Body site"]]) 
+dat.bs <- dat[ind,]
+sigs.bs <- bugsigdbr::getSignatures(dat.bs)
+spl <- split(sigs.bs, dat.bs[["Body site"]])
+spl <- lapply(spl, function(s) unique(unlist(s)))
+ind <- lengths(spl) > 4
+spl <- spl[ind]
+sort(lengths(spl), decreasing = TRUE)
+```
+
+Calculate semantic similarity between body site chunked-up signatures:
+
+```{r}
+spl <- lapply(spl, function(s) paste0("NCBITaxon:", s))
+utax <- unique(unlist(spl))
+nt <- utax[!(utax %in% onto$id)]
+spl <- lapply(spl, function(s) setdiff(s, nt))
+sm.bs <- ontologySimilarity::get_sim_grid(ontology = onto, term_sets = spl)
+sm.bs[1:5,1:5]
+```
+
+```{r, warning = FALSE}
+hc <- stats::hclust(stats::as.dist(1 - sm.bs), method = "ward.D")
+clus <- stats::cutree(hc, 5)
+d <- data.frame(label = names(clus), count = lengths(spl[names(clus)]))
+p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
+                             offset_tiplab = 0.35, label_format = 30, nWords = 0,
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4)
+p + coord_cartesian(xlim = xlim) +
+    ggnewscale::new_scale_colour() + 
+    geom_tippoint(aes(size = count))
+```
+
+Take a closer look at nasal cavity signatures:
+
+```{r}
+ndat <- subset(dat, `Body site` == "nasal cavity")
+nms <- sort(unique(unlist(ndat[["MetaPhlAn taxon names"]])))
+dim(ndat)
+unique(ndat$PMID)
+```
+
+Compare nasal cavity meta-signature to feces meta-signature:
+
+```{r}
+fdat <- subset(dat, `Body site` == "feces")
+fms <- sort(unique(unlist(fdat[["MetaPhlAn taxon names"]])))
+table(nms %in% fms)
+```
+
+Check whether remaining nasal cavity taxa are in feces meta-signature at family level:
+
+```{r}
+nnms <- nms[!(nms %in% fms)]
+nnms.fam <- bugsigdbr::extractTaxLevel(nnms, tax.level = "family", exact.tax.level = FALSE) 
+fms.fam <- bugsigdbr::extractTaxLevel(fms, tax.level = "family", exact.tax.level = FALSE)
+table(nnms.fam %in% fms.fam)
 ```
