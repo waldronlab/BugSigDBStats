@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">October 24, 2021</h4>
+            <h4 class="date">October 25, 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -86,10 +86,10 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2021-10-24 05:06:53</code></pre>
+<pre><code>## Using cached version from 2021-10-25 05:08:23</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2050   48</code></pre>
+<pre><code>## [1] 2064   48</code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -129,10 +129,10 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 505</code></pre>
+<pre><code>## [1] 508</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2050</code></pre>
+<pre><code>## [1] 2064</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -162,7 +162,7 @@
 <span class="va">ind2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[[</span><span class="st">"NCBI Taxonomy IDs"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">full.dat</span><span class="op">[</span><span class="va">ind1</span> <span class="op">&amp;</span> <span class="va">ind2</span>,<span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2050</code></pre>
+<pre><code>## [1] 2064</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -206,7 +206,9 @@
 ##     Cynthia Anderson,Lwaldron,WikiWorks743 
 ##                                          1 
 ##                                     Fatima 
-##                                          3 
+##                                          4 
+##                            Fatima,Fcuevas3 
+##                                          1 
 ##              Fatima,Kwekuamoo,WikiWorks743 
 ##                                          2 
 ##    Fatima,LGeistlinger,Rimsha,WikiWorks743 
@@ -219,12 +221,14 @@
 ##                                          1 
 ##                              Fatima,Tislam 
 ##                                          6 
+##                               Fatima,Titas 
+##                                          1 
 ##                        Fatima,WikiWorks743 
-##                                         49 
+##                                         50 
 ##                             Fatima,Yu Wang 
 ##                                          6 
 ##                                   Fcuevas3 
-##                                         15 
+##                                         22 
 ##                                       Gina 
 ##                                         14 
 ##                                Itslanapark 
@@ -254,15 +258,15 @@
 ##                                Samara.Khan 
 ##                                         47 
 ##                                     Tislam 
-##                                         11 
+##                                         12 
 ##                                      Titas 
-##                                          8 
+##                                         11 
 ##                                  Valentina 
 ##                                          2 
 ##        WikiWorks,WikiWorks743,WikiWorks753 
 ##                                          1 
 ##                               WikiWorks743 
-##                                       1551 
+##                                       1550 
 ##                  WikiWorks743,WikiWorks753 
 ##                                          1</code></pre>
 </div>
@@ -293,7 +297,7 @@
 ## cross-sectional observational, not case-control 
 ##                                             126 
 ##                                    case-control 
-##                                             241</code></pre>
+##                                             244</code></pre>
 </div>
 </div>
 <div id="experiment-stats" class="section level1">
@@ -345,12 +349,12 @@
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##              1132                40                10 
+##              1138                40                10 
 ## 
 ## $`Location of subjects`
 ## 
 ##                    China United States of America                    Italy 
-##                      342                      332                       49 
+##                      345                      332                       49 
 ##                    Spain              South Korea                  Finland 
 ##                       48                       41                       34 
 ##                   Canada                    Japan                   Brazil 
@@ -361,7 +365,7 @@
 ## $`Body site`
 ## 
 ##          feces         saliva uterine cervix         vagina          mouth 
-##            677             40             40             33             29 
+##            680             40             40             33             29 
 ##     oral gland       meconium   skin of body        stomach    nasopharynx 
 ##             29             25             24             23             21 
 ## 
@@ -381,7 +385,7 @@
 ## $`Antibiotics exclusion`
 ## 
 ##                 3 months                  1 month                 6 months 
-##                      155                       98                       63 
+##                      155                       99                       63 
 ##                 2 months                  4 weeks                  2 weeks 
 ##                       52                       38                       29 
 ##                  8 weeks before sample collection                  30 days 
@@ -396,49 +400,49 @@
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##           0.95800           0.03380           0.00846 
+##           0.95800           0.03370           0.00842 
 ## 
 ## $`Location of subjects`
 ## 
 ##                    China United States of America                    Italy 
-##                   0.2900                   0.2820                   0.0416 
+##                   0.2910                   0.2800                   0.0414 
 ##                    Spain              South Korea                  Finland 
-##                   0.0407                   0.0348                   0.0289 
+##                   0.0405                   0.0346                   0.0287 
 ##                   Canada                    Japan                   Brazil 
-##                   0.0229                   0.0212                   0.0195 
+##                   0.0228                   0.0211                   0.0194 
 ##              Netherlands 
-##                   0.0170 
+##                   0.0169 
 ## 
 ## $`Body site`
 ## 
 ##          feces         saliva uterine cervix         vagina          mouth 
-##         0.5810         0.0343         0.0343         0.0283         0.0249 
+##         0.5800         0.0341         0.0341         0.0282         0.0247 
 ##     oral gland       meconium   skin of body        stomach    nasopharynx 
-##         0.0249         0.0214         0.0206         0.0197         0.0180 
+##         0.0247         0.0213         0.0205         0.0196         0.0179 
 ## 
 ## $Condition
 ## 
 ##                         obesity                        COVID-19 
-##                          0.0920                          0.0652 
+##                          0.0917                          0.0650 
 ##                            diet             antimicrobial agent 
-##                          0.0492                          0.0438 
+##                          0.0490                          0.0436 
 ## human papilloma virus infection                  gastric cancer 
-##                          0.0375                          0.0313 
+##                          0.0374                          0.0312 
 ##                          asthma                   air pollution 
-##                          0.0286                          0.0268 
+##                          0.0285                          0.0267 
 ##                cesarean section                   endometriosis 
-##                          0.0268                          0.0268 
+##                          0.0267                          0.0267 
 ## 
 ## $`Antibiotics exclusion`
 ## 
 ##                 3 months                  1 month                 6 months 
-##                   0.2180                   0.1380                   0.0886 
+##                   0.2170                   0.1380                   0.0881 
 ##                 2 months                  4 weeks                  2 weeks 
-##                   0.0731                   0.0534                   0.0408 
+##                   0.0727                   0.0531                   0.0406 
 ##                  8 weeks before sample collection                  30 days 
-##                   0.0155                   0.0141                   0.0127 
+##                   0.0154                   0.0140                   0.0126 
 ##                  14 days 
-##                   0.0113</code></pre>
+##                   0.0112</code></pre>
 <p>Sample size:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ssize</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">sub.cols</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">summary</span><span class="op">)</span>
@@ -446,9 +450,9 @@
 <pre><code>##         Group 0 sample size Group 1 sample size
 ## Min.                1.00000             1.00000
 ## 1st Qu.            13.00000            12.00000
-## Median             24.00000            23.50000
-## Mean               49.59561            63.44531
-## 3rd Qu.            47.00000            41.00000
+## Median             24.50000            24.00000
+## Mean               49.63176            63.36356
+## 3rd Qu.            48.00000            41.00000
 ## Max.              969.00000          3122.00000
 ## NA's               44.00000            32.00000</code></pre>
 </div>
@@ -463,19 +467,19 @@
 <pre><code>## $`Sequencing type`
 ## 
 ##  16S  WMS 
-## 1086   86 
+## 1090   86 
 ## 
 ## $`16S variable region`
 ## 
 ##       34        4      123       12       45      345        3       23 
-##      351      290       90       62       44       36       30       11 
+##      352      292       90       63       44       36       30       11 
 ##       56 23456789 
 ##       11       10 
 ## 
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                         785                         176 
+##                         789                         176 
 ##                 Ion Torrent                     RT-qPCR 
 ##                          87                          77 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
@@ -492,27 +496,27 @@
 <pre><code>## $`Sequencing type`
 ## 
 ##    16S    WMS 
-## 0.9270 0.0734 
+## 0.9270 0.0731 
 ## 
 ## $`16S variable region`
 ## 
 ##       34        4      123       12       45      345        3       23 
-##   0.3630   0.3000   0.0931   0.0641   0.0455   0.0372   0.0310   0.0114 
+##   0.3630   0.3010   0.0927   0.0649   0.0453   0.0371   0.0309   0.0113 
 ##       56 23456789 
-##   0.0114   0.0103 
+##   0.0113   0.0103 
 ## 
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                     0.67000                     0.15000 
+##                     0.67100                     0.15000 
 ##                 Ion Torrent                     RT-qPCR 
-##                     0.07420                     0.06570 
+##                     0.07400                     0.06550 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
-##                     0.01020                     0.00768 
+##                     0.01020                     0.00765 
 ##           Mass spectrometry           HTF-Microbi.Array 
-##                     0.00427                     0.00341 
+##                     0.00425                     0.00340 
 ##           Illumina,Roche454        Non-quantitative PCR 
-##                     0.00256                     0.00256</code></pre>
+##                     0.00255                     0.00255</code></pre>
 </div>
 <div id="statistical-analysis" class="section level2">
 <h2 class="hasAnchor">
@@ -525,9 +529,9 @@
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                     333                     325                      91 
+##                     333                     326                      91 
 ##                  DESeq2                  T-Test                   ANOVA 
-##                      85                      72                      58 
+##                      85                      73                      59 
 ##       Linear Regression               Metastats     Logistic Regression 
 ##                      28                      20                      19 
 ##          Welch's T-Test 
@@ -536,12 +540,12 @@
 ## $`MHT correction`
 ## 
 ## FALSE  TRUE 
-##   602   563 
+##   602   564 
 ## 
 ## $`Significance threshold`
 ## 
 ##  0.05   0.1  0.01 0.001   0.2  0.15     0  0.25 0.002 0.004 
-##  1026    66    25    12    12     4     3     3     2     2</code></pre>
+##  1030    66    25    12    12     4     3     3     2     2</code></pre>
 <p>Proportions instead:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -550,23 +554,23 @@
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                  0.2940                  0.2870                  0.0803 
+##                  0.2930                  0.2870                  0.0800 
 ##                  DESeq2                  T-Test                   ANOVA 
-##                  0.0750                  0.0635                  0.0512 
+##                  0.0748                  0.0642                  0.0519 
 ##       Linear Regression               Metastats     Logistic Regression 
-##                  0.0247                  0.0177                  0.0168 
+##                  0.0246                  0.0176                  0.0167 
 ##          Welch's T-Test 
-##                  0.0124 
+##                  0.0123 
 ## 
 ## $`MHT correction`
 ## 
 ## FALSE  TRUE 
-## 0.517 0.483 
+## 0.516 0.484 
 ## 
 ## $`Significance threshold`
 ## 
 ##    0.05     0.1    0.01   0.001     0.2    0.15       0    0.25   0.002   0.004 
-## 0.88400 0.05680 0.02150 0.01030 0.01030 0.00345 0.00258 0.00258 0.00172 0.00172</code></pre>
+## 0.88400 0.05670 0.02150 0.01030 0.01030 0.00343 0.00258 0.00258 0.00172 0.00172</code></pre>
 </div>
 <div id="alpha-diversity" class="section level2">
 <h2 class="hasAnchor">
@@ -575,8 +579,8 @@
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">div.cols</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">table</span><span class="op">)</span></code></pre></div>
 <pre><code>##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-## decreased     11     146    93      41              14       80
-## increased      4     108    57      30               5       87
+## decreased     11     147    94      42              14       81
+## increased      4     109    58      31               6       88
 ## unchanged     25     433   230     161              30      235</code></pre>
 <p>Correspondence of Shannon diversity and Richness:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
@@ -584,7 +588,7 @@
 <pre><code>##            
 ##             decreased increased unchanged
 ##   decreased        38         3        15
-##   increased         1        34        13
+##   increased         2        34        13
 ##   unchanged        13        23       179</code></pre>
 <p>Conditions with consistently increased or decreased alpha diversity:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
@@ -721,7 +725,7 @@
 ## bronchus                           0         0         6
 ## caecum                             1         3         1
 ## dental plaque                      0         3         3
-## feces                             37        82       249
+## feces                             38        83       249
 ## lung                               1         2         5
 ## meconium                           6         0         7
 ## mouth                              6         2        14
@@ -744,7 +748,7 @@
 ## bronchus                       0.000     0.000      1.00
 ## caecum                         0.200     0.600      0.20
 ## dental plaque                  0.000     0.500      0.50
-## feces                          0.100     0.220      0.68
+## feces                          0.100     0.220      0.67
 ## lung                           0.120     0.250      0.62
 ## meconium                       0.460     0.000      0.54
 ## mouth                          0.270     0.091      0.64
@@ -766,12 +770,12 @@
 ## bronchus                           0         0         6
 ## caecum                             2         3         0
 ## colon                              9         0         1
-## feces                             34        44       128
+## feces                             34        45       128
 ## meconium                           0         2         7
 ## mouth                              5         0         6
 ## nasopharynx                        3         2         9
 ## oral gland                         1         4         2
-## posterior fornix of vagina         3         0         2
+## posterior fornix of vagina         4         0         2
 ## rectal                             0         0         7
 ## saliva                             1         1         7
 ## stomach                            2         7         3
@@ -785,12 +789,12 @@
 ## bronchus                        0.00     0.000      1.00
 ## caecum                          0.40     0.600      0.00
 ## colon                           0.90     0.000      0.10
-## feces                           0.17     0.210      0.62
+## feces                           0.16     0.220      0.62
 ## meconium                        0.00     0.220      0.78
 ## mouth                           0.45     0.000      0.55
 ## nasopharynx                     0.21     0.140      0.64
 ## oral gland                      0.14     0.570      0.29
-## posterior fornix of vagina      0.60     0.000      0.40
+## posterior fornix of vagina      0.67     0.000      0.33
 ## rectal                          0.00     0.000      1.00
 ## saliva                          0.11     0.110      0.78
 ## stomach                         0.17     0.580      0.25
@@ -823,14 +827,14 @@
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   1.000   2.000   4.000   6.832   9.000 100.000</code></pre>
+##   1.000   2.000   4.000   6.807   9.000 100.000</code></pre>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html">gghistogram</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">30</span>, ylab <span class="op">=</span> <span class="st">"number of signatures"</span>,
     xlab <span class="op">=</span> <span class="st">"signature size"</span>, fill <span class="op">=</span> <span class="st">"#00AFBB"</span>, ggtheme <span class="op">=</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/setSize-1.png" width="700"></p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 927</code></pre>
+<pre><code>## [1] 931</code></pre>
 </div>
 <div id="signature-similarity" class="section level2">
 <h2 class="hasAnchor">
