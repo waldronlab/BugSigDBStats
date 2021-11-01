@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">October 31, 2021</h4>
+            <h4 class="date">November 1, 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -86,7 +86,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2021-10-31 05:06:42</code></pre>
+<pre><code>## Using cached version from 2021-11-01 05:07:39</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2064   48</code></pre>
@@ -376,7 +376,7 @@
 ##                            diet             antimicrobial agent 
 ##                              55                              49 
 ## human papilloma virus infection                  gastric cancer 
-##                              42                              35 
+##                              43                              35 
 ##                          asthma                   air pollution 
 ##                              32                              30 
 ##                cesarean section                   endometriosis 
@@ -423,15 +423,15 @@
 ## $Condition
 ## 
 ##                         obesity                        COVID-19 
-##                          0.0917                          0.0650 
+##                          0.0904                          0.0641 
 ##                            diet             antimicrobial agent 
-##                          0.0490                          0.0436 
+##                          0.0483                          0.0430 
 ## human papilloma virus infection                  gastric cancer 
-##                          0.0374                          0.0312 
+##                          0.0378                          0.0307 
 ##                          asthma                   air pollution 
-##                          0.0285                          0.0267 
+##                          0.0281                          0.0263 
 ##                cesarean section                   endometriosis 
-##                          0.0267                          0.0267 
+##                          0.0263                          0.0263 
 ## 
 ## $`Antibiotics exclusion`
 ## 
@@ -618,8 +618,9 @@
 ## food allergy                                         0         2        10
 ## gastric cancer                                       3        12        14
 ## gestational diabetes                                 0         0         5
-## HIV infection                                        1         5         9
-## human papilloma virus infection                      6         0        25
+## hepatitis                                            0         1         4
+## HIV infection                                        1         5        14
+## human papilloma virus infection                      7         0        25
 ## hypertension                                         4         0         2
 ## lung cancer                                          2         7         5
 ## milk allergic reaction                               1         0         5
@@ -657,8 +658,9 @@
 ## food allergy                                     0.000     0.170      0.83
 ## gastric cancer                                   0.100     0.410      0.48
 ## gestational diabetes                             0.000     0.000      1.00
-## HIV infection                                    0.067     0.330      0.60
-## human papilloma virus infection                  0.190     0.000      0.81
+## hepatitis                                        0.000     0.200      0.80
+## HIV infection                                    0.050     0.250      0.70
+## human papilloma virus infection                  0.220     0.000      0.78
 ## hypertension                                     0.670     0.000      0.33
 ## lung cancer                                      0.140     0.500      0.36
 ## milk allergic reaction                           0.170     0.000      0.83
@@ -687,7 +689,7 @@
 ## endometriosis                                        3         1        12
 ## food allergy                                         0         3         9
 ## gastric cancer                                       2         6        13
-## HIV infection                                        0         2         8
+## HIV infection                                        0         2        12
 ## human papilloma virus infection                      3         0        14
 ## lung cancer                                          0         1         5
 ## multiple sclerosis                                   0         0         9
@@ -711,7 +713,7 @@
 ## endometriosis                                    0.190     0.062      0.75
 ## food allergy                                     0.000     0.250      0.75
 ## gastric cancer                                   0.095     0.290      0.62
-## HIV infection                                    0.000     0.200      0.80
+## HIV infection                                    0.000     0.140      0.86
 ## human papilloma virus infection                  0.180     0.000      0.82
 ## lung cancer                                      0.000     0.170      0.83
 ## multiple sclerosis                               0.000     0.000      1.00
