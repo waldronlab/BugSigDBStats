@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">November 7, 2021</h4>
+            <h4 class="date">November 8, 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -86,7 +86,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2021-11-07 05:06:23</code></pre>
+<pre><code>## Using cached version from 2021-11-08 05:07:57</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2064   48</code></pre>
@@ -364,10 +364,10 @@
 ## 
 ## $`Body site`
 ## 
-##          feces         saliva uterine cervix         vagina          mouth 
-##            680             40             40             33             29 
-##     oral gland       meconium   skin of body        stomach    nasopharynx 
-##             29             25             24             23             21 
+##          feces         saliva         vagina          mouth     oral gland 
+##            680             40             33             29             29 
+##       meconium   skin of body uterine cervix        stomach    nasopharynx 
+##             25             24             24             23             21 
 ## 
 ## $Condition
 ## 
@@ -376,7 +376,7 @@
 ##                            diet             antimicrobial agent 
 ##                              55                              49 
 ## human papilloma virus infection                  gastric cancer 
-##                              43                              35 
+##                              42                              35 
 ##                          asthma                   air pollution 
 ##                              32                              30 
 ##                cesarean section                   endometriosis 
@@ -415,23 +415,23 @@
 ## 
 ## $`Body site`
 ## 
-##          feces         saliva uterine cervix         vagina          mouth 
-##         0.5800         0.0341         0.0341         0.0282         0.0247 
-##     oral gland       meconium   skin of body        stomach    nasopharynx 
-##         0.0247         0.0213         0.0205         0.0196         0.0179 
+##          feces         saliva         vagina          mouth     oral gland 
+##         0.5770         0.0339         0.0280         0.0246         0.0246 
+##       meconium   skin of body uterine cervix        stomach    nasopharynx 
+##         0.0212         0.0204         0.0204         0.0195         0.0178 
 ## 
 ## $Condition
 ## 
 ##                         obesity                        COVID-19 
-##                          0.0904                          0.0641 
+##                          0.0867                          0.0614 
 ##                            diet             antimicrobial agent 
-##                          0.0483                          0.0430 
+##                          0.0463                          0.0412 
 ## human papilloma virus infection                  gastric cancer 
-##                          0.0378                          0.0307 
+##                          0.0354                          0.0295 
 ##                          asthma                   air pollution 
-##                          0.0281                          0.0263 
+##                          0.0269                          0.0253 
 ##                cesarean section                   endometriosis 
-##                          0.0263                          0.0263 
+##                          0.0253                          0.0253 
 ## 
 ## $`Antibiotics exclusion`
 ## 
@@ -603,7 +603,6 @@
 ## asthma                                               1         0         9
 ## atopic asthma                                        4         1         7
 ## atopic eczema                                        0         3        16
-## cervical cancer                                      4         0         4
 ## cervical glandular intraepithelial neoplasia         2         0         9
 ## cesarean section                                     5         0        13
 ## chronic fatigue syndrome                             0         1         4
@@ -618,10 +617,10 @@
 ## food allergy                                         0         2        10
 ## gastric cancer                                       3        12        14
 ## gestational diabetes                                 0         0         5
-## hepatitis                                            0         1         4
-## HIV infection                                        1         5        14
-## human papilloma virus infection                      7         0        25
+## HIV infection                                        1         5         9
+## human papilloma virus infection                      6         0        25
 ## hypertension                                         4         0         2
+## irritable bowel sydrome                              0         0         5
 ## lung cancer                                          2         7         5
 ## milk allergic reaction                               1         0         5
 ## multiple sclerosis                                   0         1         7
@@ -643,7 +642,6 @@
 ## asthma                                           0.100     0.000      0.90
 ## atopic asthma                                    0.330     0.083      0.58
 ## atopic eczema                                    0.000     0.160      0.84
-## cervical cancer                                  0.500     0.000      0.50
 ## cervical glandular intraepithelial neoplasia     0.180     0.000      0.82
 ## cesarean section                                 0.280     0.000      0.72
 ## chronic fatigue syndrome                         0.000     0.200      0.80
@@ -658,10 +656,10 @@
 ## food allergy                                     0.000     0.170      0.83
 ## gastric cancer                                   0.100     0.410      0.48
 ## gestational diabetes                             0.000     0.000      1.00
-## hepatitis                                        0.000     0.200      0.80
-## HIV infection                                    0.050     0.250      0.70
-## human papilloma virus infection                  0.220     0.000      0.78
+## HIV infection                                    0.067     0.330      0.60
+## human papilloma virus infection                  0.190     0.000      0.81
 ## hypertension                                     0.670     0.000      0.33
+## irritable bowel sydrome                          0.000     0.000      1.00
 ## lung cancer                                      0.140     0.500      0.36
 ## milk allergic reaction                           0.170     0.000      0.83
 ## multiple sclerosis                               0.000     0.120      0.88
@@ -689,8 +687,9 @@
 ## endometriosis                                        3         1        12
 ## food allergy                                         0         3         9
 ## gastric cancer                                       2         6        13
-## HIV infection                                        0         2        12
+## HIV infection                                        0         2         8
 ## human papilloma virus infection                      3         0        14
+## irritable bowel sydrome                              0         1         6
 ## lung cancer                                          0         1         5
 ## multiple sclerosis                                   0         0         9
 ## obesity                                              6         7        21
@@ -713,8 +712,9 @@
 ## endometriosis                                    0.190     0.062      0.75
 ## food allergy                                     0.000     0.250      0.75
 ## gastric cancer                                   0.095     0.290      0.62
-## HIV infection                                    0.000     0.140      0.86
+## HIV infection                                    0.000     0.200      0.80
 ## human papilloma virus infection                  0.180     0.000      0.82
+## irritable bowel sydrome                          0.000     0.140      0.86
 ## lung cancer                                      0.000     0.170      0.83
 ## multiple sclerosis                               0.000     0.000      1.00
 ## obesity                                          0.180     0.210      0.62
@@ -722,88 +722,92 @@
 <p>Body sites with consistently increased or decreased alpha diversity:</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span><span class="op">)</span></code></pre></div>
-<pre><code>##                            increased decreased unchanged
-## blood                              0         0         5
-## bronchus                           0         0         6
-## caecum                             1         3         1
-## dental plaque                      0         3         3
-## feces                             38        83       249
-## lung                               1         2         5
-## meconium                           6         0         7
-## mouth                              6         2        14
-## nasopharynx                        1         1        16
-## oral gland                         2         2         4
-## posterior fornix of vagina         4         0         3
-## rectal                             0         0        12
-## saliva                            13         5        18
-## skin of body                       2         7         2
-## stomach                            3        10         5
-## subgingival dental plaque          4         0         2
-## tongue                             1         4         7
-## uterine cervix                     3         0        23
-## uterus                             0         1         7
-## vagina                             7         3         7</code></pre>
+<pre><code>##                                increased decreased unchanged
+## blood                                  0         0         5
+## bronchus                               0         0         6
+## caecum                                 1         3         1
+## dental plaque                          0         3         3
+## feces                                 38        83       249
+## lung                                   1         2         5
+## meconium                               6         0         7
+## mouth                                  6         2        14
+## nasopharynx                            1         1        16
+## oral gland                             2         2         4
+## posterior fornix of vagina             4         0         3
+## rectal                                 0         0        12
+## saliva                                13         5        18
+## skin of body                           2         7         2
+## stomach                                3        10         5
+## subgingival dental plaque              4         0         2
+## tongue                                 1         4         7
+## uterine cervix                         1         0        14
+## uterine cervix,obsolete_cervix         2         0         9
+## uterus                                 0         1         7
+## vagina                                 7         3         7</code></pre>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##                            increased decreased unchanged
-## blood                          0.000     0.000      1.00
-## bronchus                       0.000     0.000      1.00
-## caecum                         0.200     0.600      0.20
-## dental plaque                  0.000     0.500      0.50
-## feces                          0.100     0.220      0.67
-## lung                           0.120     0.250      0.62
-## meconium                       0.460     0.000      0.54
-## mouth                          0.270     0.091      0.64
-## nasopharynx                    0.056     0.056      0.89
-## oral gland                     0.250     0.250      0.50
-## posterior fornix of vagina     0.570     0.000      0.43
-## rectal                         0.000     0.000      1.00
-## saliva                         0.360     0.140      0.50
-## skin of body                   0.180     0.640      0.18
-## stomach                        0.170     0.560      0.28
-## subgingival dental plaque      0.670     0.000      0.33
-## tongue                         0.083     0.330      0.58
-## uterine cervix                 0.120     0.000      0.88
-## uterus                         0.000     0.120      0.88
-## vagina                         0.410     0.180      0.41</code></pre>
+<pre><code>##                                increased decreased unchanged
+## blood                              0.000     0.000      1.00
+## bronchus                           0.000     0.000      1.00
+## caecum                             0.200     0.600      0.20
+## dental plaque                      0.000     0.500      0.50
+## feces                              0.100     0.220      0.67
+## lung                               0.120     0.250      0.62
+## meconium                           0.460     0.000      0.54
+## mouth                              0.270     0.091      0.64
+## nasopharynx                        0.056     0.056      0.89
+## oral gland                         0.250     0.250      0.50
+## posterior fornix of vagina         0.570     0.000      0.43
+## rectal                             0.000     0.000      1.00
+## saliva                             0.360     0.140      0.50
+## skin of body                       0.180     0.640      0.18
+## stomach                            0.170     0.560      0.28
+## subgingival dental plaque          0.670     0.000      0.33
+## tongue                             0.083     0.330      0.58
+## uterine cervix                     0.067     0.000      0.93
+## uterine cervix,obsolete_cervix     0.180     0.000      0.82
+## uterus                             0.000     0.120      0.88
+## vagina                             0.410     0.180      0.41</code></pre>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span><span class="op">)</span></code></pre></div>
-<pre><code>##                            increased decreased unchanged
-## bronchus                           0         0         6
-## caecum                             2         3         0
-## colon                              9         0         1
-## feces                             34        45       128
-## meconium                           0         2         7
-## mouth                              5         0         6
-## nasopharynx                        3         2         9
-## oral gland                         1         4         2
-## posterior fornix of vagina         4         0         2
-## rectal                             0         0         7
-## saliva                             1         1         7
-## stomach                            2         7         3
-## subgingival dental plaque          3         0         2
-## tongue                             0         1         4
-## uterine cervix                     6         0        16
-## vagina                             3         1         8</code></pre>
+<pre><code>##                                increased decreased unchanged
+## bronchus                               0         0         6
+## caecum                                 2         3         0
+## colon                                  9         0         1
+## feces                                 34        45       128
+## meconium                               0         2         7
+## mouth                                  5         0         6
+## nasopharynx                            3         2         9
+## oral gland                             1         4         2
+## posterior fornix of vagina             4         0         2
+## rectal                                 0         0         7
+## saliva                                 1         1         7
+## stomach                                2         7         3
+## subgingival dental plaque              3         0         2
+## tongue                                 0         1         4
+## uterine cervix                         4         0         9
+## uterine cervix,obsolete_cervix         2         0         7
+## vagina                                 3         1         8</code></pre>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##                            increased decreased unchanged
-## bronchus                        0.00     0.000      1.00
-## caecum                          0.40     0.600      0.00
-## colon                           0.90     0.000      0.10
-## feces                           0.16     0.220      0.62
-## meconium                        0.00     0.220      0.78
-## mouth                           0.45     0.000      0.55
-## nasopharynx                     0.21     0.140      0.64
-## oral gland                      0.14     0.570      0.29
-## posterior fornix of vagina      0.67     0.000      0.33
-## rectal                          0.00     0.000      1.00
-## saliva                          0.11     0.110      0.78
-## stomach                         0.17     0.580      0.25
-## subgingival dental plaque       0.60     0.000      0.40
-## tongue                          0.00     0.200      0.80
-## uterine cervix                  0.27     0.000      0.73
-## vagina                          0.25     0.083      0.67</code></pre>
+<pre><code>##                                increased decreased unchanged
+## bronchus                            0.00     0.000      1.00
+## caecum                              0.40     0.600      0.00
+## colon                               0.90     0.000      0.10
+## feces                               0.16     0.220      0.62
+## meconium                            0.00     0.220      0.78
+## mouth                               0.45     0.000      0.55
+## nasopharynx                         0.21     0.140      0.64
+## oral gland                          0.14     0.570      0.29
+## posterior fornix of vagina          0.67     0.000      0.33
+## rectal                              0.00     0.000      1.00
+## saliva                              0.11     0.110      0.78
+## stomach                             0.17     0.580      0.25
+## subgingival dental plaque           0.60     0.000      0.40
+## tongue                              0.00     0.200      0.80
+## uterine cervix                      0.31     0.000      0.69
+## uterine cervix,obsolete_cervix      0.22     0.000      0.78
+## vagina                              0.25     0.083      0.67</code></pre>
 </div>
 </div>
 <div id="signature-stats" class="section level1">
