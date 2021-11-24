@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">November 14, 2021</h4>
+            <h4 class="date">November 24, 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -86,10 +86,10 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2021-11-14 05:06:20</code></pre>
+<pre><code>## Using cached version from 2021-11-24 21:17:39</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2064   48</code></pre>
+<pre><code>## [1] 2069   48</code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -129,10 +129,10 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 508</code></pre>
+<pre><code>## [1] 509</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2064</code></pre>
+<pre><code>## [1] 2069</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -162,7 +162,7 @@
 <span class="va">ind2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[[</span><span class="st">"NCBI Taxonomy IDs"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">full.dat</span><span class="op">[</span><span class="va">ind1</span> <span class="op">&amp;</span> <span class="va">ind2</span>,<span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2064</code></pre>
+<pre><code>## [1] 2069</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -254,7 +254,7 @@
 ##                                    Manuela 
 ##                                         11 
 ##                                     Mmarin 
-##                                          8 
+##                                         13 
 ##                                Samara.Khan 
 ##                                         47 
 ##                                     Tislam 
@@ -290,10 +290,10 @@
 ##                                              22 
 ##                           laboratory experiment 
 ##                                              25 
-##                              prospective cohort 
-##                                              50 
 ##        time series / longitudinal observational 
 ##                                              50 
+##                              prospective cohort 
+##                                              51 
 ## cross-sectional observational, not case-control 
 ##                                             126 
 ##                                    case-control 
@@ -349,7 +349,7 @@
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##              1138                40                10 
+##              1141                40                10 
 ## 
 ## $`Location of subjects`
 ## 
@@ -364,23 +364,39 @@
 ## 
 ## $`Body site`
 ## 
-##          feces         saliva         vagina          mouth     oral gland 
-##            680             40             33             29             29 
-##       meconium   skin of body uterine cervix        stomach    nasopharynx 
-##             25             24             24             23             21 
+##                                 feces                                saliva 
+##                                   680                                    40 
+##        uterine cervix,obsolete_cervix                                vagina 
+##                                    40                                    33 
+## obsolete_mouth structure,oral opening                            oral gland 
+##                                    29                                    28 
+##                              meconium                          skin of body 
+##                                    25                                    24 
+##                               stomach                           nasopharynx 
+##                                    23                                    21 
 ## 
 ## $Condition
 ## 
-##                         obesity                        COVID-19 
-##                             103                              73 
-##                            diet             antimicrobial agent 
-##                              55                              49 
-## human papilloma virus infection                  gastric cancer 
-##                              42                              35 
-##                          asthma                   air pollution 
-##                              32                              30 
-##                cesarean section                   endometriosis 
-##                              30                              30 
+##                                           obesity 
+##                                               103 
+##                                          COVID-19 
+##                                                73 
+##                                              diet 
+##                                                55 
+##                               antimicrobial agent 
+##                                                51 
+##                   human papilloma virus infection 
+##                                                42 
+## gastric cancer,gastric carcinoma,stomach neoplasm 
+##                                                35 
+##                                            asthma 
+##                                                32 
+##                                     air pollution 
+##                                                30 
+##                                  cesarean section 
+##                                                30 
+##                                     endometriosis 
+##                                                30 
 ## 
 ## $`Antibiotics exclusion`
 ## 
@@ -400,49 +416,65 @@
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##           0.95800           0.03370           0.00842 
+##            0.9580            0.0336            0.0084 
 ## 
 ## $`Location of subjects`
 ## 
 ##                    China United States of America                    Italy 
-##                   0.2910                   0.2800                   0.0414 
+##                   0.2910                   0.2800                   0.0413 
 ##                    Spain              South Korea                  Finland 
-##                   0.0405                   0.0346                   0.0287 
+##                   0.0404                   0.0345                   0.0286 
 ##                   Canada                    Japan                   Brazil 
-##                   0.0228                   0.0211                   0.0194 
+##                   0.0227                   0.0211                   0.0194 
 ##              Netherlands 
-##                   0.0169 
+##                   0.0168 
 ## 
 ## $`Body site`
 ## 
-##          feces         saliva         vagina          mouth     oral gland 
-##         0.5770         0.0339         0.0280         0.0246         0.0246 
-##       meconium   skin of body uterine cervix        stomach    nasopharynx 
-##         0.0212         0.0204         0.0204         0.0195         0.0178 
+##                                 feces                                saliva 
+##                                0.5700                                0.0335 
+##        uterine cervix,obsolete_cervix                                vagina 
+##                                0.0335                                0.0277 
+## obsolete_mouth structure,oral opening                            oral gland 
+##                                0.0243                                0.0235 
+##                              meconium                          skin of body 
+##                                0.0210                                0.0201 
+##                               stomach                           nasopharynx 
+##                                0.0193                                0.0176 
 ## 
 ## $Condition
 ## 
-##                         obesity                        COVID-19 
-##                          0.0867                          0.0614 
-##                            diet             antimicrobial agent 
-##                          0.0463                          0.0412 
-## human papilloma virus infection                  gastric cancer 
-##                          0.0354                          0.0295 
-##                          asthma                   air pollution 
-##                          0.0269                          0.0253 
-##                cesarean section                   endometriosis 
-##                          0.0253                          0.0253 
+##                                           obesity 
+##                                            0.0865 
+##                                          COVID-19 
+##                                            0.0613 
+##                                              diet 
+##                                            0.0462 
+##                               antimicrobial agent 
+##                                            0.0428 
+##                   human papilloma virus infection 
+##                                            0.0353 
+## gastric cancer,gastric carcinoma,stomach neoplasm 
+##                                            0.0294 
+##                                            asthma 
+##                                            0.0269 
+##                                     air pollution 
+##                                            0.0252 
+##                                  cesarean section 
+##                                            0.0252 
+##                                     endometriosis 
+##                                            0.0252 
 ## 
 ## $`Antibiotics exclusion`
 ## 
 ##                 3 months                  1 month                 6 months 
-##                   0.2170                   0.1380                   0.0881 
+##                   0.2160                   0.1380                   0.0877 
 ##                 2 months                  4 weeks                  2 weeks 
-##                   0.0727                   0.0531                   0.0406 
+##                   0.0724                   0.0529                   0.0404 
 ##                  8 weeks before sample collection                  30 days 
-##                   0.0154                   0.0140                   0.0126 
+##                   0.0153                   0.0139                   0.0125 
 ##                  14 days 
-##                   0.0112</code></pre>
+##                   0.0111</code></pre>
 <p>Sample size:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ssize</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">sub.cols</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">summary</span><span class="op">)</span>
@@ -450,8 +482,8 @@
 <pre><code>##         Group 0 sample size Group 1 sample size
 ## Min.                1.00000             1.00000
 ## 1st Qu.            13.00000            12.00000
-## Median             24.50000            24.00000
-## Mean               49.63176            63.36356
+## Median             24.00000            24.00000
+## Mean               49.52567            63.22308
 ## 3rd Qu.            48.00000            41.00000
 ## Max.              969.00000          3122.00000
 ## NA's               44.00000            32.00000</code></pre>
@@ -467,19 +499,19 @@
 <pre><code>## $`Sequencing type`
 ## 
 ##  16S  WMS 
-## 1090   86 
+## 1093   86 
 ## 
 ## $`16S variable region`
 ## 
 ##       34        4      123       12       45      345        3       23 
-##      352      292       90       63       44       36       30       11 
+##      352      295       90       63       44       36       30       11 
 ##       56 23456789 
 ##       11       10 
 ## 
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                         789                         176 
+##                         789                         179 
 ##                 Ion Torrent                     RT-qPCR 
 ##                          87                          77 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
@@ -496,27 +528,27 @@
 <pre><code>## $`Sequencing type`
 ## 
 ##    16S    WMS 
-## 0.9270 0.0731 
+## 0.9270 0.0729 
 ## 
 ## $`16S variable region`
 ## 
 ##       34        4      123       12       45      345        3       23 
-##   0.3630   0.3010   0.0927   0.0649   0.0453   0.0371   0.0309   0.0113 
+##   0.3610   0.3030   0.0924   0.0647   0.0452   0.0370   0.0308   0.0113 
 ##       56 23456789 
 ##   0.0113   0.0103 
 ## 
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                     0.67100                     0.15000 
+##                     0.66900                     0.15200 
 ##                 Ion Torrent                     RT-qPCR 
-##                     0.07400                     0.06550 
+##                     0.07380                     0.06530 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
-##                     0.01020                     0.00765 
+##                     0.01020                     0.00763 
 ##           Mass spectrometry           HTF-Microbi.Array 
-##                     0.00425                     0.00340 
+##                     0.00424                     0.00339 
 ##           Illumina,Roche454        Non-quantitative PCR 
-##                     0.00255                     0.00255</code></pre>
+##                     0.00254                     0.00254</code></pre>
 </div>
 <div id="statistical-analysis" class="section level2">
 <h2 class="hasAnchor">
@@ -529,7 +561,7 @@
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                     333                     326                      91 
+##                     336                     326                      91 
 ##                  DESeq2                  T-Test                   ANOVA 
 ##                      85                      73                      59 
 ##       Linear Regression               Metastats     Logistic Regression 
@@ -545,7 +577,7 @@
 ## $`Significance threshold`
 ## 
 ##  0.05   0.1  0.01 0.001   0.2  0.15     0  0.25 0.002 0.004 
-##  1030    66    25    12    12     4     3     3     2     2</code></pre>
+##  1033    66    25    12    12     4     3     3     2     2</code></pre>
 <p>Proportions instead:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -554,11 +586,11 @@
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                  0.2930                  0.2870                  0.0800 
+##                  0.2950                  0.2860                  0.0798 
 ##                  DESeq2                  T-Test                   ANOVA 
-##                  0.0748                  0.0642                  0.0519 
+##                  0.0746                  0.0640                  0.0518 
 ##       Linear Regression               Metastats     Logistic Regression 
-##                  0.0246                  0.0176                  0.0167 
+##                  0.0246                  0.0175                  0.0167 
 ##          Welch's T-Test 
 ##                  0.0123 
 ## 
@@ -570,7 +602,7 @@
 ## $`Significance threshold`
 ## 
 ##    0.05     0.1    0.01   0.001     0.2    0.15       0    0.25   0.002   0.004 
-## 0.88400 0.05670 0.02150 0.01030 0.01030 0.00343 0.00258 0.00258 0.00172 0.00172</code></pre>
+## 0.88400 0.05650 0.02140 0.01030 0.01030 0.00342 0.00257 0.00257 0.00171 0.00171</code></pre>
 </div>
 <div id="alpha-diversity" class="section level2">
 <h2 class="hasAnchor">
@@ -579,8 +611,8 @@
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">div.cols</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">table</span><span class="op">)</span></code></pre></div>
 <pre><code>##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-## decreased     11     147    94      42              14       81
-## increased      4     109    58      31               6       88
+## decreased     11     149    96      42              14       81
+## increased      4     110    59      31               6       88
 ## unchanged     25     433   230     161              30      235</code></pre>
 <p>Correspondence of Shannon diversity and Richness:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
@@ -593,221 +625,467 @@
 <p>Conditions with consistently increased or decreased alpha diversity:</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Condition"</span><span class="op">)</span></code></pre></div>
-<pre><code>##                                              increased decreased unchanged
-## acute lymphoblastic leukemia                         0         3         4
-## acute myeloid leukemia                               2         0         3
-## adenoma                                              0         2         3
-## age                                                  2         5         2
-## air pollution                                        7         5         3
-## antimicrobial agent                                  3         5        18
-## asthma                                               1         0         9
-## atopic asthma                                        4         1         7
-## atopic eczema                                        0         3        16
-## cervical glandular intraepithelial neoplasia         2         0         9
-## cesarean section                                     5         0        13
-## chronic fatigue syndrome                             0         1         4
-## chronic hepatitis B virus infection                  0         1         5
-## chronic kidney disease                               0         4         1
-## colorectal cancer                                    1         1         3
-## COVID-19                                             4        13        30
-## diet                                                 6         4        12
-## eczema                                               0         2         9
-## endometriosis                                        2         3        12
-## esophageal cancer                                    1         2         2
-## food allergy                                         0         2        10
-## gastric cancer                                       3        12        14
-## gestational diabetes                                 0         0         5
-## HIV infection                                        1         5         9
-## human papilloma virus infection                      6         0        25
-## hypertension                                         4         0         2
-## irritable bowel sydrome                              0         0         5
-## lung cancer                                          2         7         5
-## milk allergic reaction                               1         0         5
-## multiple sclerosis                                   0         1         7
-## obesity                                              3         7        39
-## pancreatic carcinoma                                 0         1         4
-## schizophrenia                                        1         2         6
-## smoking behavior                                     0         1         6
-## squamous cell carcinoma                              4         0         4
-## type II diabetes mellitus                            2         2         7</code></pre>
+<pre><code>##                                                                     increased
+## acute lymphoblastic leukemia                                                0
+## acute myeloid leukemia,acute myeloid leukemia by FAB classification         2
+## adenoma                                                                     0
+## age                                                                         2
+## air pollution                                                               7
+## allergic asthma                                                             4
+## antibiotic exposure                                                         1
+## antimicrobial agent                                                         3
+## asthma                                                                      1
+## atopic eczema                                                               0
+## atopic eczema,Eczema                                                        0
+## cervical carcinoma                                                          4
+## cervical glandular intraepithelial neoplasia                                2
+## cesarean section                                                            5
+## chronic fatigue syndrome                                                    0
+## chronic hepatitis B virus infection                                         0
+## chronic kidney disease                                                      0
+## colorectal cancer,colorectal carcinoma                                      1
+## COVID-19                                                                    4
+## diet                                                                        6
+## endometriosis                                                               2
+## esophageal cancer,esophageal carcinoma                                      1
+## food allergy                                                                0
+## gastric cancer,gastric carcinoma,stomach neoplasm                           3
+## gestational diabetes,Maternal diabetes                                      0
+## HIV infection                                                               1
+## human papilloma virus infection                                             6
+## hypertension                                                                4
+## irritable bowel sydrome                                                     0
+## lung cancer,lung carcinoma                                                  2
+## milk allergic reaction                                                      1
+## multiple sclerosis                                                          0
+## obesity                                                                     3
+## pancreatic carcinoma                                                        0
+## schizophrenia                                                               1
+## smoking behavior                                                            0
+## squamous cell carcinoma                                                     4
+## type II diabetes mellitus                                                   2
+##                                                                     decreased
+## acute lymphoblastic leukemia                                                3
+## acute myeloid leukemia,acute myeloid leukemia by FAB classification         0
+## adenoma                                                                     2
+## age                                                                         5
+## air pollution                                                               5
+## allergic asthma                                                             1
+## antibiotic exposure                                                         2
+## antimicrobial agent                                                         5
+## asthma                                                                      0
+## atopic eczema                                                               3
+## atopic eczema,Eczema                                                        2
+## cervical carcinoma                                                          0
+## cervical glandular intraepithelial neoplasia                                0
+## cesarean section                                                            0
+## chronic fatigue syndrome                                                    1
+## chronic hepatitis B virus infection                                         1
+## chronic kidney disease                                                      4
+## colorectal cancer,colorectal carcinoma                                      1
+## COVID-19                                                                   13
+## diet                                                                        4
+## endometriosis                                                               3
+## esophageal cancer,esophageal carcinoma                                      2
+## food allergy                                                                2
+## gastric cancer,gastric carcinoma,stomach neoplasm                          12
+## gestational diabetes,Maternal diabetes                                      0
+## HIV infection                                                               5
+## human papilloma virus infection                                             0
+## hypertension                                                                0
+## irritable bowel sydrome                                                     0
+## lung cancer,lung carcinoma                                                  7
+## milk allergic reaction                                                      0
+## multiple sclerosis                                                          1
+## obesity                                                                     7
+## pancreatic carcinoma                                                        1
+## schizophrenia                                                               2
+## smoking behavior                                                            1
+## squamous cell carcinoma                                                     0
+## type II diabetes mellitus                                                   2
+##                                                                     unchanged
+## acute lymphoblastic leukemia                                                4
+## acute myeloid leukemia,acute myeloid leukemia by FAB classification         3
+## adenoma                                                                     3
+## age                                                                         2
+## air pollution                                                               3
+## allergic asthma                                                             7
+## antibiotic exposure                                                         2
+## antimicrobial agent                                                        18
+## asthma                                                                      9
+## atopic eczema                                                              16
+## atopic eczema,Eczema                                                        9
+## cervical carcinoma                                                          4
+## cervical glandular intraepithelial neoplasia                                9
+## cesarean section                                                           13
+## chronic fatigue syndrome                                                    4
+## chronic hepatitis B virus infection                                         5
+## chronic kidney disease                                                      1
+## colorectal cancer,colorectal carcinoma                                      3
+## COVID-19                                                                   30
+## diet                                                                       12
+## endometriosis                                                              12
+## esophageal cancer,esophageal carcinoma                                      2
+## food allergy                                                               10
+## gastric cancer,gastric carcinoma,stomach neoplasm                          14
+## gestational diabetes,Maternal diabetes                                      5
+## HIV infection                                                               9
+## human papilloma virus infection                                            25
+## hypertension                                                                2
+## irritable bowel sydrome                                                     5
+## lung cancer,lung carcinoma                                                  5
+## milk allergic reaction                                                      5
+## multiple sclerosis                                                          7
+## obesity                                                                    39
+## pancreatic carcinoma                                                        4
+## schizophrenia                                                               6
+## smoking behavior                                                            6
+## squamous cell carcinoma                                                     4
+## type II diabetes mellitus                                                   7</code></pre>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Condition"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##                                              increased decreased unchanged
-## acute lymphoblastic leukemia                     0.000     0.430      0.57
-## acute myeloid leukemia                           0.400     0.000      0.60
-## adenoma                                          0.000     0.400      0.60
-## age                                              0.220     0.560      0.22
-## air pollution                                    0.470     0.330      0.20
-## antimicrobial agent                              0.120     0.190      0.69
-## asthma                                           0.100     0.000      0.90
-## atopic asthma                                    0.330     0.083      0.58
-## atopic eczema                                    0.000     0.160      0.84
-## cervical glandular intraepithelial neoplasia     0.180     0.000      0.82
-## cesarean section                                 0.280     0.000      0.72
-## chronic fatigue syndrome                         0.000     0.200      0.80
-## chronic hepatitis B virus infection              0.000     0.170      0.83
-## chronic kidney disease                           0.000     0.800      0.20
-## colorectal cancer                                0.200     0.200      0.60
-## COVID-19                                         0.085     0.280      0.64
-## diet                                             0.270     0.180      0.55
-## eczema                                           0.000     0.180      0.82
-## endometriosis                                    0.120     0.180      0.71
-## esophageal cancer                                0.200     0.400      0.40
-## food allergy                                     0.000     0.170      0.83
-## gastric cancer                                   0.100     0.410      0.48
-## gestational diabetes                             0.000     0.000      1.00
-## HIV infection                                    0.067     0.330      0.60
-## human papilloma virus infection                  0.190     0.000      0.81
-## hypertension                                     0.670     0.000      0.33
-## irritable bowel sydrome                          0.000     0.000      1.00
-## lung cancer                                      0.140     0.500      0.36
-## milk allergic reaction                           0.170     0.000      0.83
-## multiple sclerosis                               0.000     0.120      0.88
-## obesity                                          0.061     0.140      0.80
-## pancreatic carcinoma                             0.000     0.200      0.80
-## schizophrenia                                    0.110     0.220      0.67
-## smoking behavior                                 0.000     0.140      0.86
-## squamous cell carcinoma                          0.500     0.000      0.50
-## type II diabetes mellitus                        0.180     0.180      0.64</code></pre>
+<pre><code>##                                                                     increased
+## acute lymphoblastic leukemia                                            0.000
+## acute myeloid leukemia,acute myeloid leukemia by FAB classification     0.400
+## adenoma                                                                 0.000
+## age                                                                     0.220
+## air pollution                                                           0.470
+## allergic asthma                                                         0.330
+## antibiotic exposure                                                     0.200
+## antimicrobial agent                                                     0.120
+## asthma                                                                  0.100
+## atopic eczema                                                           0.000
+## atopic eczema,Eczema                                                    0.000
+## cervical carcinoma                                                      0.500
+## cervical glandular intraepithelial neoplasia                            0.180
+## cesarean section                                                        0.280
+## chronic fatigue syndrome                                                0.000
+## chronic hepatitis B virus infection                                     0.000
+## chronic kidney disease                                                  0.000
+## colorectal cancer,colorectal carcinoma                                  0.200
+## COVID-19                                                                0.085
+## diet                                                                    0.270
+## endometriosis                                                           0.120
+## esophageal cancer,esophageal carcinoma                                  0.200
+## food allergy                                                            0.000
+## gastric cancer,gastric carcinoma,stomach neoplasm                       0.100
+## gestational diabetes,Maternal diabetes                                  0.000
+## HIV infection                                                           0.067
+## human papilloma virus infection                                         0.190
+## hypertension                                                            0.670
+## irritable bowel sydrome                                                 0.000
+## lung cancer,lung carcinoma                                              0.140
+## milk allergic reaction                                                  0.170
+## multiple sclerosis                                                      0.000
+## obesity                                                                 0.061
+## pancreatic carcinoma                                                    0.000
+## schizophrenia                                                           0.110
+## smoking behavior                                                        0.000
+## squamous cell carcinoma                                                 0.500
+## type II diabetes mellitus                                               0.180
+##                                                                     decreased
+## acute lymphoblastic leukemia                                            0.430
+## acute myeloid leukemia,acute myeloid leukemia by FAB classification     0.000
+## adenoma                                                                 0.400
+## age                                                                     0.560
+## air pollution                                                           0.330
+## allergic asthma                                                         0.083
+## antibiotic exposure                                                     0.400
+## antimicrobial agent                                                     0.190
+## asthma                                                                  0.000
+## atopic eczema                                                           0.160
+## atopic eczema,Eczema                                                    0.180
+## cervical carcinoma                                                      0.000
+## cervical glandular intraepithelial neoplasia                            0.000
+## cesarean section                                                        0.000
+## chronic fatigue syndrome                                                0.200
+## chronic hepatitis B virus infection                                     0.170
+## chronic kidney disease                                                  0.800
+## colorectal cancer,colorectal carcinoma                                  0.200
+## COVID-19                                                                0.280
+## diet                                                                    0.180
+## endometriosis                                                           0.180
+## esophageal cancer,esophageal carcinoma                                  0.400
+## food allergy                                                            0.170
+## gastric cancer,gastric carcinoma,stomach neoplasm                       0.410
+## gestational diabetes,Maternal diabetes                                  0.000
+## HIV infection                                                           0.330
+## human papilloma virus infection                                         0.000
+## hypertension                                                            0.000
+## irritable bowel sydrome                                                 0.000
+## lung cancer,lung carcinoma                                              0.500
+## milk allergic reaction                                                  0.000
+## multiple sclerosis                                                      0.120
+## obesity                                                                 0.140
+## pancreatic carcinoma                                                    0.200
+## schizophrenia                                                           0.220
+## smoking behavior                                                        0.140
+## squamous cell carcinoma                                                 0.000
+## type II diabetes mellitus                                               0.180
+##                                                                     unchanged
+## acute lymphoblastic leukemia                                             0.57
+## acute myeloid leukemia,acute myeloid leukemia by FAB classification      0.60
+## adenoma                                                                  0.60
+## age                                                                      0.22
+## air pollution                                                            0.20
+## allergic asthma                                                          0.58
+## antibiotic exposure                                                      0.40
+## antimicrobial agent                                                      0.69
+## asthma                                                                   0.90
+## atopic eczema                                                            0.84
+## atopic eczema,Eczema                                                     0.82
+## cervical carcinoma                                                       0.50
+## cervical glandular intraepithelial neoplasia                             0.82
+## cesarean section                                                         0.72
+## chronic fatigue syndrome                                                 0.80
+## chronic hepatitis B virus infection                                      0.83
+## chronic kidney disease                                                   0.20
+## colorectal cancer,colorectal carcinoma                                   0.60
+## COVID-19                                                                 0.64
+## diet                                                                     0.55
+## endometriosis                                                            0.71
+## esophageal cancer,esophageal carcinoma                                   0.40
+## food allergy                                                             0.83
+## gastric cancer,gastric carcinoma,stomach neoplasm                        0.48
+## gestational diabetes,Maternal diabetes                                   1.00
+## HIV infection                                                            0.60
+## human papilloma virus infection                                          0.81
+## hypertension                                                             0.33
+## irritable bowel sydrome                                                  1.00
+## lung cancer,lung carcinoma                                               0.36
+## milk allergic reaction                                                   0.83
+## multiple sclerosis                                                       0.88
+## obesity                                                                  0.80
+## pancreatic carcinoma                                                     0.80
+## schizophrenia                                                            0.67
+## smoking behavior                                                         0.86
+## squamous cell carcinoma                                                  0.50
+## type II diabetes mellitus                                                0.64</code></pre>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Condition"</span><span class="op">)</span></code></pre></div>
-<pre><code>##                                              increased decreased unchanged
-## acute lymphoblastic leukemia                         5         1         1
-## adenoma                                              0         2         3
-## air pollution                                       15         5         3
-## antimicrobial agent                                  1         8         4
-## asthma                                               1         0        10
-## atopic asthma                                        4         1         7
-## atopic eczema                                        2         1         7
-## cervical glandular intraepithelial neoplasia         4         0         2
-## cesarean section                                     1         2         8
-## colorectal cancer                                    4         1         2
-## COVID-19                                             4         6        15
-## diet                                                 3         1         6
-## endometriosis                                        3         1        12
-## food allergy                                         0         3         9
-## gastric cancer                                       2         6        13
-## HIV infection                                        0         2         8
-## human papilloma virus infection                      3         0        14
-## irritable bowel sydrome                              0         1         6
-## lung cancer                                          0         1         5
-## multiple sclerosis                                   0         0         9
-## obesity                                              6         7        21
-## smoking behavior                                     3         1         2</code></pre>
+<pre><code>##                                                   increased decreased unchanged
+## acute lymphoblastic leukemia                              5         1         1
+## adenoma                                                   0         2         3
+## air pollution                                            15         5         3
+## allergic asthma                                           4         1         7
+## antimicrobial agent                                       1         8         4
+## asthma                                                    1         0        10
+## atopic eczema                                             2         1         7
+## cervical glandular intraepithelial neoplasia              4         0         2
+## cesarean section                                          1         2         8
+## colorectal cancer,colorectal carcinoma                    4         1         2
+## COVID-19                                                  4         6        15
+## diet                                                      3         1         6
+## endometriosis                                             3         1        12
+## food allergy                                              0         3         9
+## gastric cancer,gastric carcinoma,stomach neoplasm         2         6        13
+## HIV infection                                             0         2         8
+## human papilloma virus infection                           3         0        14
+## irritable bowel sydrome                                   0         1         6
+## lung cancer,lung carcinoma                                0         1         5
+## multiple sclerosis                                        0         0         9
+## obesity                                                   6         7        21
+## smoking behavior                                          3         1         2</code></pre>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Condition"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##                                              increased decreased unchanged
-## acute lymphoblastic leukemia                     0.710     0.140      0.14
-## adenoma                                          0.000     0.400      0.60
-## air pollution                                    0.650     0.220      0.13
-## antimicrobial agent                              0.077     0.620      0.31
-## asthma                                           0.091     0.000      0.91
-## atopic asthma                                    0.330     0.083      0.58
-## atopic eczema                                    0.200     0.100      0.70
-## cervical glandular intraepithelial neoplasia     0.670     0.000      0.33
-## cesarean section                                 0.091     0.180      0.73
-## colorectal cancer                                0.570     0.140      0.29
-## COVID-19                                         0.160     0.240      0.60
-## diet                                             0.300     0.100      0.60
-## endometriosis                                    0.190     0.062      0.75
-## food allergy                                     0.000     0.250      0.75
-## gastric cancer                                   0.095     0.290      0.62
-## HIV infection                                    0.000     0.200      0.80
-## human papilloma virus infection                  0.180     0.000      0.82
-## irritable bowel sydrome                          0.000     0.140      0.86
-## lung cancer                                      0.000     0.170      0.83
-## multiple sclerosis                               0.000     0.000      1.00
-## obesity                                          0.180     0.210      0.62
-## smoking behavior                                 0.500     0.170      0.33</code></pre>
+<pre><code>##                                                   increased decreased unchanged
+## acute lymphoblastic leukemia                          0.710     0.140      0.14
+## adenoma                                               0.000     0.400      0.60
+## air pollution                                         0.650     0.220      0.13
+## allergic asthma                                       0.330     0.083      0.58
+## antimicrobial agent                                   0.077     0.620      0.31
+## asthma                                                0.091     0.000      0.91
+## atopic eczema                                         0.200     0.100      0.70
+## cervical glandular intraepithelial neoplasia          0.670     0.000      0.33
+## cesarean section                                      0.091     0.180      0.73
+## colorectal cancer,colorectal carcinoma                0.570     0.140      0.29
+## COVID-19                                              0.160     0.240      0.60
+## diet                                                  0.300     0.100      0.60
+## endometriosis                                         0.190     0.062      0.75
+## food allergy                                          0.000     0.250      0.75
+## gastric cancer,gastric carcinoma,stomach neoplasm     0.095     0.290      0.62
+## HIV infection                                         0.000     0.200      0.80
+## human papilloma virus infection                       0.180     0.000      0.82
+## irritable bowel sydrome                               0.000     0.140      0.86
+## lung cancer,lung carcinoma                            0.000     0.170      0.83
+## multiple sclerosis                                    0.000     0.000      1.00
+## obesity                                               0.180     0.210      0.62
+## smoking behavior                                      0.500     0.170      0.33</code></pre>
 <p>Body sites with consistently increased or decreased alpha diversity:</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span><span class="op">)</span></code></pre></div>
-<pre><code>##                                increased decreased unchanged
-## blood                                  0         0         5
-## bronchus                               0         0         6
-## caecum                                 1         3         1
-## dental plaque                          0         3         3
-## feces                                 38        83       249
-## lung                                   1         2         5
-## meconium                               6         0         7
-## mouth                                  6         2        14
-## nasopharynx                            1         1        16
-## oral gland                             2         2         4
-## posterior fornix of vagina             4         0         3
-## rectal                                 0         0        12
-## saliva                                13         5        18
-## skin of body                           2         7         2
-## stomach                                3        10         5
-## subgingival dental plaque              4         0         2
-## tongue                                 1         4         7
-## uterine cervix                         1         0        14
-## uterine cervix,obsolete_cervix         2         0         9
-## uterus                                 0         1         7
-## vagina                                 7         3         7</code></pre>
+<pre><code>##                                                                           increased
+## blood                                                                             0
+## bronchus                                                                          0
+## caecum                                                                            1
+## dental plaque                                                                     0
+## digestive system,digestive tract,lower digestive tract,obsolete_intestine         0
+## feces                                                                            38
+## lung neoplasm                                                                     1
+## meconium                                                                          6
+## nasopharynx                                                                       1
+## obsolete_mouth structure,oral opening                                             6
+## oral gland                                                                        2
+## posterior fornix of vagina                                                        4
+## rectal                                                                            0
+## saliva                                                                           13
+## skin of body                                                                      2
+## stomach                                                                           3
+## subgingival dental plaque                                                         4
+## tongue                                                                            1
+## uterine cervix,obsolete_cervix                                                    3
+## uterus or analog                                                                  0
+## vagina                                                                            7
+##                                                                           decreased
+## blood                                                                             0
+## bronchus                                                                          0
+## caecum                                                                            3
+## dental plaque                                                                     3
+## digestive system,digestive tract,lower digestive tract,obsolete_intestine         0
+## feces                                                                            83
+## lung neoplasm                                                                     2
+## meconium                                                                          0
+## nasopharynx                                                                       1
+## obsolete_mouth structure,oral opening                                             2
+## oral gland                                                                        2
+## posterior fornix of vagina                                                        0
+## rectal                                                                            0
+## saliva                                                                            5
+## skin of body                                                                      7
+## stomach                                                                          10
+## subgingival dental plaque                                                         0
+## tongue                                                                            4
+## uterine cervix,obsolete_cervix                                                    0
+## uterus or analog                                                                  1
+## vagina                                                                            3
+##                                                                           unchanged
+## blood                                                                             5
+## bronchus                                                                          6
+## caecum                                                                            1
+## dental plaque                                                                     3
+## digestive system,digestive tract,lower digestive tract,obsolete_intestine         9
+## feces                                                                           249
+## lung neoplasm                                                                     5
+## meconium                                                                          7
+## nasopharynx                                                                      16
+## obsolete_mouth structure,oral opening                                            14
+## oral gland                                                                        3
+## posterior fornix of vagina                                                        3
+## rectal                                                                           12
+## saliva                                                                           18
+## skin of body                                                                      2
+## stomach                                                                           5
+## subgingival dental plaque                                                         2
+## tongue                                                                            7
+## uterine cervix,obsolete_cervix                                                   23
+## uterus or analog                                                                  7
+## vagina                                                                            7</code></pre>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##                                increased decreased unchanged
-## blood                              0.000     0.000      1.00
-## bronchus                           0.000     0.000      1.00
-## caecum                             0.200     0.600      0.20
-## dental plaque                      0.000     0.500      0.50
-## feces                              0.100     0.220      0.67
-## lung                               0.120     0.250      0.62
-## meconium                           0.460     0.000      0.54
-## mouth                              0.270     0.091      0.64
-## nasopharynx                        0.056     0.056      0.89
-## oral gland                         0.250     0.250      0.50
-## posterior fornix of vagina         0.570     0.000      0.43
-## rectal                             0.000     0.000      1.00
-## saliva                             0.360     0.140      0.50
-## skin of body                       0.180     0.640      0.18
-## stomach                            0.170     0.560      0.28
-## subgingival dental plaque          0.670     0.000      0.33
-## tongue                             0.083     0.330      0.58
-## uterine cervix                     0.067     0.000      0.93
-## uterine cervix,obsolete_cervix     0.180     0.000      0.82
-## uterus                             0.000     0.120      0.88
-## vagina                             0.410     0.180      0.41</code></pre>
+<pre><code>##                                                                           increased
+## blood                                                                         0.000
+## bronchus                                                                      0.000
+## caecum                                                                        0.200
+## dental plaque                                                                 0.000
+## digestive system,digestive tract,lower digestive tract,obsolete_intestine     0.000
+## feces                                                                         0.100
+## lung neoplasm                                                                 0.120
+## meconium                                                                      0.460
+## nasopharynx                                                                   0.056
+## obsolete_mouth structure,oral opening                                         0.270
+## oral gland                                                                    0.290
+## posterior fornix of vagina                                                    0.570
+## rectal                                                                        0.000
+## saliva                                                                        0.360
+## skin of body                                                                  0.180
+## stomach                                                                       0.170
+## subgingival dental plaque                                                     0.670
+## tongue                                                                        0.083
+## uterine cervix,obsolete_cervix                                                0.120
+## uterus or analog                                                              0.000
+## vagina                                                                        0.410
+##                                                                           decreased
+## blood                                                                         0.000
+## bronchus                                                                      0.000
+## caecum                                                                        0.600
+## dental plaque                                                                 0.500
+## digestive system,digestive tract,lower digestive tract,obsolete_intestine     0.000
+## feces                                                                         0.220
+## lung neoplasm                                                                 0.250
+## meconium                                                                      0.000
+## nasopharynx                                                                   0.056
+## obsolete_mouth structure,oral opening                                         0.091
+## oral gland                                                                    0.290
+## posterior fornix of vagina                                                    0.000
+## rectal                                                                        0.000
+## saliva                                                                        0.140
+## skin of body                                                                  0.640
+## stomach                                                                       0.560
+## subgingival dental plaque                                                     0.000
+## tongue                                                                        0.330
+## uterine cervix,obsolete_cervix                                                0.000
+## uterus or analog                                                              0.120
+## vagina                                                                        0.180
+##                                                                           unchanged
+## blood                                                                          1.00
+## bronchus                                                                       1.00
+## caecum                                                                         0.20
+## dental plaque                                                                  0.50
+## digestive system,digestive tract,lower digestive tract,obsolete_intestine      1.00
+## feces                                                                          0.67
+## lung neoplasm                                                                  0.62
+## meconium                                                                       0.54
+## nasopharynx                                                                    0.89
+## obsolete_mouth structure,oral opening                                          0.64
+## oral gland                                                                     0.43
+## posterior fornix of vagina                                                     0.43
+## rectal                                                                         1.00
+## saliva                                                                         0.50
+## skin of body                                                                   0.18
+## stomach                                                                        0.28
+## subgingival dental plaque                                                      0.33
+## tongue                                                                         0.58
+## uterine cervix,obsolete_cervix                                                 0.88
+## uterus or analog                                                               0.88
+## vagina                                                                         0.41</code></pre>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span><span class="op">)</span></code></pre></div>
-<pre><code>##                                increased decreased unchanged
-## bronchus                               0         0         6
-## caecum                                 2         3         0
-## colon                                  9         0         1
-## feces                                 34        45       128
-## meconium                               0         2         7
-## mouth                                  5         0         6
-## nasopharynx                            3         2         9
-## oral gland                             1         4         2
-## posterior fornix of vagina             4         0         2
-## rectal                                 0         0         7
-## saliva                                 1         1         7
-## stomach                                2         7         3
-## subgingival dental plaque              3         0         2
-## tongue                                 0         1         4
-## uterine cervix                         4         0         9
-## uterine cervix,obsolete_cervix         2         0         7
-## vagina                                 3         1         8</code></pre>
+<pre><code>##                                       increased decreased unchanged
+## bronchus                                      0         0         6
+## caecum                                        2         3         0
+## colon                                         9         0         1
+## feces                                        34        45       128
+## meconium                                      0         2         7
+## nasopharynx                                   3         2         9
+## obsolete_mouth structure,oral opening         5         0         6
+## oral gland                                    1         4         2
+## posterior fornix of vagina                    4         0         2
+## rectal                                        0         0         7
+## saliva                                        1         1         7
+## stomach                                       2         7         3
+## subgingival dental plaque                     3         0         2
+## tongue                                        0         1         4
+## uterine cervix,obsolete_cervix                6         0        16
+## vagina                                        3         1         8</code></pre>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>##                                increased decreased unchanged
-## bronchus                            0.00     0.000      1.00
-## caecum                              0.40     0.600      0.00
-## colon                               0.90     0.000      0.10
-## feces                               0.16     0.220      0.62
-## meconium                            0.00     0.220      0.78
-## mouth                               0.45     0.000      0.55
-## nasopharynx                         0.21     0.140      0.64
-## oral gland                          0.14     0.570      0.29
-## posterior fornix of vagina          0.67     0.000      0.33
-## rectal                              0.00     0.000      1.00
-## saliva                              0.11     0.110      0.78
-## stomach                             0.17     0.580      0.25
-## subgingival dental plaque           0.60     0.000      0.40
-## tongue                              0.00     0.200      0.80
-## uterine cervix                      0.31     0.000      0.69
-## uterine cervix,obsolete_cervix      0.22     0.000      0.78
-## vagina                              0.25     0.083      0.67</code></pre>
+<pre><code>##                                       increased decreased unchanged
+## bronchus                                   0.00     0.000      1.00
+## caecum                                     0.40     0.600      0.00
+## colon                                      0.90     0.000      0.10
+## feces                                      0.16     0.220      0.62
+## meconium                                   0.00     0.220      0.78
+## nasopharynx                                0.21     0.140      0.64
+## obsolete_mouth structure,oral opening      0.45     0.000      0.55
+## oral gland                                 0.14     0.570      0.29
+## posterior fornix of vagina                 0.67     0.000      0.33
+## rectal                                     0.00     0.000      1.00
+## saliva                                     0.11     0.110      0.78
+## stomach                                    0.17     0.580      0.25
+## subgingival dental plaque                  0.60     0.000      0.40
+## tongue                                     0.00     0.200      0.80
+## uterine cervix,obsolete_cervix             0.27     0.000      0.73
+## vagina                                     0.25     0.083      0.67</code></pre>
 </div>
 </div>
 <div id="signature-stats" class="section level1">
@@ -833,14 +1111,14 @@
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   1.000   2.000   4.000   6.807   9.000 100.000</code></pre>
+##   1.000   2.000   4.000   6.799   9.000 100.000</code></pre>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html">gghistogram</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">30</span>, ylab <span class="op">=</span> <span class="st">"number of signatures"</span>,
     xlab <span class="op">=</span> <span class="st">"signature size"</span>, fill <span class="op">=</span> <span class="st">"#00AFBB"</span>, ggtheme <span class="op">=</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/setSize-1.png" width="700"></p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 931</code></pre>
+<pre><code>## [1] 932</code></pre>
 </div>
 <div id="signature-similarity" class="section level2">
 <h2 class="hasAnchor">
@@ -850,7 +1128,7 @@
 <a href="#jaccard-index" class="anchor"></a>Jaccard index</h3>
 <p>The <code>calcPairwiseOverlaps</code> function works quickly on all of bugsigdb currently, but <code>makeDist</code> is slow and surely could be improved for efficiency. For now, use only nasal samples:</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"nasal cavity"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">dat_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"stomach"</span><span class="op">)</span>
 <span class="va">sigs_subset</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">dat_subset</span><span class="op">)</span>
 <span class="va">paircomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calcPairwiseOverlaps.html">calcPairwiseOverlaps</a></span><span class="op">(</span><span class="va">sigs_subset</span><span class="op">)</span>
 <span class="va">jdist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeDist.html">makeDist</a></span><span class="op">(</span><span class="va">paircomp</span>, <span class="st">"jaccard"</span><span class="op">)</span></code></pre></div>

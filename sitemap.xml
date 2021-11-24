@@ -7,6 +7,12 @@
     <loc>http://waldronlab.io/BugSigDBStats/reference/calcPairwiseOverlaps.html</loc>
   </url>
   <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/calcSemanticSimilarity.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/dot-getNcbiTaxonomyObo.html</loc>
+  </url>
+  <url>
     <loc>http://waldronlab.io/BugSigDBStats/reference/makeDist.html</loc>
   </url>
   <url>
