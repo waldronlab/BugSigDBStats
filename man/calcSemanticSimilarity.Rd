@@ -18,10 +18,37 @@ between two sets of signature files exported from BugSigDB.org.
 \examples{
 
 \dontrun{
-file1 <- "path/to/exported/file1.csv"
-file2 <- "path/to/exported/file2.csv"
+
+library(tidyr)
+library(tibble)
+
+## Download files froom BugSigDB's drilldown ##
+
+file1_url <- "https://bugsigdb.org/w/index.php?title=Special:Ask&x=-5B-5BCategory\%3ASignatures-5D-5D-20-5B-5BModification-20date\%3A\%3A\%2B-5D-5D-20-5B-5BBase-20page.Location-20of-20subjects\%3A\%3AAustralia-5D-5D\%2F-3FOriginal-20page-20name\%3DSignature-20page-20name\%2F-3FRelated-20experiment\%3DExperiment\%2F-3FRelated-20study\%3DStudy\%2F-3FSource-20data\%3DSource\%2F-3FCurated-20date\%2F-3FCurator\%2F-3FRevision-20editor\%2F-3FDescription\%2F-3FAbundance-20in-20Group-201\%2F-3FNCBI-20export\%3DMetaPhlAn-20taxon-20names\%2F-3FNCBI-20export-20ids-20sc\%3DNCBI-20Taxonomy-20IDs\%2F-3FState\%2F-3FReviewer&mainlabel=-&limit=5000&offset=0&format=csv&searchlabel=\%3Cdiv\%20class\%3D\%22mw-ui-button\%20mw-ui-quiet\%20mw-ui-progressive\%20rounded-0\%22\%3ESignatures\%3C\%2Fdiv\%3E&filename=signatures-filtered-australia.csv"
+file1 <- tempfile()
+download.file(url = file1_url, destfile = file1)
+
+file2_url <- "https://bugsigdb.org/w/index.php?title=Special:Ask&x=-5B-5BCategory\%3ASignatures-5D-5D-20-5B-5BModification-20date\%3A\%3A\%2B-5D-5D-20-5B-5BBase-20page.Location-20of-20subjects\%3A\%3AUnited-20States-20of-20America-5D-5D\%2F-3FOriginal-20page-20name\%3DSignature-20page-20name\%2F-3FRelated-20experiment\%3DExperiment\%2F-3FRelated-20study\%3DStudy\%2F-3FSource-20data\%3DSource\%2F-3FCurated-20date\%2F-3FCurator\%2F-3FRevision-20editor\%2F-3FDescription\%2F-3FAbundance-20in-20Group-201\%2F-3FNCBI-20export\%3DMetaPhlAn-20taxon-20names\%2F-3FNCBI-20export-20ids-20sc\%3DNCBI-20Taxonomy-20IDs\%2F-3FState\%2F-3FReviewer&mainlabel=-&limit=5000&offset=0&format=csv&searchlabel=\%3Cdiv\%20class\%3D\%22mw-ui-button\%20mw-ui-quiet\%20mw-ui-progressive\%20rounded-0\%22\%3ESignatures\%3C\%2Fdiv\%3E&filename=signatures-filtered-united-states-of-america.csv"
+file2 <- tempfile()
+download.file(url = file2_url, destfile = file2)
+
+## Calculate semantic similarity between pairs of signatures ##
+
 output <- calcSemanticSimilarity(file1, file2)
 head(output)
+
+## Conver output to a matrix ##
+
+mat <- pivot_wider(
+    output, names_from = sig2, values_from = semantic_similarity
+    ) |> 
+    tibble::column_to_rownames(var = "sig1") |> 
+    as.data.frame() |> 
+    as.matrix()
+
+dim(mat)
+mat[1:5, 1:5]
+
 }
 
 }
