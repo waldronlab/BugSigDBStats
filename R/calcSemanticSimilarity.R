@@ -74,7 +74,7 @@ calcSemanticSimilarity <- function(file1, file2) {
 #'
 #' @return NCBI taxonomy in OBO format
 #' @importFrom utils download.file
-#' @export
+#' @keywords internal
 #' 
 .getNcbiTaxonomyObo <- function() {
 

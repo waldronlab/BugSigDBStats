@@ -12,3 +12,4 @@ NCBI taxonomy in OBO format
 \description{
 \code{.getNcbiTaxonomyObo} gets the NCBI taxonomy in OBO format.
 }
+\keyword{internal}
