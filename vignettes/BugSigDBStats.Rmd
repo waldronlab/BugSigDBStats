@@ -279,7 +279,7 @@ but `makeDist` is slow and surely could be improved for efficiency. For now,
 use only nasal samples:
 
 ```{r}
-dat_subset <- subset(dat, `Body site` == "nasal cavity")
+dat_subset <- subset(dat, `Body site` == "stomach")
 sigs_subset <- bugsigdbr::getSignatures(dat_subset)
 paircomp <- calcPairwiseOverlaps(sigs_subset)
 jdist <- makeDist(paircomp, "jaccard")
