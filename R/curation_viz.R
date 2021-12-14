@@ -98,4 +98,123 @@ plotUniqueMicrobesOverTime <- function(dat,
 }
 
 
+.getNrCommonSignatures <- function(m1, m2, cmat, antagonistic)
+{
+    by <- ifelse(antagonistic, 2, 1)
+    grid1 <- seq(1, ncol(cmat), by = by)
+    grid2 <- seq(by, ncol(cmat), by = by)
+    sum(cmat[m1,grid1] == 1 & cmat[m2,grid2] == 1)
+}
 
+.cooc <- function(umicrobes, cmat, antagonistic)
+{
+    len <- length(umicrobes)
+    grid <- seq_len(len)
+    cooc.mat <- matrix(0, nrow = len, ncol = len)    
+    
+    for(i in grid)
+    {
+        for(j in grid)
+            cooc.mat[i, j] <- .getNrCommonSignatures(umicrobes[i], 
+                                                     umicrobes[j], 
+                                                     cmat,
+                                                     antagonistic)
+    }
+    
+    return(cooc.mat)
+}    
+
+#' Plot microbe co-occurrence in a heatmap 
+#'
+#' @param dat a \code{data.frame} storing BugSigDB data.
+#' @param sig.type character. Signature type. Use either \code{"increased"} or
+#' \code{"decreased"} to subset to signatures with either increased or decreased abundance
+#' in the exposed group, respectively. Default is \code{"both"} which will not 
+#' subset by the direction of abundance change.
+#' @param tax.level character. Either \code{"mixed"} or any subset of
+#' \code{c("kingdom", "phylum", "class", "order", "family", "genus", "species",
+#' "strain")}. This full vector is equivalent to \code{"mixed"}.
+#' @param exact.tax.level logical. Should only the exact taxonomic level
+#' specified by \code{tax.level} be returned? Defaults to \code{TRUE}.
+#' If \code{FALSE}, a more general \code{tax.level} is extracted for
+#' microbes given at a more specific taxonomic level.
+#' @param antagonistic logical. Antagonistic co-occurrence, ie occurring together
+#' but one microbe up the other one is down? Defaults to \code{FALSE}.
+#' @param anno character. Taxonomic level that should be displayed as an annotation
+#' bar. Defaults to \code{"phylum"}.
+#' @param top integer. The number of microbes to display. Defaults to \code{100}.
+#' @param fontsize integer. Fontsize for text. Defaults to \code{6}.
+#' @param ... additional arguments to \code{ComplexHeatmap::Heatmap}.
+#' @return Plots to a graphics device. Returns the co-oocurence matrix invisibly.
+#' @export
+microbeHeatmap <- function(dat, 
+                           sig.type = c("both", "increased", "decreased"),
+                           tax.level = "mixed",
+                           exact.tax.level = FALSE,
+                           antagonistic = FALSE,
+                           anno = "phylum",
+                           top = 100,
+                           fontsize = 6,
+                           ...)
+{
+    if(!requireNamespace("safe"))
+        stop("Please install the 'safe' package to use 'microbeHeatmap'")
+
+    # restrict by sig type, to paired UP/DOWN signatures, and by tax level
+    sig.type <- match.arg(sig.type)
+    if(sig.type %in% c("increased", "decreased")) 
+        dat <- subset(dat, `Abundance in Group 1` == sig.type)
+    dat <- bugsigdbr::restrictTaxLevel(dat, tax.level, exact.tax.level, min.size = 2)
+    sigs <- bugsigdbr::getSignatures(dat, tax.id.type = "metaphlan")    
+
+    # get connectivity matrix (signature <-> microbes)
+    sink(tempfile())
+    cmat <- safe::getCmatrix(sigs, as.matrix = TRUE, 
+                             min.size = 0, prune = FALSE)
+    sink()
+    stopifnot(all(names(sigs) == colnames(cmat)))
+    
+    # restrict to most frequently co-occurring microbes 
+    rs <- rowSums(cmat)
+    if(top > length(rs)) top <- length(rs) 
+    top <- sort(rs, decreasing = TRUE)[top]
+    cmat <- cmat[rs > top,] 
+    ind <- colSums(cmat) > 1
+    cmat <- cmat[,ind]
+    dat <- dat[ind,]    
+    
+    # co-occurrence also by occurring together inversely 
+    # (ie antagonistic = one up, one down)
+    if(antagonistic){ 
+        stex <- paste(dat$Study, dat$Experiment)
+        tab <- table(stex)
+        paired <- names(tab)[tab == 2] 
+        ind <- stex %in% paired 
+        dat <- dat[ind,]
+        cmat <- cmat[,ind]
+    } 
+    
+    # calculate co-occurrence matrix
+    umicrobes <- rownames(cmat)
+    cooc.mat <- .cooc(umicrobes, cmat, antagonistic)
+    
+    # add annotation 
+    uanno <- bugsigdbr::extractTaxLevel(umicrobes,
+                                        tax.id.type = "taxname",
+                                        tax.level = anno,
+                                        exact.tax.level = FALSE)
+    anno <- ComplexHeatmap::HeatmapAnnotation(phylum = uanno)
+    
+    # plot the heatmap
+    n <- bugsigdbr::extractTaxLevel(umicrobes,
+                                    tax.id.type = "taxname",
+                                    tax.level = tax.level)
+    rownames(cooc.mat) <- colnames(cooc.mat) <- n 
+    ComplexHeatmap::Heatmap(log10(cooc.mat + 0.1), 
+                            name = "log10 Co-occurence",
+                            top_annotation = anno,
+                            row_names_gp = gpar(fontsize = fontsize),
+                            column_names_gp = gpar(fontsize = fontsize), 
+                            ...)
+    return(invisible(cooc.mat))
+}

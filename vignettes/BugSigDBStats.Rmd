@@ -13,6 +13,7 @@ output:
 ```{r setup, message=FALSE, warning=FALSE}
 library(bugsigdbr)
 library(BugSigDBStats)
+library(ComplexHeatmap)
 library(ggpubr)
 ```
 
@@ -270,6 +271,127 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
+## Microbe co-occurrence
+
+```{r coocc, fig.width = 10, fig.height = 10}
+dat.feces <- subset(dat, `Body site` == "feces")
+cooc.mat <- microbeHeatmap(dat.feces, tax.level = "genus")
+microbeHeatmap(dat.feces, tax.level = "genus")
+antag.mat <- microbeHeatmap(dat.feces, tax.level = "genus", antagonistic = TRUE)
+microbeHeatmap(dat.feces, tax.level = "genus", antagonistic = TRUE)
+```
+
+Get the top 20 genera most frequently reported as differentially abundant:
+ 
+```{r}
+sigs.feces <- getSignatures(dat.feces, tax.id.type = "taxname", 
+                            tax.level = "genus", exact.tax.level = FALSE) 
+top20 <- sort(table(unlist(sigs.feces)), decreasing = TRUE)[1:20]
+top20
+```
+
+Subset heatmaps to the top 20 genera most frequently reported as differentially abundant:
+
+```{r}
+all(names(top20) %in% rownames(cooc.mat))
+cooc.mat <- cooc.mat[names(top20), names(top20)]
+all(names(top20) %in% rownames(antag.mat))
+antag.mat <- antag.mat[names(top20), names(top20)]
+```
+
+Distinguish by direction of abundance change (increased / decreased):
+
+```{r}
+# increased
+sub.dat.feces <- subset(dat.feces, `Abundance in Group 1` == "increased")
+sigs.feces.up <- getSignatures(sub.dat.feces, tax.id.type = "taxname", 
+                               tax.level = "genus", exact.tax.level = FALSE) 
+top20.up <- table(unlist(sigs.feces.up))[names(top20)]
+top20.up
+
+# decreased
+sub.dat.feces <- subset(dat.feces, `Abundance in Group 1` == "decreased")
+sigs.feces.down <- getSignatures(sub.dat.feces, tax.id.type = "taxname", 
+                                 tax.level = "genus", exact.tax.level = FALSE) 
+top20.down <- table(unlist(sigs.feces.down))[names(top20)]
+top20.down
+```
+
+Plot the heatmap
+
+```{r mheat, fig.width = 10, fig.height = 10}
+# annotation
+mat <- matrix(nc = 2, cbind(top20.up, top20.down))
+bp <- ComplexHeatmap::anno_barplot(mat, gp = gpar(fill = c("#D55E00", "#0072B2"),
+                                                  col = c("#D55E00", "#0072B2")),
+                                   height = unit(2, "cm"))
+banno <- ComplexHeatmap::HeatmapAnnotation(`Abundance in Group 1` = bp)
+
+lgd_list <- list(
+    Legend(labels = c("increased", "decreased"), 
+           title = "Abundance in Group 1", 
+           type = "grid",
+           legend_gp = gpar(col = c("#D55E00", "#0072B2"), fill = c("#D55E00", "#0072B2"))))
+                                            
+# same direction
+lcm <- log10(cooc.mat + 0.1)
+col <- circlize::colorRamp2(seq(min(lcm), max(lcm), length = 3),
+                            c("blue", "#EEEEEE", "red"))
+ht1 <- ComplexHeatmap::Heatmap(lcm,
+                               col = col, 
+                               name = "log10 count",
+                               cluster_columns = FALSE, 
+                               row_km = 3, 
+                               row_title = "same direction", 
+                               column_names_rot = 45,
+                               row_names_gp = gpar(fontsize = 8),
+                               column_names_gp = gpar(fontsize = 8))
+
+# opposite direction
+ht2 <- ComplexHeatmap::Heatmap(log10(antag.mat + 0.1),
+                               col = col, 
+                               name = "log10 count",
+                               cluster_columns = FALSE, 
+                               row_title = "opposite direction", 
+                               row_km = 3, 
+                               column_names_rot = 45,
+                               row_names_gp = gpar(fontsize = 8),
+                               column_names_gp = gpar(fontsize = 8))
+
+# phylum
+sfp <- bugsigdbr::getSignatures(dat.feces, tax.id.type = "metaphlan", 
+                                tax.level = "genus", exact.tax.level = FALSE) 
+sfp20 <- sort(table(unlist(sfp)), decreasing = TRUE)[1:20]
+uanno <- bugsigdbr::extractTaxLevel(names(sfp20),
+                                    tax.id.type = "taxname",
+                                    tax.level = "phylum",
+                                    exact.tax.level = FALSE) 
+panno <- ComplexHeatmap::HeatmapAnnotation(phylum = uanno)
+
+uanno <- matrix(uanno, nrow = 1)
+colnames(uanno) <- names(top20)
+pcols <- c("#CC79A7", "#F0E442", "#009E73", "#56B4E9", "#E69F00")
+uanno <- ComplexHeatmap::Heatmap(uanno, name = "Phylum",
+                                 col = pcols,
+                                 cluster_columns = FALSE,
+                                 column_names_rot = 45,
+                                 column_names_gp = gpar(fontsize = 8))
+
+# put everything together
+ht_list <- ht1 %v% banno %v% ht2 %v% uanno
+ComplexHeatmap::draw(ht_list, annotation_legend_list = lgd_list, merge_legend = TRUE)
+
+decorate_annotation("Abundance in Group 1", {
+    grid.text("# signatures", x = unit(-1, "cm"), rot = 90, just = "bottom", gp = gpar(fontsize = 8))
+    #grid.text("*", x = unit(2.45, "cm"), y = unit(1.2, "cm"))
+    #grid.text("*", x = unit(5.18, "cm"), y = unit(1, "cm"))
+    #grid.text("*", x = unit(6.55, "cm"), y = unit(0.95, "cm"))
+    #grid.text("*", x = unit(8.6, "cm"), y = unit(0.85, "cm"))
+    #grid.text("*", x = unit(10, "cm"), y = unit(0.7, "cm"))
+    #grid.text("*", x = unit(10.7, "cm"), y = unit(0.7, "cm"))
+})
+```
+
 ## Signature similarity
 
 ### Jaccard index
@@ -279,9 +401,9 @@ but `makeDist` is slow and surely could be improved for efficiency. For now,
 use only nasal samples:
 
 ```{r}
-dat_subset <- subset(dat, `Body site` == "nasal cavity")
-sigs_subset <- bugsigdbr::getSignatures(dat_subset)
-paircomp <- calcPairwiseOverlaps(sigs_subset)
+nasalsub <- subset(dat, `Body site` == "nasal cavity")
+sigsub <- bugsigdbr::getSignatures(nasalsub)
+paircomp <- calcPairwiseOverlaps(sigsub)
 jdist <- makeDist(paircomp, "jaccard")
 ```
 

@@ -2,6 +2,7 @@
 
 export(calcPairwiseOverlaps)
 export(makeDist)
+export(microbeHeatmap)
 export(paperStat)
 export(plotCuratorStats)
 export(plotProgressOverTime)
