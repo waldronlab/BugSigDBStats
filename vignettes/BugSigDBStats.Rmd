@@ -334,12 +334,17 @@ lgd_list <- list(
            legend_gp = gpar(col = c("#D55E00", "#0072B2"), fill = c("#D55E00", "#0072B2"))))
                                             
 # same direction
-lcm <- log10(cooc.mat + 0.1)
-col <- circlize::colorRamp2(seq(min(lcm), max(lcm), length = 3),
-                            c("blue", "#EEEEEE", "red"))
+# lcm <- sweep(cooc.mat, 2, matrixStats::colMaxs(cooc.mat), FUN = "/")
+# we need to dampen the maximum here a bit down,
+# otherwise 100% self co-occurrence takes up a large fraction of the colorscale,
+sec <- apply(cooc.mat, 2, function(x) sort(x, decreasing = TRUE)[2])
+cooc.mat2 <- cooc.mat
+for(i in 1:ncol(cooc.mat2)) cooc.mat2[i,i] <- min(cooc.mat2[i,i], 1.4 * sec[i])
+lcm <- sweep(cooc.mat2, 2, matrixStats::colMaxs(cooc.mat2), FUN = "/")
+col <- circlize::colorRamp2(c(0,1), c("#EEEEEE", "red"))
 ht1 <- ComplexHeatmap::Heatmap(lcm,
                                col = col, 
-                               name = "log10 count",
+                               name = "Relative frequency (top)",
                                cluster_columns = FALSE, 
                                row_km = 3, 
                                row_title = "same direction", 
@@ -348,9 +353,11 @@ ht1 <- ComplexHeatmap::Heatmap(lcm,
                                column_names_gp = gpar(fontsize = 8))
 
 # opposite direction
-ht2 <- ComplexHeatmap::Heatmap(log10(antag.mat + 0.1),
+acm <- sweep(antag.mat, 2, matrixStats::colMaxs(antag.mat), FUN = "/")
+col <- circlize::colorRamp2(c(0,1), c("#EEEEEE", "blue"))
+ht2 <- ComplexHeatmap::Heatmap(acm,
                                col = col, 
-                               name = "log10 count",
+                               name = "Relative frequency (bottom)",
                                cluster_columns = FALSE, 
                                row_title = "opposite direction", 
                                row_km = 3, 
@@ -383,12 +390,12 @@ ComplexHeatmap::draw(ht_list, annotation_legend_list = lgd_list, merge_legend = 
 
 decorate_annotation("Abundance in Group 1", {
     grid.text("# signatures", x = unit(-1, "cm"), rot = 90, just = "bottom", gp = gpar(fontsize = 8))
-    #grid.text("*", x = unit(2.45, "cm"), y = unit(1.2, "cm"))
-    #grid.text("*", x = unit(5.18, "cm"), y = unit(1, "cm"))
-    #grid.text("*", x = unit(6.55, "cm"), y = unit(0.95, "cm"))
-    #grid.text("*", x = unit(8.6, "cm"), y = unit(0.85, "cm"))
-    #grid.text("*", x = unit(10, "cm"), y = unit(0.7, "cm"))
-    #grid.text("*", x = unit(10.7, "cm"), y = unit(0.7, "cm"))
+    grid.text("*", x = unit(2.45, "cm"), y = unit(1.2, "cm"))
+    grid.text("*", x = unit(5.18, "cm"), y = unit(1, "cm"))
+    grid.text("*", x = unit(6.55, "cm"), y = unit(0.95, "cm"))
+    grid.text("*", x = unit(8.6, "cm"), y = unit(0.85, "cm"))
+    grid.text("*", x = unit(10, "cm"), y = unit(0.7, "cm"))
+    grid.text("*", x = unit(10.7, "cm"), y = unit(0.7, "cm"))
 })
 ```
 

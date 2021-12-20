@@ -52,7 +52,10 @@ We add the corresponding ID prefix:
 
 ```{r, message = FALSE}
 dat <- bugsigdbr::importBugSigDB()
-sigs <- bugsigdbr::getSignatures(dat, tax.id.type = "ncbi")
+dat.feces <- subset(dat, `Body site` == "feces")
+ind <- lengths(dat.feces[["NCBI Taxonomy IDs"]]) > 5
+dat.feces <- dat.feces[ind,]
+sigs <- bugsigdbr::getSignatures(dat.feces, tax.id.type = "ncbi")
 sigs <- lapply(sigs, function(s) paste0("NCBITaxon:", s))
 ```            
 
