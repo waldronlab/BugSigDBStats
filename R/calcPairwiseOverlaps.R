@@ -27,6 +27,7 @@
 #' https://blog.jdblischak.com/posts/pairwise-overlaps/. See that page for definitions 
 #' of overlap and jaccard. This function adds a few columns, an option to calculate 
 #' pairwise overlaps with one list element only, and documentation.
+
 calcPairwiseOverlaps <- function(sets, targetset = NULL) {
   # Ensure that all sets are unique character vectors
   sets_are_vectors <- vapply(sets, is.vector, logical(1))
@@ -63,21 +64,19 @@ calcPairwiseOverlaps <- function(sets, targetset = NULL) {
   
   set_names <- names(sets)
   
-  vec_name1 <- character(length = n_overlaps)
-  vec_name2 <- character(length = n_overlaps)
-  vec_length_intersection <- integer(length = n_overlaps)
-  vec_length_union <- integer(length = n_overlaps)
-  vec_length_set1 <- integer(length = n_overlaps)
-  vec_length_set2 <- integer(length = n_overlaps)
-  vec_overlap <- numeric(length = n_overlaps)
-  vec_jaccard <- numeric(length = n_overlaps)
+  vec_name1 <- character()
+  vec_name2 <- character()
+  vec_length_intersection <- integer()
+  vec_length_union <- integer()
+  vec_length_set1 <- integer()
+  vec_length_set2 <- integer()
+  vec_overlap <- numeric()
+  vec_jaccard <- numeric()
   overlaps_index <- 1
   
   for (i in iseq) {
-    name1 <- set_names[i]
     set1 <- sets[[i]]
     for (j in seq(i + 1, n_sets)) {
-      name2 <- set_names[j]
       set2 <- sets[[j]]
       
       set_intersect <- set1[match(set2, set1, 0L)]
@@ -89,22 +88,26 @@ calcPairwiseOverlaps <- function(sets, targetset = NULL) {
           nmax = NA
         )
       length_intersection <- length(set_intersect)
-      length_union <- length(set_union)
-      length_set1 <- length(set1)
-      length_set2 <- length(set2)
-      overlap <- length_intersection / min(length_set1, length_set2)
-      jaccard <- length_intersection / length(set_union)
-      
-      vec_name1[overlaps_index] <- name1
-      vec_name2[overlaps_index] <- name2
-      vec_length_intersection[overlaps_index] <- length_intersection
-      vec_length_union[overlaps_index] <- length_union
-      vec_length_set1[overlaps_index] <- length_set1
-      vec_length_set2[overlaps_index] <- length_set2
-      vec_overlap[overlaps_index] <- overlap
-      vec_jaccard[overlaps_index] <- jaccard
-      
-      overlaps_index <- overlaps_index + 1
+      if (length_intersection > 0.00){
+        length_union <- length(set_union)
+        length_set1 <- length(set1)
+        length_set2 <- length(set2)
+        overlap <- (length_intersection / min(length_set1, length_set2))
+        jaccard <- (length_intersection / length(set_union))
+        name1 <- set_names[i]
+        name2 <- set_names[j]
+        
+        vec_name1[overlaps_index] <- name1
+        vec_name2[overlaps_index] <- name2
+        vec_length_intersection[overlaps_index] <- length_intersection
+        vec_length_union[overlaps_index] <- length_union
+        vec_length_set1[overlaps_index] <- length_set1
+        vec_length_set2[overlaps_index] <- length_set2
+        vec_overlap[overlaps_index] <- overlap
+        vec_jaccard[overlaps_index] <- jaccard
+        
+        overlaps_index <- overlaps_index + 1
+      }
     }
   }
   
@@ -132,22 +135,26 @@ calcPairwiseOverlaps <- function(sets, targetset = NULL) {
 #' A data.frame output from the calcPairwiseOverlaps function
 #' @param use 
 #' Either "overlap" or "jaccard"
+#' @param names
+#' A list of signatures
 #'
 #' @return a Dist object of (1 - overlap) or (1 - jaccard)
 #' @export
 #' @examples
 #' testlist <- list(a = 1:3, b = 3, c = 3:4)
 #' (all <- calcPairwiseOverlaps(testlist))
-#' makeDist(all, "jaccard")
-#' makeDist(all, "overlap")
-makeDist <- function(overlaps, use = "jaccard"){
+#' sigs <- names(testlist)
+#' makeDist(all, "jaccard", sigs)
+#' makeDist(all, "overlap", sigs)
+
+makeDist <- function(overlaps, use = "jaccard", names){
   if(!identical(use %in% c("jaccard", "overlap"), TRUE))
     stop("overlap must be either 'jaccard' or 'overlap'")
-  names <- unique(c(overlaps$name1, overlaps$name2))
-  jsim <- matrix(NA, length(names), length(names), dimnames=list(names, names))
+  overlaps = overlaps[, c("name1", "name2", use)]
+  jsim <- matrix(0.00, length(names), length(names), dimnames=list(names, names))
   for (i in seq(nrow(overlaps))){
-   jsim[overlaps[i, "name1"], overlaps[i, "name2"]] <- overlaps[i, use]
-   jsim[overlaps[i, "name2"], overlaps[i, "name1"]] <- overlaps[i, use]
+    jsim[overlaps[i, "name1"], overlaps[i, "name2"]] <- overlaps[i, use]
+    jsim[overlaps[i, "name2"], overlaps[i, "name1"]] <- overlaps[i, use]
   }
   jdiff <- as.dist(1 - jsim)
   return(jdiff)
