@@ -398,13 +398,14 @@ decorate_annotation("Abundance in Group 1", {
 
 The `calcPairwiseOverlaps` function works quickly on all of bugsigdb currently, 
 but `makeDist` is slow and surely could be improved for efficiency. For now,
-use only nasal samples:
+use only stomach samples:
 
 ```{r}
-nasalsub <- subset(dat, `Body site` == "nasal cavity")
-sigsub <- bugsigdbr::getSignatures(nasalsub)
+stomachsub <- subset(dat, `Body site` == "stomach")
+sigsub <- bugsigdbr::getSignatures(stomachsub)
+sigs <- names(sigsub)
 paircomp <- calcPairwiseOverlaps(sigsub)
-jdist <- makeDist(paircomp, "jaccard")
+jdist <- makeDist(paircomp, "jaccard", sigs)
 ```
 
 Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures). 
