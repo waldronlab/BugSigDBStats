@@ -5,12 +5,14 @@
 \title{Title Create a Jaccard or overlap dissimilarity matrix from the
 output of calcPairwiseOverlaps}
 \usage{
-makeDist(overlaps, use = "jaccard")
+makeDist(overlaps, use = "jaccard", names)
 }
 \arguments{
 \item{overlaps}{A data.frame output from the calcPairwiseOverlaps function}
 
 \item{use}{Either "overlap" or "jaccard"}
+
+\item{names}{A list of signature names}
 }
 \value{
 a Dist object of (1 - overlap) or (1 - jaccard)
@@ -22,6 +24,7 @@ output of calcPairwiseOverlaps
 \examples{
 testlist <- list(a = 1:3, b = 3, c = 3:4)
 (all <- calcPairwiseOverlaps(testlist))
-makeDist(all, "jaccard")
-makeDist(all, "overlap")
+sigs <- names(testlist)
+makeDist(all, "jaccard", sigs)
+makeDist(all, "overlap", sigs)
 }

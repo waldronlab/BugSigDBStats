@@ -1,5 +1,5 @@
 Package: BugSigDBStats
-Version: 0.99.1
+Version: 0.99.2
 Title: BugSigDB Stats and Analysis
 Authors@R: c(
     person(given = "Ludwig",
@@ -8,8 +8,16 @@ Authors@R: c(
            email = "ludwig_geistlinger@hms.harvard.edu"),
     person(given = "Jennifer",
            family = "Wokaty",
-           role = "aut",
+           role = "ctb",
            email = "jennifer.wokaty@gmail.com"),
+    person(given = "Samuel",
+           family = "Gamboa-Tuz",
+           role = "ctb",
+           email = "samuel.gamboa.tuz@gmail.com"),
+    person(given = "Pratyay",
+           family = "Sengupta",
+           role = "ctb",
+           email = "bt20d700@smail.iitm.ac.in"),
     person(given = "Levi",
            family = "Waldron",
            role = "aut",
@@ -35,8 +43,6 @@ Suggests:
     rmarkdown,
     safe,
     testthat
-Remotes:
-    waldronlab/bugsigdbr
 License: GPL (>= 3)
 VignetteBuilder: knitr
 LazyData: true

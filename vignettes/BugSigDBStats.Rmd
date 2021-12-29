@@ -410,9 +410,8 @@ use only stomach samples:
 ```{r}
 stomachsub <- subset(dat, `Body site` == "stomach")
 sigsub <- bugsigdbr::getSignatures(stomachsub)
-sigs <- names(sigsub)
 paircomp <- calcPairwiseOverlaps(sigsub)
-jdist <- makeDist(paircomp, "jaccard", sigs)
+jdist <- makeDist(paircomp, "jaccard", names(sigsub))
 ```
 
 Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures). 

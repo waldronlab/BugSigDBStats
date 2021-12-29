@@ -88,7 +88,7 @@ calcPairwiseOverlaps <- function(sets, targetset = NULL) {
           nmax = NA
         )
       length_intersection <- length(set_intersect)
-      if (length_intersection > 0.00){
+      if (length_intersection > 0){
         length_union <- length(set_union)
         length_set1 <- length(set1)
         length_set2 <- length(set2)
@@ -122,9 +122,6 @@ calcPairwiseOverlaps <- function(sets, targetset = NULL) {
     jaccard = vec_jaccard,
     stringsAsFactors = FALSE
   )
-  if (!is.null(targetset)) {
-    result <- result[-nrow(result),]
-  }
   return(result)
 }
 
@@ -136,7 +133,7 @@ calcPairwiseOverlaps <- function(sets, targetset = NULL) {
 #' @param use 
 #' Either "overlap" or "jaccard"
 #' @param names
-#' A list of signatures
+#' A list of signature names
 #'
 #' @return a Dist object of (1 - overlap) or (1 - jaccard)
 #' @export

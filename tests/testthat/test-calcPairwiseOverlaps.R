@@ -1,7 +1,8 @@
+library(BugSigDBStats)
+testlist <- list(a = 1:3, b = 3, c = 3:4)
+r <- calcPairwiseOverlaps(testlist)
+
 test_that("calcPairwiseOverlaps", {
-  library(BugSigDBStats)
-  testlist <- list(a = 1:3, b = 3, c = 3:4)
-  r <- calcPairwiseOverlaps(testlist)
   expect_identical(r$name1, c("a", "a", "b"))
   expect_identical(r$name2, c("b", "c", "c"))
   expect_equal(r$length_set1, c(3, 3, 1))
@@ -23,9 +24,7 @@ test_that("calcPairwiseOverlaps", {
 })
 
 test_that("distmatrix", {
-  testlist <- list(a = 1:3, b = 3, c = 3:4)
-  r <- calcPairwiseOverlaps(testlist)
-  rd <- makeDist(r)
+  rd <- makeDist(r, names = names(testlist))
   expect_equal(as.numeric(rd), c(2/3, 3/4, 1/2))
   expect_equal(as.numeric(rd), 1-r$jaccard)
   expect_error(makeDist(r, "hello"))
