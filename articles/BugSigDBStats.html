@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BugSigDB Stats and Analysis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.2</span>
       </span>
     </div>
 
@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">December 14, 2021</h4>
+            <h4 class="date">December 29, 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -78,6 +78,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/bugsigdbr">bugsigdbr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/BugSigDBStats">BugSigDBStats</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jokergoo/ComplexHeatmap">ComplexHeatmap</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rpkgs.datanovia.com/ggpubr/">ggpubr</a></span><span class="op">)</span></code></pre></div>
 </div>
 <div id="reading-data" class="section level1">
@@ -86,10 +87,10 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2021-12-14 05:07:25</code></pre>
+<pre><code>## Using cached version from 2021-12-29 12:34:54</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2083   48</code></pre>
+<pre><code>## [1] 2098   48</code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -129,10 +130,10 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 514</code></pre>
+<pre><code>## [1] 518</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2083</code></pre>
+<pre><code>## [1] 2098</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -162,7 +163,7 @@
 <span class="va">ind2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[[</span><span class="st">"NCBI Taxonomy IDs"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">full.dat</span><span class="op">[</span><span class="va">ind1</span> <span class="op">&amp;</span> <span class="va">ind2</span>,<span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2083</code></pre>
+<pre><code>## [1] 2098</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -171,24 +172,20 @@
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Curated date"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/plotProgressOverTime.html">plotProgressOverTime</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning in rbind(cdbm, cpbm): number of columns of result is not a multiple of
-## vector length (arg 2)</code></pre>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-4-1.png" width="960"></p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plotProgressOverTime.html">plotProgressOverTime</a></span><span class="op">(</span><span class="va">dat</span>, diff <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## Warning in rbind(cdbm, cpbm): number of columns of result is not a multiple of
-## vector length (arg 2)</code></pre>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-4-2.png" width="960"></p>
 <p>Stratified by curator:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">npc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/stratifyByCurator.html">stratifyByCurator</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
 <span class="fu"><a href="../reference/plotCuratorStats.html">plotCuratorStats</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">npc</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/curatorOutput-1.png" width="960"></p>
 <p>Number of complete and revised signatures:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="st">"State"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>## &lt; table of extent 0 &gt;</code></pre>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"Revision editor"</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ##                                      Chloe 
@@ -210,7 +207,7 @@
 ##     Cynthia Anderson,Lwaldron,WikiWorks743 
 ##                                          1 
 ##                                     Fatima 
-##                                          4 
+##                                          5 
 ##                            Fatima,Fcuevas3 
 ##                                          1 
 ##                             Fatima,Joyessa 
@@ -230,17 +227,19 @@
 ##                               Fatima,Titas 
 ##                                          1 
 ##                        Fatima,WikiWorks743 
-##                                         50 
+##                                         53 
 ##                             Fatima,Yu Wang 
 ##                                          6 
 ##                                   Fcuevas3 
 ##                                         24 
 ##                                       Gina 
 ##                                         14 
+##                                   Haoyanzh 
+##                                          1 
 ##                                Itslanapark 
 ##                                         21 
 ##                                    Joyessa 
-##                                          3 
+##                                         12 
 ##                                  Kwekuamoo 
 ##                                         37 
 ##                     Kwekuamoo,WikiWorks743 
@@ -272,7 +271,7 @@
 ##        WikiWorks,WikiWorks743,WikiWorks753 
 ##                                          1 
 ##                               WikiWorks743 
-##                                       1550 
+##                                       1547 
 ##                  WikiWorks743,WikiWorks753 
 ##                                          1</code></pre>
 </div>
@@ -282,7 +281,7 @@
 <div id="study-design" class="section level2">
 <h2 class="hasAnchor">
 <a href="#study-design" class="anchor"></a>Study design</h2>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">spl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[[</span><span class="st">"Study"</span><span class="op">]</span><span class="op">]</span>, <span class="va">dat</span><span class="op">[[</span><span class="st">"Study design"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>
 <span class="va">sds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">spl</span>, <span class="va">unique</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sds</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
@@ -301,16 +300,16 @@
 ##                              prospective cohort 
 ##                                              52 
 ## cross-sectional observational, not case-control 
-##                                             126 
+##                                             128 
 ##                                    case-control 
-##                                             246</code></pre>
+##                                             248</code></pre>
 </div>
 </div>
 <div id="experiment-stats" class="section level1">
 <h1 class="hasAnchor">
 <a href="#experiment-stats" class="anchor"></a>Experiment stats</h1>
 <p>Columns of the full dataset that describe experiments:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Experiment ID</span>
 <span class="va">exp.cols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Study"</span>, <span class="st">"Experiment"</span><span class="op">)</span>
 
@@ -341,26 +340,26 @@
               <span class="st">"Inverse Simpson"</span>,
               <span class="st">"Richness"</span><span class="op">)</span></code></pre></div>
 <p>Restrict dataset to experiment information:</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">exps</span> <span class="op">&lt;-</span> <span class="va">dat</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">exp.cols</span>, <span class="va">sub.cols</span>, <span class="va">lab.cols</span>, <span class="va">stat.cols</span>, <span class="va">div.cols</span><span class="op">)</span><span class="op">]</span>
 <span class="va">exps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">exps</span><span class="op">)</span></code></pre></div>
 <div id="subjects" class="section level2">
 <h2 class="hasAnchor">
 <a href="#subjects" class="anchor"></a>Subjects</h2>
 <p>Number of experiments for the top 10 categories for each subjects column:</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sub.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">sub.cols</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">sub.tab</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">sub.cols</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>
 <span class="va">sub.tab</span></code></pre></div>
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##              1149                44                 6 
+##              1158                44                 6 
 ## 
 ## $`Location of subjects`
 ## 
 ##                    China United States of America                    Italy 
-##                      346                      335                       50 
+##                      347                      341                       51 
 ##                    Spain              South Korea                  Finland 
 ##                       48                       42                       34 
 ##                   Canada                    Japan                   Brazil 
@@ -371,7 +370,7 @@
 ## $`Body site`
 ## 
 ##          feces         saliva uterine cervix          Feces         vagina 
-##            649             40             40             36             35 
+##            649             40             40             38             35 
 ##          mouth     oral gland       meconium   skin of body        stomach 
 ##             29             28             25             24             23 
 ## 
@@ -391,7 +390,7 @@
 ## $`Antibiotics exclusion`
 ## 
 ##                 3 months                  1 month                 6 months 
-##                      156                       99                       63 
+##                      157                       99                       63 
 ##                 2 months                  4 weeks                  2 weeks 
 ##                       52                       38                       29 
 ##                  8 weeks before sample collection                  30 days 
@@ -399,41 +398,41 @@
 ##                  14 days 
 ##                        8</code></pre>
 <p>Proportions instead:</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sub.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">sub.cols</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">sub.tab</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">sub.cols</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>
 <span class="va">sub.tab</span></code></pre></div>
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##            0.9580            0.0367            0.0050 
+##           0.95900           0.03640           0.00497 
 ## 
 ## $`Location of subjects`
 ## 
 ##                    China United States of America                    Italy 
-##                   0.2900                   0.2800                   0.0418 
+##                   0.2880                   0.2830                   0.0424 
 ##                    Spain              South Korea                  Finland 
-##                   0.0402                   0.0351                   0.0285 
+##                   0.0399                   0.0349                   0.0282 
 ##                   Canada                    Japan                   Brazil 
-##                   0.0226                   0.0209                   0.0192 
+##                   0.0224                   0.0208                   0.0191 
 ##              Netherlands 
-##                   0.0167 
+##                   0.0166 
 ## 
 ## $`Body site`
 ## 
 ##          feces         saliva uterine cervix          Feces         vagina 
-##         0.5410         0.0334         0.0334         0.0300         0.0292 
+##         0.5390         0.0332         0.0332         0.0316         0.0291 
 ##          mouth     oral gland       meconium   skin of body        stomach 
-##         0.0242         0.0234         0.0209         0.0200         0.0192 
+##         0.0241         0.0233         0.0208         0.0199         0.0191 
 ## 
 ## $Condition
 ## 
 ##                         obesity                        COVID-19 
-##                          0.0860                          0.0618 
+##                          0.0858                          0.0617 
 ##             antimicrobial agent                            diet 
-##                          0.0484                          0.0459 
+##                          0.0483                          0.0458 
 ## human papilloma virus infection                  gastric cancer 
-##                          0.0334                          0.0292 
+##                          0.0333                          0.0292 
 ##                          asthma                   air pollution 
 ##                          0.0267                          0.0250 
 ##                cesarean section                   endometriosis 
@@ -442,50 +441,50 @@
 ## $`Antibiotics exclusion`
 ## 
 ##                 3 months                  1 month                 6 months 
-##                   0.2160                   0.1370                   0.0871 
+##                   0.2160                   0.1360                   0.0865 
 ##                 2 months                  4 weeks                  2 weeks 
-##                   0.0719                   0.0526                   0.0401 
+##                   0.0714                   0.0522                   0.0398 
 ##                  8 weeks before sample collection                  30 days 
-##                   0.0152                   0.0138                   0.0124 
+##                   0.0151                   0.0137                   0.0124 
 ##                  14 days 
-##                   0.0111</code></pre>
+##                   0.0110</code></pre>
 <p>Sample size:</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ssize</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">sub.cols</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">summary</span><span class="op">)</span>
 <span class="va">ssize</span></code></pre></div>
 <pre><code>##         Group 0 sample size Group 1 sample size
 ## Min.                0.00000             1.00000
 ## 1st Qu.            13.00000            12.00000
 ## Median             24.00000            24.00000
-## Mean               49.37165            71.23182
-## 3rd Qu.            48.00000            41.00000
+## Mean               49.26741            71.60255
+## 3rd Qu.            48.00000            42.00000
 ## Max.              969.00000          9623.00000
-## NA's               44.00000            32.00000</code></pre>
+## NA's               47.00000            35.00000</code></pre>
 </div>
 <div id="lab-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#lab-analysis" class="anchor"></a>Lab analysis</h2>
 <p>Number of experiments for the top 10 categories for each lab analysis column:</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lab.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">lab.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lab.tab</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">lab.cols</span>
 <span class="va">lab.tab</span></code></pre></div>
 <pre><code>## $`Sequencing type`
 ## 
 ##  16S  WMS 
-## 1099   88 
+## 1102   91 
 ## 
 ## $`16S variable region`
 ## 
 ##       34        4      123       12       45      345        3       56 
-##      352      293       90       63       44       36       30       12 
+##      354      293       90       63       44       36       30       12 
 ##       23 23456789 
 ##       11       10 
 ## 
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                         795                         179 
+##                         799                         179 
 ##                 Ion Torrent                     RT-qPCR 
 ##                          87                          77 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
@@ -495,47 +494,47 @@
 ##           Illumina,Roche454        Non-quantitative PCR 
 ##                           3                           3</code></pre>
 <p>Proportions instead:</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lab.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">lab.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">lab.tab</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">lab.cols</span>
 <span class="va">lab.tab</span></code></pre></div>
 <pre><code>## $`Sequencing type`
 ## 
 ##    16S    WMS 
-## 0.9260 0.0741 
+## 0.9240 0.0763 
 ## 
 ## $`16S variable region`
 ## 
 ##       34        4      123       12       45      345        3       56 
-##   0.3620   0.3010   0.0925   0.0647   0.0452   0.0370   0.0308   0.0123 
+##   0.3630   0.3010   0.0923   0.0646   0.0451   0.0369   0.0308   0.0123 
 ##       23 23456789 
 ##   0.0113   0.0103 
 ## 
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                     0.67000                     0.15100 
+##                     0.67100                     0.15000 
 ##                 Ion Torrent                     RT-qPCR 
-##                     0.07340                     0.06490 
+##                     0.07310                     0.06470 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
-##                     0.01010                     0.00759 
+##                     0.01010                     0.00756 
 ##           Mass spectrometry           HTF-Microbi.Array 
-##                     0.00422                     0.00337 
+##                     0.00420                     0.00336 
 ##           Illumina,Roche454        Non-quantitative PCR 
-##                     0.00253                     0.00253</code></pre>
+##                     0.00252                     0.00252</code></pre>
 </div>
 <div id="statistical-analysis" class="section level2">
 <h2 class="hasAnchor">
 <a href="#statistical-analysis" class="anchor"></a>Statistical analysis</h2>
 <p>Number of experiments for the top 10 categories for each statistical analysis column:</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">stat.tab</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">stat.cols</span>
 <span class="va">stat.tab</span></code></pre></div>
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                     338                     328                      94 
+##                     338                     329                      94 
 ##                  DESeq2                  T-Test                   ANOVA 
 ##                      85                      73                      59 
 ##       Linear Regression               Metastats     Logistic Regression 
@@ -546,50 +545,50 @@
 ## $`MHT correction`
 ## 
 ## FALSE  TRUE 
-##   603   569 
+##   604   570 
 ## 
 ## $`Significance threshold`
 ## 
 ##  0.05   0.1  0.01 0.001   0.2  0.15     0  0.25 0.002 0.004 
-##  1037    68    25    12    12     4     3     3     2     2</code></pre>
+##  1039    68    25    12    12     4     3     3     2     2</code></pre>
 <p>Proportions instead:</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">stat.tab</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">stat.cols</span>
 <span class="va">stat.tab</span></code></pre></div>
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                  0.2950                  0.2860                  0.0820 
+##                  0.2940                  0.2860                  0.0818 
 ##                  DESeq2                  T-Test                   ANOVA 
-##                  0.0741                  0.0636                  0.0514 
+##                  0.0740                  0.0635                  0.0513 
 ##       Linear Regression               Metastats     Logistic Regression 
-##                  0.0244                  0.0174                  0.0166 
+##                  0.0244                  0.0174                  0.0165 
 ##          Welch's T-Test 
 ##                  0.0122 
 ## 
 ## $`MHT correction`
 ## 
 ## FALSE  TRUE 
-## 0.515 0.485 
+## 0.514 0.486 
 ## 
 ## $`Significance threshold`
 ## 
 ##    0.05     0.1    0.01   0.001     0.2    0.15       0    0.25   0.002   0.004 
-## 0.88300 0.05790 0.02130 0.01020 0.01020 0.00340 0.00255 0.00255 0.00170 0.00170</code></pre>
+## 0.88300 0.05780 0.02120 0.01020 0.01020 0.00340 0.00255 0.00255 0.00170 0.00170</code></pre>
 </div>
 <div id="alpha-diversity" class="section level2">
 <h2 class="hasAnchor">
 <a href="#alpha-diversity" class="anchor"></a>Alpha diversity</h2>
 <p>Overall distribution:</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">div.cols</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">table</span><span class="op">)</span></code></pre></div>
 <pre><code>##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
 ## decreased     11     149    96      42              14       82
-## increased      4     112    59      31               6       89
+## increased      4     113    60      32               6       89
 ## unchanged     25     435   230     161              30      235</code></pre>
 <p>Correspondence of Shannon diversity and Richness:</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">exps</span><span class="op">$</span><span class="va">Shannon</span>, <span class="va">exps</span><span class="op">$</span><span class="va">Richness</span><span class="op">)</span></code></pre></div>
 <pre><code>##            
 ##             decreased increased unchanged
@@ -597,7 +596,7 @@
 ##   increased         2        35        13
 ##   unchanged        13        23       179</code></pre>
 <p>Conditions with consistently increased or decreased alpha diversity:</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Condition"</span><span class="op">)</span></code></pre></div>
 <pre><code>##                                              increased decreased unchanged
 ## acute lymphoblastic leukemia                         0         3         4
@@ -637,7 +636,7 @@
 ## smoking behavior                                     0         1         6
 ## squamous cell carcinoma                              4         0         4
 ## type II diabetes mellitus                            2         2         7</code></pre>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Condition"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>##                                              increased decreased unchanged
 ## acute lymphoblastic leukemia                     0.000     0.430      0.57
@@ -677,7 +676,7 @@
 ## smoking behavior                                 0.000     0.140      0.86
 ## squamous cell carcinoma                          0.500     0.000      0.50
 ## type II diabetes mellitus                        0.180     0.180      0.64</code></pre>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Condition"</span><span class="op">)</span></code></pre></div>
 <pre><code>##                                              increased decreased unchanged
 ## acute lymphoblastic leukemia                         5         1         1
@@ -702,7 +701,7 @@
 ## multiple sclerosis                                   0         0         9
 ## obesity                                              6         7        21
 ## smoking behavior                                     3         1         2</code></pre>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Condition"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>##                                              increased decreased unchanged
 ## acute lymphoblastic leukemia                     0.710     0.140      0.14
@@ -728,7 +727,7 @@
 ## obesity                                          0.180     0.210      0.62
 ## smoking behavior                                 0.500     0.170      0.33</code></pre>
 <p>Body sites with consistently increased or decreased alpha diversity:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span><span class="op">)</span></code></pre></div>
 <pre><code>##                                                        increased decreased
 ## blood                                                          0         0
@@ -737,7 +736,7 @@
 ## dental plaque                                                  0         3
 ## digestive system,digestive tract,lower digestive tract         0         0
 ## feces                                                         38        79
-## Feces                                                          1         6
+## Feces                                                          2         6
 ## lung                                                           1         2
 ## meconium                                                       6         0
 ## mouth                                                          6         2
@@ -776,7 +775,7 @@
 ## uterine cervix                                                23
 ## uterus                                                         7
 ## vagina                                                         8</code></pre>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>##                                                        increased decreased
 ## blood                                                      0.000     0.000
@@ -785,7 +784,7 @@
 ## dental plaque                                              0.000     0.500
 ## digestive system,digestive tract,lower digestive tract     0.000     0.000
 ## feces                                                      0.110     0.220
-## Feces                                                      0.053     0.320
+## Feces                                                      0.100     0.300
 ## lung                                                       0.120     0.250
 ## meconium                                                   0.460     0.000
 ## mouth                                                      0.270     0.091
@@ -808,7 +807,7 @@
 ## dental plaque                                               0.50
 ## digestive system,digestive tract,lower digestive tract      1.00
 ## feces                                                       0.67
-## Feces                                                       0.63
+## Feces                                                       0.60
 ## lung                                                        0.62
 ## meconium                                                    0.54
 ## mouth                                                       0.64
@@ -824,7 +823,7 @@
 ## uterine cervix                                              0.88
 ## uterus                                                      0.88
 ## vagina                                                      0.42</code></pre>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span><span class="op">)</span></code></pre></div>
 <pre><code>##                            increased decreased unchanged
 ## bronchus                           0         0         6
@@ -844,7 +843,7 @@
 ## tongue                             0         1         4
 ## uterine cervix                     6         0        16
 ## vagina                             3         1         8</code></pre>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>##                            increased decreased unchanged
 ## bronchus                        0.00     0.000      1.00
@@ -869,34 +868,190 @@
 <div id="signature-stats" class="section level1">
 <h1 class="hasAnchor">
 <a href="#signature-stats" class="anchor"></a>Signature stats</h1>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sigs</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">dat</span>, tax.id.type <span class="op">=</span> <span class="st">"metaphlan"</span><span class="op">)</span></code></pre></div>
 <div id="unique-microbes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#unique-microbes" class="anchor"></a>Unique microbes</h2>
 <p>Number unique microbes contained in the signatures:</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">nuniq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1836</code></pre>
+<pre><code>## [1] 1856</code></pre>
 <p>Development of unique microbes captured over time:</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plotUniqueMicrobesOverTime.html">plotUniqueMicrobesOverTime</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-21-1.png" width="700"></p>
 </div>
 <div id="microbe-set-size-distribution" class="section level2">
 <h2 class="hasAnchor">
 <a href="#microbe-set-size-distribution" class="anchor"></a>Microbe set size distribution</h2>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   1.000   2.000   4.000   6.854   9.000 100.000</code></pre>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+##   1.000   2.000   4.000   6.864   8.000 100.000</code></pre>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html">gghistogram</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">30</span>, ylab <span class="op">=</span> <span class="st">"number of signatures"</span>,
     xlab <span class="op">=</span> <span class="st">"signature size"</span>, fill <span class="op">=</span> <span class="st">"#00AFBB"</span>, ggtheme <span class="op">=</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/setSize-1.png" width="700"></p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 938</code></pre>
+<pre><code>## [1] 946</code></pre>
+</div>
+<div id="microbe-co-occurrence" class="section level2">
+<h2 class="hasAnchor">
+<a href="#microbe-co-occurrence" class="anchor"></a>Microbe co-occurrence</h2>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"feces"</span><span class="op">)</span>
+<span class="va">cooc.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/microbeHeatmap.html">microbeHeatmap</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></code></pre></div>
+<pre><code>## Loading required namespace: safe</code></pre>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/microbeHeatmap.html">microbeHeatmap</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span>
+<span class="va">antag.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/microbeHeatmap.html">microbeHeatmap</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span>, antagonistic <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/microbeHeatmap.html">microbeHeatmap</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span>, antagonistic <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Get the top 20 genera most frequently reported as differentially abundant:</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sigs.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>, 
+                            tax.level <span class="op">=</span> <span class="st">"genus"</span>, exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
+<span class="va">top20</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">sigs.feces</span><span class="op">)</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span>
+<span class="va">top20</span></code></pre></div>
+<pre><code>## 
+##      Bacteroides Faecalibacterium  Bifidobacterium    Streptococcus 
+##              199              135              127              123 
+##       Prevotella     Ruminococcus      Clostridium        Roseburia 
+##              110              110              102               98 
+##          Blautia    Lactobacillus  Parabacteroides            Dorea 
+##               97               96               91               83 
+##        Alistipes      Coprococcus     Enterococcus      Veillonella 
+##               82               73               69               68 
+##      Akkermansia      Eubacterium     Anaerostipes      Escherichia 
+##               65               64               62               58</code></pre>
+<p>Subset heatmaps to the top 20 genera most frequently reported as differentially abundant:</p>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span> <span class="op">%in%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames</a></span><span class="op">(</span><span class="va">cooc.mat</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cooc.mat</span> <span class="op">&lt;-</span> <span class="va">cooc.mat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span><span class="op">]</span>
+<span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span> <span class="op">%in%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames</a></span><span class="op">(</span><span class="va">antag.mat</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">antag.mat</span> <span class="op">&lt;-</span> <span class="va">antag.mat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span><span class="op">]</span></code></pre></div>
+<p>Distinguish by direction of abundance change (increased / decreased):</p>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># increased</span>
+<span class="va">sub.dat.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat.feces</span>, <span class="va">`Abundance in Group 1`</span> <span class="op">==</span> <span class="st">"increased"</span><span class="op">)</span>
+<span class="va">sigs.feces.up</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">sub.dat.feces</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>, 
+                               tax.level <span class="op">=</span> <span class="st">"genus"</span>, exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
+<span class="va">top20.up</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">sigs.feces.up</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span><span class="op">]</span>
+<span class="va">top20.up</span></code></pre></div>
+<pre><code>## 
+##      Bacteroides Faecalibacterium  Bifidobacterium    Streptococcus 
+##               78               47               55               81 
+##       Prevotella     Ruminococcus      Clostridium        Roseburia 
+##               58               46               59               32 
+##          Blautia    Lactobacillus  Parabacteroides            Dorea 
+##               43               68               45               38 
+##        Alistipes      Coprococcus     Enterococcus      Veillonella 
+##               24               27               58               46 
+##      Akkermansia      Eubacterium     Anaerostipes      Escherichia 
+##               35               27               23               38</code></pre>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># decreased</span>
+<span class="va">sub.dat.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat.feces</span>, <span class="va">`Abundance in Group 1`</span> <span class="op">==</span> <span class="st">"decreased"</span><span class="op">)</span>
+<span class="va">sigs.feces.down</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">sub.dat.feces</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>, 
+                                 tax.level <span class="op">=</span> <span class="st">"genus"</span>, exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
+<span class="va">top20.down</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">sigs.feces.down</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span><span class="op">]</span>
+<span class="va">top20.down</span></code></pre></div>
+<pre><code>## 
+##      Bacteroides Faecalibacterium  Bifidobacterium    Streptococcus 
+##              119               88               70               40 
+##       Prevotella     Ruminococcus      Clostridium        Roseburia 
+##               52               64               43               66 
+##          Blautia    Lactobacillus  Parabacteroides            Dorea 
+##               54               28               46               45 
+##        Alistipes      Coprococcus     Enterococcus      Veillonella 
+##               58               46                9               20 
+##      Akkermansia      Eubacterium     Anaerostipes      Escherichia 
+##               28               37               39               20</code></pre>
+<p>Plot the heatmap</p>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># annotation</span>
+<span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>nc <span class="op">=</span> <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">top20.up</span>, <span class="va">top20.down</span><span class="op">)</span><span class="op">)</span>
+<span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu">ComplexHeatmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/anno_barplot.html">anno_barplot</a></span><span class="op">(</span><span class="va">mat</span>, gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#D55E00"</span>, <span class="st">"#0072B2"</span><span class="op">)</span>,
+                                                  col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#D55E00"</span>, <span class="st">"#0072B2"</span><span class="op">)</span><span class="op">)</span>,
+                                   height <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">2</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">banno</span> <span class="op">&lt;-</span> <span class="fu">ComplexHeatmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/HeatmapAnnotation.html">HeatmapAnnotation</a></span><span class="op">(</span>`Abundance in Group 1` <span class="op">=</span> <span class="va">bp</span><span class="op">)</span>
+
+<span class="va">lgd_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/Legend.html">Legend</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"increased"</span>, <span class="st">"decreased"</span><span class="op">)</span>, 
+           title <span class="op">=</span> <span class="st">"Abundance in Group 1"</span>, 
+           type <span class="op">=</span> <span class="st">"grid"</span>,
+           legend_gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#D55E00"</span>, <span class="st">"#0072B2"</span><span class="op">)</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#D55E00"</span>, <span class="st">"#0072B2"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+                                            
+<span class="co"># same direction</span>
+<span class="co"># lcm &lt;- sweep(cooc.mat, 2, matrixStats::colMaxs(cooc.mat), FUN = "/")</span>
+<span class="co"># we need to dampen the maximum here a bit down,</span>
+<span class="co"># otherwise 100% self co-occurrence takes up a large fraction of the colorscale,</span>
+<span class="va">sec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">cooc.mat</span>, <span class="fl">2</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="va">x</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>
+<span class="va">cooc.mat2</span> <span class="op">&lt;-</span> <span class="va">cooc.mat</span>
+<span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">cooc.mat2</span><span class="op">)</span><span class="op">)</span> <span class="va">cooc.mat2</span><span class="op">[</span><span class="va">i</span>,<span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">cooc.mat2</span><span class="op">[</span><span class="va">i</span>,<span class="va">i</span><span class="op">]</span>, <span class="fl">1.4</span> <span class="op">*</span> <span class="va">sec</span><span class="op">[</span><span class="va">i</span><span class="op">]</span><span class="op">)</span>
+<span class="va">lcm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sweep.html">sweep</a></span><span class="op">(</span><span class="va">cooc.mat2</span>, <span class="fl">2</span>, <span class="fu">matrixStats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/matrixStats/man/rowRanges.html">colMaxs</a></span><span class="op">(</span><span class="va">cooc.mat2</span><span class="op">)</span>, FUN <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span>
+<span class="va">col</span> <span class="op">&lt;-</span> <span class="fu">circlize</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/circlize/man/colorRamp2.html">colorRamp2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#EEEEEE"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">ht1</span> <span class="op">&lt;-</span> <span class="fu">ComplexHeatmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/Heatmap.html">Heatmap</a></span><span class="op">(</span><span class="va">lcm</span>,
+                               col <span class="op">=</span> <span class="va">col</span>, 
+                               name <span class="op">=</span> <span class="st">"Relative frequency (top)"</span>,
+                               cluster_columns <span class="op">=</span> <span class="cn">FALSE</span>, 
+                               row_km <span class="op">=</span> <span class="fl">3</span>, 
+                               row_title <span class="op">=</span> <span class="st">"same direction"</span>, 
+                               column_names_rot <span class="op">=</span> <span class="fl">45</span>,
+                               row_names_gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>fontsize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,
+                               column_names_gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>fontsize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># opposite direction</span>
+<span class="va">acm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sweep.html">sweep</a></span><span class="op">(</span><span class="va">antag.mat</span>, <span class="fl">2</span>, <span class="fu">matrixStats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/matrixStats/man/rowRanges.html">colMaxs</a></span><span class="op">(</span><span class="va">antag.mat</span><span class="op">)</span>, FUN <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span>
+<span class="va">col</span> <span class="op">&lt;-</span> <span class="fu">circlize</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/circlize/man/colorRamp2.html">colorRamp2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#EEEEEE"</span>, <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">ht2</span> <span class="op">&lt;-</span> <span class="fu">ComplexHeatmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/Heatmap.html">Heatmap</a></span><span class="op">(</span><span class="va">acm</span>,
+                               col <span class="op">=</span> <span class="va">col</span>, 
+                               name <span class="op">=</span> <span class="st">"Relative frequency (bottom)"</span>,
+                               cluster_columns <span class="op">=</span> <span class="cn">FALSE</span>, 
+                               row_title <span class="op">=</span> <span class="st">"opposite direction"</span>, 
+                               row_km <span class="op">=</span> <span class="fl">3</span>, 
+                               column_names_rot <span class="op">=</span> <span class="fl">45</span>,
+                               row_names_gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>fontsize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,
+                               column_names_gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>fontsize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># phylum</span>
+<span class="va">sfp</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.id.type <span class="op">=</span> <span class="st">"metaphlan"</span>, 
+                                tax.level <span class="op">=</span> <span class="st">"genus"</span>, exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
+<span class="va">sfp20</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">sfp</span><span class="op">)</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span>
+<span class="va">uanno</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/extractTaxLevel.html">extractTaxLevel</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">sfp20</span><span class="op">)</span>,
+                                    tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>,
+                                    tax.level <span class="op">=</span> <span class="st">"phylum"</span>,
+                                    exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
+<span class="va">panno</span> <span class="op">&lt;-</span> <span class="fu">ComplexHeatmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/HeatmapAnnotation.html">HeatmapAnnotation</a></span><span class="op">(</span>phylum <span class="op">=</span> <span class="va">uanno</span><span class="op">)</span>
+
+<span class="va">uanno</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="va">uanno</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">uanno</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span>
+<span class="va">pcols</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#CC79A7"</span>, <span class="st">"#F0E442"</span>, <span class="st">"#009E73"</span>, <span class="st">"#56B4E9"</span>, <span class="st">"#E69F00"</span><span class="op">)</span>
+<span class="va">uanno</span> <span class="op">&lt;-</span> <span class="fu">ComplexHeatmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/Heatmap.html">Heatmap</a></span><span class="op">(</span><span class="va">uanno</span>, name <span class="op">=</span> <span class="st">"Phylum"</span>,
+                                 col <span class="op">=</span> <span class="va">pcols</span>,
+                                 cluster_columns <span class="op">=</span> <span class="cn">FALSE</span>,
+                                 column_names_rot <span class="op">=</span> <span class="fl">45</span>,
+                                 column_names_gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>fontsize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># put everything together</span>
+<span class="va">ht_list</span> <span class="op">&lt;-</span> <span class="va">ht1</span> <span class="op">%v%</span> <span class="va">banno</span> <span class="op">%v%</span> <span class="va">ht2</span> <span class="op">%v%</span> <span class="va">uanno</span>
+<span class="fu">ComplexHeatmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/draw-dispatch.html">draw</a></span><span class="op">(</span><span class="va">ht_list</span>, annotation_legend_list <span class="op">=</span> <span class="va">lgd_list</span>, merge_legend <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/decorate_annotation.html">decorate_annotation</a></span><span class="op">(</span><span class="st">"Abundance in Group 1"</span>, <span class="op">{</span>
+    <span class="fu">grid.text</span><span class="op">(</span><span class="st">"# signatures"</span>, x <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="st">"cm"</span><span class="op">)</span>, rot <span class="op">=</span> <span class="fl">90</span>, just <span class="op">=</span> <span class="st">"bottom"</span>, gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>fontsize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu">grid.text</span><span class="op">(</span><span class="st">"*"</span>, x <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">2.45</span>, <span class="st">"cm"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">1.2</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu">grid.text</span><span class="op">(</span><span class="st">"*"</span>, x <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">5.18</span>, <span class="st">"cm"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">1</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu">grid.text</span><span class="op">(</span><span class="st">"*"</span>, x <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">6.55</span>, <span class="st">"cm"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.95</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu">grid.text</span><span class="op">(</span><span class="st">"*"</span>, x <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">8.6</span>, <span class="st">"cm"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.85</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu">grid.text</span><span class="op">(</span><span class="st">"*"</span>, x <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">10</span>, <span class="st">"cm"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.7</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu">grid.text</span><span class="op">(</span><span class="st">"*"</span>, x <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">10.7</span>, <span class="st">"cm"</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.7</span>, <span class="st">"cm"</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span></code></pre></div>
+<p><img src="BugSigDBStats_files/figure-html/mheat-1.png" width="960"></p>
 </div>
 <div id="signature-similarity" class="section level2">
 <h2 class="hasAnchor">
@@ -904,16 +1059,16 @@
 <div id="jaccard-index" class="section level3">
 <h3 class="hasAnchor">
 <a href="#jaccard-index" class="anchor"></a>Jaccard index</h3>
-<p>The <code>calcPairwiseOverlaps</code> function works quickly on all of bugsigdb currently, but <code>makeDist</code> is slow and surely could be improved for efficiency. For now, use only nasal samples:</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat_subset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"stomach"</span><span class="op">)</span>
-<span class="va">sigs_subset</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">dat_subset</span><span class="op">)</span>
-<span class="va">paircomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calcPairwiseOverlaps.html">calcPairwiseOverlaps</a></span><span class="op">(</span><span class="va">sigs_subset</span><span class="op">)</span>
-<span class="va">jdist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeDist.html">makeDist</a></span><span class="op">(</span><span class="va">paircomp</span>, <span class="st">"jaccard"</span><span class="op">)</span></code></pre></div>
+<p>The <code>calcPairwiseOverlaps</code> function works quickly on all of bugsigdb currently, but <code>makeDist</code> is slow and surely could be improved for efficiency. For now, use only stomach samples:</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">stomachsub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"stomach"</span><span class="op">)</span>
+<span class="va">sigsub</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">stomachsub</span><span class="op">)</span>
+<span class="va">paircomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calcPairwiseOverlaps.html">calcPairwiseOverlaps</a></span><span class="op">(</span><span class="va">sigsub</span><span class="op">)</span>
+<span class="va">jdist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeDist.html">makeDist</a></span><span class="op">(</span><span class="va">paircomp</span>, <span class="st">"jaccard"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">sigsub</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures).</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">jdist</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-23-1.png" width="768"></p>
+<p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-26-1.png" width="768"></p>
 </div>
 </div>
 </div>
@@ -930,7 +1085,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ludwig Geistlinger, Levi Waldron, Jennifer Wokaty.</p>
+  <p>Developed by Ludwig Geistlinger, Levi Waldron.</p>
 </div>
 
 <div class="pkgdown">

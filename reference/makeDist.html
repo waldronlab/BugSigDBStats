@@ -75,7 +75,7 @@ output of calcPairwiseOverlaps" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BugSigDB Stats and Analysis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.99.2</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@ output of calcPairwiseOverlaps</h1>
 output of calcPairwiseOverlaps</p>
     </div>
 
-    <pre class="usage"><span class='fu'>makeDist</span><span class='op'>(</span><span class='va'>overlaps</span>, use <span class='op'>=</span> <span class='st'>"jaccard"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>makeDist</span><span class='op'>(</span><span class='va'>overlaps</span>, use <span class='op'>=</span> <span class='st'>"jaccard"</span>, <span class='va'>names</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -128,6 +128,10 @@ output of calcPairwiseOverlaps</p>
     <tr>
       <th>use</th>
       <td><p>Either "overlap" or "jaccard"</p></td>
+    </tr>
+    <tr>
+      <th>names</th>
+      <td><p>A list of signature names</p></td>
     </tr>
     </table>
 
@@ -145,10 +149,11 @@ output of calcPairwiseOverlaps</p>
 #&gt;     jaccard
 #&gt; 1 0.3333333
 #&gt; 2 0.2500000
-#&gt; 3 0.5000000</div><div class='input'><span class='fu'>makeDist</span><span class='op'>(</span><span class='va'>all</span>, <span class='st'>"jaccard"</span><span class='op'>)</span>
+#&gt; 3 0.5000000</div><div class='input'><span class='va'>sigs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>testlist</span><span class='op'>)</span>
+<span class='fu'>makeDist</span><span class='op'>(</span><span class='va'>all</span>, <span class='st'>"jaccard"</span>, <span class='va'>sigs</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;           a         b
 #&gt; b 0.6666667          
-#&gt; c 0.7500000 0.5000000</div><div class='input'><span class='fu'>makeDist</span><span class='op'>(</span><span class='va'>all</span>, <span class='st'>"overlap"</span><span class='op'>)</span>
+#&gt; c 0.7500000 0.5000000</div><div class='input'><span class='fu'>makeDist</span><span class='op'>(</span><span class='va'>all</span>, <span class='st'>"overlap"</span>, <span class='va'>sigs</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;     a   b
 #&gt; b 0.0    
 #&gt; c 0.5 0.0</div></pre>
@@ -163,7 +168,7 @@ output of calcPairwiseOverlaps</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Ludwig Geistlinger, Levi Waldron, Jennifer Wokaty.</p>
+  <p>Developed by Ludwig Geistlinger, Levi Waldron.</p>
 </div>
 
 <div class="pkgdown">
