@@ -5,7 +5,7 @@
 #'
 #' @return a Jaccard similarity object 
 #' @export
-#' @importFrom stats as.dist
+#' @importFrom stats as.matrix
 #'
 #' @examples
 #' testlist <- list(a = 1:3, b = 3, c = 3:4)
@@ -71,5 +71,5 @@ calcJaccardSimilarity <- function(sets) {
     }
   }
   
-  return(as.dist(jsim))
+  return(jsim)
 }
