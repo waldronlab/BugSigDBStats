@@ -7,6 +7,56 @@
 # 
 ###########################################################
 
+# network similarity plot
+#' @param smat numeric similarity matrix. Must be symmetric.
+#' @param sigs signatures. Named list of character vectors. 
+#' @param min.sim numeric. Minimum pairwise similarity in [0,1] for an edge to be included.
+#' @param color numeric. Named numeric vector parallel to sigs. 
+library(igraph)
+library(ggraph)
+networkSimPlot <- function(smat, sigs, min.sim = 0.2, color, lwd = 1)
+{
+    stopifnot(all(rownames(smat) == colnames(smat)))
+    stopifnot(all(rownames(smat) == names(sigs)))
+    rownames(smat) <- colnames(smat) <- names(sigs) <- vapply(rownames(smat), .getShortName, character(1))
+
+    if (!is.numeric(min.sim) | min.sim < 0 | min.sim > 1) {
+        stop("\"min.sim\" should be a number between 0 and 1.")
+    }
+
+    wd <- reshape2::melt(smat)
+    wd <- wd[wd[, 1] != wd[, 2], ]
+    wd <- wd[!is.na(wd[, 3]), ] 
+    g <- igraph::graph.data.frame(wd[, -3], directed = FALSE)
+
+    igraph::E(g)$width <- sqrt(wd[, 3] * 5) * lwd
+    igraph::E(g)$weight <- wd[, 3]
+    g <- igraph::delete.edges(g, igraph::E(g)[wd[, 3] < min.sim])
+    idx <- unlist(sapply(igraph::V(g)$name, function(x) which(x == names(sigs))))
+    cnt <- lengths(sigs[idx])
+    
+    igraph::V(g)$size <- cnt
+    colVar <- color[idx] 
+    igraph::V(g)$color <- colVar
+
+    p <- ggraph(g, layout = "nicely")
+    p <- p + geom_edge_link(alpha = 0.8, aes_(width = ~I(width)), 
+            colour = "darkgrey")
+
+    # p <- add_category_nodes(p = p, cex_category = cex_category, color = color)
+    p <- p + ggnewscale::new_scale_fill() + geom_point(shape = 21, 
+        aes_(x = ~x, y = ~y, fill = ~color, size = ~size)) + 
+        scale_size_continuous(name = "number of genes", range = c(3, 
+            8) * cex_category) + scale_fill_continuous(low = "red", 
+        high = "blue", name = color, guide = guide_colorbar(reverse = TRUE)) + 
+        theme(legend.title = element_text(size = 10), legend.text = element_text(size = 10)) + 
+        theme(panel.background = element_blank())
+
+    p + coord_equal() + guides(size = guide_legend(order = 1), 
+        fill = guide_colorbar(order = 2))
+    return(g)
+}
+
 #' Plot curation output as a function of time
 #'
 #' @param dat a \code{data.frame} storing BugSigDB data.
