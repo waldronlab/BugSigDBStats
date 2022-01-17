@@ -260,11 +260,11 @@ microbeHeatmap <- function(dat,
                                     tax.id.type = "taxname",
                                     tax.level = tax.level)
     rownames(cooc.mat) <- colnames(cooc.mat) <- n 
-    ComplexHeatmap::Heatmap(log10(cooc.mat + 0.1), 
+    print(ComplexHeatmap::Heatmap(log10(cooc.mat + 0.1), 
                             name = "log10 Co-occurence",
                             top_annotation = anno,
                             row_names_gp = gpar(fontsize = fontsize),
                             column_names_gp = gpar(fontsize = fontsize), 
-                            ...)
+                            ...))
     return(invisible(cooc.mat))
 }
