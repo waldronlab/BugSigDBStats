@@ -49,7 +49,7 @@ calcSemanticSimilarity <- function(file1, file2) {
     
     sig1 <- .bugSigDBExportToSig(file1)
     sig2 <- .bugSigDBExportToSig(file2)
-    ncbi_onto <- .getNcbiTaxonomyObo() 
+    ncbi_onto <- getNcbiTaxonomyObo() 
     
     utax <- unique(unlist(sig1))
     nt <- utax[!(utax %in% ncbi_onto$id)]
@@ -70,13 +70,13 @@ calcSemanticSimilarity <- function(file1, file2) {
 
 #' Get NCBI Taxonomy in OBO format
 #'
-#' \code{.getNcbiTaxonomyObo} gets the NCBI taxonomy in OBO format.
+#' Gets the NCBI taxonomy in OBO format.
 #'
 #' @return NCBI taxonomy in OBO format
 #' @importFrom utils download.file
-#' @keywords internal
+#' @export
 #' 
-.getNcbiTaxonomyObo <- function() {
+getNcbiTaxonomyObo <- function() {
 
     onto <- .getResourceFromCache("ncbi.onto")
 
@@ -121,8 +121,4 @@ calcSemanticSimilarity <- function(file1, file2) {
     names(sig) <- sig_names
     sig
 }
-
-
-
-
 

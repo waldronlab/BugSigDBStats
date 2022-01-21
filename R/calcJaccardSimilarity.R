@@ -3,9 +3,8 @@
 #' @param sets
 #' a named list of signatures
 #'
-#' @return a Jaccard similarity object 
+#' @return a Jaccard similarity matrix 
 #' @export
-#' @importFrom stats as.matrix
 #'
 #' @examples
 #' testlist <- list(a = 1:3, b = 3, c = 3:4)

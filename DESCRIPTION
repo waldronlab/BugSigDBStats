@@ -34,11 +34,12 @@ Imports:
     ontologySimilarity,
     BiocFileCache,
     ComplexHeatmap,
-    XML,
+    XML
 Suggests:
     circlize,
     knitr,
     lubridate,
+    matrixStats,
     pkgdown,
     rmarkdown,
     safe,

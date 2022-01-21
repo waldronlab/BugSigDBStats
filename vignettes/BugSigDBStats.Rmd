@@ -373,13 +373,14 @@ uanno <- bugsigdbr::extractTaxLevel(names(sfp20),
                                     tax.id.type = "taxname",
                                     tax.level = "phylum",
                                     exact.tax.level = FALSE) 
+phyla.grid <- seq_along(unique(uanno))
 panno <- ComplexHeatmap::HeatmapAnnotation(phylum = uanno)
 
 uanno <- matrix(uanno, nrow = 1)
 colnames(uanno) <- names(top20)
 pcols <- c("#CC79A7", "#F0E442", "#009E73", "#56B4E9", "#E69F00")
 uanno <- ComplexHeatmap::Heatmap(uanno, name = "Phylum",
-                                 col = pcols,
+                                 col = pcols[phyla.grid],
                                  cluster_columns = FALSE,
                                  column_names_rot = 45,
                                  column_names_gp = gpar(fontsize = 8))

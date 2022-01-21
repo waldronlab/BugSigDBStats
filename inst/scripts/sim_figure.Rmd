@@ -80,7 +80,7 @@ Function to parse out direction from signature names:
 # Obtain the data
 ```{r}
 dat <- bugsigdbr::importBugSigDB()
-onto <- BugSigDBStats:::.getNcbiTaxonomyObo()
+onto <- BugSigDBStats::getNcbiTaxonomyObo()
 # onto <- ontologyIndex::get_ontology("http://purl.obolibrary.org/obo/ncbitaxon.obo")
 ```
 
@@ -305,4 +305,12 @@ ps.down <- sort(ps.down)
 data.frame(CONDITION = names(ps.down), PVAL = ps.down, NR.STUDIES = lens[names(ps.down)])
 ```
 
+Inspect top conditions further:
+
+```{r}
+sigs.bkp <- sigs
+ind <- cond == "HIV-infection" & dir == "UP"
+smat <- sim.mat[ind,ind]
+sigs <- sigs[ind]
+```
 
