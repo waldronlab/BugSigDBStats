@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • BugSigDB Stats and Analysis</title>
+<title>Get NCBI Taxonomy in OBO format — getNcbiTaxonomyObo • BugSigDB Stats and Analysis</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Get NCBI Taxonomy in OBO format — getNcbiTaxonomyObo" />
+<meta property="og:description" content="Gets the NCBI taxonomy in OBO format." />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -99,133 +100,25 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Get NCBI Taxonomy in OBO format</h1>
+    <small class="dont-index">Source: <a href='https://github.com/waldronlab/BugSigDBStats/blob/master/R/calcSemanticSimilarity.R'><code>R/calcSemanticSimilarity.R</code></a></small>
+    <div class="hidden name"><code>getNcbiTaxonomyObo.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Gets the NCBI taxonomy in OBO format.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>getNcbiTaxonomyObo</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="calcJaccardSimilarity.html">calcJaccardSimilarity()</a></code> </p>
-        </td>
-        <td><p>Calculate pairwise Jaccard similarity between all signatures</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calcPairwiseOverlaps.html">calcPairwiseOverlaps()</a></code> </p>
-        </td>
-        <td><p>Calculate pairwise overlaps between all signatures</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calcSemanticSimilarity.html">calcSemanticSimilarity()</a></code> </p>
-        </td>
-        <td><p>Calculate semantic similarity</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="getNcbiTaxonomyObo.html">getNcbiTaxonomyObo()</a></code> </p>
-        </td>
-        <td><p>Get NCBI Taxonomy in OBO format</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="makeDist.html">makeDist()</a></code> </p>
-        </td>
-        <td><p>Title Create a Jaccard or overlap dissimilarity matrix from the
-output of calcPairwiseOverlaps</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="microbeHeatmap.html">microbeHeatmap()</a></code> </p>
-        </td>
-        <td><p>Plot microbe co-occurrence in a heatmap</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="paperStat.html">paperStat()</a></code> </p>
-        </td>
-        <td><p>Paper stats</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plotCuratorStats.html">plotCuratorStats()</a></code> </p>
-        </td>
-        <td><p>Plot curation output for each curator</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plotProgressOverTime.html">plotProgressOverTime()</a></code> </p>
-        </td>
-        <td><p>Plot curation output as a function of time</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plotUniqueMicrobesOverTime.html">plotUniqueMicrobesOverTime()</a></code> </p>
-        </td>
-        <td><p>Plot curation output for each curator</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pmid2pubyear.html">pmid2pubyear()</a></code> </p>
-        </td>
-        <td><p>Get the publication year for a PMID</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sigStat.html">sigStat()</a></code> </p>
-        </td>
-        <td><p>Signature stats</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="stratifyByCurator.html">stratifyByCurator()</a></code> </p>
-        </td>
-        <td><p>Stratify curation output by curator</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="stripEmptySignatures.html">stripEmptySignatures()</a></code> </p>
-        </td>
-        <td><p>Remove entries that do not contain signatures</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tabCol.html">tabCol()</a></code> </p>
-        </td>
-        <td><p>Table column</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="tabDiv.html">tabDiv()</a></code> </p>
-        </td>
-        <td><p>Table diversity column</p></td>
-      </tr>
-    </tbody>
-    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>NCBI taxonomy in OBO format</p>
+
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
