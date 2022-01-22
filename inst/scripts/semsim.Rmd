@@ -24,17 +24,9 @@ ontology [Schlicker et al., 2006](https://bmcbioinformatics.biomedcentral.com/ar
 We therefore treat the NCBI taxonomy as an ontology, and compute semantic similarity
 between signatures.
 
-```{r, eval = FALSE}
-onto <- ontologyIndex::get_ontology("http://purl.obolibrary.org/obo/ncbitaxon.obo")
-```
-
-```{r heinzcache, echo = FALSE} 
-onto <- BugSigDBStats:::.getResourceFromCache("ncbi.onto")
-if(is.null(onto))
-{
-    onto <- ontologyIndex::get_ontology("http://purl.obolibrary.org/obo/ncbitaxon.obo")
-    BugSigDBStats:::.cacheResource(onto, "ncbi.onto")
-} 
+```{r} 
+onto <- BugSigDBStats::getNcbiTaxonomyObo()
+# onto <- ontologyIndex::get_ontology("http://purl.obolibrary.org/obo/ncbitaxon.obo")
 ```
 
 ```{r}

@@ -276,9 +276,7 @@ sum(lengths(sigs) > 4)
 ```{r coocc, fig.width = 10, fig.height = 10}
 dat.feces <- subset(dat, `Body site` == "feces")
 cooc.mat <- microbeHeatmap(dat.feces, tax.level = "genus")
-microbeHeatmap(dat.feces, tax.level = "genus")
 antag.mat <- microbeHeatmap(dat.feces, tax.level = "genus", antagonistic = TRUE)
-microbeHeatmap(dat.feces, tax.level = "genus", antagonistic = TRUE)
 ```
 
 Get the top 20 genera most frequently reported as differentially abundant:
@@ -403,21 +401,19 @@ decorate_annotation("Abundance in Group 1", {
 ## Signature similarity
 
 ### Jaccard index
-
-The `calcPairwiseOverlaps` function works quickly on all of bugsigdb currently, 
-but `makeDist` is slow and surely could be improved for efficiency. For now,
-use only stomach samples:
+ 
+Inspect signature similarity for signatures from stomach samples based on Jaccard index:
 
 ```{r}
 stomachsub <- subset(dat, `Body site` == "stomach")
 sigsub <- bugsigdbr::getSignatures(stomachsub)
-paircomp <- calcPairwiseOverlaps(sigsub)
-jdist <- makeDist(paircomp, "jaccard", names(sigsub))
+pair.jsim <- calcJaccardSimilarity(sigsub)
 ```
 
 Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures). 
 
 ```{r, fig.height=15, fig.width=8}
+jdist <- as.dist(1 - pair.jsim)
 plot(hclust(jdist))
 ```
 
