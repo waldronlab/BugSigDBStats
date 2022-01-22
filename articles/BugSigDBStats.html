@@ -87,7 +87,7 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2022-01-22 05:09:49</code></pre>
+<pre><code>## Using cached version from 2022-01-22 21:56:06</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2123   48</code></pre>
@@ -902,16 +902,10 @@
 <pre><code>## Loading required namespace: safe</code></pre>
 <p><img src="BugSigDBStats_files/figure-html/coocc-1.png" width="960"></p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/microbeHeatmap.html">microbeHeatmap</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></code></pre></div>
-<p><img src="BugSigDBStats_files/figure-html/coocc-2.png" width="960"></p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">antag.mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/microbeHeatmap.html">microbeHeatmap</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span>, antagonistic <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p><img src="BugSigDBStats_files/figure-html/coocc-3.png" width="960"></p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/microbeHeatmap.html">microbeHeatmap</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.level <span class="op">=</span> <span class="st">"genus"</span>, antagonistic <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p><img src="BugSigDBStats_files/figure-html/coocc-4.png" width="960"></p>
+<p><img src="BugSigDBStats_files/figure-html/coocc-2.png" width="960"></p>
 <p>Get the top 20 genera most frequently reported as differentially abundant:</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sigs.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">dat.feces</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>, 
                             tax.level <span class="op">=</span> <span class="st">"genus"</span>, exact.tax.level <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> 
 <span class="va">top20</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html">unlist</a></span><span class="op">(</span><span class="va">sigs.feces</span><span class="op">)</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span>
@@ -928,17 +922,17 @@
 ##      Akkermansia     Anaerostipes      Eubacterium      Escherichia 
 ##               68               67               67               64</code></pre>
 <p>Subset heatmaps to the top 20 genera most frequently reported as differentially abundant:</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span> <span class="op">%in%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames</a></span><span class="op">(</span><span class="va">cooc.mat</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cooc.mat</span> <span class="op">&lt;-</span> <span class="va">cooc.mat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span><span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span> <span class="op">%in%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames</a></span><span class="op">(</span><span class="va">antag.mat</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">antag.mat</span> <span class="op">&lt;-</span> <span class="va">antag.mat</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span><span class="op">]</span></code></pre></div>
 <p>Distinguish by direction of abundance change (increased / decreased):</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># increased</span>
 <span class="va">sub.dat.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat.feces</span>, <span class="va">`Abundance in Group 1`</span> <span class="op">==</span> <span class="st">"increased"</span><span class="op">)</span>
 <span class="va">sigs.feces.up</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">sub.dat.feces</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>, 
@@ -956,7 +950,7 @@
 ##               24               30               64               50 
 ##      Akkermansia     Anaerostipes      Eubacterium      Escherichia 
 ##               36               23               28               41</code></pre>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># decreased</span>
 <span class="va">sub.dat.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat.feces</span>, <span class="va">`Abundance in Group 1`</span> <span class="op">==</span> <span class="st">"decreased"</span><span class="op">)</span>
 <span class="va">sigs.feces.down</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">sub.dat.feces</span>, tax.id.type <span class="op">=</span> <span class="st">"taxname"</span>, 
@@ -975,7 +969,7 @@
 ##      Akkermansia     Anaerostipes      Eubacterium      Escherichia 
 ##               28               42               37               21</code></pre>
 <p>Plot the heatmap</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># annotation</span>
 <span class="va">mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span>nc <span class="op">=</span> <span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span><span class="op">(</span><span class="va">top20.up</span>, <span class="va">top20.down</span><span class="op">)</span><span class="op">)</span>
 <span class="va">bp</span> <span class="op">&lt;-</span> <span class="fu">ComplexHeatmap</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ComplexHeatmap/man/anno_barplot.html">anno_barplot</a></span><span class="op">(</span><span class="va">mat</span>, gp <span class="op">=</span> <span class="fu">gpar</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"#D55E00"</span>, <span class="st">"#0072B2"</span><span class="op">)</span>,
@@ -1062,15 +1056,15 @@
 <div id="jaccard-index" class="section level3">
 <h3 class="hasAnchor">
 <a href="#jaccard-index" class="anchor"></a>Jaccard index</h3>
-<p>The <code>calcPairwiseOverlaps</code> function works quickly on all of bugsigdb currently, but <code>makeDist</code> is slow and surely could be improved for efficiency. For now, use only stomach samples:</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<p>Inspect signature similarity for signatures from stomach samples based on Jaccard index:</p>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stomachsub</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">`Body site`</span> <span class="op">==</span> <span class="st">"stomach"</span><span class="op">)</span>
 <span class="va">sigsub</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/getSignatures.html">getSignatures</a></span><span class="op">(</span><span class="va">stomachsub</span><span class="op">)</span>
-<span class="va">paircomp</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calcPairwiseOverlaps.html">calcPairwiseOverlaps</a></span><span class="op">(</span><span class="va">sigsub</span><span class="op">)</span>
-<span class="va">jdist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeDist.html">makeDist</a></span><span class="op">(</span><span class="va">paircomp</span>, <span class="st">"jaccard"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">sigsub</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="va">pair.jsim</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/calcJaccardSimilarity.html">calcJaccardSimilarity</a></span><span class="op">(</span><span class="va">sigsub</span><span class="op">)</span></code></pre></div>
 <p>Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are identical signatures).</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">jdist</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">jdist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html">as.dist</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">pair.jsim</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/hclust.html">hclust</a></span><span class="op">(</span><span class="va">jdist</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/unnamed-chunk-26-1.png" width="768"></p>
 </div>
 </div>
