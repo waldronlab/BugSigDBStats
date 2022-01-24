@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">January 23, 2022</h4>
+            <h4 class="date">January 24, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -87,10 +87,10 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2022-01-23 05:08:10</code></pre>
+<pre><code>## Using cached version from 2022-01-24 05:09:00</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2123   48</code></pre>
+<pre><code>## [1] 2129   48</code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -130,10 +130,10 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 528</code></pre>
+<pre><code>## [1] 531</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2123</code></pre>
+<pre><code>## [1] 2129</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -163,7 +163,7 @@
 <span class="va">ind2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[[</span><span class="st">"NCBI Taxonomy IDs"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">full.dat</span><span class="op">[</span><span class="va">ind1</span> <span class="op">&amp;</span> <span class="va">ind2</span>,<span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2123</code></pre>
+<pre><code>## [1] 2129</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -231,13 +231,13 @@
 ##                             Fatima,Yu Wang 
 ##                                          6 
 ##                                   Fcuevas3 
-##                                         24 
+##                                         25 
 ##                                       Gina 
 ##                                         14 
 ##                                   Haoyanzh 
 ##                                          1 
 ##                                Itslanapark 
-##                                         23 
+##                                         24 
 ##                                    Joyessa 
 ##                                         30 
 ##                                  Kwekuamoo 
@@ -302,7 +302,7 @@
 ## cross-sectional observational, not case-control 
 ##                                             131 
 ##                                    case-control 
-##                                             254</code></pre>
+##                                             257</code></pre>
 </div>
 </div>
 <div id="experiment-stats" class="section level1">
@@ -354,23 +354,23 @@
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##              1170                44                 6 
+##              1173                44                 6 
 ## 
 ## $`Location of subjects`
 ## 
-## United States of America                    China                    Italy 
-##                      350                      348                       51 
+##                    China United States of America                    Italy 
+##                      350                      350                       51 
 ##                    Spain              South Korea                  Finland 
 ##                       48                       42                       34 
 ##                   Canada                    Japan                   Brazil 
 ##                       27                       26                       23 
-##              Netherlands 
+##                   France 
 ##                       20 
 ## 
 ## $`Body site`
 ## 
 ##          feces         saliva uterine cervix         vagina          mouth 
-##            691             40             40             36             29 
+##            694             40             40             36             29 
 ##     oral gland       meconium   skin of body        stomach    nasopharynx 
 ##             28             25             24             23             22 
 ## 
@@ -390,7 +390,7 @@
 ## $`Antibiotics exclusion`
 ## 
 ##                 3 months                  1 month                 6 months 
-##                      157                       99                       63 
+##                      157                       99                       64 
 ##                 2 months                  4 weeks                  2 weeks 
 ##                       53                       38                       29 
 ##                  8 weeks before sample collection                  30 days 
@@ -405,61 +405,61 @@
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##           0.95900           0.03610           0.00492 
+##           0.95900           0.03600           0.00491 
 ## 
 ## $`Location of subjects`
 ## 
-## United States of America                    China                    Italy 
-##                   0.2880                   0.2860                   0.0419 
+##                    China United States of America                    Italy 
+##                   0.2870                   0.2870                   0.0418 
 ##                    Spain              South Korea                  Finland 
-##                   0.0395                   0.0345                   0.0280 
+##                   0.0394                   0.0345                   0.0279 
 ##                   Canada                    Japan                   Brazil 
-##                   0.0222                   0.0214                   0.0189 
-##              Netherlands 
+##                   0.0221                   0.0213                   0.0189 
+##                   France 
 ##                   0.0164 
 ## 
 ## $`Body site`
 ## 
 ##          feces         saliva uterine cervix         vagina          mouth 
-##         0.5680         0.0329         0.0329         0.0296         0.0238 
+##         0.5690         0.0328         0.0328         0.0295         0.0238 
 ##     oral gland       meconium   skin of body        stomach    nasopharynx 
-##         0.0230         0.0206         0.0197         0.0189         0.0181 
+##         0.0230         0.0205         0.0197         0.0189         0.0180 
 ## 
 ## $Condition
 ## 
 ##                         obesity                        COVID-19 
-##                          0.0850                          0.0611 
+##                          0.0848                          0.0609 
 ##             antimicrobial agent                            diet 
-##                          0.0528                          0.0454 
+##                          0.0527                          0.0453 
 ## human papilloma virus infection                  gastric cancer 
-##                          0.0347                          0.0289 
+##                          0.0346                          0.0288 
 ##                          asthma                   air pollution 
-##                          0.0264                          0.0248 
+##                          0.0263                          0.0247 
 ##                cesarean section                   endometriosis 
-##                          0.0248                          0.0248 
+##                          0.0247                          0.0247 
 ## 
 ## $`Antibiotics exclusion`
 ## 
 ##                 3 months                  1 month                 6 months 
-##                   0.2140                   0.1350                   0.0857 
+##                   0.2130                   0.1340                   0.0867 
 ##                 2 months                  4 weeks                  2 weeks 
-##                   0.0721                   0.0517                   0.0395 
+##                   0.0718                   0.0515                   0.0393 
 ##                  8 weeks before sample collection                  30 days 
-##                   0.0150                   0.0136                   0.0122 
+##                   0.0149                   0.0136                   0.0122 
 ##                  14 days 
-##                   0.0109</code></pre>
+##                   0.0108</code></pre>
 <p>Sample size:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ssize</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">sub.cols</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">summary</span><span class="op">)</span>
 <span class="va">ssize</span></code></pre></div>
 <pre><code>##         Group 0 sample size Group 1 sample size
-## Min.                0.00000             1.00000
-## 1st Qu.            13.00000            12.00000
-## Median             25.00000            24.00000
-## Mean               49.35234            71.30834
-## 3rd Qu.            48.00000            42.00000
-## Max.              969.00000          9623.00000
-## NA's               47.00000            35.00000</code></pre>
+## Min.                 0.0000             1.00000
+## 1st Qu.             13.0000            12.00000
+## Median              25.0000            24.00000
+## Mean                49.4202            71.32689
+## 3rd Qu.             48.0000            42.00000
+## Max.               969.0000          9623.00000
+## NA's                47.0000            35.00000</code></pre>
 </div>
 <div id="lab-analysis" class="section level2">
 <h2 class="hasAnchor">
@@ -472,19 +472,19 @@
 <pre><code>## $`Sequencing type`
 ## 
 ##  16S  WMS 
-## 1114   91 
+## 1117   91 
 ## 
 ## $`16S variable region`
 ## 
 ##       34        4      123       12       45      345        3       56 
-##      360      297       90       63       44       36       30       13 
+##      363      297       90       63       44       36       30       13 
 ##       23 23456789 
 ##       11       10 
 ## 
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                         807                         180 
+##                         810                         180 
 ##                 Ion Torrent                     RT-qPCR 
 ##                          87                          77 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
@@ -501,25 +501,25 @@
 <pre><code>## $`Sequencing type`
 ## 
 ##    16S    WMS 
-## 0.9240 0.0755 
+## 0.9250 0.0753 
 ## 
 ## $`16S variable region`
 ## 
 ##       34        4      123       12       45      345        3       56 
-##   0.3650   0.3010   0.0912   0.0638   0.0446   0.0365   0.0304   0.0132 
+##   0.3670   0.3000   0.0909   0.0636   0.0444   0.0364   0.0303   0.0131 
 ##       23 23456789 
 ##   0.0111   0.0101 
 ## 
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                     0.67300                     0.15000 
+##                     0.67400                     0.15000 
 ##                 Ion Torrent                     RT-qPCR 
-##                     0.07260                     0.06420 
+##                     0.07240                     0.06410 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
-##                     0.01000                     0.00751 
+##                     0.00998                     0.00749 
 ##           Mass spectrometry           HTF-Microbi.Array 
-##                     0.00417                     0.00334 
+##                     0.00416                     0.00333 
 ##           Illumina,Roche454        Non-quantitative PCR 
 ##                     0.00250                     0.00250</code></pre>
 </div>
@@ -534,7 +534,7 @@
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                     339                     329                      94 
+##                     339                     330                      94 
 ##                  DESeq2                  T-Test                   ANOVA 
 ##                      85                      73                      61 
 ##       Linear Regression               Metastats     Logistic Regression 
@@ -545,12 +545,12 @@
 ## $`MHT correction`
 ## 
 ## FALSE  TRUE 
-##   606   575 
+##   608   576 
 ## 
 ## $`Significance threshold`
 ## 
 ##  0.05   0.1  0.01 0.001   0.2  0.15     0  0.25 0.002 0.004 
-##  1048    68    26    12    12     4     3     3     2     2</code></pre>
+##  1049    68    28    12    12     4     3     3     2     2</code></pre>
 <p>Proportions instead:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -559,23 +559,23 @@
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                  0.2930                  0.2840                  0.0812 
+##                  0.2920                  0.2840                  0.0810 
 ##                  DESeq2                  T-Test                   ANOVA 
-##                  0.0734                  0.0630                  0.0527 
+##                  0.0732                  0.0629                  0.0525 
 ##       Linear Regression               Metastats     Logistic Regression 
-##                  0.0242                  0.0173                  0.0164 
+##                  0.0241                  0.0172                  0.0164 
 ##     Fisher's Exact Test 
 ##                  0.0121 
 ## 
 ## $`MHT correction`
 ## 
 ## FALSE  TRUE 
-## 0.513 0.487 
+## 0.514 0.486 
 ## 
 ## $`Significance threshold`
 ## 
 ##    0.05     0.1    0.01   0.001     0.2    0.15       0    0.25   0.002   0.004 
-## 0.88200 0.05720 0.02190 0.01010 0.01010 0.00337 0.00253 0.00253 0.00168 0.00168</code></pre>
+## 0.88100 0.05710 0.02350 0.01010 0.01010 0.00336 0.00252 0.00252 0.00168 0.00168</code></pre>
 </div>
 <div id="alpha-diversity" class="section level2">
 <h2 class="hasAnchor">
@@ -585,7 +585,7 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">div.cols</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">table</span><span class="op">)</span></code></pre></div>
 <pre><code>##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
 ## decreased     11     150    98      42              14       82
-## increased      4     116    61      32               6       93
+## increased      4     117    62      33               6       93
 ## unchanged     25     436   232     164              30      235</code></pre>
 <p>Correspondence of Shannon diversity and Richness:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
@@ -737,7 +737,7 @@
 ## caecum                                                         1         3
 ## dental plaque                                                  0         3
 ## digestive system,digestive tract,lower digestive tract         0         1
-## feces                                                         40        85
+## feces                                                         41        85
 ## lung                                                           1         2
 ## meconium                                                       6         0
 ## mouth                                                          6         2
@@ -805,7 +805,7 @@
 ## caecum                                                      0.20
 ## dental plaque                                               0.50
 ## digestive system,digestive tract,lower digestive tract      0.90
-## feces                                                       0.67
+## feces                                                       0.66
 ## lung                                                        0.62
 ## meconium                                                    0.54
 ## mouth                                                       0.64
@@ -884,14 +884,14 @@
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   1.000   2.000   4.000   6.846   8.000 100.000</code></pre>
+##   1.000   2.000   4.000   6.852   8.000 100.000</code></pre>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html">gghistogram</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">30</span>, ylab <span class="op">=</span> <span class="st">"number of signatures"</span>,
     xlab <span class="op">=</span> <span class="st">"signature size"</span>, fill <span class="op">=</span> <span class="st">"#00AFBB"</span>, ggtheme <span class="op">=</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/setSize-1.png" width="700"></p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 958</code></pre>
+<pre><code>## [1] 962</code></pre>
 </div>
 <div id="microbe-co-occurrence" class="section level2">
 <h2 class="hasAnchor">
@@ -912,15 +912,15 @@
 <span class="va">top20</span></code></pre></div>
 <pre><code>## 
 ##      Bacteroides  Bifidobacterium Faecalibacterium    Streptococcus 
-##              217              145              143              127 
+##              217              145              143              128 
 ##       Prevotella     Ruminococcus          Blautia      Clostridium 
-##              119              117              111              104 
+##              119              117              112              105 
 ##    Lactobacillus        Roseburia  Parabacteroides            Dorea 
-##              104              102               99               91 
+##              105              103               99               91 
 ##        Alistipes      Coprococcus     Enterococcus      Veillonella 
-##               87               79               75               74 
-##      Akkermansia     Anaerostipes      Eubacterium      Escherichia 
-##               68               67               67               64</code></pre>
+##               88               80               75               74 
+##      Akkermansia     Anaerostipes      Eubacterium      Lachnospira 
+##               68               68               67               65</code></pre>
 <p>Subset heatmaps to the top 20 genera most frequently reported as differentially abundant:</p>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/all.html">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">top20</span><span class="op">)</span> <span class="op">%in%</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames</a></span><span class="op">(</span><span class="va">cooc.mat</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -943,13 +943,13 @@
 ##      Bacteroides  Bifidobacterium Faecalibacterium    Streptococcus 
 ##               82               62               48               83 
 ##       Prevotella     Ruminococcus          Blautia      Clostridium 
-##               59               49               49               59 
+##               59               49               49               60 
 ##    Lactobacillus        Roseburia  Parabacteroides            Dorea 
 ##               73               34               45               42 
 ##        Alistipes      Coprococcus     Enterococcus      Veillonella 
-##               24               30               64               50 
-##      Akkermansia     Anaerostipes      Eubacterium      Escherichia 
-##               36               23               28               41</code></pre>
+##               25               30               64               50 
+##      Akkermansia     Anaerostipes      Eubacterium      Lachnospira 
+##               36               23               28               17</code></pre>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># decreased</span>
 <span class="va">sub.dat.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">dat.feces</span>, <span class="va">`Abundance in Group 1`</span> <span class="op">==</span> <span class="st">"decreased"</span><span class="op">)</span>
@@ -959,15 +959,15 @@
 <span class="va">top20.down</span></code></pre></div>
 <pre><code>## 
 ##      Bacteroides  Bifidobacterium Faecalibacterium    Streptococcus 
-##              131               79               93               41 
+##              131               79               93               42 
 ##       Prevotella     Ruminococcus          Blautia      Clostridium 
-##               58               66               60               44 
+##               58               66               61               44 
 ##    Lactobacillus        Roseburia  Parabacteroides            Dorea 
-##               31               66               52               47 
+##               32               67               52               47 
 ##        Alistipes      Coprococcus     Enterococcus      Veillonella 
-##               61               47                9               22 
-##      Akkermansia     Anaerostipes      Eubacterium      Escherichia 
-##               28               42               37               21</code></pre>
+##               61               48                9               22 
+##      Akkermansia     Anaerostipes      Eubacterium      Lachnospira 
+##               28               43               37               46</code></pre>
 <p>Plot the heatmap</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># annotation</span>
