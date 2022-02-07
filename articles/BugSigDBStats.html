@@ -63,7 +63,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 class="date">February 6, 2022</h4>
+            <h4 class="date">February 7, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/master/vignettes/BugSigDBStats.Rmd"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -87,10 +87,10 @@
 <p>Get bulk export from bugsigdb.org:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html">importBugSigDB</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## Using cached version from 2022-02-06 05:08:32</code></pre>
+<pre><code>## Using cached version from 2022-02-07 05:08:27</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2153   48</code></pre>
+<pre><code>## [1] 2154   48</code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "Study"                      "Study design"              
@@ -130,10 +130,10 @@
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 537</code></pre>
+<pre><code>## [1] 538</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2153</code></pre>
+<pre><code>## [1] 2154</code></pre>
 <p>Publication date of the curated papers:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="va">pmids</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span><span class="op">]</span>
@@ -163,7 +163,7 @@
 <span class="va">ind2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[[</span><span class="st">"NCBI Taxonomy IDs"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">full.dat</span><span class="op">[</span><span class="va">ind1</span> <span class="op">&amp;</span> <span class="va">ind2</span>,<span class="op">]</span>
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 2153</code></pre>
+<pre><code>## [1] 2154</code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under curation?):</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sets.html">setdiff</a></span><span class="op">(</span><span class="va">pmids</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -190,90 +190,94 @@
 <pre><code>## 
 ##                                      Chloe 
 ##                                          1 
-##                         Chloe,Claregrieve1 
-##                                          1 
-##            Chloe,Claregrieve1,WikiWorks743 
-##                                          1 
 ##                               Claregrieve1 
 ##                                        128 
+##                         Claregrieve1,Chloe 
+##                                          1 
+##            Claregrieve1,Chloe,WikiWorks743 
+##                                          1 
 ##                        Claregrieve1,Fatima 
-##                                          5 
+##                                          3 
 ##                      Claregrieve1,Lwaldron 
 ##                                          1 
 ##                           Cynthia Anderson 
 ##                                         20 
-## Cynthia Anderson,LGeistlinger,WikiWorks743 
-##                                          2 
-##     Cynthia Anderson,Lwaldron,WikiWorks743 
-##                                          1 
 ##                                     Fatima 
 ##                                          5 
-##                            Fatima,Fcuevas3 
-##                                          1 
-##                             Fatima,Joyessa 
-##                                          1 
-##              Fatima,Kwekuamoo,WikiWorks743 
+##                        Fatima,Claregrieve1 
 ##                                          2 
-##    Fatima,LGeistlinger,Rimsha,WikiWorks743 
-##                                          1 
-##               Fatima,Lwaldron,WikiWorks743 
-##                                          4 
-##                       Fatima,Madhubani Dey 
-##                                          2 
-##                 Fatima,Rimsha,WikiWorks743 
-##                                          1 
-##                              Fatima,Tislam 
-##                                          6 
-##                               Fatima,Titas 
-##                                          1 
-##                        Fatima,WikiWorks743 
-##                                         53 
-##                             Fatima,Yu Wang 
-##                                          6 
 ##                                   Fcuevas3 
-##                                         26 
+##                                         43 
+##                            Fcuevas3,Fatima 
+##                                          1 
 ##                                       Gina 
 ##                                         14 
 ##                                   Haoyanzh 
-##                                          1 
+##                                         11 
 ##                                Itslanapark 
-##                                         27 
+##                                         34 
 ##                                    Joyessa 
-##                                         30 
+##                                         29 
+##                             Joyessa,Fatima 
+##                                          2 
 ##                                  Kwekuamoo 
 ##                                         37 
-##                     Kwekuamoo,WikiWorks743 
-##                                          1 
 ##                              Lorakasselman 
 ##                                          2 
 ##                                   Lwaldron 
 ##                                          7 
-##                     Lwaldron,Madhubani Dey 
-##                                          1 
-##                             Lwaldron,Titas 
-##                                          1 
-##                      Lwaldron,WikiWorks743 
-##                                         34 
 ##                              Madhubani Dey 
 ##                                         44 
+##                       Madhubani Dey,Fatima 
+##                                          2 
+##                     Madhubani Dey,Lwaldron 
+##                                          1 
 ##                                    Manuela 
 ##                                         11 
 ##                                     Mmarin 
-##                                         16 
+##                                         17 
 ##                                Samara.Khan 
 ##                                         47 
 ##                                     Tislam 
-##                                         12 
+##                                         15 
+##                              Tislam,Fatima 
+##                                          6 
 ##                                      Titas 
 ##                                         11 
+##                               Titas,Fatima 
+##                                          1 
+##                             Titas,Lwaldron 
+##                                          1 
 ##                                  Valentina 
 ##                                          2 
-##        WikiWorks,WikiWorks743,WikiWorks753 
-##                                          1 
 ##                               WikiWorks743 
-##                                       1547 
+##                                       1546 
+## WikiWorks743,Cynthia Anderson,LGeistlinger 
+##                                          2 
+##     WikiWorks743,Cynthia Anderson,Lwaldron 
+##                                          1 
+##                        WikiWorks743,Fatima 
+##                                         54 
+##              WikiWorks743,Fatima,Kwekuamoo 
+##                                          2 
+##               WikiWorks743,Fatima,Lwaldron 
+##                                          3 
+##                     WikiWorks743,Kwekuamoo 
+##                                          1 
+##                      WikiWorks743,Lwaldron 
+##                                         34 
+##               WikiWorks743,Lwaldron,Fatima 
+##                                          1 
+##                 WikiWorks743,Rimsha,Fatima 
+##                                          1 
+##    WikiWorks743,Rimsha,Fatima,LGeistlinger 
+##                                          1 
 ##                  WikiWorks743,WikiWorks753 
-##                                          1</code></pre>
+##                                          1 
+##        WikiWorks743,WikiWorks753,WikiWorks 
+##                                          1 
+##                             Yu Wang,Fatima 
+##                                          6</code></pre>
 </div>
 <div id="study-stats" class="section level1">
 <h1 class="hasAnchor">
@@ -288,7 +292,7 @@
 <pre><code>##                 case-control,prospective cohort 
 ##                                               1 
 ##                      case-control,meta-analysis 
-##                                               3 
+##                                               4 
 ##                                   meta-analysis 
 ##                                               4 
 ##                     randomized controlled trial 
@@ -354,7 +358,7 @@
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##              1188                44                 6 
+##              1189                44                 6 
 ## 
 ## $`Location of subjects`
 ## 
@@ -370,7 +374,7 @@
 ## $`Body site`
 ## 
 ##          feces         saliva uterine cervix         vagina          mouth 
-##            706             41             40             37             29 
+##            707             41             40             37             29 
 ##     oral gland       meconium   skin of body        stomach    nasopharynx 
 ##             28             25             25             23             22 
 ## 
@@ -405,16 +409,16 @@
 <pre><code>## $`Host species`
 ## 
 ##      Homo sapiens      Mus musculus Rattus norvegicus 
-##           0.96000           0.03550           0.00485 
+##           0.96000           0.03550           0.00484 
 ## 
 ## $`Location of subjects`
 ## 
 ## United States of America                    China                    Italy 
-##                   0.2850                   0.2840                   0.0430 
+##                   0.2850                   0.2840                   0.0429 
 ##                    Spain              South Korea                  Finland 
-##                   0.0389                   0.0341                   0.0276 
+##                   0.0389                   0.0340                   0.0276 
 ##                    Japan                   Canada                   Brazil 
-##                   0.0227                   0.0219                   0.0187 
+##                   0.0227                   0.0219                   0.0186 
 ##                   France 
 ##                   0.0162 
 ## 
@@ -423,16 +427,16 @@
 ##          feces         saliva uterine cervix         vagina          mouth 
 ##         0.5720         0.0332         0.0324         0.0300         0.0235 
 ##     oral gland       meconium   skin of body        stomach    nasopharynx 
-##         0.0227         0.0203         0.0203         0.0186         0.0178 
+##         0.0227         0.0202         0.0202         0.0186         0.0178 
 ## 
 ## $Condition
 ## 
 ##                         obesity                        COVID-19 
-##                          0.0838                          0.0602 
+##                          0.0837                          0.0602 
 ##             antimicrobial agent                            diet 
-##                          0.0521                          0.0448 
+##                          0.0520                          0.0447 
 ## human papilloma virus infection                  gastric cancer 
-##                          0.0342                          0.0285 
+##                          0.0341                          0.0285 
 ##                          asthma                   air pollution 
 ##                          0.0260                          0.0244 
 ##                cesarean section                   endometriosis 
@@ -456,7 +460,7 @@
 ## Min.                0.00000             1.00000
 ## 1st Qu.            13.00000            12.00000
 ## Median             25.00000            24.00000
-## Mean               50.12091            80.00747
+## Mean               50.19631            80.02819
 ## 3rd Qu.            48.00000            42.00000
 ## Max.              969.00000          9623.00000
 ## NA's               49.00000            35.00000</code></pre>
@@ -472,7 +476,7 @@
 <pre><code>## $`Sequencing type`
 ## 
 ##  16S  WMS 
-## 1129   94 
+## 1130   94 
 ## 
 ## $`16S variable region`
 ## 
@@ -484,7 +488,7 @@
 ## $`Sequencing platform`
 ## 
 ##                    Illumina                    Roche454 
-##                         824                         180 
+##                         825                         180 
 ##                 Ion Torrent                     RT-qPCR 
 ##                          87                          77 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
@@ -501,7 +505,7 @@
 <pre><code>## $`Sequencing type`
 ## 
 ##    16S    WMS 
-## 0.9230 0.0769 
+## 0.9230 0.0768 
 ## 
 ## $`16S variable region`
 ## 
@@ -517,7 +521,7 @@
 ##                 Ion Torrent                     RT-qPCR 
 ##                     0.07150                     0.06330 
 ## Human Intestinal Tract Chip                 MGISEQ-2000 
-##                     0.00987                     0.00740 
+##                     0.00986                     0.00740 
 ##           Mass spectrometry           HTF-Microbi.Array 
 ##                     0.00411                     0.00329 
 ##           Illumina,Roche454        Non-quantitative PCR 
@@ -534,7 +538,7 @@
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                     343                     332                      94 
+##                     344                     332                      94 
 ##                  DESeq2                  T-Test                   ANOVA 
 ##                      85                      73                      61 
 ##       Linear Regression               Metastats     Logistic Regression 
@@ -545,12 +549,12 @@
 ## $`MHT correction`
 ## 
 ## FALSE  TRUE 
-##   613   576 
+##   613   577 
 ## 
 ## $`Significance threshold`
 ## 
 ##  0.05   0.1  0.01 0.001   0.2  0.15     0  0.25 0.002 0.004 
-##  1059    68    28    12    12     4     3     3     2     2</code></pre>
+##  1060    68    28    12    12     4     3     3     2     2</code></pre>
 <p>Proportions instead:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -559,23 +563,23 @@
 <pre><code>## $`Statistical test`
 ## 
 ## Mann-Whitney (Wilcoxon)                   LEfSe         Kruskall-Wallis 
-##                  0.2920                  0.2830                  0.0801 
+##                  0.2930                  0.2830                  0.0801 
 ##                  DESeq2                  T-Test                   ANOVA 
-##                  0.0725                  0.0622                  0.0520 
+##                  0.0724                  0.0622                  0.0520 
 ##       Linear Regression               Metastats     Logistic Regression 
-##                  0.0264                  0.0171                  0.0162 
+##                  0.0264                  0.0170                  0.0162 
 ##     Fisher's Exact Test 
 ##                  0.0119 
 ## 
 ## $`MHT correction`
 ## 
 ## FALSE  TRUE 
-## 0.516 0.484 
+## 0.515 0.485 
 ## 
 ## $`Significance threshold`
 ## 
 ##    0.05     0.1    0.01   0.001     0.2    0.15       0    0.25   0.002   0.004 
-## 0.88200 0.05660 0.02330 0.00999 0.00999 0.00333 0.00250 0.00250 0.00167 0.00167</code></pre>
+## 0.88200 0.05660 0.02330 0.00998 0.00998 0.00333 0.00250 0.00250 0.00166 0.00166</code></pre>
 </div>
 <div id="alpha-diversity" class="section level2">
 <h2 class="hasAnchor">
@@ -888,7 +892,7 @@
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##   1.000   2.000   4.000   6.876   9.000 100.000</code></pre>
+##   1.000   2.000   4.000   6.875   8.750 100.000</code></pre>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html">gghistogram</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">30</span>, ylab <span class="op">=</span> <span class="st">"number of signatures"</span>,
     xlab <span class="op">=</span> <span class="st">"signature size"</span>, fill <span class="op">=</span> <span class="st">"#00AFBB"</span>, ggtheme <span class="op">=</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -922,7 +926,7 @@
 ##    Lactobacillus      Clostridium  Parabacteroides            Dorea 
 ##              109              106              102               93 
 ##        Alistipes      Coprococcus     Enterococcus      Veillonella 
-##               91               83               76               75 
+##               91               84               76               75 
 ##      Akkermansia     Anaerostipes      Lachnospira      Eubacterium 
 ##               72               71               70               69</code></pre>
 <p>Subset heatmaps to the top 20 genera most frequently reported as differentially abundant:</p>
@@ -969,7 +973,7 @@
 ##    Lactobacillus      Clostridium  Parabacteroides            Dorea 
 ##               32               44               52               47 
 ##        Alistipes      Coprococcus     Enterococcus      Veillonella 
-##               61               49                9               22 
+##               61               50                9               22 
 ##      Akkermansia     Anaerostipes      Lachnospira      Eubacterium 
 ##               28               44               49               37</code></pre>
 <p>Plot the heatmap</p>
