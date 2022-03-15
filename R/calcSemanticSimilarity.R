@@ -122,3 +122,39 @@ getNcbiTaxonomyObo <- function() {
     sig
 }
 
+#' Weighted semantic similarity
+#'
+#' Incorporation of weights into the computation of semantic similarity
+#'
+#' @param o ontology. An object of class \code{ontologyIndex}.
+#' @param ic information content. Typically obtained via 
+#' \code{ontologySimilarity::descendants_IC(o)}. 
+#' @param method Measure for semantic similarity. Default's to \code{"lin"}
+#' which will then use Lin's measure.
+#' @param set1 character. First term set.
+#' @param set2 character. Secound term set.
+#' @param weights1 numeric. Weights for each term of the first term set, ie. must
+#' be parallel to \code{set1}. 
+#' @param weights2 numeric. Weights for each term of the second term set, ie. must
+#' be parallel to \code{set2}. 
+#' @return a numeric value expressing semantic similarity between the two
+#' input term sets, weighted by the given individual term weights. 
+#' @export
+weightedBMA <- function(o, ic, set1, set2, 
+                        weights1 = rep(1, length(set1)), 
+                        weights2 = rep(1, length(set2))) 
+{
+    m <- ontologySimilarity::get_term_sim_mat(ontology = o,
+                                              information_content = ic,
+                                              method = "lin",
+                                              row_terms = set1,
+                                              col_terms = set2
+    )
+    rmax <- matrixStats::rowMaxs(m, na.rm = TRUE)
+    cmax <- matrixStats::colMaxs(m, na.rm = TRUE)
+    mean1 <- sum(weights1 * rmax) / sum(weights1)
+    mean2 <- sum(weights2 * cmax) / sum(weights2)
+    m <- mean(c(mean1, mean2))
+    return(m)
+}
+

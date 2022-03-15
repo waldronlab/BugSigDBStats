@@ -12,6 +12,7 @@ output:
 # Setup
 ```{r setup, message=FALSE, warning=FALSE}
 library(bugsigdbr)
+library(ggplot2)
 library(ggtree)
 library(ontologyIndex)
 library(ontologySimilarity)
@@ -44,6 +45,7 @@ We add the corresponding ID prefix:
 
 ```{r, message = FALSE}
 dat <- bugsigdbr::importBugSigDB()
+dat[["Body site"]] <- tolower(dat[["Body site"]])
 dat.feces <- subset(dat, `Body site` == "feces")
 ind <- lengths(dat.feces[["NCBI Taxonomy IDs"]]) > 5
 dat.feces <- dat.feces[ind,]
@@ -79,10 +81,10 @@ Here, we compute the semantic similarity of all colorectal cancer signatures in
 the database for which abundance is increased in the cases. 
 
 ```{r}
-ind <- !is.na(dat[["Condition"]]) &
-       dat[["Condition"]] == "colorectal cancer" & 
-       dat[["Body site"]] == "feces" & 
-       dat[["Abundance in Group 1"]] == "increased"
+ind <- !is.na(dat.feces[["Condition"]]) &
+       dat.feces[["Condition"]] == "colorectal cancer" & 
+       dat.feces[["Body site"]] == "feces" & 
+       dat.feces[["Abundance in Group 1"]] == "increased"
 sum(ind)
 ontologySimilarity::get_sim(sim.mat, group = which(ind))
 ```
@@ -105,8 +107,9 @@ clus <- stats::cutree(hc, 5)
 d <- data.frame(label = names(clus), count = lengths(sigs[names(clus)]))
 p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
                              offset_tiplab = 0.35, label_format = 30, nWords = 0,
-                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4)
-p + coord_cartesian(xlim = xlim) +
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4,
+                             cex_category = 1, align = "none")
+p + coord_cartesian(xlim = c(0,18)) +
     ggnewscale::new_scale_colour() + 
     geom_tippoint(aes(size = count))
 ```
@@ -116,6 +119,13 @@ Chunk up entire BugSigDB by body site:
 ```{r}
 ind <- !is.na(dat[["Body site"]]) & !grepl(",", dat[["Body site"]]) 
 dat.bs <- dat[ind,]
+spl <- split(dat.bs$PMID, dat.bs[["Body site"]])
+spl <- lapply(spl, unique)
+lens <- lengths(spl)
+names(lens) <- names(spl)
+lens <- sort(lens, decreasing = TRUE)
+bs.to.test <- names(lens)[lens > 1]
+dat.bs <- dat.bs[dat.bs[["Body site"]] %in% bs.to.test,]
 sigs.bs <- bugsigdbr::getSignatures(dat.bs)
 spl <- split(sigs.bs, dat.bs[["Body site"]])
 spl <- lapply(spl, function(s) unique(unlist(s)))
@@ -141,10 +151,36 @@ clus <- stats::cutree(hc, 5)
 d <- data.frame(label = names(clus), count = lengths(spl[names(clus)]))
 p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
                              offset_tiplab = 0.35, label_format = 30, nWords = 0,
-                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4)
-p + coord_cartesian(xlim = xlim) +
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4,
+                             cex_category = 1, align = "none")
+bsp <- p + coord_cartesian(xlim = c(0,18)) +
     ggnewscale::new_scale_colour() + 
     geom_tippoint(aes(size = count))
+bsp
+```
+
+Do the same for jaccard:
+
+```{r}
+sigs.bs.jacc <- bugsigdbr::getSignatures(dat.bs, 
+                                         tax.id.type = "metaphlan")
+spl <- split(sigs.bs.jacc, dat.bs[["Body site"]])
+spl <- lapply(spl, function(s) unique(unlist(s)))
+ind <- lengths(spl) > 4
+spl <- spl[ind]
+sort(lengths(spl), decreasing = TRUE)
+sm.bs.jacc <- BugSigDBStats::calcJaccardSimilarity(spl)
+hc <- stats::hclust(stats::as.dist(1 - sm.bs.jacc), method = "ward.D")
+clus <- stats::cutree(hc, 5)
+d <- data.frame(label = names(clus), count = lengths(spl[names(clus)]))
+p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
+                             offset_tiplab = 0.35, label_format = 30, nWords = 0,
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4,
+                             cex_category = 1, align = "none")
+bsp.jacc <- p + coord_cartesian(xlim = c(0,18)) +
+    ggnewscale::new_scale_colour() +
+    geom_tippoint(aes(size = count)) 
+bsp.jacc
 ```
 
 Take a closer look at nasal cavity signatures:
@@ -172,3 +208,163 @@ nnms.fam <- bugsigdbr::extractTaxLevel(nnms, tax.level = "family", exact.tax.lev
 fms.fam <- bugsigdbr::extractTaxLevel(fms, tax.level = "family", exact.tax.level = FALSE)
 table(nnms.fam %in% fms.fam)
 ```
+
+Meta-signatures by condition:
+
+```{r}
+ind <- dat.bs[["Body site"]] == "feces" & dat.bs[["Abundance in Group 1"]] == "increased"
+#ind <- dat.bs[["Body site"]] == "feces" & dat.bs[["Abundance in Group 1"]] == "decreased"
+dat.feces <- dat.bs[ind,]
+spl <- split(dat.feces$PMID, dat.feces[["Condition"]])
+spl <- lapply(spl, unique)
+lens <- lengths(spl)
+names(lens) <- names(spl)
+lens <- sort(lens, decreasing = TRUE)
+bs.to.test <- names(lens)[lens > 1]
+indx <- dat.feces[["Condition"]] %in% bs.to.test
+sigs.bs <- bugsigdbr::getSignatures(dat.feces[indx,])
+spl <- split(sigs.bs, dat.feces[indx, "Condition"])
+spl <- lapply(spl, function(s) unique(unlist(s)))
+ind <- lengths(spl) > 4
+spl <- spl[ind]
+sort(lengths(spl), decreasing = TRUE)
+```
+
+Calculate semantic similarity between condition meta-signatures:
+
+```{r}
+spl <- lapply(spl, function(s) paste0("NCBITaxon:", s))
+utax <- unique(unlist(spl))
+nt <- utax[!(utax %in% onto$id)]
+spl <- lapply(spl, function(s) setdiff(s, nt))
+sm.bs <- ontologySimilarity::get_sim_grid(ontology = onto, term_sets = spl)
+sm.bs[1:5,1:5]
+```
+
+```{r, warning = FALSE}
+hc <- stats::hclust(stats::as.dist(1 - sm.bs), method = "ward.D")
+clus <- stats::cutree(hc, 5)
+d <- data.frame(label = names(clus), count = lengths(spl[names(clus)]))
+p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
+                             offset_tiplab = 0.35, label_format = 30, nWords = 0,
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4,
+                             cex_category = 1, align = "none")
+cop <- p + coord_cartesian(xlim = c(0,18)) +
+    ggnewscale::new_scale_colour() + 
+    geom_tippoint(aes(size = count))
+cop
+```
+
+Do the same for jaccard:
+
+```{r}
+sigs.bs.jacc <- bugsigdbr::getSignatures(dat.feces[indx,], 
+                                         tax.id.type = "metaphlan")
+spl <- split(sigs.bs.jacc, dat.feces[indx, "Condition"])
+spl <- lapply(spl, function(s) unique(unlist(s)))
+ind <- lengths(spl) > 4
+spl <- spl[ind]
+sort(lengths(spl), decreasing = TRUE)
+sm.bs.jacc <- BugSigDBStats::calcJaccardSimilarity(spl)
+hc <- stats::hclust(stats::as.dist(1 - sm.bs.jacc), method = "ward.D")
+clus <- stats::cutree(hc, 5)
+d <- data.frame(label = names(clus), count = lengths(spl[names(clus)]))
+p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
+                             offset_tiplab = 0.35, label_format = 30, nWords = 0,
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4,
+                             cex_category = 1, align = "none")
+cop.jacc <- p + coord_cartesian(xlim = c(0,18)) +
+    ggnewscale::new_scale_colour() +
+    geom_tippoint(aes(size = count)) 
+cop.jacc
+```
+
+# Weighted meta-signatures
+
+Obtain weighted meta-signatures for body sites:
+
+```{r}
+bs.meta.sigs <- bugsigdbr::getMetaSignatures(dat.bs, column = "Body site")
+```
+
+Calculate weighted semantic similarity between between meta-signatures:
+
+```{r}
+ic <- ontologySimilarity::descendants_IC(onto)
+spl <- bs.meta.sigs
+for(i in seq_along(spl)) names(spl[[i]]) <- paste0("NCBITaxon:", names(spl[[i]]))
+utax <- unique(names(unlist(spl)))
+nt <- utax[!(utax %in% onto$id)]
+spl <- lapply(spl, function(s) s[setdiff(names(s), nt)])
+
+combs <- combn(names(spl), 2)
+.wsm <- function(x) BugSigDBStats::weightedBMA(onto, ic, 
+                                               names(spl[[x[1]]]), names(spl[[x[2]]]),
+                                               unname(spl[[x[1]]]), unname(spl[[x[2]]]))
+wsm.bs <- apply(combs, 2, .wsm)
+wsm.df <- data.frame(c1 = combs[1,], c2 = combs[2,], wsm = wsm.bs)
+ig <- igraph::graph_from_data_frame(wsm.df, directed = FALSE)
+adjm <- igraph::get.adjacency(ig, attr = "wsm", sparse = FALSE)
+diag(adjm) <- 1
+adjm[1:5,1:5]
+```
+
+```{r, warning = FALSE}
+hc <- stats::hclust(stats::as.dist(1 - adjm), method = "ward.D")
+clus <- stats::cutree(hc, 5)
+d <- data.frame(label = names(clus), count = lengths(spl[names(clus)]))
+p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
+                             offset_tiplab = 0.35, label_format = 30, nWords = 0,
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4,
+                             cex_category = 1, align = "none")
+wbsp <- p + coord_cartesian(xlim = c(0,18)) +
+    ggnewscale::new_scale_colour() + 
+    geom_tippoint(aes(size = count))
+wbsp
+```
+
+
+Obtain weighted meta-signatures for body sites:
+
+```{r}
+co.meta.sigs <- bugsigdbr::getMetaSignatures(dat.feces, 
+                                             column = "Condition",
+                                             direction = "UP")
+```
+
+Calculate weighted semantic similarity between between meta-signatures:
+
+```{r}
+spl <- co.meta.sigs
+for(i in seq_along(spl)) names(spl[[i]]) <- paste0("NCBITaxon:", names(spl[[i]]))
+utax <- unique(names(unlist(spl)))
+nt <- utax[!(utax %in% onto$id)]
+spl <- lapply(spl, function(s) s[setdiff(names(s), nt)])
+
+combs <- combn(names(spl), 2)
+.wsm <- function(x) BugSigDBStats::weightedBMA(onto, ic, 
+                                               names(spl[[x[1]]]), names(spl[[x[2]]]),
+                                               unname(spl[[x[1]]]), unname(spl[[x[2]]]))
+wsm.co <- apply(combs, 2, .wsm)
+wsm.df <- data.frame(c1 = combs[1,], c2 = combs[2,], wsm = wsm.co)
+ig <- igraph::graph_from_data_frame(wsm.df, directed = FALSE)
+adjm <- igraph::get.adjacency(ig, attr = "wsm", sparse = FALSE)
+diag(adjm) <- 1
+adjm[1:5,1:5]
+```
+
+```{r, warning = FALSE}
+hc <- stats::hclust(stats::as.dist(1 - adjm), method = "ward.D")
+clus <- stats::cutree(hc, 5)
+d <- data.frame(label = names(clus), count = lengths(spl[names(clus)]))
+p <- enrichplot:::group_tree(hc, clus, d, group_color = NULL,
+                             offset_tiplab = 0.35, label_format = 30, nWords = 0,
+                             offset = -0.1, extend = 0.3, hilight = TRUE, fontsize = 4,
+                             cex_category = 1, align = "none")
+wbsp <- p + coord_cartesian(xlim = c(0,18)) +
+    ggnewscale::new_scale_colour() + 
+    geom_tippoint(aes(size = count))
+wbsp
+```
+
+

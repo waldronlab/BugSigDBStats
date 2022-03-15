@@ -10,9 +10,13 @@ output:
 ---
 
 ```{r}
+library(aplot)
 library(bugsigdbr)
 library(BugSigDBStats)
 library(ComplexHeatmap)
+library(ggpubr)
+library(ggplotify)
+library(ggtree)
 library(ontologyIndex)
 library(ontologySimilarity)
 ```
@@ -125,19 +129,11 @@ head(d)
 
 ```{r}
 sigs.genus <- bugsigdbr::getSignatures(dat.feces,
-                                       tax.id.type = "metaphlan",
+                                       #tax.id.type = "metaphlan",
+                                       tax.id.type = "taxname", 
                                        tax.level = "genus",
                                        exact.tax.level = FALSE)
-mydists <- BugSigDBStats::calcPairwiseOverlaps(sigs.genus)
-signames <- unique(c(mydists$name1, mydists$name2))
-jmat <- matrix(0, nrow=length(signames), ncol=length(signames), dimnames=list(signames, signames))
-diag(jmat) <- 1
-for (i in seq_len(nrow(mydists)))
-{
-    jmat[mydists[i, "name2"], mydists[i, "name1"]] <- mydists[i, "jaccard"]
-    jmat[mydists[i, "name1"], mydists[i, "name2"]] <- mydists[i, "jaccard"]
-}
-jmat[1:5,1:5]
+jmat <- BugSigDBStats::calcJaccardSimilarity(sigs.genus)
 ```
 
 Correlation between semantic similarity and Jaccard similarity:
@@ -160,8 +156,8 @@ col2 <- circlize::colorRamp2(c(0,0.8012), c("#EEEEEE", "red"))
 h2 <- ComplexHeatmap::Heatmap(sim.mat[rownames(jmat),rownames(jmat)], 
                               name = "semsim",
                               col = col2,
-                              # column_km = 6,
-                              # row_km = 6,
+                              #column_km = 5,
+                              #row_km = 6,
                               row_title = "signatures",
                               column_title = "signatures",
                               show_row_names=FALSE,
@@ -299,10 +295,50 @@ Function for testing signatures of a condition of interest:
 ```{r}
 ps.up <- vapply(conds.to.test, .testCondition, numeric(1), sim.mat = sim.mat)
 ps.up <- sort(ps.up)
-data.frame(CONDITION = names(ps.up), PVAL = ps.up, NR.STUDIES = lens[names(ps.up)])
+df.up <- data.frame(CONDITION = names(ps.up), PVAL = ps.up, NR.STUDIES = lens[names(ps.up)])
+df.up
 ps.down <- vapply(conds.to.test, .testCondition, numeric(1),sim.mat, direction = "DOWN")
 ps.down <- sort(ps.down)
-data.frame(CONDITION = names(ps.down), PVAL = ps.down, NR.STUDIES = lens[names(ps.down)])
+df.down <- data.frame(CONDITION = names(ps.down), PVAL = ps.down, NR.STUDIES = lens[names(ps.down)])
+df.down
+```
+
+Plot top consistent up and down conditions:
+
+```{r}
+isect <- intersect(rownames(df.up), rownames(df.down))
+top.df <- cbind(df.up[isect,], df.down[isect,])
+EnrichmentBrowser::configEBrowser("GS.COL", "CONDITION")
+uranks <- EnrichmentBrowser:::.getRanks(df.up)
+dranks <- EnrichmentBrowser:::.getRanks(df.down)
+mranks <- (uranks[isect] + dranks[isect]) / 2 
+ind <- order(mranks[rownames(top.df)])
+top.df <- top.df[ind,]
+colnames(top.df)[c(2,3,5,6)] <- paste(colnames(top.df)[c(2,3,5,6)], 
+                                      rep(c("UP", "DOWN"), each = 2), 
+                                      sep = ".") 
+```
+
+```{r}
+df <- data.frame(CONDITION = rep(rownames(top.df), 2),
+                 PVAL = c(top.df$PVAL.UP, top.df$PVAL.DOWN), 
+                 NR.STUDIES = c(top.df$NR.STUDIES.UP, top.df$NR.STUDIES.DOWN),   
+                 DIRECTION = rep(c("UP", "DOWN"), each = nrow(top.df)))
+df <- df[c(1:20,30:49),]
+df$CONDITION <- factor(df$CONDITION, levels = rev(df$CONDITION[1:20]))
+df$DIRECTION <- factor(df$DIRECTION, levels = c("UP", "DOWN"))
+dotp <- ggplot(df, aes_string(x = "PVAL", y = "CONDITION",
+                              size = "NR.STUDIES", color = "PVAL")) + 
+        geom_point() +
+        scale_color_continuous(low = "grey", high = "red", name = "-log10(P)", 
+                               guide = guide_colorbar(reverse = TRUE)) +
+        scale_y_discrete(labels = enrichplot:::default_labeller(30)) +
+        ggplot2::xlab("-log10(P)") +
+        ggplot2::ylab(NULL) +
+        ggplot2::ggtitle("") +
+        enrichplot:::theme_dose(12) + 
+        scale_size(range = c(3, 8)) +
+        facet_wrap(vars(DIRECTION), ncol = 2)
 ```
 
 Inspect top conditions further:
@@ -310,7 +346,95 @@ Inspect top conditions further:
 ```{r}
 sigs.bkp <- sigs
 ind <- cond == "HIV-infection" & dir == "UP"
+ind <- cond == "HIV-infection" & dir == "DOWN"
+ind <- cond %in% c("HIV-infection", "gastric-cancer", "schizophrenia") & dir == "UP"
+ind <- cond %in% c("chronic-kidney-disease", "autism") & dir == "UP"
+ind <- cond %in% c("anxiety-disorder", "lung-cancer") & dir == "UP"
+ind <- cond %in% c("parkinson'-disease", "anorexia-nerviosa") & dir == "UP"
+ind <- cond %in% c("parkinson's-disease", "type-II-diabetes-mellitus") & dir == "UP"
+ind <- cond == "irritable-bowel-syndrome" & dir == "UP"
+ind <- cond == "irritable-bowel-syndrome" & dir == "DOWN"
 smat <- sim.mat[ind,ind]
-sigs <- sigs[ind]
+psigs <- sigs.genus[ind]
+names(psigs) <- rownames(smat) <- colnames(smat) <- sub("Individuals-diagnosed-with-", "", names(psigs))
+names(psigs) <- rownames(smat) <- colnames(smat) <- sub("patients-with-", "", names(psigs))
+names(psigs) <- rownames(smat) <- colnames(smat) <- sub("Individuals-having-", "", names(psigs))
+
 ```
 
+Network plots:
+
+```{r}
+n <- strsplit(rownames(smat), ":")
+n <- vapply(n, `[`, character(1), x = 3)
+n <- strsplit(n, "_vs_")
+n <- vapply(n, `[`, character(1), x = 1)
+ay <- vapply(names(psigs), .getAuthorYear, character(1), dat = dat)
+ay <- strsplit(ay, "_")
+ay <- vapply(ay, `[`, character(1), x = 1)
+n <- paste(ay, n, sep = ":")
+rownames(smat) <- colnames(smat) <- names(psigs) <- n
+#EnrichmentPlotter::networkSimPlot(sigs, smat)
+networkSimPlot(psigs, smat)
+```
+
+Heatmap plots:
+
+```{r}
+hc <- stats::hclust(stats::as.dist(1 - smat), method = "ward.D")
+freq <- table(unlist(psigs)) / length(psigs)
+ddf <- data.frame(frequency = as.vector(freq))
+rownames(ddf) <- names(freq)
+heatp1 <- heatplot(psigs, smat, ddf, "frequency") %>% insert_left(ggtree(hc), width = 0.2)
+heatplot2(sigs, smat, df, "frequency") %>% insert_left(ggtree(hc) + ggtree::geom_tippoint(ggplot2::aes(size = count)), width = 0.5)
+```
+
+Combine:
+
+```{r}
+g2h <- ggarrange(g2, as.grob(heatp1), labels = c("B", "C"))
+g3h <- ggarrange(g3, as.grob(heatp2), labels = c("D", "E"))
+g23h <- ggarrange(g2h, g3h, nrow = 2)
+png(file = "~/Downloads/test.png", res = 100, width = 3300, height = 2100)
+ggarrange(dotp, g23h, ncol = 2, widths = c(1,2), labels = c("A", ""))
+dev.off()
+```
+
+# Test each pair of conditions for semantic similarity
+
+split by up/down
+
+Function for testing signatures for a pair of conditions of interest:
+
+```{r}
+.testConditionPair <- function(condition1, condition2, sim.mat, direction = "UP")
+{
+    ind <- which(cond %in% c(condition1, condition2) & dir == direction)
+    if(length(ind) < 2) p <- NA
+    else p <- ontologySimilarity::get_sim_p(sim.mat, group = ind)
+    return(p)
+}
+```
+
+```{r}
+combs <- expand.grid(conds.to.test, conds.to.test)
+ind <- combs[,1] == combs[,2]
+combs <- combs[!ind,]
+ps.up <- apply(combs, 1, function(x) .testConditionPair(x[1], x[2], sim.mat))
+ind <- !is.na(ps.up)
+adjp <- p.adjust(ps[ind], method = "BH")
+res <- data.frame(condition = combs[ind,1], 
+                  cluster = combs[ind,2],
+                  PVAL = ps.up[ind],
+                  ADJ.PVAL = adjp)
+res <- res[order(res$PVAL),]
+head(res, n = 10)
+
+ps.up <- sort(ps.up)
+df.up <- data.frame(CONDITION = names(ps.up), PVAL = ps.up, NR.STUDIES = lens[names(ps.up)])
+df.up
+ps.down <- vapply(conds.to.test, .testCondition, numeric(1),sim.mat, direction = "DOWN")
+ps.down <- sort(ps.down)
+df.down <- data.frame(CONDITION = names(ps.down), PVAL = ps.down, NR.STUDIES = lens[names(ps.down)])
+df.down
+```
