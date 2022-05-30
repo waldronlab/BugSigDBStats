@@ -28,9 +28,6 @@ be parallel to \code{set1}.}
 
 \item{weights2}{numeric. Weights for each term of the second term set, ie. must
 be parallel to \code{set2}.}
-
-\item{method}{Measure for semantic similarity. Default's to \code{"lin"}
-which will then use Lin's measure.}
 }
 \value{
 a numeric value expressing semantic similarity between the two

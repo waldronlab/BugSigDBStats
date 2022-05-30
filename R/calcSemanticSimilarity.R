@@ -129,8 +129,6 @@ getNcbiTaxonomyObo <- function() {
 #' @param o ontology. An object of class \code{ontologyIndex}.
 #' @param ic information content. Typically obtained via 
 #' \code{ontologySimilarity::descendants_IC(o)}. 
-#' @param method Measure for semantic similarity. Default's to \code{"lin"}
-#' which will then use Lin's measure.
 #' @param set1 character. First term set.
 #' @param set2 character. Secound term set.
 #' @param weights1 numeric. Weights for each term of the first term set, ie. must
@@ -156,5 +154,31 @@ weightedBMA <- function(o, ic, set1, set2,
     mean2 <- sum(weights2 * cmax) / sum(weights2)
     m <- mean(c(mean1, mean2))
     return(m)
+}
+
+#' Synchronize signatures with NCBI Taxonomy
+#'
+#' Helper function for synchronizing signatures with NCBI Taxonomy
+#'
+#' @param sigs signatures. A list of character vectors. Typically obtained 
+#' via \code{\link{getSignatures}}. 
+#' @param onto ontology. An object of class \code{ontologyIndex} storing the 
+#' NCBI Taxonomy. Typically obtained via \code{\link{getNcbiTaxonomyObo}}.
+#' @return The input signatures synchronized with the NCBI Taxonomy
+#' @examples
+#'  library(bugsigdbr)
+#'  df <- importBugSigDB()
+#'  sigs <- getSignatures(df)
+#'  onto <- getNcbiTaxonomyObo()
+#'  sigs <- syncWithNCBI(sigs, onto)
+#'  
+#' @export
+syncWithNCBI <- function(sigs, onto)
+{
+    sigs <- lapply(sigs, function(s) paste0("NCBITaxon:", s))
+    utax <- unique(unlist(sigs))
+    nt <- utax[!(utax %in% onto$id)]
+    sigs <- lapply(sigs, function(s) setdiff(s, nt))
+    return(sigs)
 }
 

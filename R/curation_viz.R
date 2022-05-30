@@ -22,7 +22,8 @@ plotProgressOverTime <- function(dat, col = "Curated date", diff = FALSE)
 {
     dates <- dat[,col]
     # fill empty dates
-    for(i in seq_along(dates)) if(dates[i] == "") dates[i] <- dates[i-1]
+    for(i in seq_along(dates)) 
+        if(is.na(dates[i]) || dates[i] == "") dates[i] <- dates[i-1]
     # signatures
     dbm <- substring(dates, 1, 7)
     dat[,col] <- dbm
@@ -49,6 +50,7 @@ plotProgressOverTime <- function(dat, col = "Curated date", diff = FALSE)
             legend.text=c("signatures", "papers"), args.legend=list(x="bottomright"),
             main = main)
     for(i in 1:ncol(dbm)) text(y=bp[,i], x=dbm[,i], labels=dbm[,i], pos=4) 
+    return(invisible(dbm))
 }
 
 #' Plot curation output for each curator
@@ -225,3 +227,4 @@ microbeHeatmap <- function(dat,
                             ...))
     return(invisible(cooc.mat))
 }
+
