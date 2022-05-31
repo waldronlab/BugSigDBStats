@@ -28,6 +28,88 @@ paperStat <- function(dat, col)
     sort(table(ul), decreasing=TRUE)
 }
 
+#' Taxon stats
+#'
+#' @param dat a \code{data.frame} storing BugSigDB data
+#' @param taxon character. A taxonomic name.
+#' @param column character. A column of \code{dat} that should be tabled.
+#' @param direction character. Indicates direction of abundance change for signatures
+#' to be included. Use \code{"UP"} to restrict
+#' computation to signatures with increased abundance in the exposed group. Use 
+#' \code{"DOWN"} to restrict to signatures with decreased abundance in the exposed
+#' group. Defaults to \code{"BOTH"} which will not filter signatures by direction
+#' of abundance change.
+#' @return A sorted table with taxon stats for the chosen metadata column
+#' @export
+getTaxonStats <- function(dat, taxon, 
+                          column = "Condition",
+                          direction = c("BOTH", "UP", "DOWN"))
+{
+    direction <- match.arg(direction)
+    if(direction %in% c("UP", "DOWN"))
+    {
+        ind <- !is.na(dat[["Abundance in Group 1"]])
+        dat <- dat[ind,]
+        direction <- ifelse(direction == "UP",
+                           "increased",
+                           "decreased")
+        dat <- subset(dat, `Abundance in Group 1` == direction)
+    }
+    tnames <- lapply(dat[["MetaPhlAn taxon names"]], 
+                     bugsigdbr::extractTaxLevel,
+                     tax.id.type = "taxname")
+    ind <- vapply(tnames, 
+                  function(x) taxon %in% x,  
+                  logical(1))
+    tab <- table(dat[ind,column])
+    tab <- sort(tab, decreasing = TRUE)
+    return(tab)
+}
+
+#' Test association of a taxon with a certain category of a column
+#'
+#' @param dat a \code{data.frame} storing BugSigDB data
+#' @param taxon character. A taxonomic name.
+#' @param column character. A column of \code{dat} that contains the category 
+#' thats hould be tested for association.
+#' @param category character. One or more categories that should be tested for
+#' association.
+#' @param direction character. Indicates direction of abundance change for signatures
+#' to be included. Use \code{"UP"} to restrict
+#' computation to signatures with increased abundance in the exposed group. Use 
+#' \code{"DOWN"} to restrict to signatures with decreased abundance in the exposed
+#' group. Defaults to \code{"BOTH"} which will not filter signatures by direction
+#' of abundance change.
+#' @return A sorted table with taxon stats for the chosen metadata column
+#' @importFrom stats prop.test
+#' @export
+testAssociation <- function(dat, taxon, column = "Condition", 
+                            category = "", 
+                            direction = c("BOTH", "UP", "DOWN"))
+{
+    stats <- getTaxonStats(dat, taxon, column, direction)
+    stopifnot(all(category %in% names(stats)))
+
+    fg <- sum(stats[category])
+    fg.total <- sum(stats)    
+
+    direction <- match.arg(direction)
+    if(direction %in% c("UP", "DOWN"))
+    {
+        ind <- !is.na(dat[["Abundance in Group 1"]])
+        dat <- dat[ind,]
+        direction <- ifelse(direction == "UP",
+                           "increased",
+                           "decreased")
+        dat <- subset(dat, `Abundance in Group 1` == direction)
+    }
+
+    bg <- sum(dat[,column] %in% category)
+    bg.total <- nrow(dat)
+
+    prop.test(c(fg, bg), c(fg.total, bg.total))
+}
+
 #' Table column
 #'
 #' @param df a \code{data.frame} storing BugSigDB data
@@ -73,3 +155,41 @@ tabDiv <- function(exps, div.col, spl.col, min.exps = 5, perc = FALSE)
     if(perc) tab <- apply(tab, 2, function(x) signif(x / sum(x), digits = 2))
     return(t(tab))
 }
+
+#' Get most frequent taxa
+#'
+#' @param dat a \code{data.frame} storing BugSigDB data
+#' @param n integer. Number of taxa to show. Defaults to \code{10}
+#' which will then show the 10 most frequent taxa.
+#' @param direction character. Indicates direction of abundance change for signatures
+#' to be included. Use \code{"UP"} to restrict
+#' computation to signatures with increased abundance in the exposed group. Use 
+#' \code{"DOWN"} to restrict to signatures with decreased abundance in the exposed
+#' group. Defaults to \code{"BOTH"} which will not filter signatures by direction
+#' of abundance change.
+#' @param ... Additional arguments passed on to \code{bugsigdbr::getSignatures} 
+#' @return A sorted table listing absolute frequencies for the most frequent taxa
+#' @export
+getMostFrequentTaxa <- function(dat,
+                                n = 10,
+                                direction = c("BOTH", "UP", "DOWN"),
+                                ...)
+{
+    direction <- match.arg(direction)
+    if(direction %in% c("UP", "DOWN"))
+    {
+        ind <- !is.na(dat[["Abundance in Group 1"]])
+        dat <- dat[ind,]
+        direction <- ifelse(direction == "UP",
+                           "increased",
+                           "decreased")
+        dat <- subset(dat, `Abundance in Group 1` == direction)
+    }
+    msc <- bugsigdbr::getSignatures(dat, ...)
+    msc.tab <- sort(table(unlist(msc)), decreasing=TRUE)
+    names(msc.tab) <- vapply(names(msc.tab), bugsigdbr:::.getTip,
+                                character(1), USE.NAMES = FALSE)
+    head(msc.tab, n=n)
+}
+
+

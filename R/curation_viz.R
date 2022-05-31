@@ -7,7 +7,6 @@
 # 
 ###########################################################
 
-
 #' Plot curation output as a function of time
 #'
 #' @param dat a \code{data.frame} storing BugSigDB data.
@@ -36,6 +35,9 @@ plotProgressOverTime <- function(dat, col = "Curated date", diff = FALSE)
     cpbm <- cumsum(pbm)
     # plot
     dbm <- rbind(cdbm, cpbm)
+    ind <- seq(1, ncol(dbm), by = 3)
+    if(ind[length(ind)] < ncol(dbm)) ind <- c(ind, ncol(dbm))
+    dbm <- dbm[,ind]
     main <- ""
     if(diff)
     { 
@@ -99,6 +101,24 @@ plotUniqueMicrobesOverTime <- function(dat,
                       ggtheme = ggplot2::theme_bw(), color = "darkblue") + 
                       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
 }
+
+#' Plot composition of a table of a categorical variable
+#'
+#' @param tab a \code{table} with absolute frequencies of categories.
+#' @param column character. The name of the variable for annotation of the plot. 
+#' @return None. Plots to a graphics device.
+#' @export
+plotComposition <- function(tab, column)
+{
+    names(tab) <- trimws(names(tab))
+    df <- data.frame(names(tab), as.vector(tab))
+    colnames(df) <- c(column, "frequency")
+    df[[column]] <- factor(names(tab), levels = names(tab))
+    perc <- round(df$frequency / sum(df$frequency) * 100, digits = 1)
+    ggpubr::ggpie(df, "frequency", label = paste0(perc, "%"), 
+        fill = column, color = "white", palette = "npg")
+}
+
 
 .getShortName <- function(sname)
 {
@@ -222,8 +242,8 @@ microbeHeatmap <- function(dat,
     print(ComplexHeatmap::Heatmap(log10(cooc.mat + 0.1), 
                             name = "log10 Co-occurence",
                             top_annotation = anno,
-                            row_names_gp = gpar(fontsize = fontsize),
-                            column_names_gp = gpar(fontsize = fontsize), 
+                            row_names_gp = grid::gpar(fontsize = fontsize),
+                            column_names_gp = grid::gpar(fontsize = fontsize), 
                             ...))
     return(invisible(cooc.mat))
 }
