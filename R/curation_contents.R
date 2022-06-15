@@ -145,6 +145,7 @@ tabCol <- function(df, col, n = Inf, perc = FALSE)
 #' @export
 tabDiv <- function(exps, div.col, spl.col, min.exps = 5, perc = FALSE)
 {
+    if(div.col == "any") exps <- .summarizeDiv(exps)
     spl <- split(exps[[div.col]], exps[[spl.col]])
     spl <- lapply(spl, function(x) x[!is.na(x)])
     spl <- spl[lengths(spl) >= min.exps]
@@ -152,8 +153,11 @@ tabDiv <- function(exps, div.col, spl.col, min.exps = 5, perc = FALSE)
     tab <- vapply(tab, function(x) x[c("increased", "decreased", "unchanged")], integer(3))
     tab[is.na(tab)] <- 0
     rownames(tab) <- c("increased", "decreased", "unchanged")
-    if(perc) tab <- apply(tab, 2, function(x) signif(x / sum(x), digits = 2))
-    return(t(tab))
+    tab <- t(tab)
+    abs.diff <- abs(tab[,"increased"] - tab[,"decreased"])
+    tab <- tab[order(abs.diff, decreasing = TRUE),]
+    if(perc) tab <- t(apply(tab, 1, function(x) signif(x / sum(x), digits = 2)))
+    return(tab)
 }
 
 #' Get most frequent taxa
@@ -192,4 +196,21 @@ getMostFrequentTaxa <- function(dat,
     head(msc.tab, n=n)
 }
 
-
+.summarizeDiv <- function(exps)
+{
+    div.cols <- c("Pielou", "Shannon", "Chao1", 
+                  "Simpson", "Inverse Simpson", "Richness")
+    .hasConflict <- function(x) all(c("increased", "decreased") %in% x)
+    ind <- apply(exps[,div.cols], 1, .hasConflict)
+    exps <- exps[!ind,]
+    .decideDiv <- function(x)
+    {
+        y <- "unchanged"
+        if("increased" %in% x) y <- "increased"
+        else if("decreased" %in% x) y <- "decreased"  
+        return(y)
+    }
+    any.col <- apply(exps[,div.cols], 1, .decideDiv)
+    exps <- cbind(exps, any = any.col)
+    return(exps)
+} 
