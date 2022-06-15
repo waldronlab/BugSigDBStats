@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://waldronlab.io/BugSigDBStats/404.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/articles/BugSigDBStats.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/authors.html</loc>
+  </url>
+  <url>
     <loc>http://waldronlab.io/BugSigDBStats/index.html</loc>
   </url>
   <url>
@@ -13,7 +25,16 @@
     <loc>http://waldronlab.io/BugSigDBStats/reference/calcSemanticSimilarity.html</loc>
   </url>
   <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/getMostFrequentTaxa.html</loc>
+  </url>
+  <url>
     <loc>http://waldronlab.io/BugSigDBStats/reference/getNcbiTaxonomyObo.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/getTaxonStats.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/index.html</loc>
   </url>
   <url>
     <loc>http://waldronlab.io/BugSigDBStats/reference/makeDist.html</loc>
@@ -23,6 +44,9 @@
   </url>
   <url>
     <loc>http://waldronlab.io/BugSigDBStats/reference/paperStat.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/plotComposition.html</loc>
   </url>
   <url>
     <loc>http://waldronlab.io/BugSigDBStats/reference/plotCuratorStats.html</loc>
@@ -46,12 +70,18 @@
     <loc>http://waldronlab.io/BugSigDBStats/reference/stripEmptySignatures.html</loc>
   </url>
   <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/syncWithNCBI.html</loc>
+  </url>
+  <url>
     <loc>http://waldronlab.io/BugSigDBStats/reference/tabCol.html</loc>
   </url>
   <url>
     <loc>http://waldronlab.io/BugSigDBStats/reference/tabDiv.html</loc>
   </url>
   <url>
-    <loc>http://waldronlab.io/BugSigDBStats/articles/BugSigDBStats.html</loc>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/testAssociation.html</loc>
+  </url>
+  <url>
+    <loc>http://waldronlab.io/BugSigDBStats/reference/weightedBMA.html</loc>
   </url>
 </urlset>
