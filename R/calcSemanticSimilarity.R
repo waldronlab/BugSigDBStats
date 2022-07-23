@@ -182,3 +182,235 @@ syncWithNCBI <- function(sigs, onto)
     return(sigs)
 }
 
+#' Test replicability of microbiome changes across studies
+#'
+#' Function that implements a statistical test for replicability of microbiome
+#' changes for experimental conditions in BugSigDB
+#'
+#' @param df \code{data.frame} storing BugSigDB data. Typically obtained via
+#' \code{\link{importBugSigDB}}.
+#' @param multi.contrast character. How to treat studies that report multiple
+#' contrasts for a study to avoid detection of duplication within studies as
+#' replication? Select one of \itemize{
+#' \item \code{"all"} incorporates all contrasts reported by a study. This is 
+#' equivalent to do nothing, ie computes similarity between signatures taking all,
+#' and thus potential similar / duplicated, signatures for each study into account.  
+#' \item \code{"first"} take only the first contrast reported by a study, ie the
+#' first signature with increased abundance and the first signature with decreased
+#' abundance in the study group.
+#' \item \code{"largest"} take only the largest signature with increased and
+#' decreased abundance in the study group, respectively. 
+#' \item \code{"merge"} merge signatures with the same direction of abundance
+#' change (increased or decreased) within studies. 
+#' }
+#' @param min.studies integer. Minimum number of studies for a condition to be
+#' tested. Defaults to 2, which will then only test a condition investigated by
+#' at least two studies. 
+#' @param min.taxa integer. Minimum size for a signature to be included. Defaults to 5, which
+#' will then only include signatures containing at least 5 taxa.
+#' @return A data.frame reporting semantic similarity and re-sampling p-value for
+#' each condition under investigation. Results are stratified by direction of abundance
+#' change in the study group.
+#' @examples
+#'  dat <- bugsigdbr::importBugSigDB(version = "10.5281/zenodo.5904281")
+#'  dat.feces <- subset(dat, `Body site` == "feces")
+#'  res <- testReplicability(dat.feces)
+#' @export
+testReplicability <- function(df, 
+                              multi.contrast = c("all", "first", "largest", "merge"),
+                              min.studies = 2,
+                              min.taxa = 5)
+{
+    # sanity check on column names
+    stopifnot("Condition" %in% colnames(df))
+    stopifnot("Body site" %in% colnames(df))
+    stopifnot("NCBI Taxonomy IDs" %in% colnames(df))
+
+    if(length(unique(df[["Body site"]])) > 1) 
+        stop("Found more than one body site.\n", 
+             "Replicability testing is supported for one body site at a time only.\n",
+             "Subset by body site of interest first.")
+
+    # clean pubmed column
+    ind <- !is.na(df$PMID)
+    df <- df[ind,]
+
+    # clean condition column
+    column <- "Condition"
+    ind <- !is.na(df[[column]]) & !grepl(",", df[[column]])
+    df <- df[ind,]
+
+    # treat multi contrast studies
+    df.up <- .restrictByDirection(df, direction = "UP")
+    df.down <- .restrictByDirection(df, direction = "DOWN")
+    df.up <- .treatMultiContrastStudies(df.up, multi.contrast)
+    df.down <- .treatMultiContrastStudies(df.down, multi.contrast)
+    df <- rbind(df.up, df.down)
+
+    # include only signatures with defined min number of taxa
+    ind <- lengths(df[["NCBI Taxonomy IDs"]]) >= min.taxa
+    df <- df[ind,]
+
+    # calculate semantic similarity
+    onto <- getNcbiTaxonomyObo()
+    sigs <- bugsigdbr::getSignatures(df, tax.id.type = "ncbi")
+    sigs <- syncWithNCBI(sigs, onto) 
+    sim.mat <- ontologySimilarity::get_sim_grid(ontology = onto, term_sets = sigs)
+
+    # include only categories with defined min number of studies
+    conds.to.test <- .getCategoriesToTest(df, column, min.studies)
+    
+    # test conditions
+    ps.up <- .testConditions(names(conds.to.test), df, sim.mat, "increased")
+    ps.up$NR.STUDIES <- unname(conds.to.test[rownames(ps.up)])
+    ps.down <- .testConditions(names(conds.to.test), df, sim.mat, "decreased") 
+    ps.down$NR.STUDIES <- unname(conds.to.test[rownames(ps.down)])
+
+    # combine into result table
+    res <- .createResultTable(ps.up, ps.down) 
+    return(res)
+}
+
+# take the results by direction of abundance change (increased / decreased)
+# and combine them into on result table
+.createResultTable <- function(ps.up, ps.down)
+{
+    isect <- intersect(rownames(ps.up), rownames(ps.down))
+    res <- cbind(ps.up[isect,], ps.down[isect,])
+    uranks <- .getRanks(ps.up)
+    dranks <- .getRanks(ps.down)
+    mranks <- (uranks[isect] + dranks[isect]) / 2 
+    ind <- order(mranks[rownames(res)])
+    res <- res[ind,]   
+    colnames(res)[c(2:4,6:8)] <- paste(colnames(res)[c(2:4,6:8)], 
+                                      rep(c("UP", "DOWN"), each = 2), 
+                                      sep = ".") 
+    res <- data.frame(CONDITION = rep(rownames(res), 2),
+                      SEMSIM =  c(res$SEMSIM.UP, res$SEMSIM.DOWN), 
+                      PVAL = c(res$PVAL.UP, res$PVAL.DOWN), 
+                      NR.STUDIES = c(res$NR.STUDIES.UP, res$NR.STUDIES.DOWN),   
+                      DIRECTION = rep(c("UP", "DOWN"), each = nrow(res)))
+    return(res)
+} 
+
+# get ranks for a result data frame eg sorted by p-value
+.getRanks <- function (res, rank.fun = c("comp.ranks", "rel.ranks", "abs.ranks"), 
+                       rank.col = "PVAL", name.col = "CONDITION", decreasing = FALSE) 
+{
+    if (is.function(rank.fun)) 
+        ranks <- rank.fun(res)
+    else {
+        rank.fun <- match.arg(rank.fun)
+        rcol <- res[, rank.col]
+        if (decreasing) 
+            rcol <- -rcol
+        names(rcol) <- res[, name.col]
+        if (rank.fun == "comp.ranks") 
+            ranks <- vapply(rcol, function(p) mean(rcol <= p) * 
+                100, numeric(1))
+        else {
+            ucats <- unique(rcol)
+            ranks <- match(rcol, ucats)
+            if (rank.fun == "rel.ranks") 
+                ranks <- ranks/length(ucats) * 100
+        }
+        return(ranks)
+    }
+    return(ranks)
+}
+
+
+# tests a character vector of conditions for semantic similarity of the
+# signatures for one condition at a time
+.testConditions <- function(conditions, df, sim.mat,
+                            direction = c("increased", "decreased"))
+{
+    direction <- match.arg(direction)
+    ps <- vapply(conditions, .testCondition, numeric(2), 
+                 df = df, sim.mat = sim.mat, direction = direction)
+    ps <- t(ps)
+    ps <- ps[!is.na(ps[,"p"]),]
+    ps <- ps[order(ps[,"p"]),]
+    res <- data.frame(CONDITION = rownames(ps), 
+                     SEMSIM = ps[,"sim"],
+                     PVAL = ps[,"p"])
+    return(res)
+}
+
+# test signatures of a specified condition for semantic similarity
+.testCondition <- function(condition, df, sim.mat, direction)
+{
+    cond <- df$Condition
+    dir <- df[["Abundance in Group 1"]]
+    ind <- which(cond == condition & dir == direction)
+    if(length(ind) < 2) res <- c(sim = NA, p = NA)
+    else res <- c(sim = ontologySimilarity::get_sim(sim.mat, group = ind),
+                  p = ontologySimilarity::get_sim_p(sim.mat, group = ind))
+    return(res)
+}
+
+# solutions for dealing with multiple contrasts for a study to avoid detection
+# of duplication within studies as replication
+# l <- rle(df$PMID)
+# cs <- cumsum(l$lengths)
+# ind <- c(1, cs[-length(cs)] + 1)
+.first <- function(s) s[1,]
+
+.largest <- function(s)
+{
+    l <- lengths(s[["NCBI Taxonomy IDs"]])
+    s[which.max(l),] 
+}
+
+.merge <- function(s)
+{
+    s[["NCBI Taxonomy IDs"]][[1]] <- Reduce(union, s[["NCBI Taxonomy IDs"]])
+    s[1,"Group 1 name"] <- paste(s[,"Group 1 name"], collapse = ";") 
+    s[1,"Group 0 name"] <- paste(s[,"Group 0 name"], collapse = ";") 
+    .first(s)
+}
+
+.treatMultiContrastStudies <- function(df, 
+                                       multi.contrast = c("all", "first",
+                                                          "largest", "merge"))
+{
+    multi.contrast <- match.arg(multi.contrast)
+    if(multi.contrast == "all") return(df)
+    spl <- split(df, df$PMID)
+    .f <- switch(multi.contrast,
+                 first = .first,
+                 largest = .largest,
+                 merge = .merge) 
+    spl <- lapply(spl, .f)
+    df <- do.call(rbind, spl)
+    return(df)
+}
+
+# obtain categories of a column with defined minimum number of studies
+# investigating this categories
+# can eg. be used to obtain the conditions that are studies by at least 
+# two studies for replicability testing
+.getCategoriesToTest <- function(df, column, min.studies)
+{
+    spl <- split(df$PMID, df[[column]])
+    spl <- lapply(spl, unique)
+    lens <- lengths(spl)
+    names(lens) <- names(spl)
+    lens <- sort(lens, decreasing = TRUE)
+    incl <- lens[lens >= min.studies]
+    return(incl)
+}
+
+# restrict a BugSigDB data frame by direction of abundance change
+# UP: increased abundance in the study group
+# DOWN: decreased abundance in the study group
+.restrictByDirection <- function(df, direction = c("BOTH", "UP", "DOWN"))
+{
+    direction <- match.arg(direction)
+    if(direction != "BOTH")
+    {
+        direction <- ifelse(direction == "UP", "increased", "decreased")
+        df <- subset(df, `Abundance in Group 1` == direction)
+    }
+    return(df)
+}

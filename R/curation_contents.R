@@ -196,6 +196,31 @@ getMostFrequentTaxa <- function(dat,
     head(msc.tab, n=n)
 }
 
+#' Get distribution of taxonomic levels
+#'
+#' @param sigs a \code{list} of BugSigDB signatures in metaphlan format.
+#' Typically obtained via \code{getSignatures}.
+#' @return A sorted table listing absolute frequencies of unique taxa for each
+#' taxonomic level.
+#' @export
+getTaxLevelDistribution <- function(sigs)
+{
+    ul <- unique(unlist(sigs))
+    .getTaxLevel <- function(x)
+    {
+        spl <- unlist(strsplit(x, "\\|"))
+        leave <- spl[length(spl)]
+        substring(leave, 1, 1)
+    }
+    tax.level <- vapply(ul, .getTaxLevel, character(1))
+    d <- sort(table(tax.level), decreasing = TRUE)
+    tl <- bugsigdbr:::MPA.TAX.LEVELS
+    tl <- tl[tl %in% names(d)]
+    d <- d[tl]
+    names(d) <- names(tl)
+    return(d) 
+}
+
 .summarizeDiv <- function(exps)
 {
     div.cols <- c("Pielou", "Shannon", "Chao1", 
