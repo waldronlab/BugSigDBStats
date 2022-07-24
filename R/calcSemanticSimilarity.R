@@ -288,7 +288,7 @@ testReplicability <- function(df,
     ind <- order(mranks[rownames(res)])
     res <- res[ind,]   
     colnames(res)[c(2:4,6:8)] <- paste(colnames(res)[c(2:4,6:8)], 
-                                      rep(c("UP", "DOWN"), each = 2), 
+                                      rep(c("UP", "DOWN"), each = 3), 
                                       sep = ".") 
     res <- data.frame(CONDITION = rep(rownames(res), 2),
                       SEMSIM =  c(res$SEMSIM.UP, res$SEMSIM.DOWN), 
