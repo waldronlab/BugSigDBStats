@@ -6,6 +6,7 @@
 \usage{
 testReplicability(
   df,
+  onto = NULL,
   multi.contrast = c("all", "first", "largest", "merge"),
   min.studies = 2,
   min.taxa = 5
@@ -14,6 +15,9 @@ testReplicability(
 \arguments{
 \item{df}{\code{data.frame} storing BugSigDB data. Typically obtained via
 \code{\link{importBugSigDB}}.}
+
+\item{onto}{ontology. An object of class \code{ontology_index} storing the 
+NCBI Taxonomy. Typically obtained via \code{\link{getNcbiTaxonomyObo}}.}
 
 \item{multi.contrast}{character. How to treat studies that report multiple
 contrasts for a study to avoid detection of duplication within studies as

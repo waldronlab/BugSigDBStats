@@ -10,7 +10,7 @@ syncWithNCBI(sigs, onto)
 \item{sigs}{signatures. A list of character vectors. Typically obtained 
 via \code{\link{getSignatures}}.}
 
-\item{onto}{ontology. An object of class \code{ontologyIndex} storing the 
+\item{onto}{ontology. An object of class \code{ontology_index} storing the 
 NCBI Taxonomy. Typically obtained via \code{\link{getNcbiTaxonomyObo}}.}
 }
 \value{

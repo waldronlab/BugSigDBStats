@@ -126,7 +126,7 @@ getNcbiTaxonomyObo <- function() {
 #'
 #' Incorporation of weights into the computation of semantic similarity
 #'
-#' @param o ontology. An object of class \code{ontologyIndex}.
+#' @param o ontology. An object of class \code{ontology_index}.
 #' @param ic information content. Typically obtained via 
 #' \code{ontologySimilarity::descendants_IC(o)}. 
 #' @param set1 character. First term set.
@@ -162,7 +162,7 @@ weightedBMA <- function(o, ic, set1, set2,
 #'
 #' @param sigs signatures. A list of character vectors. Typically obtained 
 #' via \code{\link{getSignatures}}. 
-#' @param onto ontology. An object of class \code{ontologyIndex} storing the 
+#' @param onto ontology. An object of class \code{ontology_index} storing the 
 #' NCBI Taxonomy. Typically obtained via \code{\link{getNcbiTaxonomyObo}}.
 #' @return The input signatures synchronized with the NCBI Taxonomy
 #' @examples
@@ -189,6 +189,8 @@ syncWithNCBI <- function(sigs, onto)
 #'
 #' @param df \code{data.frame} storing BugSigDB data. Typically obtained via
 #' \code{\link{importBugSigDB}}.
+#' @param onto ontology. An object of class \code{ontology_index} storing the 
+#' NCBI Taxonomy. Typically obtained via \code{\link{getNcbiTaxonomyObo}}.
 #' @param multi.contrast character. How to treat studies that report multiple
 #' contrasts for a study to avoid detection of duplication within studies as
 #' replication? Select one of \itemize{
@@ -215,8 +217,10 @@ syncWithNCBI <- function(sigs, onto)
 #'  dat <- bugsigdbr::importBugSigDB(version = "10.5281/zenodo.5904281")
 #'  dat.feces <- subset(dat, `Body site` == "feces")
 #'  res <- testReplicability(dat.feces)
+#' @importFrom methods is
 #' @export
 testReplicability <- function(df, 
+                              onto = NULL,
                               multi.contrast = c("all", "first", "largest", "merge"),
                               min.studies = 2,
                               min.taxa = 5)
@@ -226,20 +230,21 @@ testReplicability <- function(df,
     stopifnot("Body site" %in% colnames(df))
     stopifnot("NCBI Taxonomy IDs" %in% colnames(df))
 
-    if(length(unique(df[["Body site"]])) > 1) 
-        stop("Found more than one body site.\n", 
-             "Replicability testing is supported for one body site at a time only.\n",
-             "Subset by body site of interest first.")
+    # sanity check on ontology
+    if(!is.null(onto)) stopifnot(is(onto, "ontology_index"))
 
-    # clean pubmed column
-    ind <- !is.na(df$PMID)
-    df <- df[ind,]
+    # clean pmid, condition, and body site
+    rel.cols <- c("PMID", "Condition", "Body site")   
+    for(column in rel.cols)
+    { 
+        ind <- !is.na(df[[column]]) & !grepl(",", df[[column]])
+        df <- df[ind,]
+    }
 
-    # clean condition column
-    column <- "Condition"
-    ind <- !is.na(df[[column]]) & !grepl(",", df[[column]])
-    df <- df[ind,]
-
+    # do we have multipe body sites present?
+    multi.bs <- length(unique(df[["Body site"]])) > 1
+    if(multi.bs) df$Condition <- paste(df$Condition, df[["Body site"]], sep = "*;*")
+    
     # treat multi contrast studies
     df.up <- .restrictByDirection(df, direction = "UP")
     df.down <- .restrictByDirection(df, direction = "DOWN")
@@ -252,13 +257,13 @@ testReplicability <- function(df,
     df <- df[ind,]
 
     # calculate semantic similarity
-    onto <- getNcbiTaxonomyObo()
+    if(is.null(onto)) onto <- getNcbiTaxonomyObo()
     sigs <- bugsigdbr::getSignatures(df, tax.id.type = "ncbi")
     sigs <- syncWithNCBI(sigs, onto) 
     sim.mat <- ontologySimilarity::get_sim_grid(ontology = onto, term_sets = sigs)
 
     # include only categories with defined min number of studies
-    conds.to.test <- .getCategoriesToTest(df, column, min.studies)
+    conds.to.test <- .getCategoriesToTest(df, "Condition", min.studies)
     
     # test conditions
     ps.up <- .testConditions(names(conds.to.test), df, sim.mat, "increased")
@@ -267,13 +272,13 @@ testReplicability <- function(df,
     ps.down$NR.STUDIES <- unname(conds.to.test[rownames(ps.down)])
 
     # combine into result table
-    res <- .createResultTable(ps.up, ps.down) 
+    res <- .createResultTable(ps.up, ps.down, multi.bs) 
     return(res)
 }
 
 # take the results by direction of abundance change (increased / decreased)
 # and combine them into on result table
-.createResultTable <- function(ps.up, ps.down)
+.createResultTable <- function(ps.up, ps.down, multi.bs)
 {
     isect <- intersect(rownames(ps.up), rownames(ps.down))
     res <- cbind(ps.up[isect,], ps.down[isect,])
@@ -290,6 +295,13 @@ testReplicability <- function(df,
                       PVAL = c(res$PVAL.UP, res$PVAL.DOWN), 
                       NR.STUDIES = c(res$NR.STUDIES.UP, res$NR.STUDIES.DOWN),   
                       DIRECTION = rep(c("UP", "DOWN"), each = nrow(res)))
+    if(multi.bs)
+    {
+        spl <- strsplit(res$CONDITION, "\\*;\\*")
+        cond <- vapply(spl, `[`, character(1), x = 1)    
+        bs <- vapply(spl, `[`, character(1), x = 2)
+        res <- data.frame(CONDITION = cond, BODY.SITE = bs, res[,2:5])     
+    }
     return(res)
 } 
 

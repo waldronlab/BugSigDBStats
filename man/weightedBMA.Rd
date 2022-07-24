@@ -14,7 +14,7 @@ weightedBMA(
 )
 }
 \arguments{
-\item{o}{ontology. An object of class \code{ontologyIndex}.}
+\item{o}{ontology. An object of class \code{ontology_index}.}
 
 \item{ic}{information content. Typically obtained via 
 \code{ontologySimilarity::descendants_IC(o)}.}

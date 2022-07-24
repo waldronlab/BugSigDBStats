@@ -32,6 +32,7 @@ Imports:
     ggplot2,
     ggpubr,
     grid,
+    methods,
     ontologySimilarity,
     BiocFileCache,
     ComplexHeatmap,
