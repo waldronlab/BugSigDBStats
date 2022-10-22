@@ -22,7 +22,7 @@ library(ggpubr)
 Get bulk export from bugsigdb.org:
 
 ```{r curationFile}
-full.dat <- bugsigdbr::importBugSigDB()
+full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 colnames(full.dat)
 ```
@@ -274,7 +274,7 @@ sum(lengths(sigs) > 4)
 ## Microbe co-occurrence
 
 ```{r coocc, fig.width = 10, fig.height = 10}
-dat.feces <- subset(dat, `Body site` == "feces")
+dat.feces <- subset(dat, `Body site` == "Feces")
 cooc.mat <- microbeHeatmap(dat.feces, tax.level = "genus")
 antag.mat <- microbeHeatmap(dat.feces, tax.level = "genus", antagonistic = TRUE)
 ```
@@ -405,7 +405,7 @@ decorate_annotation("Abundance in Group 1", {
 Inspect signature similarity for signatures from stomach samples based on Jaccard index:
 
 ```{r}
-stomachsub <- subset(dat, `Body site` == "stomach")
+stomachsub <- subset(dat, `Body site` == "Stomach")
 sigsub <- bugsigdbr::getSignatures(stomachsub)
 pair.jsim <- calcJaccardSimilarity(sigsub)
 ```

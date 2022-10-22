@@ -377,6 +377,7 @@ testReplicability <- function(df,
 .merge <- function(s)
 {
     s[["NCBI Taxonomy IDs"]][[1]] <- Reduce(union, s[["NCBI Taxonomy IDs"]])
+    s[["MetaPhlAn taxon names"]][[1]] <- Reduce(union, s[["MetaPhlAn taxon names"]])
     s[1,"Group 1 name"] <- paste(s[,"Group 1 name"], collapse = ";") 
     s[1,"Group 0 name"] <- paste(s[,"Group 0 name"], collapse = ";") 
     .first(s)
