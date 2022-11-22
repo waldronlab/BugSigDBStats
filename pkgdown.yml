@@ -3,7 +3,7 @@ pkgdown: 2.0.4
 pkgdown_sha: ~
 articles:
   BugSigDBStats: BugSigDBStats.html
-last_built: 2022-11-20T05:18Z
+last_built: 2022-11-22T05:17Z
 urls:
   reference: http://waldronlab.io/BugSigDBStats/reference
   article: http://waldronlab.io/BugSigDBStats/articles
