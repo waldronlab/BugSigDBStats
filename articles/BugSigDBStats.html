@@ -65,7 +65,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 data-toc-skip class="date">November 27, 2022</h4>
+            <h4 data-toc-skip class="date">November 30, 2022</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/HEAD/vignettes/BugSigDBStats.Rmd" class="external-link"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -379,9 +379,9 @@ curation?):</p>
 <span class="co">##                                   meta-analysis </span>
 <span class="co">##                                               5 </span>
 <span class="co">##                     randomized controlled trial </span>
-<span class="co">##                                              28 </span>
+<span class="co">##                                              27 </span>
 <span class="co">##                           laboratory experiment </span>
-<span class="co">##                                              29 </span>
+<span class="co">##                                              30 </span>
 <span class="co">##        time series / longitudinal observational </span>
 <span class="co">##                                              56 </span>
 <span class="co">##                              prospective cohort </span>
@@ -586,7 +586,7 @@ column:</p>
 <span class="co">## $`16S variable region`</span>
 <span class="co">## </span>
 <span class="co">##   34    4  123   12  345   45    3 1234   56   23 </span>
-<span class="co">##  438  336  112   76   57   45   38   20   18   11 </span>
+<span class="co">##  438  340  112   76   57   45   38   20   18   11 </span>
 <span class="co">## </span>
 <span class="co">## $`Sequencing platform`</span>
 <span class="co">## </span>
@@ -613,7 +613,7 @@ column:</p>
 <span class="co">## $`16S variable region`</span>
 <span class="co">## </span>
 <span class="co">##      34       4     123      12     345      45       3    1234      56      23 </span>
-<span class="co">## 0.36800 0.28300 0.09420 0.06390 0.04790 0.03780 0.03200 0.01680 0.01510 0.00925 </span>
+<span class="co">## 0.36700 0.28500 0.09390 0.06370 0.04780 0.03770 0.03190 0.01680 0.01510 0.00922 </span>
 <span class="co">## </span>
 <span class="co">## $`Sequencing platform`</span>
 <span class="co">## </span>
@@ -640,11 +640,11 @@ analysis column:</p>
 <pre><code><span class="co">## $`Statistical test`</span>
 <span class="co">## </span>
 <span class="co">##      Mann-Whitney (Wilcoxon)                        LEfSe </span>
-<span class="co">##                          418                          400 </span>
-<span class="co">##              Kruskall-Wallis                       DESeq2 </span>
-<span class="co">##                           98                           86 </span>
-<span class="co">##                       T-Test                        ANOVA </span>
-<span class="co">##                           84                           69 </span>
+<span class="co">##                          417                          405 </span>
+<span class="co">##              Kruskall-Wallis                       T-Test </span>
+<span class="co">##                           98                           84 </span>
+<span class="co">##                       DESeq2                        ANOVA </span>
+<span class="co">##                           82                           69 </span>
 <span class="co">##            Linear Regression                    PERMANOVA </span>
 <span class="co">##                           42                           27 </span>
 <span class="co">##                    Metastats Negative Binomial Regression </span>
@@ -667,11 +667,11 @@ analysis column:</p>
 <pre><code><span class="co">## $`Statistical test`</span>
 <span class="co">## </span>
 <span class="co">##      Mann-Whitney (Wilcoxon)                        LEfSe </span>
-<span class="co">##                       0.2910                       0.2780 </span>
-<span class="co">##              Kruskall-Wallis                       DESeq2 </span>
-<span class="co">##                       0.0682                       0.0598 </span>
-<span class="co">##                       T-Test                        ANOVA </span>
-<span class="co">##                       0.0585                       0.0480 </span>
+<span class="co">##                       0.2900                       0.2820 </span>
+<span class="co">##              Kruskall-Wallis                       T-Test </span>
+<span class="co">##                       0.0682                       0.0585 </span>
+<span class="co">##                       DESeq2                        ANOVA </span>
+<span class="co">##                       0.0571                       0.0480 </span>
 <span class="co">##            Linear Regression                    PERMANOVA </span>
 <span class="co">##                       0.0292                       0.0188 </span>
 <span class="co">##                    Metastats Negative Binomial Regression </span>
@@ -696,7 +696,7 @@ analysis column:</p>
 <pre><code><span class="co">##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness</span>
 <span class="co">## decreased     18     180   114      55              15      101</span>
 <span class="co">## increased     10     149    73      44              11      105</span>
-<span class="co">## unchanged     37     522   279     198              36      270</span></code></pre>
+<span class="co">## unchanged     37     524   279     200              36      270</span></code></pre>
 <p>Correspondence of Shannon diversity and Richness:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">exps</span><span class="op">$</span><span class="va">Shannon</span>, <span class="va">exps</span><span class="op">$</span><span class="va">Richness</span><span class="op">)</span></code></pre></div>
@@ -722,7 +722,7 @@ diversity:</p>
 <span class="co">## obesity                                              3         7        39</span>
 <span class="co">## acute lymphoblastic leukemia                         0         3         4</span>
 <span class="co">## age                                                  2         5         2</span>
-<span class="co">## antimicrobial agent                                  6         9        21</span>
+<span class="co">## antimicrobial agent                                  6         9        23</span>
 <span class="co">## atopic asthma                                        4         1         7</span>
 <span class="co">## Ethnic group                                         2         5         7</span>
 <span class="co">## periodontitis                                        3         0         2</span>
@@ -766,7 +766,7 @@ diversity:</p>
 <span class="co">## obesity                                          0.061     0.140      0.80</span>
 <span class="co">## acute lymphoblastic leukemia                     0.000     0.430      0.57</span>
 <span class="co">## age                                              0.220     0.560      0.22</span>
-<span class="co">## antimicrobial agent                              0.170     0.250      0.58</span>
+<span class="co">## antimicrobial agent                              0.160     0.240      0.61</span>
 <span class="co">## atopic asthma                                    0.330     0.083      0.58</span>
 <span class="co">## Ethnic group                                     0.140     0.360      0.50</span>
 <span class="co">## periodontitis                                    0.600     0.000      0.40</span>
@@ -854,7 +854,7 @@ diversity:</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##                            increased decreased unchanged</span>
-<span class="co">## Feces                             67       103       312</span>
+<span class="co">## Feces                             67       103       314</span>
 <span class="co">## Meconium                           6         0         8</span>
 <span class="co">## Stomach                            3         9         5</span>
 <span class="co">## Tongue                             0         6         7</span>
@@ -952,7 +952,7 @@ diversity:</p>
 <p>Number unique microbes contained in the signatures:</p>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">nuniq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## [1] 2292</span></code></pre>
+<pre><code><span class="co">## [1] 2294</span></code></pre>
 <p>Development of unique microbes captured over time:</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plotUniqueMicrobesOverTime.html">plotUniqueMicrobesOverTime</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></code></pre></div>
