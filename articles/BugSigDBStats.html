@@ -65,7 +65,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip></h1>
             
-            <h4 data-toc-skip class="date">May 28, 2023</h4>
+            <h4 data-toc-skip class="date">May 29, 2023</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/HEAD/vignettes/BugSigDBStats.Rmd" class="external-link"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="hidden name"><code>BugSigDBStats.Rmd</code></div>
@@ -700,12 +700,12 @@ analysis column:</p>
 <span class="co">## $`MHT correction`</span>
 <span class="co">## </span>
 <span class="co">##  TRUE FALSE </span>
-<span class="co">##   752   716 </span>
+<span class="co">##   753   716 </span>
 <span class="co">## </span>
 <span class="co">## $`Significance threshold`</span>
 <span class="co">## </span>
 <span class="co">##  0.05   0.1  0.01 0.001  0.15   0.2 0.005     0  0.25 1e-11 </span>
-<span class="co">##  1400    62    26    21    14    13     4     3     3     1</span></code></pre>
+<span class="co">##  1401    62    26    21    14    13     4     3     3     1</span></code></pre>
 <p>Proportions instead:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
@@ -727,14 +727,14 @@ analysis column:</p>
 <span class="co">## $`MHT correction`</span>
 <span class="co">## </span>
 <span class="co">##  TRUE FALSE </span>
-<span class="co">## 0.512 0.488 </span>
+<span class="co">## 0.513 0.487 </span>
 <span class="co">## </span>
 <span class="co">## $`Significance threshold`</span>
 <span class="co">## </span>
 <span class="co">##     0.05      0.1     0.01    0.001     0.15      0.2    0.005        0 </span>
-<span class="co">## 0.901000 0.039900 0.016700 0.013500 0.009010 0.008370 0.002570 0.001930 </span>
+<span class="co">## 0.901000 0.039900 0.016700 0.013500 0.009000 0.008360 0.002570 0.001930 </span>
 <span class="co">##     0.25    1e-11 </span>
-<span class="co">## 0.001930 0.000644</span></code></pre>
+<span class="co">## 0.001930 0.000643</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="alpha-diversity">Alpha diversity<a class="anchor" aria-label="anchor" href="#alpha-diversity"></a>
