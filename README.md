@@ -1,5 +1,5 @@
 # BugSigDBStats
-BugSigDB Stats and Analysis
+[BugSigDB](https://bugsigdb.org) Stats and Analysis
 
 ## Citation
 
