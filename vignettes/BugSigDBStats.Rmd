@@ -50,8 +50,9 @@ Publication date of the curated papers:
 ```{r pubDate}
 pmids <- pmids[!is.na(pmids)]
 pubyear1 <- pmid2pubyear(pmids[1:361])
-pubyear2 <- pmid2pubyear(pmids[362:length(pmids)])
-pubyear <- c(pubyear1, pubyear2)
+pubyear2 <- pmid2pubyear(pmids[362:710])
+pubyear3 <- pmid2pubyear(pmids[711:length(pmids)])
+pubyear <- c(pubyear1, pubyear2, pubyear3)
 head(cbind(pmids, pubyear))
 ```
 
