@@ -81,9 +81,7 @@ getNcbiTaxonomyObo <- function() {
     onto <- .getResourceFromCache("ncbi.onto")
 
     if (is.null(onto)) {
-
-        url <- paste0("https://sandbox.zenodo.org/record/954943/files/",
-                      "ncbitaxon.rds?download=1")
+        url <- "https://github.com/waldronlab/ncbitaxon/raw/devel/ncbitaxon.rds"
         temp_file <- tempfile()
         message("Getting NCBI taxonomy ontology.")
         utils::download.file(url = url, destfile = temp_file)
