@@ -21,17 +21,26 @@ MPA.REGEXP <- "^[kpcofgst]__"
 #' @examples 
 #'  pmid2pubyear("32026945")
 #' @export
-pmid2pubyear <- function(pmid)
-{
-    x <- annotate::pubmed(pmid)
+pmid2pubyear <- function(pmid) {
+  chunk_size <- 300
+  pmid_chunks <- split(pmid, ceiling(seq_along(pmid) / chunk_size))
+  pub_years <- character(0)
+  
+  for (chunk in pmid_chunks) {
+    x <- annotate::pubmed(chunk)
     a <- XML::xmlRoot(x)
-    .f <- function(i)
-    {
-        art <- annotate::buildPubMedAbst(a[[i]])
-        pd <- annotate::pubDate(art)
-        unlist(strsplit(pd, " "))[[2]]
+    .f <- function(i) {
+      art <- annotate::buildPubMedAbst(a[[i]])
+      pd <- annotate::pubDate(art)
+      unlist(strsplit(pd, " "))[[2]]
     }
-    vapply(seq_along(pmid), .f, character(1))
+    
+    pub_years_chunk <- vapply(seq_along(chunk), .f, character(1))
+    pub_years <- c(pub_years, pub_years_chunk)
+    Sys.sleep(2)
+  }
+  
+  return(pub_years)
 }
 
 #' Remove entries that do not contain signatures
@@ -43,11 +52,10 @@ pmid2pubyear <- function(pmid)
 #' @export
 stripEmptySignatures <- function(dat, col = "NCBI Taxonomy IDs")
 {
-    dat[is.na(dat[,col]), col] <- ""
-    non.empty.sigs <- dat[,col] != ""
-    dat[non.empty.sigs,]
+  dat[is.na(dat[,col]), col] <- ""
+  non.empty.sigs <- dat[,col] != ""
+  dat[non.empty.sigs,]
 }
-
 
 #' Stratify curation output by curator 
 #' @param dat a \code{data.frame} storing BugSigDB data
@@ -56,13 +64,12 @@ stripEmptySignatures <- function(dat, col = "NCBI Taxonomy IDs")
 #' @export
 stratifyByCurator <- function(dat)
 {
-    pc <- split(dat[,"PMID"], dat[,"Curator"])
-    spc <- sort(lengths(pc))
-    ppc <- sort(lengths(lapply(pc, unique)))
-
-    npc <- rbind(spc[names(ppc)], ppc)
-    colnames(npc) <- vapply(colnames(npc), function(n) unlist(strsplit(n, " "))[1], character(1))
-    rownames(npc) <- c("signatures", "papers")
-    npc[,!is.na(colnames(npc))]
+  pc <- split(dat[,"PMID"], dat[,"Curator"])
+  spc <- sort(lengths(pc))
+  ppc <- sort(lengths(lapply(pc, unique)))
+  
+  npc <- rbind(spc[names(ppc)], ppc)
+  colnames(npc) <- vapply(colnames(npc), function(n) unlist(strsplit(n, " "))[1], character(1))
+  rownames(npc) <- c("signatures", "papers")
+  npc[,!is.na(colnames(npc))]
 }
-
