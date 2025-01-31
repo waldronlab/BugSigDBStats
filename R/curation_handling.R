@@ -22,7 +22,7 @@ MPA.REGEXP <- "^[kpcofgst]__"
 #'  pmid2pubyear("32026945")
 #' @export
 pmid2pubyear <- function(pmid) {
-  chunk_size <- 300
+  chunk_size <- 250
   pmid_chunks <- split(pmid, ceiling(seq_along(pmid) / chunk_size))
   pub_years <- character(0)
   
