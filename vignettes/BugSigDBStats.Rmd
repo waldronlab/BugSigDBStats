@@ -49,10 +49,7 @@ Publication date of the curated papers:
 
 ```{r pubDate}
 pmids <- pmids[!is.na(pmids)]
-pubyear1 <- pmid2pubyear(pmids[1:361])
-pubyear2 <- pmid2pubyear(pmids[362:710])
-pubyear3 <- pmid2pubyear(pmids[711:length(pmids)])
-pubyear <- c(pubyear1, pubyear2, pubyear3)
+pubyear <- pmid2pubyear(pmids)
 head(cbind(pmids, pubyear))
 ```
 
@@ -276,8 +273,8 @@ sum(lengths(sigs) > 4)
 
 ```{r coocc, fig.width = 10, fig.height = 10}
 dat.feces <- subset(dat, `Body site` == "Feces")
-cooc.mat <- microbeHeatmap(dat.feces, tax.level = "genus")
-antag.mat <- microbeHeatmap(dat.feces, tax.level = "genus", antagonistic = TRUE)
+cooc.mat <- microbeHeatmap(dat.feces, tax.level = "genus", anno = "genus")
+antag.mat <- microbeHeatmap(dat.feces, tax.level = "genus", anno = "genus", antagonistic = TRUE)
 ```
 
 Get the top 20 genera most frequently reported as differentially abundant:
@@ -417,4 +414,3 @@ Create a dendrogram of Jaccard dissimilarities (1.0 has no overlap, 0.0 are iden
 jdist <- as.dist(1 - pair.jsim)
 plot(hclust(jdist))
 ```
-
