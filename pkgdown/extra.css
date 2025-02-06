@@ -1,0 +1,17 @@
+/* Reduce navbar height */
+.navbar {
+  min-height: 50px !important; /* Adjust as needed */
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+/* Adjust menu items */
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Prevent content from being cut off */
+body {
+  padding-top: 20px; /* Adjust to match navbar height */
+}

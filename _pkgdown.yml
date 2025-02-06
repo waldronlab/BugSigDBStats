@@ -6,8 +6,12 @@ title: BugSigDB Stats and Analysis
 url: http://waldronlab.io/BugSigDBStats
 
 template:
+  bootstrap: 5
+  bootswatch: flatly
   params:
-    bootswatch: flatly
+    toc: true
+  includes:
+    after: pkgdown/extra.css
 
 navbar:
   title: ~
