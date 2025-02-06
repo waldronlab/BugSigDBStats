@@ -6,7 +6,9 @@ vignette: >
 date: '`r format(Sys.Date(), "%B %e, %Y")`'
 output:
   html_document:
-    mathjax: null   
+    mathjax: null  
+    toc: true
+    toc_float: true
 ---
 
 # Setup
@@ -45,7 +47,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-Publication date of the curated papers:
+## Publication date of the curated papers:
 
 ```{r pubDate}
 pmids <- pmids[!is.na(pmids)]
@@ -77,7 +79,7 @@ Papers containing only empty UP and DOWN signatures (under curation?):
 setdiff(pmids, unique(dat[,"PMID"]))
 ```
 
-Progress over time:
+## Progress over time:
 ```{r, fig.width=10, fig.height=10}
 dat[,"Curated date"] <- as.character(lubridate::dmy(dat[,"Curated date"]))
 plotProgressOverTime(dat)
