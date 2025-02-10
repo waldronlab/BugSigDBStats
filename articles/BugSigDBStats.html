@@ -49,7 +49,7 @@
 
       <h1></h1>
             
-            <h4 data-toc-skip class="date">February 9, 2025</h4>
+            <h4 data-toc-skip class="date">February 10, 2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/main/vignettes/BugSigDBStats.Rmd" class="external-link"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="d-none name"><code>BugSigDBStats.Rmd</code></div>
@@ -1830,7 +1830,7 @@ column:</p>
 <span><span class="co">## $`Antibiotics exclusion`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## 3 months  1 month 2 months 6 months  2 weeks  4 weeks      N/A  30 days </span></span>
-<span><span class="co">##      405      292      189      137      102       94       46       27 </span></span>
+<span><span class="co">##      405      292      189      137      102       94       43       27 </span></span>
 <span><span class="co">## 6 Months   1 week </span></span>
 <span><span class="co">##       22       14</span></span></code></pre>
 <p>Proportions instead:</p>
@@ -1883,9 +1883,9 @@ column:</p>
 <span><span class="co">## $`Antibiotics exclusion`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## 3 months  1 month 2 months 6 months  2 weeks  4 weeks      N/A  30 days </span></span>
-<span><span class="co">##  0.19900  0.14400  0.09290  0.06740  0.05010  0.04620  0.02260  0.01330 </span></span>
+<span><span class="co">##  0.19900  0.14400  0.09310  0.06750  0.05020  0.04630  0.02120  0.01330 </span></span>
 <span><span class="co">## 6 Months   1 week </span></span>
-<span><span class="co">##  0.01080  0.00688</span></span></code></pre>
+<span><span class="co">##  0.01080  0.00689</span></span></code></pre>
 <p>Sample size:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ssize</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">sub.cols</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">summary</span><span class="op">)</span></span>
@@ -1894,7 +1894,7 @@ column:</p>
 <span><span class="co">## Min.                 0.0000             1.00000</span></span>
 <span><span class="co">## 1st Qu.             12.0000            11.00000</span></span>
 <span><span class="co">## Median              25.0000            22.00000</span></span>
-<span><span class="co">## Mean                60.4516            59.55005</span></span>
+<span><span class="co">## Mean                60.4516            59.55031</span></span>
 <span><span class="co">## 3rd Qu.             50.0000            43.00000</span></span>
 <span><span class="co">## Max.              6647.0000          9623.00000</span></span>
 <span><span class="co">## NA's               323.0000           320.00000</span></span></code></pre>
@@ -1978,7 +1978,7 @@ analysis column:</p>
 <span><span class="co">##       Linear Regression         Kruskall-Wallis                   ANOVA </span></span>
 <span><span class="co">##                     205                     196                     173 </span></span>
 <span><span class="co">##                   ANCOM                  T-Test                MaAsLin2 </span></span>
-<span><span class="co">##                     154                     142                     106 </span></span>
+<span><span class="co">##                     155                     142                     106 </span></span>
 <span><span class="co">##               Metastats </span></span>
 <span><span class="co">##                      62 </span></span>
 <span><span class="co">## </span></span>
@@ -1990,7 +1990,7 @@ analysis column:</p>
 <span><span class="co">## $`Significance threshold`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##  0.05   0.1  0.01 0.001  0.25   0.2  0.15     2 0.005 1e-04 </span></span>
-<span><span class="co">##  3571   255    99    28    27    22    19    15    13     6</span></span></code></pre>
+<span><span class="co">##  3572   255    99    28    27    22    19    15    13     6</span></span></code></pre>
 <p>Proportions instead:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -2003,7 +2003,7 @@ analysis column:</p>
 <span><span class="co">##       Linear Regression         Kruskall-Wallis                   ANOVA </span></span>
 <span><span class="co">##                  0.0499                  0.0477                  0.0421 </span></span>
 <span><span class="co">##                   ANCOM                  T-Test                MaAsLin2 </span></span>
-<span><span class="co">##                  0.0375                  0.0346                  0.0258 </span></span>
+<span><span class="co">##                  0.0377                  0.0346                  0.0258 </span></span>
 <span><span class="co">##               Metastats </span></span>
 <span><span class="co">##                  0.0151 </span></span>
 <span><span class="co">## </span></span>
