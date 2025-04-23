@@ -33,8 +33,8 @@ colnames(full.dat)
 Stripping illformed entries:
 
 ```{r}
-is.study <- grepl("^Study [0-9]+$", full.dat[["Study"]])
-is.exp <- grepl("^Experiment [0-9]+$", full.dat[["Experiment"]])
+is.study <- !is.na(full.dat[["Study"]])
+is.exp <- !is.na(full.dat[["Experiment"]])
 full.dat <- full.dat[is.study & is.exp, ]
 ```
 
@@ -50,15 +50,14 @@ nrow(full.dat)
 
 ## Publication date of the curated papers:
 
-```{r pubDate}
+```{r pubDate, eval = FALSE}
 pmids <- pmids[!is.na(pmids)]
 pubyear <- pmid2pubyear(pmids)
 head(cbind(pmids, pubyear))
 ```
 
-```{r pubDate2}
+```{r pubDate2, eval=FALSE}
 tab <- table(pubyear)
-tab <- tab[-length(tab)]
 tab <- tab[order(as.integer(names(tab)))]
 df <- data.frame(year = names(tab), papers = as.integer(tab))
 ggbarplot(df, x = "year", y = "papers", 
@@ -94,8 +93,9 @@ plotCuratorStats(dat, npc)
 ```
 
 Number of complete and revised signatures:
-```{r}
-table(df[["State"]])
+Turned off because it's way too long these days
+```{r eval = FALSE}
+table(dat[["State"]])
 table(dat[,"Revision editor"])
 ```
 
