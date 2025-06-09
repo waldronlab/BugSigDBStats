@@ -49,7 +49,7 @@
 
       <h1></h1>
             
-            <h4 data-toc-skip class="date">June 8, 2025</h4>
+            <h4 data-toc-skip class="date">June 9, 2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/main/vignettes/BugSigDBStats.Rmd" class="external-link"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="d-none name"><code>BugSigDBStats.Rmd</code></div>
@@ -73,7 +73,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html" class="external-link">importBugSigDB</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"devel"</span>, cache <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 8979   50</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 8980   50</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] "BSDB ID"                    "Study"                     </span></span>
@@ -114,10 +114,10 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 1443</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 1444</span></span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 8979</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 8980</span></span></code></pre>
 <div class="section level3">
 <h3 id="publication-date-of-the-curated-papers">Publication date of the curated papers:<a class="anchor" aria-label="anchor" href="#publication-date-of-the-curated-papers"></a>
 </h3>
@@ -138,7 +138,7 @@
 <span><span class="va">ind2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[[</span><span class="st">"NCBI Taxonomy IDs"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">full.dat</span><span class="op">[</span><span class="va">ind1</span> <span class="op">&amp;</span> <span class="va">ind2</span>,<span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 8979</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 8980</span></span></code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under
 curation?):</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -206,7 +206,7 @@ way too long these days</p>
 <span><span class="co">##                                                 laboratory experiment </span></span>
 <span><span class="co">##                                                                   155 </span></span>
 <span><span class="co">##                       cross-sectional observational, not case-control </span></span>
-<span><span class="co">##                                                                   388 </span></span>
+<span><span class="co">##                                                                   389 </span></span>
 <span><span class="co">##                                                          case-control </span></span>
 <span><span class="co">##                                                                   557</span></span></code></pre>
 </div>
@@ -263,7 +263,7 @@ column:</p>
 <span><span class="co">##           Homo sapiens           Mus musculus      Rattus norvegicus </span></span>
 <span><span class="co">##                   4360                    583                    112 </span></span>
 <span><span class="co">##  Sus scrofa domesticus Canis lupus familiaris             Ovis aries </span></span>
-<span><span class="co">##                     88                     73                     24 </span></span>
+<span><span class="co">##                     88                     74                     24 </span></span>
 <span><span class="co">##          Not specified             Bos taurus           Capra hircus </span></span>
 <span><span class="co">##                     23                     18                     14 </span></span>
 <span><span class="co">##          Gallus gallus </span></span>
@@ -322,11 +322,11 @@ column:</p>
 <pre><code><span><span class="co">## $`Host species`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##           Homo sapiens           Mus musculus      Rattus norvegicus </span></span>
-<span><span class="co">##                0.80100                0.10700                0.02060 </span></span>
+<span><span class="co">##                0.80000                0.10700                0.02060 </span></span>
 <span><span class="co">##  Sus scrofa domesticus Canis lupus familiaris             Ovis aries </span></span>
-<span><span class="co">##                0.01620                0.01340                0.00441 </span></span>
+<span><span class="co">##                0.01620                0.01360                0.00441 </span></span>
 <span><span class="co">##          Not specified             Bos taurus           Capra hircus </span></span>
-<span><span class="co">##                0.00422                0.00331                0.00257 </span></span>
+<span><span class="co">##                0.00422                0.00330                0.00257 </span></span>
 <span><span class="co">##          Gallus gallus </span></span>
 <span><span class="co">##                0.00257 </span></span>
 <span><span class="co">## </span></span>
@@ -383,7 +383,7 @@ column:</p>
 <span><span class="co">## Min.                 0.0000             1.00000</span></span>
 <span><span class="co">## 1st Qu.             12.0000            10.00000</span></span>
 <span><span class="co">## Median              24.0000            22.00000</span></span>
-<span><span class="co">## Mean               558.9255            68.11596</span></span>
+<span><span class="co">## Mean               558.8389            68.10631</span></span>
 <span><span class="co">## 3rd Qu.             50.0000            43.00000</span></span>
 <span><span class="co">## Max.            308633.0000         10413.00000</span></span>
 <span><span class="co">## NA's               774.0000           772.00000</span></span></code></pre>
@@ -410,7 +410,7 @@ column:</p>
 <span><span class="co">## $`Sequencing platform`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                    Illumina                    Roche454 </span></span>
-<span><span class="co">##                        4327                         328 </span></span>
+<span><span class="co">##                        4328                         328 </span></span>
 <span><span class="co">##                 Ion Torrent                     RT-qPCR </span></span>
 <span><span class="co">##                         202                         103 </span></span>
 <span><span class="co">##                 MGISEQ-2000                   PacBio RS </span></span>
@@ -459,7 +459,7 @@ analysis column:</p>
 <pre><code><span><span class="co">## $`Statistical test`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                   LEfSe Mann-Whitney (Wilcoxon)                  DESeq2 </span></span>
-<span><span class="co">##                    1609                     832                     510 </span></span>
+<span><span class="co">##                    1609                     833                     510 </span></span>
 <span><span class="co">##         Kruskall-Wallis       Linear Regression                   ANOVA </span></span>
 <span><span class="co">##                     282                     253                     244 </span></span>
 <span><span class="co">##                  T-Test                MaAsLin2                   ANCOM </span></span>
@@ -475,7 +475,7 @@ analysis column:</p>
 <span><span class="co">## $`Significance threshold`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##  0.05   0.1  0.01 0.001  0.25   0.2  0.15 0.005     2 1e-04 </span></span>
-<span><span class="co">##  4528   332   108    34    34    25    19    15    15     6</span></span></code></pre>
+<span><span class="co">##  4529   332   108    34    34    25    19    15    15     6</span></span></code></pre>
 <p>Proportions instead:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -484,7 +484,7 @@ analysis column:</p>
 <pre><code><span><span class="co">## $`Statistical test`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                   LEfSe Mann-Whitney (Wilcoxon)                  DESeq2 </span></span>
-<span><span class="co">##                  0.3120                  0.1610                  0.0990 </span></span>
+<span><span class="co">##                  0.3120                  0.1620                  0.0989 </span></span>
 <span><span class="co">##         Kruskall-Wallis       Linear Regression                   ANOVA </span></span>
 <span><span class="co">##                  0.0547                  0.0491                  0.0473 </span></span>
 <span><span class="co">##                  T-Test                MaAsLin2                   ANCOM </span></span>
@@ -1723,14 +1723,14 @@ diversity:</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">##   1.000   2.000   5.000   8.274  10.000 470.000</span></span></code></pre>
+<span><span class="co">##   1.000   2.000   5.000   8.275  10.000 470.000</span></span></code></pre>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html" class="external-link">gghistogram</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">30</span>, ylab <span class="op">=</span> <span class="st">"number of signatures"</span>,</span>
 <span>    xlab <span class="op">=</span> <span class="st">"signature size"</span>, fill <span class="op">=</span> <span class="st">"#00AFBB"</span>, ggtheme <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/setSize-1.png" width="700"></p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 4294</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 4295</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="microbe-co-occurrence">Microbe co-occurrence<a class="anchor" aria-label="anchor" href="#microbe-co-occurrence"></a>
