@@ -49,7 +49,7 @@
 
       <h1></h1>
             
-            <h4 data-toc-skip class="date">June 12, 2025</h4>
+            <h4 data-toc-skip class="date">June 13, 2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/main/vignettes/BugSigDBStats.Rmd" class="external-link"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="d-none name"><code>BugSigDBStats.Rmd</code></div>
@@ -73,7 +73,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">full.dat</span> <span class="op">&lt;-</span> <span class="fu">bugsigdbr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/bugsigdbr/man/importBugSigDB.html" class="external-link">importBugSigDB</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"devel"</span>, cache <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 8997   50</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 9004   50</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] "BSDB ID"                    "Study"                     </span></span>
@@ -114,10 +114,10 @@
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pmids</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[</span>,<span class="st">"PMID"</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">pmids</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 1448</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 1449</span></span></code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 8997</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 9004</span></span></code></pre>
 <div class="section level3">
 <h3 id="publication-date-of-the-curated-papers">Publication date of the curated papers:<a class="anchor" aria-label="anchor" href="#publication-date-of-the-curated-papers"></a>
 </h3>
@@ -138,7 +138,7 @@
 <span><span class="va">ind2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">full.dat</span><span class="op">[[</span><span class="st">"NCBI Taxonomy IDs"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span></span>
 <span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">full.dat</span><span class="op">[</span><span class="va">ind1</span> <span class="op">&amp;</span> <span class="va">ind2</span>,<span class="op">]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 8997</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 9004</span></span></code></pre>
 <p>Papers containing only empty UP and DOWN signatures (under
 curation?):</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -208,7 +208,7 @@ way too long these days</p>
 <span><span class="co">##                       cross-sectional observational, not case-control </span></span>
 <span><span class="co">##                                                                   389 </span></span>
 <span><span class="co">##                                                          case-control </span></span>
-<span><span class="co">##                                                                   558</span></span></code></pre>
+<span><span class="co">##                                                                   559</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -261,7 +261,7 @@ column:</p>
 <pre><code><span><span class="co">## $`Host species`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##           Homo sapiens           Mus musculus      Rattus norvegicus </span></span>
-<span><span class="co">##                   4369                    583                    117 </span></span>
+<span><span class="co">##                   4370                    583                    121 </span></span>
 <span><span class="co">##  Sus scrofa domesticus Canis lupus familiaris             Ovis aries </span></span>
 <span><span class="co">##                     88                     74                     24 </span></span>
 <span><span class="co">##          Not specified             Bos taurus           Capra hircus </span></span>
@@ -272,7 +272,7 @@ column:</p>
 <span><span class="co">## $`Location of subjects`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                    China United States of America                  Germany </span></span>
-<span><span class="co">##                     1809                      951                      173 </span></span>
+<span><span class="co">##                     1813                      951                      173 </span></span>
 <span><span class="co">##                    Japan                  Denmark                    Italy </span></span>
 <span><span class="co">##                      166                      150                      130 </span></span>
 <span><span class="co">##                Australia              Netherlands              South Korea </span></span>
@@ -283,13 +283,13 @@ column:</p>
 <span><span class="co">## $`Body site`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                     Feces                    Saliva                    Vagina </span></span>
-<span><span class="co">##                      3492                       292                       108 </span></span>
+<span><span class="co">##                      3495                       292                       108 </span></span>
 <span><span class="co">##                     Mouth               Nasopharynx Subgingival dental plaque </span></span>
 <span><span class="co">##                        67                        55                        49 </span></span>
 <span><span class="co">##              Skin of body            Uterine cervix                     Colon </span></span>
 <span><span class="co">##                        47                        47                        46 </span></span>
 <span><span class="co">##               Oral cavity </span></span>
-<span><span class="co">##                        38 </span></span>
+<span><span class="co">##                        40 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Condition</span></span>
 <span><span class="co">## </span></span>
@@ -301,15 +301,15 @@ column:</p>
 <span><span class="co">##                           134                           116 </span></span>
 <span><span class="co">##                 Atopic eczema           Antimicrobial agent </span></span>
 <span><span class="co">##                            90                            85 </span></span>
-<span><span class="co">##           Alzheimer's disease        Response to transplant </span></span>
-<span><span class="co">##                            77                            73 </span></span>
+<span><span class="co">##        Response to transplant           Alzheimer's disease </span></span>
+<span><span class="co">##                            78                            77 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`Antibiotics exclusion`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                 3 months                  1 month                 2 months </span></span>
 <span><span class="co">##                      589                      505                      241 </span></span>
 <span><span class="co">##                 6 months                  2 weeks                 3 Months </span></span>
-<span><span class="co">##                      181                      130                       45 </span></span>
+<span><span class="co">##                      181                      130                       50 </span></span>
 <span><span class="co">##                 6 Months                  1 Month currently on antibiotics </span></span>
 <span><span class="co">##                       40                       28                       28 </span></span>
 <span><span class="co">##                3 Months. </span></span>
@@ -322,11 +322,11 @@ column:</p>
 <pre><code><span><span class="co">## $`Host species`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##           Homo sapiens           Mus musculus      Rattus norvegicus </span></span>
-<span><span class="co">##                0.80000                0.10700                0.02140 </span></span>
+<span><span class="co">##                0.79900                0.10700                0.02210 </span></span>
 <span><span class="co">##  Sus scrofa domesticus Canis lupus familiaris             Ovis aries </span></span>
-<span><span class="co">##                0.01610                0.01360                0.00439 </span></span>
+<span><span class="co">##                0.01610                0.01350                0.00439 </span></span>
 <span><span class="co">##          Not specified             Bos taurus           Capra hircus </span></span>
-<span><span class="co">##                0.00421                0.00330                0.00256 </span></span>
+<span><span class="co">##                0.00421                0.00329                0.00256 </span></span>
 <span><span class="co">##          Gallus gallus </span></span>
 <span><span class="co">##                0.00256 </span></span>
 <span><span class="co">## </span></span>
@@ -344,33 +344,33 @@ column:</p>
 <span><span class="co">## $`Body site`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                     Feces                    Saliva                    Vagina </span></span>
-<span><span class="co">##                   0.63900                   0.05350                   0.01980 </span></span>
+<span><span class="co">##                   0.63900                   0.05340                   0.01980 </span></span>
 <span><span class="co">##                     Mouth               Nasopharynx Subgingival dental plaque </span></span>
-<span><span class="co">##                   0.01230                   0.01010                   0.00897 </span></span>
+<span><span class="co">##                   0.01230                   0.01010                   0.00896 </span></span>
 <span><span class="co">##              Skin of body            Uterine cervix                     Colon </span></span>
-<span><span class="co">##                   0.00861                   0.00861                   0.00842 </span></span>
+<span><span class="co">##                   0.00860                   0.00860                   0.00842 </span></span>
 <span><span class="co">##               Oral cavity </span></span>
-<span><span class="co">##                   0.00696 </span></span>
+<span><span class="co">##                   0.00732 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $Condition</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##           Parkinson's disease                          Diet </span></span>
-<span><span class="co">##                        0.0375                        0.0283 </span></span>
+<span><span class="co">##                        0.0374                        0.0283 </span></span>
 <span><span class="co">##                       Obesity Treatment outcome measurement </span></span>
 <span><span class="co">##                        0.0268                        0.0260 </span></span>
 <span><span class="co">##             Colorectal cancer                      COVID-19 </span></span>
-<span><span class="co">##                        0.0255                        0.0221 </span></span>
+<span><span class="co">##                        0.0255                        0.0220 </span></span>
 <span><span class="co">##                 Atopic eczema           Antimicrobial agent </span></span>
-<span><span class="co">##                        0.0171                        0.0162 </span></span>
-<span><span class="co">##           Alzheimer's disease        Response to transplant </span></span>
-<span><span class="co">##                        0.0146                        0.0139 </span></span>
+<span><span class="co">##                        0.0171                        0.0161 </span></span>
+<span><span class="co">##        Response to transplant           Alzheimer's disease </span></span>
+<span><span class="co">##                        0.0148                        0.0146 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`Antibiotics exclusion`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                 3 months                  1 month                 2 months </span></span>
 <span><span class="co">##                   0.2460                   0.2110                   0.1010 </span></span>
 <span><span class="co">##                 6 months                  2 weeks                 3 Months </span></span>
-<span><span class="co">##                   0.0755                   0.0542                   0.0188 </span></span>
+<span><span class="co">##                   0.0755                   0.0542                   0.0209 </span></span>
 <span><span class="co">##                 6 Months                  1 Month currently on antibiotics </span></span>
 <span><span class="co">##                   0.0167                   0.0117                   0.0117 </span></span>
 <span><span class="co">##                3 Months. </span></span>
@@ -383,10 +383,10 @@ column:</p>
 <span><span class="co">## Min.                 0.0000             1.00000</span></span>
 <span><span class="co">## 1st Qu.             12.0000            10.00000</span></span>
 <span><span class="co">## Median              24.0000            22.00000</span></span>
-<span><span class="co">## Mean               558.9242            68.06479</span></span>
+<span><span class="co">## Mean               558.4215            67.87652</span></span>
 <span><span class="co">## 3rd Qu.             50.0000            43.00000</span></span>
 <span><span class="co">## Max.            308633.0000         10413.00000</span></span>
-<span><span class="co">## NA's               789.0000           784.00000</span></span></code></pre>
+<span><span class="co">## NA's               790.0000           785.00000</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="lab-analysis">Lab analysis<a class="anchor" aria-label="anchor" href="#lab-analysis"></a>
@@ -400,7 +400,7 @@ column:</p>
 <pre><code><span><span class="co">## $`Sequencing type`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##        16S        WMS        PCR ITS / ITS2        18S </span></span>
-<span><span class="co">##       4318        792         61         28          5 </span></span>
+<span><span class="co">##       4320        801         55         28          5 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`16S variable region`</span></span>
 <span><span class="co">## </span></span>
@@ -410,7 +410,7 @@ column:</p>
 <span><span class="co">## $`Sequencing platform`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                    Illumina                    Roche454 </span></span>
-<span><span class="co">##                        4338                         328 </span></span>
+<span><span class="co">##                        4339                         328 </span></span>
 <span><span class="co">##                 Ion Torrent                     RT-qPCR </span></span>
 <span><span class="co">##                         202                         103 </span></span>
 <span><span class="co">##                 MGISEQ-2000                   PacBio RS </span></span>
@@ -427,12 +427,12 @@ column:</p>
 <pre><code><span><span class="co">## $`Sequencing type`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##        16S        WMS        PCR ITS / ITS2        18S </span></span>
-<span><span class="co">##   0.830000   0.152000   0.011700   0.005380   0.000961 </span></span>
+<span><span class="co">##    0.82900    0.15400    0.01060    0.00538    0.00096 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`16S variable region`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##      34       4      12     123      45     345       3      56     678      23 </span></span>
-<span><span class="co">## 0.43400 0.30100 0.07100 0.05350 0.03820 0.03500 0.01550 0.01270 0.00775 0.00525 </span></span>
+<span><span class="co">## 0.43300 0.30100 0.07090 0.05350 0.03820 0.03500 0.01550 0.01270 0.00774 0.00525 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`Sequencing platform`</span></span>
 <span><span class="co">## </span></span>
@@ -445,7 +445,7 @@ column:</p>
 <span><span class="co">##       BGISEQ-500 Sequencing           Mass spectrometry </span></span>
 <span><span class="co">##                     0.00350                     0.00350 </span></span>
 <span><span class="co">## Human Intestinal Tract Chip           Illumina,Roche454 </span></span>
-<span><span class="co">##                     0.00312                     0.00214</span></span></code></pre>
+<span><span class="co">##                     0.00311                     0.00214</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="statistical-analysis">Statistical analysis<a class="anchor" aria-label="anchor" href="#statistical-analysis"></a>
@@ -459,7 +459,7 @@ analysis column:</p>
 <pre><code><span><span class="co">## $`Statistical test`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                   LEfSe Mann-Whitney (Wilcoxon)                  DESeq2 </span></span>
-<span><span class="co">##                    1615                     834                     511 </span></span>
+<span><span class="co">##                    1614                     841                     511 </span></span>
 <span><span class="co">##         Kruskall-Wallis       Linear Regression                   ANOVA </span></span>
 <span><span class="co">##                     281                     252                     244 </span></span>
 <span><span class="co">##                  T-Test                MaAsLin2                   ANCOM </span></span>
@@ -470,12 +470,12 @@ analysis column:</p>
 <span><span class="co">## $`MHT correction`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##  TRUE FALSE </span></span>
-<span><span class="co">##  2705  2093 </span></span>
+<span><span class="co">##  2708  2101 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`Significance threshold`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##  0.05   0.1  0.01 0.001  0.25   0.2  0.15 0.005     2 1e-04 </span></span>
-<span><span class="co">##  4547   332   108    34    34    25    19    15    15     6</span></span></code></pre>
+<span><span class="co">##  4552   332   108    34    34    25    19    15    15     6</span></span></code></pre>
 <p>Proportions instead:</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stat.tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">stat.cols</span>, <span class="va">tabCol</span>, df <span class="op">=</span> <span class="va">exps</span>, n <span class="op">=</span> <span class="fl">10</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -484,9 +484,9 @@ analysis column:</p>
 <pre><code><span><span class="co">## $`Statistical test`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##                   LEfSe Mann-Whitney (Wilcoxon)                  DESeq2 </span></span>
-<span><span class="co">##                  0.3120                  0.1610                  0.0989 </span></span>
+<span><span class="co">##                  0.3120                  0.1630                  0.0988 </span></span>
 <span><span class="co">##         Kruskall-Wallis       Linear Regression                   ANOVA </span></span>
-<span><span class="co">##                  0.0544                  0.0488                  0.0472 </span></span>
+<span><span class="co">##                  0.0543                  0.0487                  0.0472 </span></span>
 <span><span class="co">##                  T-Test                MaAsLin2                   ANCOM </span></span>
 <span><span class="co">##                  0.0400                  0.0354                  0.0323 </span></span>
 <span><span class="co">##    Spearman Correlation </span></span>
@@ -495,12 +495,12 @@ analysis column:</p>
 <span><span class="co">## $`MHT correction`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##  TRUE FALSE </span></span>
-<span><span class="co">## 0.564 0.436 </span></span>
+<span><span class="co">## 0.563 0.437 </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`Significance threshold`</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##    0.05     0.1    0.01   0.001    0.25     0.2    0.15   0.005       2   1e-04 </span></span>
-<span><span class="co">## 0.88100 0.06430 0.02090 0.00659 0.00659 0.00484 0.00368 0.00291 0.00291 0.00116</span></span></code></pre>
+<span><span class="co">## 0.88100 0.06430 0.02090 0.00658 0.00658 0.00484 0.00368 0.00290 0.00290 0.00116</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="alpha-diversity">Alpha diversity<a class="anchor" aria-label="anchor" href="#alpha-diversity"></a>
@@ -509,17 +509,17 @@ analysis column:</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">div.cols</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">table</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness</span></span>
-<span><span class="co">## decreased     46     703   456     213              63      427</span></span>
-<span><span class="co">## increased     37     544   312     168              36      339</span></span>
-<span><span class="co">## unchanged    174    1931   853     689             202      968</span></span></code></pre>
+<span><span class="co">## decreased     46     703   458     213              63      425</span></span>
+<span><span class="co">## increased     37     542   312     168              36      335</span></span>
+<span><span class="co">## unchanged    174    1930   853     689             202      971</span></span></code></pre>
 <p>Correspondence of Shannon diversity and Richness:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">exps</span><span class="op">$</span><span class="va">Shannon</span>, <span class="va">exps</span><span class="op">$</span><span class="va">Richness</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##            </span></span>
 <span><span class="co">##             decreased increased unchanged</span></span>
-<span><span class="co">##   decreased       225        13        52</span></span>
-<span><span class="co">##   increased         9       169        52</span></span>
-<span><span class="co">##   unchanged        97        87       784</span></span></code></pre>
+<span><span class="co">##   decreased       226        13        51</span></span>
+<span><span class="co">##   increased         9       167        52</span></span>
+<span><span class="co">##   unchanged        96        85       786</span></span></code></pre>
 <p>Conditions with consistently increased or decreased alpha
 diversity:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
@@ -596,6 +596,7 @@ diversity:</p>
 <span><span class="co">## Milk allergic reaction                                            2         0</span></span>
 <span><span class="co">## Papillary thyroid carcinoma                                       2         0</span></span>
 <span><span class="co">## Phenylketonuria                                                   1         3</span></span>
+<span><span class="co">## Respiratory tract infectious disease                              1         3</span></span>
 <span><span class="co">## Response to anti-tuberculosis drug                                8        10</span></span>
 <span><span class="co">## Response to antiviral drug                                        2         4</span></span>
 <span><span class="co">## Response to immunochemotherapy                                    3         1</span></span>
@@ -621,13 +622,13 @@ diversity:</p>
 <span><span class="co">## Hepatocellular carcinoma                                          0         1</span></span>
 <span><span class="co">## Hypertrophy                                                       1         0</span></span>
 <span><span class="co">## Irritable bowel syndrome                                          5         6</span></span>
+<span><span class="co">## Lifestyle measurement                                             0         1</span></span>
 <span><span class="co">## Multiple sclerosis                                                0         1</span></span>
 <span><span class="co">## Oral cavity carcinoma                                             0         1</span></span>
 <span><span class="co">## Oral squamous cell carcinoma                                      3         2</span></span>
 <span><span class="co">## Pancreatic carcinoma                                              0         1</span></span>
 <span><span class="co">## Psoriasis                                                         1         0</span></span>
 <span><span class="co">## Respiratory Syncytial Virus Infection                             0         1</span></span>
-<span><span class="co">## Respiratory tract infectious disease                              1         2</span></span>
 <span><span class="co">## Response to diet                                                  3         4</span></span>
 <span><span class="co">## Response to vaccine                                               1         0</span></span>
 <span><span class="co">## Rheumatoid arthritis                                              5         4</span></span>
@@ -657,7 +658,6 @@ diversity:</p>
 <span><span class="co">## Health study participation                                        2         2</span></span>
 <span><span class="co">## HIV mother to child transmission                                  0         0</span></span>
 <span><span class="co">## Lactose intolerance                                               0         0</span></span>
-<span><span class="co">## Lifestyle measurement                                             2         2</span></span>
 <span><span class="co">## Lung transplantation                                              2         2</span></span>
 <span><span class="co">## Obsessive-compulsive disorder                                     0         0</span></span>
 <span><span class="co">## Ovarian cancer                                                    3         3</span></span>
@@ -743,6 +743,7 @@ diversity:</p>
 <span><span class="co">## Milk allergic reaction                                            5</span></span>
 <span><span class="co">## Papillary thyroid carcinoma                                      10</span></span>
 <span><span class="co">## Phenylketonuria                                                   4</span></span>
+<span><span class="co">## Respiratory tract infectious disease                              5</span></span>
 <span><span class="co">## Response to anti-tuberculosis drug                               13</span></span>
 <span><span class="co">## Response to antiviral drug                                        5</span></span>
 <span><span class="co">## Response to immunochemotherapy                                    3</span></span>
@@ -768,13 +769,13 @@ diversity:</p>
 <span><span class="co">## Hepatocellular carcinoma                                          6</span></span>
 <span><span class="co">## Hypertrophy                                                       4</span></span>
 <span><span class="co">## Irritable bowel syndrome                                         22</span></span>
+<span><span class="co">## Lifestyle measurement                                             8</span></span>
 <span><span class="co">## Multiple sclerosis                                               17</span></span>
 <span><span class="co">## Oral cavity carcinoma                                             7</span></span>
 <span><span class="co">## Oral squamous cell carcinoma                                      3</span></span>
 <span><span class="co">## Pancreatic carcinoma                                              6</span></span>
 <span><span class="co">## Psoriasis                                                        12</span></span>
 <span><span class="co">## Respiratory Syncytial Virus Infection                             5</span></span>
-<span><span class="co">## Respiratory tract infectious disease                              6</span></span>
 <span><span class="co">## Response to diet                                                 35</span></span>
 <span><span class="co">## Response to vaccine                                               5</span></span>
 <span><span class="co">## Rheumatoid arthritis                                              9</span></span>
@@ -804,7 +805,6 @@ diversity:</p>
 <span><span class="co">## Health study participation                                       35</span></span>
 <span><span class="co">## HIV mother to child transmission                                  8</span></span>
 <span><span class="co">## Lactose intolerance                                               5</span></span>
-<span><span class="co">## Lifestyle measurement                                             8</span></span>
 <span><span class="co">## Lung transplantation                                              2</span></span>
 <span><span class="co">## Obsessive-compulsive disorder                                     5</span></span>
 <span><span class="co">## Ovarian cancer                                                   27</span></span>
@@ -892,6 +892,7 @@ diversity:</p>
 <span><span class="co">## Milk allergic reaction                                        0.290     0.000</span></span>
 <span><span class="co">## Papillary thyroid carcinoma                                   0.170     0.000</span></span>
 <span><span class="co">## Phenylketonuria                                               0.120     0.380</span></span>
+<span><span class="co">## Respiratory tract infectious disease                          0.110     0.330</span></span>
 <span><span class="co">## Response to anti-tuberculosis drug                            0.260     0.320</span></span>
 <span><span class="co">## Response to antiviral drug                                    0.180     0.360</span></span>
 <span><span class="co">## Response to immunochemotherapy                                0.430     0.140</span></span>
@@ -917,13 +918,13 @@ diversity:</p>
 <span><span class="co">## Hepatocellular carcinoma                                      0.000     0.140</span></span>
 <span><span class="co">## Hypertrophy                                                   0.200     0.000</span></span>
 <span><span class="co">## Irritable bowel syndrome                                      0.150     0.180</span></span>
+<span><span class="co">## Lifestyle measurement                                         0.000     0.110</span></span>
 <span><span class="co">## Multiple sclerosis                                            0.000     0.056</span></span>
 <span><span class="co">## Oral cavity carcinoma                                         0.000     0.120</span></span>
 <span><span class="co">## Oral squamous cell carcinoma                                  0.380     0.250</span></span>
 <span><span class="co">## Pancreatic carcinoma                                          0.000     0.140</span></span>
 <span><span class="co">## Psoriasis                                                     0.077     0.000</span></span>
 <span><span class="co">## Respiratory Syncytial Virus Infection                         0.000     0.170</span></span>
-<span><span class="co">## Respiratory tract infectious disease                          0.110     0.220</span></span>
 <span><span class="co">## Response to diet                                              0.071     0.095</span></span>
 <span><span class="co">## Response to vaccine                                           0.170     0.000</span></span>
 <span><span class="co">## Rheumatoid arthritis                                          0.280     0.220</span></span>
@@ -953,7 +954,6 @@ diversity:</p>
 <span><span class="co">## Health study participation                                    0.051     0.051</span></span>
 <span><span class="co">## HIV mother to child transmission                              0.000     0.000</span></span>
 <span><span class="co">## Lactose intolerance                                           0.000     0.000</span></span>
-<span><span class="co">## Lifestyle measurement                                         0.170     0.170</span></span>
 <span><span class="co">## Lung transplantation                                          0.330     0.330</span></span>
 <span><span class="co">## Obsessive-compulsive disorder                                 0.000     0.000</span></span>
 <span><span class="co">## Ovarian cancer                                                0.091     0.091</span></span>
@@ -1039,6 +1039,7 @@ diversity:</p>
 <span><span class="co">## Milk allergic reaction                                        0.710</span></span>
 <span><span class="co">## Papillary thyroid carcinoma                                   0.830</span></span>
 <span><span class="co">## Phenylketonuria                                               0.500</span></span>
+<span><span class="co">## Respiratory tract infectious disease                          0.560</span></span>
 <span><span class="co">## Response to anti-tuberculosis drug                            0.420</span></span>
 <span><span class="co">## Response to antiviral drug                                    0.450</span></span>
 <span><span class="co">## Response to immunochemotherapy                                0.430</span></span>
@@ -1064,13 +1065,13 @@ diversity:</p>
 <span><span class="co">## Hepatocellular carcinoma                                      0.860</span></span>
 <span><span class="co">## Hypertrophy                                                   0.800</span></span>
 <span><span class="co">## Irritable bowel syndrome                                      0.670</span></span>
+<span><span class="co">## Lifestyle measurement                                         0.890</span></span>
 <span><span class="co">## Multiple sclerosis                                            0.940</span></span>
 <span><span class="co">## Oral cavity carcinoma                                         0.880</span></span>
 <span><span class="co">## Oral squamous cell carcinoma                                  0.380</span></span>
 <span><span class="co">## Pancreatic carcinoma                                          0.860</span></span>
 <span><span class="co">## Psoriasis                                                     0.920</span></span>
 <span><span class="co">## Respiratory Syncytial Virus Infection                         0.830</span></span>
-<span><span class="co">## Respiratory tract infectious disease                          0.670</span></span>
 <span><span class="co">## Response to diet                                              0.830</span></span>
 <span><span class="co">## Response to vaccine                                           0.830</span></span>
 <span><span class="co">## Rheumatoid arthritis                                          0.500</span></span>
@@ -1100,7 +1101,6 @@ diversity:</p>
 <span><span class="co">## Health study participation                                    0.900</span></span>
 <span><span class="co">## HIV mother to child transmission                              1.000</span></span>
 <span><span class="co">## Lactose intolerance                                           1.000</span></span>
-<span><span class="co">## Lifestyle measurement                                         0.670</span></span>
 <span><span class="co">## Lung transplantation                                          0.330</span></span>
 <span><span class="co">## Obsessive-compulsive disorder                                 1.000</span></span>
 <span><span class="co">## Ovarian cancer                                                0.820</span></span>
@@ -1163,7 +1163,6 @@ diversity:</p>
 <span><span class="co">## Esophageal adenocarcinoma                                         0         2</span></span>
 <span><span class="co">## Hypertension                                                      1         3</span></span>
 <span><span class="co">## Phenylketonuria                                                   1         3</span></span>
-<span><span class="co">## Respiratory tract infectious disease                              3         1</span></span>
 <span><span class="co">## Smoking behavior                                                  6         8</span></span>
 <span><span class="co">## Smoking status measurement                                        2         0</span></span>
 <span><span class="co">## Streptococcus pneumoniae                                          0         2</span></span>
@@ -1182,10 +1181,11 @@ diversity:</p>
 <span><span class="co">## Inflammatory bowel disease                                        2         3</span></span>
 <span><span class="co">## Irritable bowel syndrome                                          4         5</span></span>
 <span><span class="co">## Lung cancer                                                       0         1</span></span>
-<span><span class="co">## Obesity                                                           8         9</span></span>
+<span><span class="co">## Obesity                                                           8         7</span></span>
 <span><span class="co">## Obsessive-compulsive disorder                                     0         1</span></span>
 <span><span class="co">## Ovarian cancer                                                    1         0</span></span>
 <span><span class="co">## Psoriasis                                                         0         1</span></span>
+<span><span class="co">## Respiratory tract infectious disease                              1         2</span></span>
 <span><span class="co">## Rheumatoid arthritis                                              3         4</span></span>
 <span><span class="co">## Sampling site                                                     1         2</span></span>
 <span><span class="co">## Socioeconomic status                                              2         1</span></span>
@@ -1249,12 +1249,11 @@ diversity:</p>
 <span><span class="co">## Response to transplant                                           11</span></span>
 <span><span class="co">## Asthma                                                           10</span></span>
 <span><span class="co">## Autism spectrum disorder                                          0</span></span>
-<span><span class="co">## Breast cancer                                                     7</span></span>
+<span><span class="co">## Breast cancer                                                     9</span></span>
 <span><span class="co">## Colorectal cancer                                                21</span></span>
 <span><span class="co">## Esophageal adenocarcinoma                                         4</span></span>
 <span><span class="co">## Hypertension                                                      6</span></span>
 <span><span class="co">## Phenylketonuria                                                   4</span></span>
-<span><span class="co">## Respiratory tract infectious disease                              1</span></span>
 <span><span class="co">## Smoking behavior                                                  8</span></span>
 <span><span class="co">## Smoking status measurement                                        3</span></span>
 <span><span class="co">## Streptococcus pneumoniae                                          3</span></span>
@@ -1277,6 +1276,7 @@ diversity:</p>
 <span><span class="co">## Obsessive-compulsive disorder                                     4</span></span>
 <span><span class="co">## Ovarian cancer                                                   30</span></span>
 <span><span class="co">## Psoriasis                                                         8</span></span>
+<span><span class="co">## Respiratory tract infectious disease                              2</span></span>
 <span><span class="co">## Rheumatoid arthritis                                              1</span></span>
 <span><span class="co">## Sampling site                                                     2</span></span>
 <span><span class="co">## Socioeconomic status                                              2</span></span>
@@ -1342,12 +1342,11 @@ diversity:</p>
 <span><span class="co">## Response to transplant                                        0.210     0.330</span></span>
 <span><span class="co">## Asthma                                                        0.170     0.000</span></span>
 <span><span class="co">## Autism spectrum disorder                                      0.400     0.600</span></span>
-<span><span class="co">## Breast cancer                                                 0.220     0.000</span></span>
+<span><span class="co">## Breast cancer                                                 0.180     0.000</span></span>
 <span><span class="co">## Colorectal cancer                                             0.210     0.260</span></span>
 <span><span class="co">## Esophageal adenocarcinoma                                     0.000     0.330</span></span>
 <span><span class="co">## Hypertension                                                  0.100     0.300</span></span>
 <span><span class="co">## Phenylketonuria                                               0.120     0.380</span></span>
-<span><span class="co">## Respiratory tract infectious disease                          0.600     0.200</span></span>
 <span><span class="co">## Smoking behavior                                              0.270     0.360</span></span>
 <span><span class="co">## Smoking status measurement                                    0.400     0.000</span></span>
 <span><span class="co">## Streptococcus pneumoniae                                      0.000     0.400</span></span>
@@ -1366,10 +1365,11 @@ diversity:</p>
 <span><span class="co">## Inflammatory bowel disease                                    0.400     0.600</span></span>
 <span><span class="co">## Irritable bowel syndrome                                      0.170     0.220</span></span>
 <span><span class="co">## Lung cancer                                                   0.000     0.091</span></span>
-<span><span class="co">## Obesity                                                       0.220     0.250</span></span>
+<span><span class="co">## Obesity                                                       0.240     0.210</span></span>
 <span><span class="co">## Obsessive-compulsive disorder                                 0.000     0.200</span></span>
 <span><span class="co">## Ovarian cancer                                                0.032     0.000</span></span>
 <span><span class="co">## Psoriasis                                                     0.000     0.110</span></span>
+<span><span class="co">## Respiratory tract infectious disease                          0.200     0.400</span></span>
 <span><span class="co">## Rheumatoid arthritis                                          0.380     0.500</span></span>
 <span><span class="co">## Sampling site                                                 0.200     0.400</span></span>
 <span><span class="co">## Socioeconomic status                                          0.400     0.200</span></span>
@@ -1433,12 +1433,11 @@ diversity:</p>
 <span><span class="co">## Response to transplant                                         0.46</span></span>
 <span><span class="co">## Asthma                                                         0.83</span></span>
 <span><span class="co">## Autism spectrum disorder                                       0.00</span></span>
-<span><span class="co">## Breast cancer                                                  0.78</span></span>
+<span><span class="co">## Breast cancer                                                  0.82</span></span>
 <span><span class="co">## Colorectal cancer                                              0.54</span></span>
 <span><span class="co">## Esophageal adenocarcinoma                                      0.67</span></span>
 <span><span class="co">## Hypertension                                                   0.60</span></span>
 <span><span class="co">## Phenylketonuria                                                0.50</span></span>
-<span><span class="co">## Respiratory tract infectious disease                           0.20</span></span>
 <span><span class="co">## Smoking behavior                                               0.36</span></span>
 <span><span class="co">## Smoking status measurement                                     0.60</span></span>
 <span><span class="co">## Streptococcus pneumoniae                                       0.60</span></span>
@@ -1457,10 +1456,11 @@ diversity:</p>
 <span><span class="co">## Inflammatory bowel disease                                     0.00</span></span>
 <span><span class="co">## Irritable bowel syndrome                                       0.61</span></span>
 <span><span class="co">## Lung cancer                                                    0.91</span></span>
-<span><span class="co">## Obesity                                                        0.53</span></span>
+<span><span class="co">## Obesity                                                        0.56</span></span>
 <span><span class="co">## Obsessive-compulsive disorder                                  0.80</span></span>
 <span><span class="co">## Ovarian cancer                                                 0.97</span></span>
 <span><span class="co">## Psoriasis                                                      0.89</span></span>
+<span><span class="co">## Respiratory tract infectious disease                           0.40</span></span>
 <span><span class="co">## Rheumatoid arthritis                                           0.12</span></span>
 <span><span class="co">## Sampling site                                                  0.40</span></span>
 <span><span class="co">## Socioeconomic status                                           0.40</span></span>
@@ -1487,7 +1487,7 @@ diversity:</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                                increased decreased unchanged</span></span>
-<span><span class="co">## Feces                                297       442      1175</span></span>
+<span><span class="co">## Feces                                295       441      1175</span></span>
 <span><span class="co">## Vagina                                16         6        27</span></span>
 <span><span class="co">## Posterior fornix of vagina             9         0         7</span></span>
 <span><span class="co">## Skin of body                           7        15         8</span></span>
@@ -1511,6 +1511,7 @@ diversity:</p>
 <span><span class="co">## Dental plaque                          0         3         3</span></span>
 <span><span class="co">## Duodenum                               0         3         6</span></span>
 <span><span class="co">## Nasopharynx                            3         6        32</span></span>
+<span><span class="co">## Oropharynx                             2         5         5</span></span>
 <span><span class="co">## Rectum                                 0         3        12</span></span>
 <span><span class="co">## Skin of forearm                        3         0         3</span></span>
 <span><span class="co">## Bile                                   2         0         3</span></span>
@@ -1522,7 +1523,6 @@ diversity:</p>
 <span><span class="co">## Lung                                   2         4         7</span></span>
 <span><span class="co">## Mouth                                  8         6        28</span></span>
 <span><span class="co">## Oral cavity                            7         5         7</span></span>
-<span><span class="co">## Oropharynx                             2         4         6</span></span>
 <span><span class="co">## Rumen                                  2         0         4</span></span>
 <span><span class="co">## Supragingival dental plaque            1         3         1</span></span>
 <span><span class="co">## Thyroid gland                          2         0        10</span></span>
@@ -1553,7 +1553,7 @@ diversity:</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                                increased decreased unchanged</span></span>
-<span><span class="co">## Feces                              0.160     0.230      0.61</span></span>
+<span><span class="co">## Feces                              0.150     0.230      0.61</span></span>
 <span><span class="co">## Vagina                             0.330     0.120      0.55</span></span>
 <span><span class="co">## Posterior fornix of vagina         0.560     0.000      0.44</span></span>
 <span><span class="co">## Skin of body                       0.230     0.500      0.27</span></span>
@@ -1577,6 +1577,7 @@ diversity:</p>
 <span><span class="co">## Dental plaque                      0.000     0.500      0.50</span></span>
 <span><span class="co">## Duodenum                           0.000     0.330      0.67</span></span>
 <span><span class="co">## Nasopharynx                        0.073     0.150      0.78</span></span>
+<span><span class="co">## Oropharynx                         0.170     0.420      0.42</span></span>
 <span><span class="co">## Rectum                             0.000     0.200      0.80</span></span>
 <span><span class="co">## Skin of forearm                    0.500     0.000      0.50</span></span>
 <span><span class="co">## Bile                               0.400     0.000      0.60</span></span>
@@ -1588,7 +1589,6 @@ diversity:</p>
 <span><span class="co">## Lung                               0.150     0.310      0.54</span></span>
 <span><span class="co">## Mouth                              0.190     0.140      0.67</span></span>
 <span><span class="co">## Oral cavity                        0.370     0.260      0.37</span></span>
-<span><span class="co">## Oropharynx                         0.170     0.330      0.50</span></span>
 <span><span class="co">## Rumen                              0.330     0.000      0.67</span></span>
 <span><span class="co">## Supragingival dental plaque        0.200     0.600      0.20</span></span>
 <span><span class="co">## Thyroid gland                      0.170     0.000      0.83</span></span>
@@ -1619,8 +1619,9 @@ diversity:</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                              increased decreased unchanged</span></span>
-<span><span class="co">## Feces                              187       250       608</span></span>
+<span><span class="co">## Feces                              185       247       608</span></span>
 <span><span class="co">## Mouth                               10         3         9</span></span>
+<span><span class="co">## Oropharynx                           1         8         6</span></span>
 <span><span class="co">## Posterior fornix of vagina           8         1         2</span></span>
 <span><span class="co">## Uterine cervix                       8         1        11</span></span>
 <span><span class="co">## Skin of body                         3         9         6</span></span>
@@ -1629,7 +1630,6 @@ diversity:</p>
 <span><span class="co">## Subgingival dental plaque            7         2        17</span></span>
 <span><span class="co">## Uterine cervix,Vaginal fluid         7         2         1</span></span>
 <span><span class="co">## Nasopharynx                          5         9        19</span></span>
-<span><span class="co">## Oropharynx                           3         7         5</span></span>
 <span><span class="co">## Stomach                              4         8         3</span></span>
 <span><span class="co">## Throat                               1         5         5</span></span>
 <span><span class="co">## Cecum mucosa                         3         6         3</span></span>
@@ -1644,8 +1644,8 @@ diversity:</p>
 <span><span class="co">## Meconium                             2         3         7</span></span>
 <span><span class="co">## Milk                                 2         1         5</span></span>
 <span><span class="co">## Nasal cavity                         1         2        10</span></span>
-<span><span class="co">## Oral cavity                          4         5         0</span></span>
-<span><span class="co">## Urine                                3         2        12</span></span>
+<span><span class="co">## Oral cavity                          4         5         1</span></span>
+<span><span class="co">## Urine                                3         2        13</span></span>
 <span><span class="co">## Vagina                               3         2        11</span></span>
 <span><span class="co">## Vagina,Uterine cervix                1         0        11</span></span>
 <span><span class="co">## Breast                               1         1         7</span></span>
@@ -1662,6 +1662,7 @@ diversity:</p>
 <pre><code><span><span class="co">##                              increased decreased unchanged</span></span>
 <span><span class="co">## Feces                            0.180     0.240      0.58</span></span>
 <span><span class="co">## Mouth                            0.450     0.140      0.41</span></span>
+<span><span class="co">## Oropharynx                       0.067     0.530      0.40</span></span>
 <span><span class="co">## Posterior fornix of vagina       0.730     0.091      0.18</span></span>
 <span><span class="co">## Uterine cervix                   0.400     0.050      0.55</span></span>
 <span><span class="co">## Skin of body                     0.170     0.500      0.33</span></span>
@@ -1670,7 +1671,6 @@ diversity:</p>
 <span><span class="co">## Subgingival dental plaque        0.270     0.077      0.65</span></span>
 <span><span class="co">## Uterine cervix,Vaginal fluid     0.700     0.200      0.10</span></span>
 <span><span class="co">## Nasopharynx                      0.150     0.270      0.58</span></span>
-<span><span class="co">## Oropharynx                       0.200     0.470      0.33</span></span>
 <span><span class="co">## Stomach                          0.270     0.530      0.20</span></span>
 <span><span class="co">## Throat                           0.091     0.450      0.45</span></span>
 <span><span class="co">## Cecum mucosa                     0.250     0.500      0.25</span></span>
@@ -1685,8 +1685,8 @@ diversity:</p>
 <span><span class="co">## Meconium                         0.170     0.250      0.58</span></span>
 <span><span class="co">## Milk                             0.250     0.120      0.62</span></span>
 <span><span class="co">## Nasal cavity                     0.077     0.150      0.77</span></span>
-<span><span class="co">## Oral cavity                      0.440     0.560      0.00</span></span>
-<span><span class="co">## Urine                            0.180     0.120      0.71</span></span>
+<span><span class="co">## Oral cavity                      0.400     0.500      0.10</span></span>
+<span><span class="co">## Urine                            0.170     0.110      0.72</span></span>
 <span><span class="co">## Vagina                           0.190     0.120      0.69</span></span>
 <span><span class="co">## Vagina,Uterine cervix            0.083     0.000      0.92</span></span>
 <span><span class="co">## Breast                           0.110     0.110      0.78</span></span>
@@ -1711,7 +1711,7 @@ diversity:</p>
 <p>Number unique microbes contained in the signatures:</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">nuniq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 7801</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 7802</span></span></code></pre>
 <p>Development of unique microbes captured over time:</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plotUniqueMicrobesOverTime.html">plotUniqueMicrobesOverTime</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></code></pre></div>
@@ -1723,14 +1723,14 @@ diversity:</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">##   1.000   2.000   5.000   8.262  10.000 470.000</span></span></code></pre>
+<span><span class="co">##   1.000   2.000   5.000   8.258  10.000 470.000</span></span></code></pre>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html" class="external-link">gghistogram</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">30</span>, ylab <span class="op">=</span> <span class="st">"number of signatures"</span>,</span>
 <span>    xlab <span class="op">=</span> <span class="st">"signature size"</span>, fill <span class="op">=</span> <span class="st">"#00AFBB"</span>, ggtheme <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/setSize-1.png" width="700"></p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 4297</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 4298</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="microbe-co-occurrence">Microbe co-occurrence<a class="anchor" aria-label="anchor" href="#microbe-co-occurrence"></a>
@@ -1752,15 +1752,15 @@ abundant:</p>
 <span><span class="va">top20</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##      Bacteroides  Bifidobacterium Faecalibacterium      Clostridium </span></span>
-<span><span class="co">##              904              603              601              537 </span></span>
+<span><span class="co">##              904              602              600              537 </span></span>
 <span><span class="co">##          Blautia     Ruminococcus    Streptococcus        Roseburia </span></span>
-<span><span class="co">##              526              507              475              471 </span></span>
+<span><span class="co">##              525              507              475              471 </span></span>
 <span><span class="co">##  Parabacteroides       Prevotella    Lactobacillus        Alistipes </span></span>
-<span><span class="co">##              468              452              434              406 </span></span>
+<span><span class="co">##              468              451              433              405 </span></span>
 <span><span class="co">##      Akkermansia            Dorea      Coprococcus      Eubacterium </span></span>
-<span><span class="co">##              353              334              330              308 </span></span>
+<span><span class="co">##              352              333              330              308 </span></span>
 <span><span class="co">##      Veillonella     Enterococcus      Lachnospira      Escherichia </span></span>
-<span><span class="co">##              283              279              278              263</span></span></code></pre>
+<span><span class="co">##              283              279              279              263</span></span></code></pre>
 <p>Subset heatmaps to the top 20 genera most frequently reported as
 differentially abundant:</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
@@ -1783,15 +1783,15 @@ decreased):</p>
 <span><span class="va">top20.up</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##      Bacteroides  Bifidobacterium Faecalibacterium      Clostridium </span></span>
-<span><span class="co">##              431              293              218              276 </span></span>
+<span><span class="co">##              431              292              217              275 </span></span>
 <span><span class="co">##          Blautia     Ruminococcus    Streptococcus        Roseburia </span></span>
 <span><span class="co">##              237              206              307              155 </span></span>
 <span><span class="co">##  Parabacteroides       Prevotella    Lactobacillus        Alistipes </span></span>
-<span><span class="co">##              247              213              273              172 </span></span>
+<span><span class="co">##              247              212              272              171 </span></span>
 <span><span class="co">##      Akkermansia            Dorea      Coprococcus      Eubacterium </span></span>
-<span><span class="co">##              216              138              120              131 </span></span>
+<span><span class="co">##              215              137              119              131 </span></span>
 <span><span class="co">##      Veillonella     Enterococcus      Lachnospira      Escherichia </span></span>
-<span><span class="co">##              178              200               96              182</span></span></code></pre>
+<span><span class="co">##              177              201               96              181</span></span></code></pre>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># decreased</span></span>
 <span><span class="va">sub.dat.feces</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">dat.feces</span>, <span class="va">`Abundance in Group 1`</span> <span class="op">==</span> <span class="st">"decreased"</span><span class="op">)</span></span>
@@ -1801,15 +1801,15 @@ decreased):</p>
 <span><span class="va">top20.down</span></span></code></pre></div>
 <pre><code><span><span class="co">## </span></span>
 <span><span class="co">##      Bacteroides  Bifidobacterium Faecalibacterium      Clostridium </span></span>
-<span><span class="co">##              466              302              377              256 </span></span>
+<span><span class="co">##              466              302              377              257 </span></span>
 <span><span class="co">##          Blautia     Ruminococcus    Streptococcus        Roseburia </span></span>
-<span><span class="co">##              283              296              160              310 </span></span>
+<span><span class="co">##              282              296              160              310 </span></span>
 <span><span class="co">##  Parabacteroides       Prevotella    Lactobacillus        Alistipes </span></span>
 <span><span class="co">##              215              236              159              228 </span></span>
 <span><span class="co">##      Akkermansia            Dorea      Coprococcus      Eubacterium </span></span>
-<span><span class="co">##              133              190              204              171 </span></span>
+<span><span class="co">##              133              190              205              171 </span></span>
 <span><span class="co">##      Veillonella     Enterococcus      Lachnospira      Escherichia </span></span>
-<span><span class="co">##              102               77              176               75</span></span></code></pre>
+<span><span class="co">##              103               76              177               76</span></span></code></pre>
 <p>Plot the heatmap</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># annotation</span></span>
