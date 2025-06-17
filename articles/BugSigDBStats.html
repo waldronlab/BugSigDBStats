@@ -49,7 +49,7 @@
 
       <h1></h1>
             
-            <h4 data-toc-skip class="date">June 16, 2025</h4>
+            <h4 data-toc-skip class="date">June 17, 2025</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/waldronlab/BugSigDBStats/blob/main/vignettes/BugSigDBStats.Rmd" class="external-link"><code>vignettes/BugSigDBStats.Rmd</code></a></small>
       <div class="d-none name"><code>BugSigDBStats.Rmd</code></div>
@@ -380,13 +380,13 @@ column:</p>
 <code class="sourceCode R"><span><span class="va">ssize</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">sub.cols</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">]</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">summary</span><span class="op">)</span></span>
 <span><span class="va">ssize</span></span></code></pre></div>
 <pre><code><span><span class="co">##         Group 0 sample size Group 1 sample size</span></span>
-<span><span class="co">## Min.                 0.0000             1.00000</span></span>
-<span><span class="co">## 1st Qu.             12.0000            10.00000</span></span>
-<span><span class="co">## Median              24.0000            22.00000</span></span>
-<span><span class="co">## Mean               558.4997            67.87885</span></span>
-<span><span class="co">## 3rd Qu.             50.0000            43.00000</span></span>
-<span><span class="co">## Max.            308633.0000         10413.00000</span></span>
-<span><span class="co">## NA's               790.0000           785.00000</span></span></code></pre>
+<span><span class="co">## Min.                  0.000             1.00000</span></span>
+<span><span class="co">## 1st Qu.              12.000            10.00000</span></span>
+<span><span class="co">## Median               24.000            22.00000</span></span>
+<span><span class="co">## Mean                558.474            67.85491</span></span>
+<span><span class="co">## 3rd Qu.              50.000            43.00000</span></span>
+<span><span class="co">## Max.             308633.000         10413.00000</span></span>
+<span><span class="co">## NA's                790.000           785.00000</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="lab-analysis">Lab analysis<a class="anchor" aria-label="anchor" href="#lab-analysis"></a>
@@ -510,16 +510,16 @@ analysis column:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply</a></span><span class="op">(</span><span class="va">exps</span><span class="op">[</span>,<span class="va">div.cols</span><span class="op">]</span>, <span class="fl">2</span>, <span class="va">table</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness</span></span>
 <span><span class="co">## decreased     47     702   459     213              63      425</span></span>
-<span><span class="co">## increased     37     542   309     169              36      332</span></span>
-<span><span class="co">## unchanged    174    1930   855     691             202      973</span></span></code></pre>
+<span><span class="co">## increased     37     535   309     162              36      325</span></span>
+<span><span class="co">## unchanged    174    1937   855     691             202      980</span></span></code></pre>
 <p>Correspondence of Shannon diversity and Richness:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">exps</span><span class="op">$</span><span class="va">Shannon</span>, <span class="va">exps</span><span class="op">$</span><span class="va">Richness</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##            </span></span>
 <span><span class="co">##             decreased increased unchanged</span></span>
 <span><span class="co">##   decreased       225        13        51</span></span>
-<span><span class="co">##   increased         9       166        52</span></span>
-<span><span class="co">##   unchanged        97        83       788</span></span></code></pre>
+<span><span class="co">##   increased         9       159        52</span></span>
+<span><span class="co">##   unchanged        97        83       795</span></span></code></pre>
 <p>Conditions with consistently increased or decreased alpha
 diversity:</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
@@ -542,7 +542,6 @@ diversity:</p>
 <span><span class="co">## Ulcerative colitis                                                1         9</span></span>
 <span><span class="co">## Age                                                               5        12</span></span>
 <span><span class="co">## Aging                                                             0         7</span></span>
-<span><span class="co">## Balanced reciprocal translocation                                 7         0</span></span>
 <span><span class="co">## Atopic eczema                                                     5        11</span></span>
 <span><span class="co">## Autism spectrum disorder                                          7         1</span></span>
 <span><span class="co">## Cesarean section                                                  6         0</span></span>
@@ -644,6 +643,7 @@ diversity:</p>
 <span><span class="co">## Acute myeloid leukemia                                            1         1</span></span>
 <span><span class="co">## Arthritis                                                         0         0</span></span>
 <span><span class="co">## Asthma                                                            1         1</span></span>
+<span><span class="co">## Balanced reciprocal translocation                                 0         0</span></span>
 <span><span class="co">## Biological sex                                                    1         1</span></span>
 <span><span class="co">## Bipolar disorder                                                  0         0</span></span>
 <span><span class="co">## Celiac disease                                                    0         0</span></span>
@@ -689,7 +689,6 @@ diversity:</p>
 <span><span class="co">## Ulcerative colitis                                                3</span></span>
 <span><span class="co">## Age                                                               9</span></span>
 <span><span class="co">## Aging                                                             0</span></span>
-<span><span class="co">## Balanced reciprocal translocation                                 0</span></span>
 <span><span class="co">## Atopic eczema                                                    72</span></span>
 <span><span class="co">## Autism spectrum disorder                                          8</span></span>
 <span><span class="co">## Cesarean section                                                 16</span></span>
@@ -791,6 +790,7 @@ diversity:</p>
 <span><span class="co">## Acute myeloid leukemia                                            4</span></span>
 <span><span class="co">## Arthritis                                                         6</span></span>
 <span><span class="co">## Asthma                                                           14</span></span>
+<span><span class="co">## Balanced reciprocal translocation                                 7</span></span>
 <span><span class="co">## Biological sex                                                    6</span></span>
 <span><span class="co">## Bipolar disorder                                                  5</span></span>
 <span><span class="co">## Celiac disease                                                    6</span></span>
@@ -838,7 +838,6 @@ diversity:</p>
 <span><span class="co">## Ulcerative colitis                                            0.077     0.690</span></span>
 <span><span class="co">## Age                                                           0.190     0.460</span></span>
 <span><span class="co">## Aging                                                         0.000     1.000</span></span>
-<span><span class="co">## Balanced reciprocal translocation                             1.000     0.000</span></span>
 <span><span class="co">## Atopic eczema                                                 0.057     0.120</span></span>
 <span><span class="co">## Autism spectrum disorder                                      0.440     0.062</span></span>
 <span><span class="co">## Cesarean section                                              0.270     0.000</span></span>
@@ -940,6 +939,7 @@ diversity:</p>
 <span><span class="co">## Acute myeloid leukemia                                        0.170     0.170</span></span>
 <span><span class="co">## Arthritis                                                     0.000     0.000</span></span>
 <span><span class="co">## Asthma                                                        0.062     0.062</span></span>
+<span><span class="co">## Balanced reciprocal translocation                             0.000     0.000</span></span>
 <span><span class="co">## Biological sex                                                0.120     0.120</span></span>
 <span><span class="co">## Bipolar disorder                                              0.000     0.000</span></span>
 <span><span class="co">## Celiac disease                                                0.000     0.000</span></span>
@@ -985,7 +985,6 @@ diversity:</p>
 <span><span class="co">## Ulcerative colitis                                            0.230</span></span>
 <span><span class="co">## Age                                                           0.350</span></span>
 <span><span class="co">## Aging                                                         0.000</span></span>
-<span><span class="co">## Balanced reciprocal translocation                             0.000</span></span>
 <span><span class="co">## Atopic eczema                                                 0.820</span></span>
 <span><span class="co">## Autism spectrum disorder                                      0.500</span></span>
 <span><span class="co">## Cesarean section                                              0.730</span></span>
@@ -1087,6 +1086,7 @@ diversity:</p>
 <span><span class="co">## Acute myeloid leukemia                                        0.670</span></span>
 <span><span class="co">## Arthritis                                                     1.000</span></span>
 <span><span class="co">## Asthma                                                        0.880</span></span>
+<span><span class="co">## Balanced reciprocal translocation                             1.000</span></span>
 <span><span class="co">## Biological sex                                                0.750</span></span>
 <span><span class="co">## Bipolar disorder                                              1.000</span></span>
 <span><span class="co">## Celiac disease                                                1.000</span></span>
@@ -1125,7 +1125,6 @@ diversity:</p>
 <span><span class="co">## Chronic constipation                                              8         0</span></span>
 <span><span class="co">## Parkinson's disease                                              18        26</span></span>
 <span><span class="co">## Phenotype                                                         9         1</span></span>
-<span><span class="co">## Balanced reciprocal translocation                                 7         0</span></span>
 <span><span class="co">## Diarrhea                                                          8         1</span></span>
 <span><span class="co">## Head and neck squamous cell carcinoma                             0         7</span></span>
 <span><span class="co">## Polycystic ovary syndrome                                         0         7</span></span>
@@ -1192,6 +1191,7 @@ diversity:</p>
 <span><span class="co">## Type II diabetes mellitus                                         2         3</span></span>
 <span><span class="co">## Urinary tract infection                                           0         1</span></span>
 <span><span class="co">## Abnormal stool composition                                        0         0</span></span>
+<span><span class="co">## Balanced reciprocal translocation                                 0         0</span></span>
 <span><span class="co">## Chlamydia trachomatis                                             1         1</span></span>
 <span><span class="co">## Crohn's disease                                                   2         2</span></span>
 <span><span class="co">## Ethnic group                                                      2         2</span></span>
@@ -1215,7 +1215,6 @@ diversity:</p>
 <span><span class="co">## Chronic constipation                                              4</span></span>
 <span><span class="co">## Parkinson's disease                                              28</span></span>
 <span><span class="co">## Phenotype                                                        11</span></span>
-<span><span class="co">## Balanced reciprocal translocation                                 0</span></span>
 <span><span class="co">## Diarrhea                                                          4</span></span>
 <span><span class="co">## Head and neck squamous cell carcinoma                             4</span></span>
 <span><span class="co">## Polycystic ovary syndrome                                         1</span></span>
@@ -1282,6 +1281,7 @@ diversity:</p>
 <span><span class="co">## Type II diabetes mellitus                                        10</span></span>
 <span><span class="co">## Urinary tract infection                                           6</span></span>
 <span><span class="co">## Abnormal stool composition                                        6</span></span>
+<span><span class="co">## Balanced reciprocal translocation                                 7</span></span>
 <span><span class="co">## Chlamydia trachomatis                                             3</span></span>
 <span><span class="co">## Crohn's disease                                                   2</span></span>
 <span><span class="co">## Ethnic group                                                      1</span></span>
@@ -1307,7 +1307,6 @@ diversity:</p>
 <span><span class="co">## Chronic constipation                                          0.670     0.000</span></span>
 <span><span class="co">## Parkinson's disease                                           0.250     0.360</span></span>
 <span><span class="co">## Phenotype                                                     0.430     0.048</span></span>
-<span><span class="co">## Balanced reciprocal translocation                             1.000     0.000</span></span>
 <span><span class="co">## Diarrhea                                                      0.620     0.077</span></span>
 <span><span class="co">## Head and neck squamous cell carcinoma                         0.000     0.640</span></span>
 <span><span class="co">## Polycystic ovary syndrome                                     0.000     0.880</span></span>
@@ -1374,6 +1373,7 @@ diversity:</p>
 <span><span class="co">## Type II diabetes mellitus                                     0.130     0.200</span></span>
 <span><span class="co">## Urinary tract infection                                       0.000     0.140</span></span>
 <span><span class="co">## Abnormal stool composition                                    0.000     0.000</span></span>
+<span><span class="co">## Balanced reciprocal translocation                             0.000     0.000</span></span>
 <span><span class="co">## Chlamydia trachomatis                                         0.200     0.200</span></span>
 <span><span class="co">## Crohn's disease                                               0.330     0.330</span></span>
 <span><span class="co">## Ethnic group                                                  0.400     0.400</span></span>
@@ -1397,7 +1397,6 @@ diversity:</p>
 <span><span class="co">## Chronic constipation                                           0.33</span></span>
 <span><span class="co">## Parkinson's disease                                            0.39</span></span>
 <span><span class="co">## Phenotype                                                      0.52</span></span>
-<span><span class="co">## Balanced reciprocal translocation                              0.00</span></span>
 <span><span class="co">## Diarrhea                                                       0.31</span></span>
 <span><span class="co">## Head and neck squamous cell carcinoma                          0.36</span></span>
 <span><span class="co">## Polycystic ovary syndrome                                      0.12</span></span>
@@ -1464,6 +1463,7 @@ diversity:</p>
 <span><span class="co">## Type II diabetes mellitus                                      0.67</span></span>
 <span><span class="co">## Urinary tract infection                                        0.86</span></span>
 <span><span class="co">## Abnormal stool composition                                     1.00</span></span>
+<span><span class="co">## Balanced reciprocal translocation                              1.00</span></span>
 <span><span class="co">## Chlamydia trachomatis                                          0.60</span></span>
 <span><span class="co">## Crohn's disease                                                0.33</span></span>
 <span><span class="co">## Ethnic group                                                   0.20</span></span>
@@ -1483,7 +1483,7 @@ diversity:</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                                increased decreased unchanged</span></span>
-<span><span class="co">## Feces                                296       442      1175</span></span>
+<span><span class="co">## Feces                                289       442      1182</span></span>
 <span><span class="co">## Vagina                                16         6        27</span></span>
 <span><span class="co">## Posterior fornix of vagina             9         0         7</span></span>
 <span><span class="co">## Skin of body                           7        15         8</span></span>
@@ -1549,7 +1549,7 @@ diversity:</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Shannon"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                                increased decreased unchanged</span></span>
-<span><span class="co">## Feces                              0.150     0.230      0.61</span></span>
+<span><span class="co">## Feces                              0.150     0.230      0.62</span></span>
 <span><span class="co">## Vagina                             0.330     0.120      0.55</span></span>
 <span><span class="co">## Posterior fornix of vagina         0.560     0.000      0.44</span></span>
 <span><span class="co">## Skin of body                       0.230     0.500      0.27</span></span>
@@ -1615,7 +1615,7 @@ diversity:</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                              increased decreased unchanged</span></span>
-<span><span class="co">## Feces                              183       249       610</span></span>
+<span><span class="co">## Feces                              176       249       617</span></span>
 <span><span class="co">## Mouth                               10         3         9</span></span>
 <span><span class="co">## Posterior fornix of vagina           8         1         2</span></span>
 <span><span class="co">## Uterine cervix                       8         1        11</span></span>
@@ -1656,7 +1656,7 @@ diversity:</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/tabDiv.html">tabDiv</a></span><span class="op">(</span><span class="va">exps</span>, <span class="st">"Richness"</span>, <span class="st">"Body site"</span>, perc <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##                              increased decreased unchanged</span></span>
-<span><span class="co">## Feces                            0.180     0.240      0.59</span></span>
+<span><span class="co">## Feces                            0.170     0.240      0.59</span></span>
 <span><span class="co">## Mouth                            0.450     0.140      0.41</span></span>
 <span><span class="co">## Posterior fornix of vagina       0.730     0.091      0.18</span></span>
 <span><span class="co">## Uterine cervix                   0.400     0.050      0.55</span></span>
@@ -1707,7 +1707,7 @@ diversity:</p>
 <p>Number unique microbes contained in the signatures:</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">nuniq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unlist.html" class="external-link">unlist</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 7800</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 7804</span></span></code></pre>
 <p>Development of unique microbes captured over time:</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plotUniqueMicrobesOverTime.html">plotUniqueMicrobesOverTime</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span></span></code></pre></div>
@@ -1719,14 +1719,14 @@ diversity:</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span><span class="co">##   1.000   2.000   5.000   8.257  10.000 470.000</span></span></code></pre>
+<span><span class="co">##   1.000   2.000   5.000   8.259  10.000 470.000</span></span></code></pre>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rpkgs.datanovia.com/ggpubr/reference/gghistogram.html" class="external-link">gghistogram</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span>, bins <span class="op">=</span> <span class="fl">30</span>, ylab <span class="op">=</span> <span class="st">"number of signatures"</span>,</span>
 <span>    xlab <span class="op">=</span> <span class="st">"signature size"</span>, fill <span class="op">=</span> <span class="st">"#00AFBB"</span>, ggtheme <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="BugSigDBStats_files/figure-html/setSize-1.png" width="700"></p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">sigs</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">4</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## [1] 4299</span></span></code></pre>
+<pre><code><span><span class="co">## [1] 4300</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="microbe-co-occurrence">Microbe co-occurrence<a class="anchor" aria-label="anchor" href="#microbe-co-occurrence"></a>
