@@ -34,3 +34,4 @@
 # Docs
 #----------------------------
 ^_pkgdown\.yml$
+^BugSigDBStats\.Rproj$
