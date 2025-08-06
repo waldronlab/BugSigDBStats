@@ -196,22 +196,99 @@ lab.tab
 ```
 
 ## Statistical analysis
-
 Number of experiments for the top 10 categories for each statistical analysis column:
 
 ```{r}
-stat.tab <- lapply(stat.cols, tabCol, df = exps, n = 10)
-names(stat.tab) <- stat.cols
-stat.tab
+# Define the columns to analyze
+stat.cols <- c("Statistical test", "MHT correction", "Significance threshold")
+# Get top 10 counts
+stat.tab.count <- lapply(stat.cols, tabCol, df = exps, n = 10)
+names(stat.tab.count) <- stat.cols
+# Get top 10 proportions
+stat.tab.prop <- lapply(stat.cols, tabCol, df = exps, n = 10, perc = TRUE)
+names(stat.tab.prop) <- stat.cols
 ```
 
-Proportions instead:
+### Top 10 Counts
+```{r}
+count_df <- data.frame(
+  Name = names(stat.tab.count[["Statistical test"]]), 
+  Count = as.vector(stat.tab.count[["Statistical test"]])
+)
+DT::datatable(
+  count_df,
+  rownames = FALSE,
+  options = list(pageLength = 10),
+  caption = "Top categories for: Statistical test"
+)
+```
 
 ```{r}
-stat.tab <- lapply(stat.cols, tabCol, df = exps, n = 10, perc = TRUE)
-names(stat.tab) <- stat.cols
-stat.tab
+count_df <- data.frame(
+  Name = names(stat.tab.count[["MHT correction"]]), 
+  Count = as.vector(stat.tab.count[["MHT correction"]])
+)
+DT::datatable(
+  count_df,
+  rownames = FALSE,
+  options = list(pageLength = 10),
+  caption = "Top categories for: MHT correction"
+)
 ```
+
+```{r}
+count_df <- data.frame(
+  Value = names(stat.tab.count[["Significance threshold"]]), 
+  Count = as.vector(stat.tab.count[["Significance threshold"]])
+)
+DT::datatable(
+  count_df,
+  rownames = FALSE,
+  options = list(pageLength = 10),
+  caption = "Top categories for: Significance threshold"
+)
+```
+
+### Top 10 Proportions
+```{r}
+prop_df <- data.frame(
+  Name = names(stat.tab.prop[["Statistical test"]]), 
+  Proportion = as.vector(stat.tab.prop[["Statistical test"]])
+)
+DT::datatable(
+  prop_df,
+  rownames = FALSE,
+  options = list(pageLength = 10),
+  caption = "Top proportions for: Statistical test"
+)
+```
+
+```{r}
+prop_df <- data.frame(
+  Name = names(stat.tab.prop[["MHT correction"]]), 
+  Proportion = as.vector(stat.tab.prop[["MHT correction"]])
+)
+DT::datatable(
+  prop_df,
+  rownames = FALSE,
+  options = list(pageLength = 10),
+  caption = "Top proportions for: MHT correction"
+)
+```
+
+```{r}
+prop_df <- data.frame(
+  Value = names(stat.tab.prop[["Significance threshold"]]), 
+  Proportion = as.vector(stat.tab.prop[["Significance threshold"]])
+)
+DT::datatable(
+  prop_df,
+  rownames = FALSE,
+  options = list(pageLength = 10),
+  caption = "Top proportions for: Significance threshold"
+)
+```
+
 
 ## Alpha diversity
 
