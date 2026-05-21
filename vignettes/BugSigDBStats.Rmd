@@ -447,7 +447,7 @@ sfp <- bugsigdbr::getSignatures(dat.feces, tax.id.type = "metaphlan",
 sfp20 <- sort(table(unlist(sfp)), decreasing = TRUE)[1:20]
 uanno <- bugsigdbr::extractTaxLevel(names(sfp20),
                                     tax.id.type = "taxname",
-                                    tax.level = "phylum",
+                                    tax.level = "mixed",
                                     exact.tax.level = FALSE) 
 phyla.grid <- seq_along(unique(uanno))
 panno <- ComplexHeatmap::HeatmapAnnotation(phylum = uanno)
