@@ -36,7 +36,8 @@ Imports:
     ontologySimilarity,
     BiocFileCache,
     ComplexHeatmap,
-    XML
+    XML,
+    DT
 Suggests:
     circlize,
     knitr,
