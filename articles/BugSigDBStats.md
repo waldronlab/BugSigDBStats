@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 13402    51
+    ## [1] 13404    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 13402
+    ## [1] 13404
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 13402
+    ## [1] 13404
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -290,7 +290,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6317                    922                    217 
+    ##                   6318                    922                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     42 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -301,7 +301,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3022                     1159                      308 
+    ##                     3023                     1159                      308 
     ##                  Germany                    Italy                  Denmark 
     ##                      200                      190                      183 
     ##                    Spain              South Korea                Australia 
@@ -314,7 +314,7 @@ sub.tab
     ##                     Feces                    Saliva                    Vagina 
     ##                      5106                       412                       173 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                       133                        91                        86 
+    ##                       134                        91                        86 
     ##               Nasopharynx                     Mouth                     Colon 
     ##                        78                        67                        65 
     ##                    Rectum 
@@ -356,9 +356,9 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.77100                0.11300                0.02650 
+    ##                0.77100                0.11200                0.02650 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01710                0.01640                0.00513 
+    ##                0.01710                0.01630                0.00512 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                0.00403                0.00342                0.00293 
     ##    Macaca fascicularis 
@@ -380,9 +380,9 @@ sub.tab
     ##                     Feces                    Saliva                    Vagina 
     ##                   0.62600                   0.05050                   0.02120 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01630                   0.01120                   0.01050 
+    ##                   0.01640                   0.01120                   0.01050 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00957                   0.00822                   0.00797 
+    ##                   0.00956                   0.00822                   0.00797 
     ##                    Rectum 
     ##                   0.00687 
     ## 
@@ -408,7 +408,7 @@ sub.tab
     ##        Recent use of antibiotics         currently on antibiotics 
     ##                          0.00999                          0.00705 
     ##                           1 year more than 5 days during 6 months 
-    ##                          0.00647                          0.00558
+    ##                          0.00646                          0.00558
 
 Sample size:
 
@@ -422,7 +422,7 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               405.1487            61.51861
+    ## Mean               405.0927            61.51414
     ## 3rd Qu.             49.0000            41.00000
     ## Max.            308633.0000         10413.00000
     ## NA's              1377.0000          1371.00000
@@ -442,19 +442,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6517       1247         79         76          5 
+    ##       6518       1247         79         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3064      1606       355       244       195       145       118        77 
+    ##      3065      1606       355       244       195       145       118        77 
     ##        56  23456789 
     ##        52        37 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  6708                                   339 
+    ##                                  6709                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   279                                   157 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -481,7 +481,7 @@ lab.tab
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.50700   0.26600   0.05870   0.04030   0.03220   0.02400   0.01950   0.01270 
+    ##   0.50700   0.26500   0.05870   0.04030   0.03220   0.02400   0.01950   0.01270 
     ##        56  23456789 
     ##   0.00860   0.00612 
     ## 
@@ -490,7 +490,7 @@ lab.tab
     ##                              Illumina                              Roche454 
     ##                               0.86100                               0.04350 
     ##                           Ion Torrent                               RT-qPCR 
-    ##                               0.03580                               0.02020 
+    ##                               0.03580                               0.02010 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
     ##                               0.00898                               0.00578 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
@@ -615,7 +615,7 @@ apply(exps[,div.cols], 2, table)
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     92     926   591     329              79      595
     ## increased     64     724   431     196              60      434
-    ## unchanged    276    2628  1253    1005             277     1358
+    ## unchanged    276    2625  1253    1002             277     1356
 
 Correspondence of Shannon diversity and Richness:
 
@@ -628,7 +628,7 @@ table(exps$Shannon, exps$Richness)
     ##             decreased increased unchanged
     ##   decreased       328        15        71
     ##   increased        16       215        67
-    ##   unchanged       123       115      1095
+    ##   unchanged       123       115      1092
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -901,7 +901,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Atopic asthma                                                     7
     ## Birth measurement                                                 4
     ## Chronic periodontitis                                             8
-    ## Cognitive impairment                                             16
+    ## Cognitive impairment                                             15
     ## Environmental exposure measurement                                4
     ## Extraction protocol                                              21
     ## Hematopoietic stem cell                                           3
@@ -1112,7 +1112,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Atopic asthma                                                 0.330     0.083
     ## Birth measurement                                             0.430     0.000
     ## Chronic periodontitis                                         0.270     0.000
-    ## Cognitive impairment                                          0.048     0.190
+    ## Cognitive impairment                                          0.050     0.200
     ## Environmental exposure measurement                            0.430     0.000
     ## Extraction protocol                                           0.330     0.370
     ## Hematopoietic stem cell                                       0.000     0.500
@@ -1317,7 +1317,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Atopic asthma                                                 0.580
     ## Birth measurement                                             0.570
     ## Chronic periodontitis                                         0.730
-    ## Cognitive impairment                                          0.760
+    ## Cognitive impairment                                          0.750
     ## Environmental exposure measurement                            0.570
     ## Extraction protocol                                           0.300
     ## Hematopoietic stem cell                                       0.500
@@ -1601,7 +1601,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Helminthiasis                                                     0
     ## HIV infection                                                    10
     ## Multiple sclerosis                                               29
-    ## Periodontitis                                                    18
+    ## Periodontitis                                                    19
     ## Polycystic ovary syndrome                                        16
     ## Pulmonary tuberculosis                                            9
     ## COVID-19                                                         25
@@ -1651,7 +1651,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Alcohol use disorder measurement                                  6
     ## Bone mineral content measurement                                  8
     ## Breast cancer                                                    10
-    ## Cognitive impairment                                             10
+    ## Cognitive impairment                                              9
     ## Colorectal cancer                                                22
     ## Esophageal adenocarcinoma                                         4
     ## Gestational diabetes                                             27
@@ -1734,7 +1734,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Helminthiasis                                                 1.000     0.000
     ## HIV infection                                                 0.110     0.540
     ## Multiple sclerosis                                            0.044     0.310
-    ## Periodontitis                                                 0.420     0.083
+    ## Periodontitis                                                 0.410     0.081
     ## Polycystic ovary syndrome                                     0.140     0.430
     ## Pulmonary tuberculosis                                        0.190     0.520
     ## COVID-19                                                      0.200     0.360
@@ -1784,7 +1784,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Alcohol use disorder measurement                              0.250     0.000
     ## Bone mineral content measurement                              0.000     0.200
     ## Breast cancer                                                 0.170     0.000
-    ## Cognitive impairment                                          0.000     0.170
+    ## Cognitive impairment                                          0.000     0.180
     ## Colorectal cancer                                             0.290     0.320
     ## Esophageal adenocarcinoma                                     0.000     0.330
     ## Gestational diabetes                                          0.110     0.160
@@ -1861,7 +1861,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Helminthiasis                                                  0.00
     ## HIV infection                                                  0.36
     ## Multiple sclerosis                                             0.64
-    ## Periodontitis                                                  0.50
+    ## Periodontitis                                                  0.51
     ## Polycystic ovary syndrome                                      0.43
     ## Pulmonary tuberculosis                                         0.29
     ## COVID-19                                                       0.45
@@ -1911,7 +1911,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Alcohol use disorder measurement                               0.75
     ## Bone mineral content measurement                               0.80
     ## Breast cancer                                                  0.83
-    ## Cognitive impairment                                           0.83
+    ## Cognitive impairment                                           0.82
     ## Colorectal cancer                                              0.39
     ## Esophageal adenocarcinoma                                      0.67
     ## Gestational diabetes                                           0.73
@@ -1992,7 +1992,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 370       560      1579
+    ## Feces                                                 370       560      1576
     ## Sputum                                                  7        19        16
     ## Vagina                                                 20        10        41
     ## Blood serum                                             9         0         0
@@ -2152,7 +2152,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              230       349       836
+    ## Feces                              230       349       833
     ## Oral cavity                         15         4        22
     ## Sputum                               0        11         5
     ## Supragingival dental plaque          0         9         8
@@ -2174,7 +2174,7 @@ tabDiv(exps, "Richness", "Body site")
     ## Ascending colon                      3         0         6
     ## Lung                                 0         3         3
     ## Small intestine                      1         4         0
-    ## Subgingival dental plaque            9         6        33
+    ## Subgingival dental plaque            9         6        34
     ## Cecum mucosa                         2         4         1
     ## Dental plaque                        1         3         5
     ## Ear                                  2         0         3
@@ -2229,7 +2229,7 @@ tabDiv(exps, "Richness", "Body site", perc = TRUE)
     ## Ascending colon                  0.330     0.000      0.67
     ## Lung                             0.000     0.500      0.50
     ## Small intestine                  0.200     0.800      0.00
-    ## Subgingival dental plaque        0.190     0.120      0.69
+    ## Subgingival dental plaque        0.180     0.120      0.69
     ## Cecum mucosa                     0.290     0.570      0.14
     ## Dental plaque                    0.110     0.330      0.56
     ## Ear                              0.400     0.000      0.60
@@ -2291,7 +2291,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.108  10.000 467.000
+    ##    1.00    2.00    4.00    8.11   10.00  467.00
 
 ``` r
 
@@ -2306,7 +2306,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6330
+    ## [1] 6332
 
 ### Microbe co-occurrence
 
@@ -2344,7 +2344,7 @@ top20
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
     ##              516              498              479              478 
     ##        Roseburia      Clostridium  Parabacteroides        Alistipes 
-    ##              475              471              437              405 
+    ##              475              472              437              405 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              351              337              333              293 
     ##      Collinsella     Enterococcus     Anaerostipes       Sutterella 
@@ -2413,7 +2413,7 @@ top20.down
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
     ##              197              179              257              243 
     ##        Roseburia      Clostridium  Parabacteroides        Alistipes 
-    ##              313              217              182              208 
+    ##              313              218              182              208 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              117              190              189              119 
     ##      Collinsella     Enterococcus     Anaerostipes       Sutterella 
