@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 13480    51
+    ## [1] 13484    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 1993
+    ## [1] 1994
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 13480
+    ## [1] 13484
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 13480
+    ## [1] 13484
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -228,7 +228,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      508 
     ##                                                                             case-control 
-    ##                                                                                      778
+    ##                                                                                      779
 
 ## Experiment stats
 
@@ -290,7 +290,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6371                    925                    217 
+    ##                   6373                    925                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     42 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -312,7 +312,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5132                       436                       173 
+    ##                      5134                       436                       173 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       135                        91                        83 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -367,7 +367,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3670                   0.1410                   0.0374 
+    ##                   0.3670                   0.1410                   0.0373 
     ##                  Germany                    Italy                  Denmark 
     ##                   0.0243                   0.0230                   0.0222 
     ##                    Spain              South Korea                Australia 
@@ -382,7 +382,7 @@ sub.tab
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01640                   0.01110                   0.01010 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00974                   0.00816                   0.00792 
+    ##                   0.00974                   0.00816                   0.00791 
     ##                    Rectum 
     ##                   0.00682 
     ## 
@@ -393,7 +393,7 @@ sub.tab
     ##                   Obesity                  COVID-19    Response to transplant 
     ##                    0.0202                    0.0158                    0.0137 
     ##          Response to diet Polycystic ovary syndrome Type II diabetes mellitus 
-    ##                    0.0128                    0.0123                    0.0116 
+    ##                    0.0128                    0.0123                    0.0115 
     ##              Constipation 
     ##                    0.0113 
     ## 
@@ -419,13 +419,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000              1.0000
-    ## 1st Qu.             11.0000             10.0000
-    ## Median              24.0000             21.0000
-    ## Mean               403.8434             61.4268
-    ## 3rd Qu.             49.0000             41.0000
-    ## Max.            308633.0000          10413.0000
-    ## NA's              1408.0000           1401.0000
+    ## Min.                 0.0000             1.00000
+    ## 1st Qu.             11.0000            10.00000
+    ## Median              24.0000            21.00000
+    ## Mean               403.7928            61.43433
+    ## 3rd Qu.             49.0000            41.00000
+    ## Max.            308633.0000         10413.00000
+    ## NA's              1409.0000          1402.00000
 
 ### Lab analysis
 
@@ -442,7 +442,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6559       1262         79         76          5 
+    ##       6559       1264         79         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -454,7 +454,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  6763                                   339 
+    ##                                  6765                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   279                                   157 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -492,7 +492,7 @@ lab.tab
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03560                               0.02000 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00892                               0.00574 
+    ##                               0.00892                               0.00573 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
     ##                               0.00484                               0.00395 
     ##                 BGISEQ-500 Sequencing                     Mass spectrometry 
@@ -613,9 +613,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     93     928   590     327              79      596
+    ## decreased     93     927   590     327              79      598
     ## increased     64     726   432     197              60      435
-    ## unchanged    300    2647  1257    1008             278     1384
+    ## unchanged    302    2650  1259    1008             278     1384
 
 Correspondence of Shannon diversity and Richness:
 
@@ -628,7 +628,7 @@ table(exps$Shannon, exps$Richness)
     ##             decreased increased unchanged
     ##   decreased       328        15        71
     ##   increased        16       216        68
-    ##   unchanged       124       115      1112
+    ##   unchanged       126       115      1112
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -673,7 +673,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Aging                                                             2         7
     ## Bronchiectasis                                                    0         5
     ## Constipation                                                      8         3
-    ## Cystic fibrosis                                                   0         5
     ## Epilepsy                                                          5         0
     ## Helminthiasis                                                     5         0
     ## Oxygen                                                            5         0
@@ -687,6 +686,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Chronic kidney disease                                            2         6
     ## Colitis                                                           4         0
     ## Colorectal cancer                                                18        14
+    ## Cystic fibrosis                                                   0         4
     ## Ethnic group                                                      3         7
     ## Food allergy                                                      6         2
     ## Gestational diabetes                                              4         0
@@ -882,7 +882,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Aging                                                             2
     ## Bronchiectasis                                                    0
     ## Constipation                                                     13
-    ## Cystic fibrosis                                                   2
     ## Epilepsy                                                          5
     ## Helminthiasis                                                     8
     ## Oxygen                                                            0
@@ -896,6 +895,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Chronic kidney disease                                           11
     ## Colitis                                                           2
     ## Colorectal cancer                                                51
+    ## Cystic fibrosis                                                   3
     ## Ethnic group                                                      6
     ## Food allergy                                                     19
     ## Gestational diabetes                                             36
@@ -933,7 +933,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Environmental factor                                             18
     ## Esophageal adenocarcinoma                                         4
     ## Iron biomarker measurement                                        2
-    ## Irritable bowel syndrome                                         26
+    ## Irritable bowel syndrome                                         28
     ## Lifestyle measurement                                            14
     ## Milk allergic reaction                                            5
     ## Non-alcoholic fatty liver disease                                 9
@@ -1097,7 +1097,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Aging                                                         0.180     0.640
     ## Bronchiectasis                                                0.000     1.000
     ## Constipation                                                  0.330     0.120
-    ## Cystic fibrosis                                               0.000     0.710
     ## Epilepsy                                                      0.500     0.000
     ## Helminthiasis                                                 0.380     0.000
     ## Oxygen                                                        1.000     0.000
@@ -1111,6 +1110,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Chronic kidney disease                                        0.110     0.320
     ## Colitis                                                       0.670     0.000
     ## Colorectal cancer                                             0.220     0.170
+    ## Cystic fibrosis                                               0.000     0.570
     ## Ethnic group                                                  0.190     0.440
     ## Food allergy                                                  0.220     0.074
     ## Gestational diabetes                                          0.100     0.000
@@ -1148,7 +1148,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Environmental factor                                          0.230     0.170
     ## Esophageal adenocarcinoma                                     0.000     0.330
     ## Iron biomarker measurement                                    0.170     0.500
-    ## Irritable bowel syndrome                                      0.130     0.180
+    ## Irritable bowel syndrome                                      0.120     0.180
     ## Lifestyle measurement                                         0.200     0.100
     ## Milk allergic reaction                                        0.290     0.000
     ## Non-alcoholic fatty liver disease                             0.230     0.077
@@ -1306,7 +1306,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Aging                                                         0.180
     ## Bronchiectasis                                                0.000
     ## Constipation                                                  0.540
-    ## Cystic fibrosis                                               0.290
     ## Epilepsy                                                      0.500
     ## Helminthiasis                                                 0.620
     ## Oxygen                                                        0.000
@@ -1320,6 +1319,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Chronic kidney disease                                        0.580
     ## Colitis                                                       0.330
     ## Colorectal cancer                                             0.610
+    ## Cystic fibrosis                                               0.430
     ## Ethnic group                                                  0.380
     ## Food allergy                                                  0.700
     ## Gestational diabetes                                          0.900
@@ -1357,7 +1357,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Environmental factor                                          0.600
     ## Esophageal adenocarcinoma                                     0.670
     ## Iron biomarker measurement                                    0.330
-    ## Irritable bowel syndrome                                      0.680
+    ## Irritable bowel syndrome                                      0.700
     ## Lifestyle measurement                                         0.700
     ## Milk allergic reaction                                        0.710
     ## Non-alcoholic fatty liver disease                             0.690
@@ -1533,6 +1533,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Hypertension                                                      1         4
     ## Hypertrophy                                                       3         0
     ## Iron biomarker measurement                                        1         4
+    ## Irritable bowel syndrome                                          4         7
     ## Oral squamous cell carcinoma                                      1         4
     ## Treatment                                                         4         7
     ## Treatment outcome measurement                                     1         4
@@ -1576,7 +1577,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Endometrial cancer                                                1         2
     ## Heart failure                                                     2         3
     ## Infant                                                            1         0
-    ## Irritable bowel syndrome                                          4         5
     ## Ischemic stroke                                                   2         1
     ## Lifestyle measurement                                             3         2
     ## Neurodevelopmental delay                                          1         0
@@ -1663,6 +1663,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Hypertension                                                      6
     ## Hypertrophy                                                       2
     ## Iron biomarker measurement                                        1
+    ## Irritable bowel syndrome                                         16
     ## Oral squamous cell carcinoma                                      0
     ## Treatment                                                         9
     ## Treatment outcome measurement                                     0
@@ -1706,7 +1707,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Endometrial cancer                                                3
     ## Heart failure                                                     4
     ## Infant                                                            4
-    ## Irritable bowel syndrome                                         16
     ## Ischemic stroke                                                   3
     ## Lifestyle measurement                                             3
     ## Neurodevelopmental delay                                          5
@@ -1799,6 +1799,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Hypertension                                                  0.091     0.360
     ## Hypertrophy                                                   0.600     0.000
     ## Iron biomarker measurement                                    0.170     0.670
+    ## Irritable bowel syndrome                                      0.150     0.260
     ## Oral squamous cell carcinoma                                  0.200     0.800
     ## Treatment                                                     0.200     0.350
     ## Treatment outcome measurement                                 0.200     0.800
@@ -1842,7 +1843,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Endometrial cancer                                            0.170     0.330
     ## Heart failure                                                 0.220     0.330
     ## Infant                                                        0.200     0.000
-    ## Irritable bowel syndrome                                      0.160     0.200
     ## Ischemic stroke                                               0.330     0.170
     ## Lifestyle measurement                                         0.380     0.250
     ## Neurodevelopmental delay                                      0.170     0.000
@@ -1929,6 +1929,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Hypertension                                                   0.55
     ## Hypertrophy                                                    0.40
     ## Iron biomarker measurement                                     0.17
+    ## Irritable bowel syndrome                                       0.59
     ## Oral squamous cell carcinoma                                   0.00
     ## Treatment                                                      0.45
     ## Treatment outcome measurement                                  0.00
@@ -1972,7 +1973,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Endometrial cancer                                             0.50
     ## Heart failure                                                  0.44
     ## Infant                                                         0.80
-    ## Irritable bowel syndrome                                       0.64
     ## Ischemic stroke                                                0.50
     ## Lifestyle measurement                                          0.38
     ## Neurodevelopmental delay                                       0.83
@@ -2020,7 +2020,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 372       560      1577
+    ## Feces                                                 372       560      1579
     ## Sputum                                                  7        23        16
     ## Vagina                                                 21        10        41
     ## Blood serum                                             9         0         0
@@ -2074,7 +2074,6 @@ tabDiv(exps, "Shannon", "Body site")
     ## Liver                                                   5         4         0
     ## Milk                                                    0         1        11
     ## Mucosa of stomach                                       1         0         4
-    ## Nasopharynx                                             6         7        38
     ## Rumen                                                   2         1         4
     ## Small intestine                                         3         4         1
     ## Subgingival dental plaque                              13        14        37
@@ -2085,6 +2084,7 @@ tabDiv(exps, "Shannon", "Body site")
     ## Internal cheek pouch                                    0         0        11
     ## Jejunum                                                 1         1         8
     ## Nasal cavity                                            1         1         5
+    ## Nasopharynx                                             6         6        39
     ## Ovary                                                   0         0         7
     ## Peritoneal fluid                                        0         0         6
     ## Posterior wall of oropharynx                            2         2         1
@@ -2153,7 +2153,6 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Liver                                               0.560     0.440      0.00
     ## Milk                                                0.000     0.083      0.92
     ## Mucosa of stomach                                   0.200     0.000      0.80
-    ## Nasopharynx                                         0.120     0.140      0.75
     ## Rumen                                               0.290     0.140      0.57
     ## Small intestine                                     0.380     0.500      0.12
     ## Subgingival dental plaque                           0.200     0.220      0.58
@@ -2164,6 +2163,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Internal cheek pouch                                0.000     0.000      1.00
     ## Jejunum                                             0.100     0.100      0.80
     ## Nasal cavity                                        0.140     0.140      0.71
+    ## Nasopharynx                                         0.120     0.120      0.76
     ## Ovary                                               0.000     0.000      1.00
     ## Peritoneal fluid                                    0.000     0.000      1.00
     ## Posterior wall of oropharynx                        0.400     0.400      0.20
@@ -2178,7 +2178,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              231       350       837
+    ## Feces                              231       352       837
     ## Oral cavity                         15         4        19
     ## Sputum                               0        11         5
     ## Supragingival dental plaque          0         9         9
@@ -2332,7 +2332,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6343
+    ## [1] 6346
 
 ### Microbe co-occurrence
 
@@ -2366,9 +2366,9 @@ top20
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              836              593              580              549 
+    ##              836              593              581              549 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
-    ##              517              502              484              482 
+    ##              518              504              484              482 
     ##        Roseburia      Clostridium  Parabacteroides        Alistipes 
     ##              477              475              436              405 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
@@ -2415,7 +2415,7 @@ top20.up
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
     ##              414              204              311              260 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
-    ##              318              315              223              232 
+    ##              319              317              223              232 
     ##        Roseburia      Clostridium  Parabacteroides        Alistipes 
     ##              159              252              250              193 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
@@ -2435,7 +2435,7 @@ top20.down
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              417              385              264              285 
+    ##              417              385              265              285 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
     ##              197              182              257              247 
     ##        Roseburia      Clostridium  Parabacteroides        Alistipes 
