@@ -613,9 +613,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     93     927   590     327              79      598
+    ## decreased     93     926   589     326              79      598
     ## increased     64     726   432     197              61      435
-    ## unchanged    302    2649  1258    1008             277     1382
+    ## unchanged    302    2650  1259    1009             277     1382
 
 Correspondence of Shannon diversity and Richness:
 
@@ -672,6 +672,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Acute pancreatitis                                                0         5
     ## Aging                                                             2         7
     ## Bronchiectasis                                                    0         5
+    ## Cervical cancer                                                   5         0
     ## Constipation                                                      8         3
     ## Epilepsy                                                          5         0
     ## Helminthiasis                                                     5         0
@@ -681,7 +682,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Urinary tract infection                                           1         6
     ## Acute lymphoblastic leukemia                                      0         4
     ## Body mass index                                                   0         4
-    ## Cervical cancer                                                   5         1
     ## Chronic kidney disease                                            2         6
     ## Colitis                                                           4         0
     ## Colorectal cancer                                                18        14
@@ -881,6 +881,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Acute pancreatitis                                                3
     ## Aging                                                             2
     ## Bronchiectasis                                                    0
+    ## Cervical cancer                                                   6
     ## Constipation                                                     13
     ## Epilepsy                                                          5
     ## Helminthiasis                                                     8
@@ -890,7 +891,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Urinary tract infection                                          11
     ## Acute lymphoblastic leukemia                                     11
     ## Body mass index                                                   3
-    ## Cervical cancer                                                   5
     ## Chronic kidney disease                                           11
     ## Colitis                                                           2
     ## Colorectal cancer                                                51
@@ -1096,6 +1096,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Acute pancreatitis                                            0.000     0.620
     ## Aging                                                         0.180     0.640
     ## Bronchiectasis                                                0.000     1.000
+    ## Cervical cancer                                               0.450     0.000
     ## Constipation                                                  0.330     0.120
     ## Epilepsy                                                      0.500     0.000
     ## Helminthiasis                                                 0.380     0.000
@@ -1105,7 +1106,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Urinary tract infection                                       0.056     0.330
     ## Acute lymphoblastic leukemia                                  0.000     0.270
     ## Body mass index                                               0.000     0.570
-    ## Cervical cancer                                               0.450     0.091
     ## Chronic kidney disease                                        0.110     0.320
     ## Colitis                                                       0.670     0.000
     ## Colorectal cancer                                             0.220     0.170
@@ -1305,6 +1305,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Acute pancreatitis                                            0.380
     ## Aging                                                         0.180
     ## Bronchiectasis                                                0.000
+    ## Cervical cancer                                               0.550
     ## Constipation                                                  0.540
     ## Epilepsy                                                      0.500
     ## Helminthiasis                                                 0.620
@@ -1314,7 +1315,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Urinary tract infection                                       0.610
     ## Acute lymphoblastic leukemia                                  0.730
     ## Body mass index                                               0.430
-    ## Cervical cancer                                               0.450
     ## Chronic kidney disease                                        0.580
     ## Colitis                                                       0.330
     ## Colorectal cancer                                             0.610
@@ -2022,7 +2022,7 @@ tabDiv(exps, "Shannon", "Body site")
     ##                                                 increased decreased unchanged
     ## Feces                                                 372       560      1579
     ## Sputum                                                  7        23        16
-    ## Vagina                                                 22        10        40
+    ## Vagina                                                 22         9        41
     ## Blood serum                                             9         0         0
     ## Oral cavity                                            15         6        25
     ## Posterior fornix of vagina                              9         0         9
@@ -2101,7 +2101,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ##                                                 increased decreased unchanged
     ## Feces                                               0.150     0.220      0.63
     ## Sputum                                              0.150     0.500      0.35
-    ## Vagina                                              0.310     0.140      0.56
+    ## Vagina                                              0.310     0.120      0.57
     ## Blood serum                                         1.000     0.000      0.00
     ## Oral cavity                                         0.330     0.130      0.54
     ## Posterior fornix of vagina                          0.500     0.000      0.50
