@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 13706    51
+    ## [1] 13715    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 13706
+    ## [1] 13715
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 13706
+    ## [1] 13715
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -228,9 +228,9 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                    laboratory experiment 
     ##                                                                                      222 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      510 
+    ##                                                                                      511 
     ##                                                                             case-control 
-    ##                                                                                      788
+    ##                                                                                      787
 
 ## Experiment stats
 
@@ -292,7 +292,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6504                    929                    217 
+    ##                   6513                    929                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -303,7 +303,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3107                     1166                      315 
+    ##                     3115                     1167                      315 
     ##                  Germany                    Italy                  Denmark 
     ##                      201                      190                      183 
     ##                    Spain              South Korea                Australia 
@@ -314,7 +314,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5258                       441                       173 
+    ##                      5267                       441                       173 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       135                        91                        85 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -327,7 +327,7 @@ sub.tab
     ##                      Diet         Colorectal cancer       Parkinson's disease 
     ##                       287                       241                       235 
     ##                   Obesity                  COVID-19    Response to transplant 
-    ##                       163                       127                       111 
+    ##                       164                       127                       111 
     ##          Response to diet Polycystic ovary syndrome Type II diabetes mellitus 
     ##                       106                        99                        93 
     ##              Constipation 
@@ -336,11 +336,11 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                         3 months                          1 month 
-    ##                             1204                              951 
+    ##                             1205                              951 
     ##                         2 months                         6 months 
     ##                              364                              324 
     ##                          2 weeks                           1 week 
-    ##                              233                               36 
+    ##                              245                               36 
     ##        Recent use of antibiotics         currently on antibiotics 
     ##                               34                               24 
     ##                           1 year more than 5 days during 6 months 
@@ -358,20 +358,20 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.77500                0.11100                0.02590 
+    ##                0.77500                0.11100                0.02580 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01670                0.01600                0.00513 
+    ##                0.01670                0.01600                0.00512 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00393                0.00334                0.00286 
+    ##                0.00393                0.00333                0.00286 
     ##    Macaca fascicularis 
     ##                0.00286 
     ## 
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3710                   0.1390                   0.0376 
+    ##                   0.3710                   0.1390                   0.0375 
     ##                  Germany                    Italy                  Denmark 
-    ##                   0.0240                   0.0227                   0.0218 
+    ##                   0.0239                   0.0226                   0.0218 
     ##                    Spain              South Korea                Australia 
     ##                   0.0212                   0.0194                   0.0179 
     ##           United Kingdom 
@@ -384,33 +384,33 @@ sub.tab
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01620                   0.01090                   0.01020 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00958                   0.00802                   0.00779 
+    ##                   0.00957                   0.00802                   0.00778 
     ##                    Rectum 
-    ##                   0.00671 
+    ##                   0.00670 
     ## 
     ## $Condition
     ## 
     ##                      Diet         Colorectal cancer       Parkinson's disease 
-    ##                    0.0351                    0.0295                    0.0287 
+    ##                    0.0350                    0.0294                    0.0287 
     ##                   Obesity                  COVID-19    Response to transplant 
-    ##                    0.0199                    0.0155                    0.0136 
+    ##                    0.0200                    0.0155                    0.0136 
     ##          Response to diet Polycystic ovary syndrome Type II diabetes mellitus 
-    ##                    0.0130                    0.0121                    0.0114 
+    ##                    0.0129                    0.0121                    0.0114 
     ##              Constipation 
     ##                    0.0111 
     ## 
     ## $`Antibiotics exclusion`
     ## 
     ##                         3 months                          1 month 
-    ##                          0.34400                          0.27200 
+    ##                          0.34300                          0.27100 
     ##                         2 months                         6 months 
-    ##                          0.10400                          0.09250 
+    ##                          0.10400                          0.09220 
     ##                          2 weeks                           1 week 
-    ##                          0.06650                          0.01030 
+    ##                          0.06970                          0.01020 
     ##        Recent use of antibiotics         currently on antibiotics 
-    ##                          0.00971                          0.00685 
+    ##                          0.00967                          0.00683 
     ##                           1 year more than 5 days during 6 months 
-    ##                          0.00628                          0.00543
+    ##                          0.00626                          0.00541
 
 Sample size:
 
@@ -421,13 +421,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                  0.000             1.00000
-    ## 1st Qu.              11.000            10.00000
-    ## Median               24.000            21.00000
-    ## Mean                400.645            61.84934
-    ## 3rd Qu.              49.750            42.00000
-    ## Max.             308633.000         10413.00000
-    ## NA's               1460.000          1454.00000
+    ## Min.                 0.0000             1.00000
+    ## 1st Qu.             11.0000            10.00000
+    ## Median              24.0000            21.00000
+    ## Mean               400.1577            61.82073
+    ## 3rd Qu.             49.0000            42.00000
+    ## Max.            308633.0000         10413.00000
+    ## NA's              1460.0000          1454.00000
 
 ### Lab analysis
 
@@ -444,7 +444,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6597       1360         81         76          5 
+    ##       6597       1369         81         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -456,13 +456,13 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  6878                                   339 
+    ##                                  6879                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   279                                   156 
-    ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                                    70                                    45 
-    ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                                    44                                    31 
+    ##                              Nanopore                           MGISEQ-2000 
+    ##                                    70                                    52 
+    ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
+    ##                                    45                                    31 
     ##                 BGISEQ-500 Sequencing                     Mass spectrometry 
     ##                                    21                                    18
 
@@ -478,7 +478,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.813000   0.168000   0.009980   0.009360   0.000616 
+    ##   0.812000   0.168000   0.009970   0.009350   0.000615 
     ## 
     ## $`16S variable region`
     ## 
@@ -492,13 +492,13 @@ lab.tab
     ##                              Illumina                              Roche454 
     ##                               0.86200                               0.04250 
     ##                           Ion Torrent                               RT-qPCR 
-    ##                               0.03500                               0.01960 
-    ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00878                               0.00564 
-    ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                               0.00552                               0.00389 
+    ##                               0.03490                               0.01950 
+    ##                              Nanopore                           MGISEQ-2000 
+    ##                               0.00877                               0.00651 
+    ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
+    ##                               0.00564                               0.00388 
     ##                 BGISEQ-500 Sequencing                     Mass spectrometry 
-    ##                               0.00263                               0.00226
+    ##                               0.00263                               0.00225
 
 ### Statistical analysis
 
@@ -615,9 +615,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     94     924   593     325              79      604
-    ## increased     64     727   432     198              61      435
-    ## unchanged    323    2681  1270    1034             277     1387
+    ## decreased     94     923   592     333              79      603
+    ## increased     64     726   431     198              61      434
+    ## unchanged    323    2684  1272    1035             277     1390
 
 Correspondence of Shannon diversity and Richness:
 
@@ -628,9 +628,9 @@ table(exps$Shannon, exps$Richness)
 
     ##            
     ##             decreased increased unchanged
-    ##   decreased       331        15        74
-    ##   increased        16       216        69
-    ##   unchanged       127       115      1111
+    ##   decreased       330        15        74
+    ##   increased        16       215        69
+    ##   unchanged       127       115      1114
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -858,7 +858,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Clostridium difficile infection                                   1
     ## Crohn's disease                                                  11
     ## Multiple sclerosis                                               32
-    ## Obesity                                                          68
+    ## Obesity                                                          69
     ## Systemic inflammatory response syndrome                           4
     ## Alzheimer's disease                                              30
     ## Chronic constipation                                             12
@@ -1071,7 +1071,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Clostridium difficile infection                               0.910     0.000
     ## Crohn's disease                                               0.000     0.480
     ## Multiple sclerosis                                            0.043     0.260
-    ## Obesity                                                       0.076     0.180
+    ## Obesity                                                       0.075     0.180
     ## Systemic inflammatory response syndrome                       0.210     0.620
     ## Alzheimer's disease                                           0.047     0.260
     ## Chronic constipation                                          0.430     0.000
@@ -1676,7 +1676,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Lifestyle measurement                                             3
     ## Lung cancer                                                      10
     ## Metabolic process                                                 5
-    ## Obesity                                                          27
+    ## Obesity                                                          28
     ## Phenylketonuria                                                   4
     ## Population                                                        4
     ## Response to antibiotic                                            6
@@ -1812,7 +1812,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Lifestyle measurement                                         0.440     0.220
     ## Lung cancer                                                   0.000     0.170
     ## Metabolic process                                             0.000     0.290
-    ## Obesity                                                       0.220     0.180
+    ## Obesity                                                       0.220     0.170
     ## Phenylketonuria                                               0.120     0.380
     ## Population                                                    0.330     0.000
     ## Response to antibiotic                                        0.000     0.250
@@ -1942,7 +1942,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Lifestyle measurement                                          0.33
     ## Lung cancer                                                    0.83
     ## Metabolic process                                              0.71
-    ## Obesity                                                        0.60
+    ## Obesity                                                        0.61
     ## Phenylketonuria                                                0.50
     ## Population                                                     0.67
     ## Response to antibiotic                                         0.75
@@ -2014,7 +2014,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 373       565      1605
+    ## Feces                                                 373       565      1606
     ## Sputum                                                  7        23        16
     ## Posterior fornix of vagina                             12         0        10
     ## Vagina                                                 19         8        41
@@ -2030,10 +2030,10 @@ tabDiv(exps, "Shannon", "Body site")
     ## Ileum                                                   3         9        13
     ## Pharynx                                                 6         1         2
     ## Space surrounding organism                              2         7        13
+    ## Subgingival dental plaque                              13         8        43
     ## Tongue                                                  0         5        16
     ## Axilla skin                                             5         1        11
     ## Caecum                                                  4         8        33
-    ## Subgingival dental plaque                              13         9        42
     ## Throat                                                  0         4        11
     ## Ascending colon                                         3         0         6
     ## Ascending colon,Colorectal mucosa,Sigmoid colon         3         0         2
@@ -2109,10 +2109,10 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Ileum                                               0.120     0.360      0.52
     ## Pharynx                                             0.670     0.110      0.22
     ## Space surrounding organism                          0.091     0.320      0.59
+    ## Subgingival dental plaque                           0.200     0.120      0.67
     ## Tongue                                              0.000     0.240      0.76
     ## Axilla skin                                         0.290     0.059      0.65
     ## Caecum                                              0.089     0.180      0.73
-    ## Subgingival dental plaque                           0.200     0.140      0.66
     ## Throat                                              0.000     0.270      0.73
     ## Ascending colon                                     0.330     0.000      0.67
     ## Ascending colon,Colorectal mucosa,Sigmoid colon     0.600     0.000      0.40
@@ -2172,7 +2172,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              231       358       838
+    ## Feces                              231       358       839
     ## Oral cavity                         15         4        21
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2189,11 +2189,11 @@ tabDiv(exps, "Richness", "Body site")
     ## Skin of body                         4         9         6
     ## Uterine cervix,Vaginal fluid         7         2         1
     ## Conjunctival sac                     0         4         1
+    ## Subgingival dental plaque            9         5        36
     ## Throat                               1         5         5
     ## Ascending colon                      3         0         6
     ## Lung                                 0         3         3
     ## Small intestine                      1         4         0
-    ## Subgingival dental plaque            9         6        35
     ## Cecum mucosa                         2         4         1
     ## Dental plaque                        1         3         5
     ## Ear                                  2         0         3
@@ -2245,11 +2245,11 @@ tabDiv(exps, "Richness", "Body site", perc = TRUE)
     ## Skin of body                     0.210     0.470      0.32
     ## Uterine cervix,Vaginal fluid     0.700     0.200      0.10
     ## Conjunctival sac                 0.000     0.800      0.20
+    ## Subgingival dental plaque        0.180     0.100      0.72
     ## Throat                           0.091     0.450      0.45
     ## Ascending colon                  0.330     0.000      0.67
     ## Lung                             0.000     0.500      0.50
     ## Small intestine                  0.200     0.800      0.00
-    ## Subgingival dental plaque        0.180     0.120      0.70
     ## Cecum mucosa                     0.290     0.570      0.14
     ## Dental plaque                    0.110     0.330      0.56
     ## Ear                              0.400     0.000      0.60
@@ -2313,7 +2313,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.182  10.000 467.000
+    ##   1.000   2.000   4.000   8.185  10.000 467.000
 
 ``` r
 
@@ -2328,7 +2328,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6462
+    ## [1] 6463
 
 ### Microbe co-occurrence
 
