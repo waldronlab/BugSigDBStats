@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 13725    51
+    ## [1] 13726    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 13725
+    ## [1] 13726
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 13725
+    ## [1] 13726
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -292,7 +292,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6520                    929                    217 
+    ##                   6521                    929                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -303,7 +303,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3122                     1167                      315 
+    ##                     3123                     1167                      315 
     ##                  Germany                    Italy                  Denmark 
     ##                      201                      190                      183 
     ##                    Spain              South Korea                Australia 
@@ -314,7 +314,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5274                       441                       173 
+    ##                      5275                       441                       173 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       135                        91                        85 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -325,7 +325,7 @@ sub.tab
     ## $Condition
     ## 
     ##                      Diet         Colorectal cancer       Parkinson's disease 
-    ##                       287                       241                       235 
+    ##                       287                       242                       235 
     ##                   Obesity                  COVID-19    Response to transplant 
     ##                       164                       127                       111 
     ##          Response to diet Polycystic ovary syndrome Type II diabetes mellitus 
@@ -360,11 +360,11 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.77600                0.11100                0.02580 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01670                0.01590                0.00512 
+    ##                0.01670                0.01590                0.00511 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00393                0.00333                0.00286 
+    ##                0.00393                0.00333                0.00285 
     ##    Macaca fascicularis 
-    ##                0.00286 
+    ##                0.00285 
     ## 
     ## $`Location of subjects`
     ## 
@@ -380,7 +380,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63000                   0.05270                   0.02070 
+    ##                   0.63100                   0.05270                   0.02070 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01610                   0.01090                   0.01020 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -391,7 +391,7 @@ sub.tab
     ## $Condition
     ## 
     ##                      Diet         Colorectal cancer       Parkinson's disease 
-    ##                    0.0350                    0.0294                    0.0287 
+    ##                    0.0350                    0.0295                    0.0287 
     ##                   Obesity                  COVID-19    Response to transplant 
     ##                    0.0200                    0.0155                    0.0135 
     ##          Response to diet Polycystic ovary syndrome Type II diabetes mellitus 
@@ -402,7 +402,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                         3 months                          1 month 
-    ##                          0.34300                          0.27000 
+    ##                          0.34200                          0.27000 
     ##                         2 months                         6 months 
     ##                          0.10300                          0.09210 
     ##                          2 weeks                           1 week 
@@ -424,7 +424,7 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               400.0013            61.80181
+    ## Mean               399.9463            61.79551
     ## 3rd Qu.             49.0000            42.00000
     ## Max.            308633.0000         10413.00000
     ## NA's              1464.0000          1458.00000
@@ -444,7 +444,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6601       1372         81         76          5 
+    ##       6602       1372         81         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -615,9 +615,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     94     923   592     334              79      603
+    ## decreased     94     923   593     334              79      604
     ## increased     64     726   431     200              61      434
-    ## unchanged    323    2684  1272    1035             277     1390
+    ## unchanged    323    2685  1272    1036             277     1390
 
 Correspondence of Shannon diversity and Richness:
 
@@ -630,7 +630,7 @@ table(exps$Shannon, exps$Richness)
     ##             decreased increased unchanged
     ##   decreased       330        15        74
     ##   increased        16       215        69
-    ##   unchanged       127       115      1114
+    ##   unchanged       128       115      1114
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -907,7 +907,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Antimicrobial agent                                              25
     ## Atopic asthma                                                     7
     ## Birth measurement                                                 4
-    ## Colorectal cancer                                                75
+    ## Colorectal cancer                                                76
     ## Environmental exposure measurement                                4
     ## Extraction protocol                                              21
     ## Hematopoietic stem cell                                           3
@@ -1120,7 +1120,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Antimicrobial agent                                           0.170     0.240
     ## Atopic asthma                                                 0.330     0.083
     ## Birth measurement                                             0.430     0.000
-    ## Colorectal cancer                                             0.170     0.150
+    ## Colorectal cancer                                             0.170     0.140
     ## Environmental exposure measurement                            0.430     0.000
     ## Extraction protocol                                           0.330     0.370
     ## Hematopoietic stem cell                                       0.000     0.500
@@ -1508,6 +1508,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Acute lymphoblastic leukemia                                      5         1
     ## Air pollution                                                     9         5
     ## Cervical glandular intraepithelial neoplasia                      4         0
+    ## Colorectal cancer                                                16        20
     ## Crohn's disease                                                   2         6
     ## Diarrhea                                                          5         1
     ## Dry eye syndrome                                                  0         4
@@ -1519,7 +1520,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Vesicle membrane                                                  5         1
     ## Alzheimer's disease                                               8         5
     ## Atopic asthma                                                     4         1
-    ## Colorectal cancer                                                16        19
     ## Delivery method                                                   4         1
     ## Depressive disorder                                               0         3
     ## Endometriosis                                                     4         1
@@ -1638,6 +1638,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Acute lymphoblastic leukemia                                      1
     ## Air pollution                                                     6
     ## Cervical glandular intraepithelial neoplasia                      2
+    ## Colorectal cancer                                                26
     ## Crohn's disease                                                   4
     ## Diarrhea                                                          3
     ## Dry eye syndrome                                                  4
@@ -1649,7 +1650,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Vesicle membrane                                                  0
     ## Alzheimer's disease                                              28
     ## Atopic asthma                                                     7
-    ## Colorectal cancer                                                26
     ## Delivery method                                                   9
     ## Depressive disorder                                               4
     ## Endometriosis                                                     8
@@ -1774,6 +1774,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Acute lymphoblastic leukemia                                  0.710     0.140
     ## Air pollution                                                 0.450     0.250
     ## Cervical glandular intraepithelial neoplasia                  0.670     0.000
+    ## Colorectal cancer                                             0.260     0.320
     ## Crohn's disease                                               0.170     0.500
     ## Diarrhea                                                      0.560     0.110
     ## Dry eye syndrome                                              0.000     0.500
@@ -1785,7 +1786,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Vesicle membrane                                              0.830     0.170
     ## Alzheimer's disease                                           0.200     0.120
     ## Atopic asthma                                                 0.330     0.083
-    ## Colorectal cancer                                             0.260     0.310
     ## Delivery method                                               0.290     0.071
     ## Depressive disorder                                           0.000     0.430
     ## Endometriosis                                                 0.310     0.077
@@ -1904,6 +1904,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Acute lymphoblastic leukemia                                   0.14
     ## Air pollution                                                  0.30
     ## Cervical glandular intraepithelial neoplasia                   0.33
+    ## Colorectal cancer                                              0.42
     ## Crohn's disease                                                0.33
     ## Diarrhea                                                       0.33
     ## Dry eye syndrome                                               0.50
@@ -1915,7 +1916,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Vesicle membrane                                               0.00
     ## Alzheimer's disease                                            0.68
     ## Atopic asthma                                                  0.58
-    ## Colorectal cancer                                              0.43
     ## Delivery method                                                0.64
     ## Depressive disorder                                            0.57
     ## Endometriosis                                                  0.62
@@ -2014,7 +2014,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 373       565      1606
+    ## Feces                                                 373       565      1607
     ## Sputum                                                  7        23        16
     ## Posterior fornix of vagina                             12         0        10
     ## Vagina                                                 19         8        41
@@ -2172,7 +2172,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              231       358       839
+    ## Feces                              231       359       839
     ## Oral cavity                         15         4        21
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2294,7 +2294,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 7992
+    ## [1] 7990
 
 Development of unique microbes captured over time:
 
