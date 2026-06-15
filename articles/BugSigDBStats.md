@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 13726    51
+    ## [1] 13732    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2011
+    ## [1] 2012
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 13726
+    ## [1] 13732
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 13726
+    ## [1] 13732
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -230,7 +230,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      511 
     ##                                                                             case-control 
-    ##                                                                                      787
+    ##                                                                                      788
 
 ## Experiment stats
 
@@ -292,7 +292,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6521                    929                    217 
+    ##                   6526                    929                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -303,7 +303,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3123                     1167                      315 
+    ##                     3124                     1171                      315 
     ##                  Germany                    Italy                  Denmark 
     ##                      201                      190                      183 
     ##                    Spain              South Korea                Australia 
@@ -314,7 +314,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5275                       441                       173 
+    ##                      5280                       441                       173 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       135                        91                        85 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -340,7 +340,7 @@ sub.tab
     ##                         2 months                         6 months 
     ##                              364                              324 
     ##                          2 weeks                           1 week 
-    ##                              248                               36 
+    ##                              249                               36 
     ##        Recent use of antibiotics         currently on antibiotics 
     ##                               34                               24 
     ##                           1 year more than 5 days during 6 months 
@@ -358,11 +358,11 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.77600                0.11100                0.02580 
+    ##                0.77600                0.11000                0.02580 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01670                0.01590                0.00511 
+    ##                0.01660                0.01590                0.00511 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00393                0.00333                0.00285 
+    ##                0.00392                0.00333                0.00285 
     ##    Macaca fascicularis 
     ##                0.00285 
     ## 
@@ -373,7 +373,7 @@ sub.tab
     ##                  Germany                    Italy                  Denmark 
     ##                   0.0239                   0.0226                   0.0218 
     ##                    Spain              South Korea                Australia 
-    ##                   0.0212                   0.0194                   0.0179 
+    ##                   0.0212                   0.0194                   0.0178 
     ##           United Kingdom 
     ##                   0.0163 
     ## 
@@ -384,14 +384,14 @@ sub.tab
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01610                   0.01090                   0.01020 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00956                   0.00801                   0.00777 
+    ##                   0.00956                   0.00800                   0.00776 
     ##                    Rectum 
     ##                   0.00669 
     ## 
     ## $Condition
     ## 
     ##                      Diet         Colorectal cancer       Parkinson's disease 
-    ##                    0.0350                    0.0295                    0.0287 
+    ##                    0.0350                    0.0295                    0.0286 
     ##                   Obesity                  COVID-19    Response to transplant 
     ##                    0.0200                    0.0155                    0.0135 
     ##          Response to diet Polycystic ovary syndrome Type II diabetes mellitus 
@@ -404,9 +404,9 @@ sub.tab
     ##                         3 months                          1 month 
     ##                          0.34200                          0.27000 
     ##                         2 months                         6 months 
-    ##                          0.10300                          0.09210 
+    ##                          0.10300                          0.09200 
     ##                          2 weeks                           1 week 
-    ##                          0.07050                          0.01020 
+    ##                          0.07070                          0.01020 
     ##        Recent use of antibiotics         currently on antibiotics 
     ##                          0.00966                          0.00682 
     ##                           1 year more than 5 days during 6 months 
@@ -424,8 +424,8 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               399.9463            61.79551
-    ## 3rd Qu.             49.0000            42.00000
+    ## Mean               399.9162            61.84441
+    ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
     ## NA's              1464.0000          1458.00000
 
@@ -444,7 +444,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6602       1372         81         76          5 
+    ##       6602       1377         81         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -456,11 +456,11 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  6883                                   339 
+    ##                                  6887                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   279                                   156 
     ##                              Nanopore                           MGISEQ-2000 
-    ##                                    70                                    55 
+    ##                                    70                                    56 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
     ##                                    45                                    31 
     ##                 BGISEQ-500 Sequencing                     Mass spectrometry 
@@ -478,7 +478,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.811000   0.169000   0.009960   0.009340   0.000615 
+    ##   0.811000   0.169000   0.009950   0.009340   0.000614 
     ## 
     ## $`16S variable region`
     ## 
@@ -494,7 +494,7 @@ lab.tab
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03490                               0.01950 
     ##                              Nanopore                           MGISEQ-2000 
-    ##                               0.00876                               0.00688 
+    ##                               0.00875                               0.00700 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
     ##                               0.00563                               0.00388 
     ##                 BGISEQ-500 Sequencing                     Mass spectrometry 
@@ -615,9 +615,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     94     923   593     334              79      604
+    ## decreased     94     926   593     335              79      604
     ## increased     64     726   431     200              61      434
-    ## unchanged    323    2685  1272    1036             277     1390
+    ## unchanged    323    2686  1272    1036             277     1390
 
 Correspondence of Shannon diversity and Richness:
 
@@ -731,6 +731,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Iron biomarker measurement                                        1         3
     ## Irritable bowel syndrome                                          5         7
     ## Milk allergic reaction                                            2         0
+    ## Non-alcoholic fatty liver disease                                 3         5
     ## Papillary thyroid carcinoma                                       2         0
     ## Phenotype                                                         2         0
     ## Phenylketonuria                                                   1         3
@@ -773,7 +774,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Major depressive disorder                                         0         1
     ## Metastatic colorectal cancer                                      1         2
     ## Myocardial infarction                                             1         2
-    ## Non-alcoholic fatty liver disease                                 3         2
     ## Non-alcoholic steatohepatitis                                     1         2
     ## Obstructive sleep apnea                                           0         1
     ## Oral cavity carcinoma                                             0         1
@@ -938,6 +938,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Iron biomarker measurement                                        2
     ## Irritable bowel syndrome                                         28
     ## Milk allergic reaction                                            5
+    ## Non-alcoholic fatty liver disease                                10
     ## Papillary thyroid carcinoma                                      10
     ## Phenotype                                                        19
     ## Phenylketonuria                                                   4
@@ -980,7 +981,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Major depressive disorder                                         6
     ## Metastatic colorectal cancer                                      3
     ## Myocardial infarction                                             8
-    ## Non-alcoholic fatty liver disease                                 9
     ## Non-alcoholic steatohepatitis                                     8
     ## Obstructive sleep apnea                                          11
     ## Oral cavity carcinoma                                             7
@@ -1151,6 +1151,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Iron biomarker measurement                                    0.170     0.500
     ## Irritable bowel syndrome                                      0.120     0.180
     ## Milk allergic reaction                                        0.290     0.000
+    ## Non-alcoholic fatty liver disease                             0.170     0.280
     ## Papillary thyroid carcinoma                                   0.170     0.000
     ## Phenotype                                                     0.095     0.000
     ## Phenylketonuria                                               0.120     0.380
@@ -1193,7 +1194,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Major depressive disorder                                     0.000     0.140
     ## Metastatic colorectal cancer                                  0.170     0.330
     ## Myocardial infarction                                         0.091     0.180
-    ## Non-alcoholic fatty liver disease                             0.210     0.140
     ## Non-alcoholic steatohepatitis                                 0.091     0.180
     ## Obstructive sleep apnea                                       0.000     0.083
     ## Oral cavity carcinoma                                         0.000     0.120
@@ -1358,6 +1358,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Iron biomarker measurement                                    0.330
     ## Irritable bowel syndrome                                      0.700
     ## Milk allergic reaction                                        0.710
+    ## Non-alcoholic fatty liver disease                             0.560
     ## Papillary thyroid carcinoma                                   0.830
     ## Phenotype                                                     0.900
     ## Phenylketonuria                                               0.500
@@ -1400,7 +1401,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Major depressive disorder                                     0.860
     ## Metastatic colorectal cancer                                  0.500
     ## Myocardial infarction                                         0.730
-    ## Non-alcoholic fatty liver disease                             0.640
     ## Non-alcoholic steatohepatitis                                 0.730
     ## Obstructive sleep apnea                                       0.920
     ## Oral cavity carcinoma                                         0.880
@@ -2014,7 +2014,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 373       565      1607
+    ## Feces                                                 373       568      1608
     ## Sputum                                                  7        23        16
     ## Posterior fornix of vagina                             12         0        10
     ## Vagina                                                 19         8        41
@@ -2313,7 +2313,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    1.00    2.00    4.00    8.18   10.00  467.00
+    ##   1.000   2.000   4.000   8.179  10.000 467.000
 
 ``` r
 
