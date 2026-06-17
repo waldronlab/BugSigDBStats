@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 13743    51
+    ## [1] 13749    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2014
+    ## [1] 2015
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 13743
+    ## [1] 13749
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 13743
+    ## [1] 13749
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -228,7 +228,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                    laboratory experiment 
     ##                                                                                      222 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      511 
+    ##                                                                                      512 
     ##                                                                             case-control 
     ##                                                                                      789
 
@@ -292,7 +292,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6531                    929                    217 
+    ##                   6533                    929                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -303,18 +303,18 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3124                     1173                      315 
+    ##                     3125                     1173                      315 
     ##                  Germany                    Italy                  Denmark 
     ##                      201                      193                      183 
     ##                    Spain              South Korea                Australia 
     ##                      178                      163                      150 
-    ##           United Kingdom 
+    ##                   Canada 
     ##                      137 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5285                       441                       173 
+    ##                      5287                       441                       173 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       135                        91                        85 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -336,9 +336,9 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                         3 months                          1 month 
-    ##                             1205                              951 
+    ##                             1206                              951 
     ##                         2 months                         6 months 
-    ##                              364                              325 
+    ##                              365                              325 
     ##                          2 weeks                           1 week 
     ##                              249                               36 
     ##        Recent use of antibiotics         currently on antibiotics 
@@ -369,33 +369,33 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3710                   0.1390                   0.0375 
+    ##                   0.3710                   0.1390                   0.0374 
     ##                  Germany                    Italy                  Denmark 
     ##                   0.0239                   0.0229                   0.0218 
     ##                    Spain              South Korea                Australia 
     ##                   0.0212                   0.0194                   0.0178 
-    ##           United Kingdom 
+    ##                   Canada 
     ##                   0.0163 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63100                   0.05270                   0.02070 
+    ##                   0.63100                   0.05260                   0.02060 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01610                   0.01090                   0.01010 
     ##               Nasopharynx                     Mouth                     Colon 
     ##                   0.00955                   0.00800                   0.00776 
     ##                    Rectum 
-    ##                   0.00669 
+    ##                   0.00668 
     ## 
     ## $Condition
     ## 
     ##                      Diet         Colorectal cancer       Parkinson's disease 
-    ##                    0.0351                    0.0295                    0.0286 
+    ##                    0.0350                    0.0294                    0.0286 
     ##                   Obesity                  COVID-19    Response to transplant 
     ##                    0.0200                    0.0155                    0.0135 
     ##          Response to diet Polycystic ovary syndrome Type II diabetes mellitus 
-    ##                    0.0129                    0.0121                    0.0113 
+    ##                    0.0129                    0.0120                    0.0113 
     ##              Constipation 
     ##                    0.0111 
     ## 
@@ -404,13 +404,13 @@ sub.tab
     ##                         3 months                          1 month 
     ##                          0.34200                          0.27000 
     ##                         2 months                         6 months 
-    ##                          0.10300                          0.09230 
+    ##                          0.10400                          0.09230 
     ##                          2 weeks                           1 week 
     ##                          0.07070                          0.01020 
     ##        Recent use of antibiotics         currently on antibiotics 
-    ##                          0.00966                          0.00682 
+    ##                          0.00965                          0.00681 
     ##                           1 year more than 5 days during 6 months 
-    ##                          0.00625                          0.00540
+    ##                          0.00624                          0.00539
 
 Sample size:
 
@@ -424,10 +424,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               399.6979            61.82193
+    ## Mean               399.6975            61.82323
     ## 3rd Qu.             49.2500            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1465.0000          1459.00000
+    ## NA's              1467.0000          1461.00000
 
 ### Lab analysis
 
@@ -444,19 +444,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6602       1381         82         76          5 
+    ##       6603       1382         82         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3120      1612       355       244       214       149       116        77 
+    ##      3121      1612       355       244       214       149       116        77 
     ##        56  23456789 
     ##        52        37 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  6892                                   339 
+    ##                                  6894                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   279                                   156 
     ##                              Nanopore                           MGISEQ-2000 
@@ -615,9 +615,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     94     926   593     335              79      604
+    ## decreased     94     927   593     335              79      604
     ## increased     64     726   431     200              61      434
-    ## unchanged    323    2689  1272    1038             277     1390
+    ## unchanged    323    2687  1273    1038             277     1390
 
 Correspondence of Shannon diversity and Richness:
 
@@ -965,7 +965,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Breastfeeding duration                                            5
     ## Chronic fatigue syndrome                                          4
     ## Chronic hepatitis B virus infection                               5
-    ## Clinical treatment                                                5
+    ## Clinical treatment                                               12
     ## Coccidiosis                                                       4
     ## Delivery method                                                  12
     ## Diarrhea                                                          7
@@ -1021,7 +1021,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## COVID-19 symptoms measurement                                     5
     ## Diabetes mellitus                                                 9
     ## Diet measurement                                                  8
-    ## Disease progression measurement                                   6
+    ## Disease progression measurement                                   5
     ## Exposure                                                          4
     ## Gastric adenocarcinoma                                            8
     ## Glioma                                                            5
@@ -1178,7 +1178,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Breastfeeding duration                                        0.200     0.300
     ## Chronic fatigue syndrome                                      0.000     0.200
     ## Chronic hepatitis B virus infection                           0.000     0.170
-    ## Clinical treatment                                            0.120     0.250
+    ## Clinical treatment                                            0.067     0.130
     ## Coccidiosis                                                   0.000     0.200
     ## Delivery method                                               0.160     0.210
     ## Diarrhea                                                      0.210     0.290
@@ -1385,7 +1385,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Breastfeeding duration                                        0.500
     ## Chronic fatigue syndrome                                      0.800
     ## Chronic hepatitis B virus infection                           0.830
-    ## Clinical treatment                                            0.620
+    ## Clinical treatment                                            0.800
     ## Coccidiosis                                                   0.800
     ## Delivery method                                               0.630
     ## Diarrhea                                                      0.500
@@ -2014,7 +2014,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 373       568      1611
+    ## Feces                                                 373       569      1609
     ## Sputum                                                  7        23        16
     ## Posterior fornix of vagina                             12         0        10
     ## Vagina                                                 19         8        41
@@ -2313,7 +2313,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.184  10.000 467.000
+    ##   1.000   2.000   4.000   8.183  10.000 467.000
 
 ``` r
 
@@ -2328,7 +2328,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6468
+    ## [1] 6474
 
 ### Microbe co-occurrence
 
@@ -2362,15 +2362,15 @@ top20
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              840              598              589              555 
+    ##              841              599              589              555 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
-    ##              523              509              489              485 
+    ##              523              510              489              485 
     ##        Roseburia      Clostridium  Parabacteroides        Alistipes 
-    ##              481              479              439              408 
-    ##      Akkermansia      Coprococcus            Dorea      Veillonella 
-    ##              353              339              339              294 
+    ##              482              479              440              408 
+    ##      Akkermansia            Dorea      Coprococcus      Veillonella 
+    ##              354              340              339              294 
     ##     Enterococcus      Collinsella     Anaerostipes       Sutterella 
-    ##              291              290              289              278
+    ##              292              290              289              278
 
 Subset heatmaps to the top 20 genera most frequently reported as
 differentially abundant:
@@ -2409,15 +2409,15 @@ top20.up
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              413              204              318              259 
+    ##              414              205              318              259 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
-    ##              324              320              223              233 
+    ##              324              321              223              233 
     ##        Roseburia      Clostridium  Parabacteroides        Alistipes 
-    ##              159              251              254              192 
-    ##      Akkermansia      Coprococcus            Dorea      Veillonella 
-    ##              235              142              143              171 
+    ##              159              251              255              192 
+    ##      Akkermansia            Dorea      Coprococcus      Veillonella 
+    ##              237              144              142              171 
     ##     Enterococcus      Collinsella     Anaerostipes       Sutterella 
-    ##              211              153              132              140
+    ##              212              153              132              140
 
 ``` r
 
@@ -2435,9 +2435,9 @@ top20.down
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
     ##              197              184              262              249 
     ##        Roseburia      Clostridium  Parabacteroides        Alistipes 
-    ##              318              223              181              212 
-    ##      Akkermansia      Coprococcus            Dorea      Veillonella 
-    ##              115              193              192              120 
+    ##              319              223              181              212 
+    ##      Akkermansia            Dorea      Coprococcus      Veillonella 
+    ##              114              192              193              120 
     ##     Enterococcus      Collinsella     Anaerostipes       Sutterella 
     ##               78              133              153              138
 
