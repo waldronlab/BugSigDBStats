@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14013    51
+    ## [1] 14010    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14013
+    ## [1] 14010
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14013
+    ## [1] 14010
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6709                    931                    217 
+    ##                   6708                    931                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     44 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3176                     1183                      323 
+    ##                     3175                     1183                      323 
     ##              South Korea                  Germany                    Italy 
     ##                      221                      201                      193 
     ##                    Spain                  Denmark                Australia 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5428                       445                       173 
+    ##                      5427                       445                       173 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       135                        93                        84 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                         3 months                          1 month 
-    ##                             1214                              992 
+    ##                             1214                             1002 
     ##                         2 months                         6 months 
     ##                              365                              325 
     ##                          2 weeks                           1 week 
@@ -377,7 +377,7 @@ sub.tab
     ##                    Spain                  Denmark                Australia 
     ##                   0.0221                   0.0213                   0.0178 
     ##                   Canada 
-    ##                   0.0159 
+    ##                   0.0160 
     ## 
     ## $`Body site`
     ## 
@@ -404,13 +404,13 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                         3 months                          1 month 
-    ##                          0.33700                          0.27500 
+    ##                          0.33700                          0.27800 
     ##                         2 months                         6 months 
     ##                          0.10100                          0.09030 
     ##                          2 weeks                           1 week 
     ##                          0.07000                          0.01110 
     ##        Recent use of antibiotics         currently on antibiotics 
-    ##                          0.01030                          0.00666 
+    ##                          0.01030                          0.00667 
     ##                           1 year more than 5 days during 6 months 
     ##                          0.00611                          0.00528
 
@@ -423,13 +423,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             11.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               395.0112            61.43422
-    ## 3rd Qu.             49.7500            42.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1552.0000          1544.00000
+    ## Min.                  0.000             1.00000
+    ## 1st Qu.              11.000            10.00000
+    ## Median               24.000            21.00000
+    ## Mean                395.065            61.43641
+    ## 3rd Qu.              50.000            42.00000
+    ## Max.             308633.000         10413.00000
+    ## NA's               1552.000          1544.00000
 
 ### Lab analysis
 
@@ -446,19 +446,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6732       1432         82         76          5 
+    ##       6731       1432         82         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3202      1632       361       244       214       149       121        77 
+    ##      3201      1632       361       244       214       149       121        77 
     ##        56  23456789 
     ##        53        49 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7032                                   339 
+    ##                                  7031                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   293                                   156 
     ##                              Nanopore                           MGISEQ-2000 
@@ -480,7 +480,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##    0.80800    0.17200    0.00985    0.00913    0.00060 
+    ##   0.808000   0.172000   0.009850   0.009130   0.000601 
     ## 
     ## $`16S variable region`
     ## 
@@ -619,7 +619,7 @@ apply(exps[,div.cols], 2, table)
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     98     949   590     343              79      610
     ## increased     64     729   431     202              60      440
-    ## unchanged    328    2757  1350    1105             274     1400
+    ## unchanged    328    2757  1350    1105             274     1399
 
 Correspondence of Shannon diversity and Richness:
 
@@ -1595,7 +1595,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Attention deficit-hyperactivity disorder                          0         0
     ## Chlamydia trachomatis                                             1         1
     ## Constipation                                                      7         7
-    ## Diabetes mellitus                                                 0         0
     ## Diet measurement                                                  0         0
     ## Ethnic group                                                      2         2
     ## Glioma                                                            1         1
@@ -1726,7 +1725,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Attention deficit-hyperactivity disorder                          5
     ## Chlamydia trachomatis                                             3
     ## Constipation                                                     12
-    ## Diabetes mellitus                                                 5
     ## Diet measurement                                                  7
     ## Ethnic group                                                      1
     ## Glioma                                                            3
@@ -1863,7 +1861,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Attention deficit-hyperactivity disorder                      0.000     0.000
     ## Chlamydia trachomatis                                         0.200     0.200
     ## Constipation                                                  0.270     0.270
-    ## Diabetes mellitus                                             0.000     0.000
     ## Diet measurement                                              0.000     0.000
     ## Ethnic group                                                  0.400     0.400
     ## Glioma                                                        0.200     0.200
@@ -1994,7 +1991,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Attention deficit-hyperactivity disorder                       1.00
     ## Chlamydia trachomatis                                          0.60
     ## Constipation                                                   0.46
-    ## Diabetes mellitus                                              1.00
     ## Diet measurement                                               1.00
     ## Ethnic group                                                   0.20
     ## Glioma                                                         0.60
@@ -2182,7 +2178,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              233       365       841
+    ## Feces                              233       365       840
     ## Oral cavity                         15         4        20
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2308,7 +2304,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8020
+    ## [1] 8019
 
 Development of unique microbes captured over time:
 
@@ -2327,7 +2323,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##    1.00    2.00    4.00    8.06    9.00  467.00
+    ##   1.000   2.000   4.000   8.059   9.000 467.000
 
 ``` r
 
@@ -2342,7 +2338,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6552
+    ## [1] 6549
 
 ### Microbe co-occurrence
 
@@ -2376,15 +2372,15 @@ top20
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              846              603              589              558 
+    ##              846              602              589              558 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
     ##              527              513              496              493 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
     ##              486              485              442              410 
-    ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              363              343              342              294 
+    ##      Akkermansia      Coprococcus            Dorea      Veillonella 
+    ##              362              342              341              294 
     ##     Enterococcus     Anaerostipes      Collinsella       Sutterella 
-    ##              292              291              290              281
+    ##              292              290              290              280
 
 Subset heatmaps to the top 20 genera most frequently reported as
 differentially abundant:
@@ -2423,15 +2419,15 @@ top20.up
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              417              204              318              259 
+    ##              417              203              318              259 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
     ##              325              326              221              237 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
     ##              252              158              255              190 
-    ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              237              144              142              172 
+    ##      Akkermansia      Coprococcus            Dorea      Veillonella 
+    ##              237              142              143              172 
     ##     Enterococcus     Anaerostipes      Collinsella       Sutterella 
-    ##              212              134              151              143
+    ##              212              133              151              142
 
 ``` r
 
@@ -2450,8 +2446,8 @@ top20.down
     ##              200              182              271              253 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
     ##              229              323              183              216 
-    ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              123              195              196              119 
+    ##      Akkermansia      Coprococcus            Dorea      Veillonella 
+    ##              122              196              194              119 
     ##     Enterococcus     Anaerostipes      Collinsella       Sutterella 
     ##               78              153              135              138
 
