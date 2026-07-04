@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14035    51
+    ## [1] 14042    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2049
+    ## [1] 2050
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14035
+    ## [1] 14042
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14035
+    ## [1] 14042
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -230,9 +230,9 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                    laboratory experiment 
     ##                                                                                      222 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      517 
+    ##                                                                                      519 
     ##                                                                             case-control 
-    ##                                                                                      808
+    ##                                                                                      807
 
 ## Experiment stats
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6722                    931                    217 
+    ##                   6725                    931                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     44 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,9 +305,9 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3182                     1181                      324 
+    ##                     3183                     1181                      324 
     ##              South Korea                  Germany                    Italy 
-    ##                      221                      201                      193 
+    ##                      221                      201                      194 
     ##                    Spain                  Denmark                Australia 
     ##                      190                      183                      153 
     ##           United Kingdom 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5438                       445                       171 
+    ##                      5441                       445                       171 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       135                        93                        85 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                         3 months                          1 month 
-    ##                             1215                             1002 
+    ##                             1216                             1002 
     ##                         2 months                         6 months 
     ##                              365                              327 
     ##                          2 weeks                           1 week 
@@ -371,9 +371,9 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3700                   0.1370                   0.0377 
+    ##                   0.3700                   0.1370                   0.0376 
     ##              South Korea                  Germany                    Italy 
-    ##                   0.0257                   0.0234                   0.0224 
+    ##                   0.0257                   0.0234                   0.0225 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0221                   0.0213                   0.0178 
     ##           United Kingdom 
@@ -386,9 +386,9 @@ sub.tab
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01580                   0.01090                   0.00992 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00934                   0.00782                   0.00759 
+    ##                   0.00933                   0.00782                   0.00758 
     ##                    Rectum 
-    ##                   0.00689 
+    ##                   0.00688 
     ## 
     ## $Condition
     ## 
@@ -404,15 +404,15 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                         3 months                          1 month 
-    ##                          0.33700                          0.27800 
+    ##                          0.33700                          0.27700 
     ##                         2 months                         6 months 
-    ##                          0.10100                          0.09060 
+    ##                          0.10100                          0.09050 
     ##                          2 weeks                           1 week 
     ##                          0.06980                          0.01110 
     ##        Recent use of antibiotics         currently on antibiotics 
-    ##                          0.01030                          0.00665 
+    ##                          0.01020                          0.00664 
     ##                           1 year more than 5 days during 6 months 
-    ##                          0.00610                          0.00526
+    ##                          0.00609                          0.00526
 
 Sample size:
 
@@ -423,13 +423,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             11.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               393.0861            61.05076
-    ## 3rd Qu.             49.0000            41.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1546.0000          1538.00000
+    ## Min.                 0.0000              1.0000
+    ## 1st Qu.             11.0000             10.0000
+    ## Median              24.0000             21.0000
+    ## Mean               392.9905             61.0482
+    ## 3rd Qu.             49.0000             41.5000
+    ## Max.            308633.0000          10413.0000
+    ## NA's              1547.0000           1539.0000
 
 ### Lab analysis
 
@@ -446,19 +446,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6738       1439         82         76          5 
+    ##       6739       1441         82         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3206      1631       361       244       214       149       124        77 
+    ##      3207      1631       361       244       214       149       124        77 
     ##        56  23456789 
     ##        56        49 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7047                                   339 
+    ##                                  7050                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   293                                   151 
     ##                              Nanopore                           MGISEQ-2000 
@@ -480,7 +480,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##    0.80800    0.17300    0.00983    0.00911    0.00060 
+    ##   0.808000   0.173000   0.009830   0.009110   0.000599 
     ## 
     ## $`16S variable region`
     ## 
@@ -494,13 +494,13 @@ lab.tab
     ##                              Illumina                              Roche454 
     ##                               0.86100                               0.04140 
     ##                           Ion Torrent                               RT-qPCR 
-    ##                               0.03580                               0.01850 
+    ##                               0.03580                               0.01840 
     ##                              Nanopore                           MGISEQ-2000 
     ##                               0.00916                               0.00684 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
     ##                               0.00562                               0.00379 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
-    ##                               0.00367                               0.00257
+    ##                               0.00366                               0.00257
 
 ### Statistical analysis
 
@@ -617,9 +617,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     98     950   590     343              79      615
+    ## decreased     99     950   590     343              79      615
     ## increased     66     731   430     206              60      442
-    ## unchanged    329    2766  1356    1105             277     1414
+    ## unchanged    329    2763  1357    1106             277     1411
 
 Correspondence of Shannon diversity and Richness:
 
@@ -632,7 +632,7 @@ table(exps$Shannon, exps$Richness)
     ##             decreased increased unchanged
     ##   decreased       341        15        77
     ##   increased        16       221        69
-    ##   unchanged       128       116      1135
+    ##   unchanged       128       116      1132
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -910,9 +910,9 @@ tabDiv(exps, "Shannon", "Condition")
     ## Hepatocellular carcinoma                                          7
     ## Human immunodeficiency virus                                      6
     ## Inflammatory bowel disease                                        1
-    ## Non-alcoholic fatty liver disease                                17
+    ## Non-alcoholic fatty liver disease                                15
     ## Pregnancy                                                         9
-    ## Type II diabetes mellitus                                        39
+    ## Type II diabetes mellitus                                        38
     ## Alcohol drinking                                                  2
     ## Antimicrobial agent                                              25
     ## Atopic asthma                                                     7
@@ -948,7 +948,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Iron biomarker measurement                                        2
     ## Irritable bowel syndrome                                         28
     ## Milk allergic reaction                                            5
-    ## Non-alcoholic steatohepatitis                                     4
+    ## Non-alcoholic steatohepatitis                                     2
     ## Papillary thyroid carcinoma                                      10
     ## Phenotype                                                        19
     ## Phenylketonuria                                                   4
@@ -997,7 +997,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Oral squamous cell carcinoma                                      3
     ## Ovarian cancer                                                   35
     ## Pneumonia                                                         3
-    ## Prediabetes syndrome                                              4
+    ## Prediabetes syndrome                                              5
     ## Premature birth                                                   6
     ## Prostate cancer                                                   9
     ## Psoriasis                                                        14
@@ -1127,9 +1127,9 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Hepatocellular carcinoma                                      0.210     0.420
     ## Human immunodeficiency virus                                  0.000     0.400
     ## Inflammatory bowel disease                                    0.000     0.800
-    ## Non-alcoholic fatty liver disease                             0.110     0.260
+    ## Non-alcoholic fatty liver disease                             0.120     0.280
     ## Pregnancy                                                     0.310     0.000
-    ## Type II diabetes mellitus                                     0.170     0.094
+    ## Type II diabetes mellitus                                     0.170     0.096
     ## Alcohol drinking                                              0.600     0.000
     ## Antimicrobial agent                                           0.170     0.240
     ## Atopic asthma                                                 0.330     0.083
@@ -1165,7 +1165,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Iron biomarker measurement                                    0.170     0.500
     ## Irritable bowel syndrome                                      0.120     0.180
     ## Milk allergic reaction                                        0.290     0.000
-    ## Non-alcoholic steatohepatitis                                 0.120     0.380
+    ## Non-alcoholic steatohepatitis                                 0.170     0.500
     ## Papillary thyroid carcinoma                                   0.170     0.000
     ## Phenotype                                                     0.095     0.000
     ## Phenylketonuria                                               0.120     0.380
@@ -1214,7 +1214,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Oral squamous cell carcinoma                                  0.380     0.250
     ## Ovarian cancer                                                0.095     0.071
     ## Pneumonia                                                     0.170     0.330
-    ## Prediabetes syndrome                                          0.000     0.200
+    ## Prediabetes syndrome                                          0.000     0.170
     ## Premature birth                                               0.140     0.000
     ## Prostate cancer                                               0.000     0.100
     ## Psoriasis                                                     0.067     0.000
@@ -1338,9 +1338,9 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Hepatocellular carcinoma                                      0.370
     ## Human immunodeficiency virus                                  0.600
     ## Inflammatory bowel disease                                    0.200
-    ## Non-alcoholic fatty liver disease                             0.630
+    ## Non-alcoholic fatty liver disease                             0.600
     ## Pregnancy                                                     0.690
-    ## Type II diabetes mellitus                                     0.740
+    ## Type II diabetes mellitus                                     0.730
     ## Alcohol drinking                                              0.400
     ## Antimicrobial agent                                           0.600
     ## Atopic asthma                                                 0.580
@@ -1376,7 +1376,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Iron biomarker measurement                                    0.330
     ## Irritable bowel syndrome                                      0.700
     ## Milk allergic reaction                                        0.710
-    ## Non-alcoholic steatohepatitis                                 0.500
+    ## Non-alcoholic steatohepatitis                                 0.330
     ## Papillary thyroid carcinoma                                   0.830
     ## Phenotype                                                     0.900
     ## Phenylketonuria                                               0.500
@@ -1425,7 +1425,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Oral squamous cell carcinoma                                  0.380
     ## Ovarian cancer                                                0.830
     ## Pneumonia                                                     0.500
-    ## Prediabetes syndrome                                          0.800
+    ## Prediabetes syndrome                                          0.830
     ## Premature birth                                               0.860
     ## Prostate cancer                                               0.900
     ## Psoriasis                                                     0.930
@@ -1552,6 +1552,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Response to diet                                                  3         6
     ## Treatment                                                         4         7
     ## Tuberculosis                                                      2         5
+    ## Type II diabetes mellitus                                         6         3
     ## Acute myeloid leukemia                                            0         2
     ## Alcohol use disorder measurement                                  2         0
     ## Bone mineral content measurement                                  0         2
@@ -1576,7 +1577,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Streptococcus pneumoniae                                          0         2
     ## Traditional Chinese medicine type                                 1         3
     ## Transplant outcome measurement                                    0         2
-    ## Type II diabetes mellitus                                         6         4
     ## Age                                                               4         5
     ## Asthma                                                            2         3
     ## Atopic eczema                                                     2         1
@@ -1597,7 +1597,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Ischemic stroke                                                   2         1
     ## Neurodevelopmental delay                                          1         0
     ## Non-alcoholic fatty liver disease                                 0         1
-    ## Non-alcoholic steatohepatitis                                     1         2
     ## Obsessive-compulsive disorder                                     0         1
     ## Ovarian cancer                                                    1         0
     ## Pregnancy                                                         1         0
@@ -1685,6 +1684,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Response to diet                                                 16
     ## Treatment                                                         7
     ## Tuberculosis                                                      0
+    ## Type II diabetes mellitus                                        23
     ## Acute myeloid leukemia                                            4
     ## Alcohol use disorder measurement                                  6
     ## Bone mineral content measurement                                  8
@@ -1709,7 +1709,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Streptococcus pneumoniae                                          3
     ## Traditional Chinese medicine type                                 4
     ## Transplant outcome measurement                                    5
-    ## Type II diabetes mellitus                                        23
     ## Age                                                               1
     ## Asthma                                                           13
     ## Atopic eczema                                                     6
@@ -1729,8 +1728,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Infant                                                            4
     ## Ischemic stroke                                                   3
     ## Neurodevelopmental delay                                          5
-    ## Non-alcoholic fatty liver disease                                10
-    ## Non-alcoholic steatohepatitis                                     3
+    ## Non-alcoholic fatty liver disease                                 8
     ## Obsessive-compulsive disorder                                     4
     ## Ovarian cancer                                                   39
     ## Pregnancy                                                         7
@@ -1824,6 +1822,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Response to diet                                              0.120     0.240
     ## Treatment                                                     0.220     0.390
     ## Tuberculosis                                                  0.290     0.710
+    ## Type II diabetes mellitus                                     0.190     0.094
     ## Acute myeloid leukemia                                        0.000     0.330
     ## Alcohol use disorder measurement                              0.250     0.000
     ## Bone mineral content measurement                              0.000     0.200
@@ -1848,7 +1847,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Streptococcus pneumoniae                                      0.000     0.400
     ## Traditional Chinese medicine type                             0.120     0.380
     ## Transplant outcome measurement                                0.000     0.290
-    ## Type II diabetes mellitus                                     0.180     0.120
     ## Age                                                           0.400     0.500
     ## Asthma                                                        0.110     0.170
     ## Atopic eczema                                                 0.220     0.110
@@ -1868,8 +1866,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Infant                                                        0.200     0.000
     ## Ischemic stroke                                               0.330     0.170
     ## Neurodevelopmental delay                                      0.170     0.000
-    ## Non-alcoholic fatty liver disease                             0.000     0.091
-    ## Non-alcoholic steatohepatitis                                 0.170     0.330
+    ## Non-alcoholic fatty liver disease                             0.000     0.110
     ## Obsessive-compulsive disorder                                 0.000     0.200
     ## Ovarian cancer                                                0.025     0.000
     ## Pregnancy                                                     0.120     0.000
@@ -1957,6 +1954,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Response to diet                                               0.64
     ## Treatment                                                      0.39
     ## Tuberculosis                                                   0.00
+    ## Type II diabetes mellitus                                      0.72
     ## Acute myeloid leukemia                                         0.67
     ## Alcohol use disorder measurement                               0.75
     ## Bone mineral content measurement                               0.80
@@ -1981,7 +1979,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Streptococcus pneumoniae                                       0.60
     ## Traditional Chinese medicine type                              0.50
     ## Transplant outcome measurement                                 0.71
-    ## Type II diabetes mellitus                                      0.70
     ## Age                                                            0.10
     ## Asthma                                                         0.72
     ## Atopic eczema                                                  0.67
@@ -2001,8 +1998,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Infant                                                         0.80
     ## Ischemic stroke                                                0.50
     ## Neurodevelopmental delay                                       0.83
-    ## Non-alcoholic fatty liver disease                              0.91
-    ## Non-alcoholic steatohepatitis                                  0.50
+    ## Non-alcoholic fatty liver disease                              0.89
     ## Obsessive-compulsive disorder                                  0.80
     ## Ovarian cancer                                                 0.98
     ## Pregnancy                                                      0.88
@@ -2044,7 +2040,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 375       589      1673
+    ## Feces                                                 375       589      1670
     ## Sputum                                                  7        23        16
     ## Vagina                                                 21         8        42
     ## Posterior fornix of vagina                             12         0        10
@@ -2206,7 +2202,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              231       368       849
+    ## Feces                              231       368       846
     ## Oral cavity                         16         4        20
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2330,7 +2326,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8027
+    ## [1] 8028
 
 Development of unique microbes captured over time:
 
@@ -2349,7 +2345,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.055   9.000 467.000
+    ##    1.00    2.00    4.00    8.06    9.00  467.00
 
 ``` r
 
@@ -2364,7 +2360,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6555
+    ## [1] 6560
 
 ### Microbe co-occurrence
 
@@ -2398,13 +2394,13 @@ top20
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              847              605              591              559 
+    ##              849              606              592              560 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
-    ##              527              514              497              493 
+    ##              527              515              498              493 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
-    ##              487              487              444              411 
+    ##              488              487              444              412 
     ##      Akkermansia      Coprococcus            Dorea      Veillonella 
-    ##              364              343              342              294 
+    ##              364              343              343              294 
     ##     Enterococcus     Anaerostipes      Collinsella       Sutterella 
     ##              293              291              291              280
 
@@ -2445,9 +2441,9 @@ top20.up
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              417              205              318              260 
+    ##              417              205              318              261 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
-    ##              325              327              221              237 
+    ##              325              328              221              237 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
     ##              251              159              255              190 
     ##      Akkermansia      Coprococcus            Dorea      Veillonella 
@@ -2467,13 +2463,13 @@ top20.down
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              425              396              268              295 
+    ##              427              397              269              295 
     ##    Lactobacillus    Streptococcus     Ruminococcus       Prevotella 
-    ##              200              182              272              253 
+    ##              200              182              273              253 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
-    ##              231              324              185              217 
+    ##              232              324              185              218 
     ##      Akkermansia      Coprococcus            Dorea      Veillonella 
-    ##              123              197              195              119 
+    ##              123              197              196              119 
     ##     Enterococcus     Anaerostipes      Collinsella       Sutterella 
     ##               79              153              135              138
 
