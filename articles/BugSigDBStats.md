@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14146    51
+    ## [1] 14148    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14146
+    ## [1] 14148
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14146
+    ## [1] 14148
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6790                    933                    217 
+    ##                   6792                    933                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     44 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -310,13 +310,13 @@ sub.tab
     ##                      221                      201                      195 
     ##                    Spain                  Denmark                Australia 
     ##                      194                      183                      153 
-    ##           United Kingdom 
+    ##                   Canada 
     ##                      141 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5506                       443                       171 
+    ##                      5508                       443                       171 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       135                        93                        85 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -342,7 +342,7 @@ sub.tab
     ##                         2 months                         6 months 
     ##                              365                              350 
     ##                          2 weeks        Recent use of antibiotics 
-    ##                              256                               49 
+    ##                              258                               49 
     ##                           1 week         currently on antibiotics 
     ##                               40                               24 
     ##                           1 year more than 5 days during 6 months 
@@ -364,7 +364,7 @@ sub.tab
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01610                0.01540                0.00507 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00380                0.00323                0.00276 
+    ##                0.00380                0.00322                0.00276 
     ##    Macaca fascicularis 
     ##                0.00276 
     ## 
@@ -376,24 +376,24 @@ sub.tab
     ##                   0.0255                   0.0232                   0.0225 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0224                   0.0211                   0.0176 
-    ##           United Kingdom 
+    ##                   Canada 
     ##                   0.0163 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63700                   0.05130                   0.01980 
+    ##                   0.63800                   0.05130                   0.01980 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01560                   0.01080                   0.00984 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00926                   0.00776                   0.00753 
+    ##                   0.00926                   0.00776                   0.00752 
     ##                    Rectum 
     ##                   0.00683 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0327                    0.0326                    0.0277 
+    ##                    0.0327                    0.0325                    0.0277 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0196                    0.0150                    0.0137 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -406,13 +406,13 @@ sub.tab
     ##                         3 months                          1 month 
     ##                          0.33400                          0.27400 
     ##                         2 months                         6 months 
-    ##                          0.09970                          0.09560 
+    ##                          0.09960                          0.09550 
     ##                          2 weeks        Recent use of antibiotics 
-    ##                          0.06990                          0.01340 
+    ##                          0.07040                          0.01340 
     ##                           1 week         currently on antibiotics 
     ##                          0.01090                          0.00655 
     ##                           1 year more than 5 days during 6 months 
-    ##                          0.00601                          0.00519
+    ##                          0.00600                          0.00519
 
 Sample size:
 
@@ -426,8 +426,8 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               392.6538            61.40056
-    ## 3rd Qu.             49.5000            42.00000
+    ## Mean               392.5442            61.38762
+    ## 3rd Qu.             49.0000            42.00000
     ## Max.            308633.0000         10413.00000
     ## NA's              1598.0000          1591.00000
 
@@ -446,7 +446,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6785       1462         82         76          5 
+    ##       6785       1464         82         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -458,7 +458,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7118                                   339 
+    ##                                  7120                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   295                                   142 
     ##                              Nanopore                           MGISEQ-2000 
@@ -480,7 +480,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.807000   0.174000   0.009750   0.009040   0.000595 
+    ##   0.807000   0.174000   0.009750   0.009030   0.000594 
     ## 
     ## $`16S variable region`
     ## 
@@ -492,15 +492,15 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                               0.86200                               0.04110 
+    ##                               0.86300                               0.04110 
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03570                               0.01720 
     ##                              Nanopore                           MGISEQ-2000 
-    ##                               0.00957                               0.00691 
+    ##                               0.00957                               0.00690 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
     ##                               0.00557                               0.00376 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
-    ##                               0.00364                               0.00254
+    ##                               0.00363                               0.00254
 
 ### Statistical analysis
 
@@ -619,7 +619,7 @@ apply(exps[,div.cols], 2, table)
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     92     946   588     331              79      620
     ## increased     66     732   433     207              60      446
-    ## unchanged    334    2785  1369    1112             277     1418
+    ## unchanged    334    2787  1369    1112             277     1418
 
 Correspondence of Shannon diversity and Richness:
 
@@ -2056,7 +2056,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 377       587      1683
+    ## Feces                                                 377       587      1685
     ## Sputum                                                  7        23        16
     ## Vagina                                                 21         8        42
     ## Posterior fornix of vagina                             12         0        10
