@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14206    51
+    ## [1] 14210    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14206
+    ## [1] 14210
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14206
+    ## [1] 14210
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                  3 months                   1 month                  2 months 
-    ##                      1233                       996                       365 
+    ##                      1236                       996                       365 
     ##                  6 months                   2 weeks Recent use of antibiotics 
     ##                       350                       262                        49 
     ##                    1 week  currently on antibiotics                    1 year 
@@ -402,13 +402,13 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                  3 months                   1 month                  2 months 
-    ##                   0.33500                   0.27000                   0.09910 
+    ##                   0.33500                   0.27000                   0.09900 
     ##                  6 months                   2 weeks Recent use of antibiotics 
-    ##                   0.09500                   0.07110                   0.01330 
+    ##                   0.09490                   0.07110                   0.01330 
     ##                    1 week  currently on antibiotics                    1 year 
-    ##                   0.01090                   0.00651                   0.00597 
+    ##                   0.01080                   0.00651                   0.00597 
     ##                   30 days 
-    ##                   0.00516
+    ##                   0.00515
 
 Sample size:
 
@@ -2338,7 +2338,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8080
+    ## [1] 8086
 
 Development of unique microbes captured over time:
 
@@ -2357,7 +2357,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.078   9.000 467.000
+    ##   1.000   2.000   4.000   8.087   9.000 467.000
 
 ``` r
 
@@ -2372,7 +2372,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6639
+    ## [1] 6647
 
 ### Microbe co-occurrence
 
