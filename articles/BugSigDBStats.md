@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14265    51
+    ## [1] 14292    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14265
+    ## [1] 14292
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14265
+    ## [1] 14292
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6856                    934                    217 
+    ##                   6869                    934                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3227                     1231                      328 
+    ##                     3227                     1242                      328 
     ##              South Korea                  Germany                    Italy 
     ##                      221                      201                      201 
     ##                    Spain                  Denmark                Australia 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5564                       448                       171 
+    ##                      5575                       448                       171 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       136                        93                        83 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -327,9 +327,9 @@ sub.tab
     ## $Condition
     ## 
     ##                      Diet         Colorectal cancer       Parkinson's disease 
-    ##                       283                       279                       235 
+    ##                       287                       281                       235 
     ##                   Obesity                  COVID-19          Diet measurement 
-    ##                       166                       127                       119 
+    ##                       166                       127                       120 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
     ##                       114                       106                        99 
     ##              Constipation 
@@ -360,7 +360,7 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.78400                0.10700                0.02480 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01600                0.01530                0.00492 
+    ##                0.01600                0.01530                0.00491 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                0.00377                0.00320                0.00274 
     ##    Macaca fascicularis 
@@ -369,31 +369,31 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3690                   0.1410                   0.0375 
+    ##                   0.3690                   0.1420                   0.0375 
     ##              South Korea                  Germany                    Italy 
-    ##                   0.0253                   0.0230                   0.0230 
+    ##                   0.0252                   0.0230                   0.0230 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0222                   0.0209                   0.0175 
     ##                   Canada 
-    ##                   0.0164 
+    ##                   0.0163 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63900                   0.05150                   0.01960 
+    ##                   0.64000                   0.05140                   0.01960 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01560                   0.01070                   0.00954 
+    ##                   0.01560                   0.01070                   0.00952 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00919                   0.00770                   0.00747 
+    ##                   0.00918                   0.00769                   0.00746 
     ##                    Rectum 
-    ##                   0.00678 
+    ##                   0.00677 
     ## 
     ## $Condition
     ## 
     ##                      Diet         Colorectal cancer       Parkinson's disease 
-    ##                    0.0331                    0.0326                    0.0275 
+    ##                    0.0335                    0.0328                    0.0275 
     ##                   Obesity                  COVID-19          Diet measurement 
-    ##                    0.0194                    0.0149                    0.0139 
+    ##                    0.0194                    0.0148                    0.0140 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
     ##                    0.0133                    0.0124                    0.0116 
     ##              Constipation 
@@ -419,13 +419,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             11.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               391.1832            61.47404
-    ## 3rd Qu.             50.0000            42.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1629.0000          1621.00000
+    ## Min.                  0.000             1.00000
+    ## 1st Qu.              11.000            10.00000
+    ## Median               24.000            21.00000
+    ## Mean                391.091            61.47377
+    ## 3rd Qu.              50.000            42.00000
+    ## Max.             308633.000         10413.00000
+    ## NA's               1640.000          1632.00000
 
 ### Lab analysis
 
@@ -442,19 +442,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6800       1512         83         76          5 
+    ##       6802       1523         83         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3245      1643       363       244       220       149       124        77 
+    ##      3245      1645       363       244       220       149       124        77 
     ##        56  23456789 
     ##        56        49 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7183                                   339 
+    ##                                  7196                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   295                                   143 
     ##                              Nanopore                           MGISEQ-2000 
@@ -476,7 +476,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##    0.80200    0.17800    0.00979    0.00897    0.00059 
+    ##   0.801000   0.179000   0.009780   0.008950   0.000589 
     ## 
     ## $`16S variable region`
     ## 
@@ -488,15 +488,15 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                               0.86300                               0.04080 
+    ##                               0.86400                               0.04070 
     ##                           Ion Torrent                               RT-qPCR 
-    ##                               0.03550                               0.01720 
+    ##                               0.03540                               0.01720 
     ##                              Nanopore                           MGISEQ-2000 
-    ##                               0.00950                               0.00685 
+    ##                               0.00948                               0.00684 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
-    ##                               0.00553                               0.00373 
+    ##                               0.00552                               0.00372 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
-    ##                               0.00361                               0.00252
+    ##                               0.00360                               0.00252
 
 ### Statistical analysis
 
@@ -613,8 +613,8 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     957   591     331              79      623
-    ## increased     66     735   434     206              60      446
+    ## decreased     92     959   591     331              79      623
+    ## increased     66     735   434     206              60      447
     ## unchanged    336    2796  1378    1116             271     1412
 
 Correspondence of Shannon diversity and Richness:
@@ -627,7 +627,7 @@ table(exps$Shannon, exps$Richness)
     ##            
     ##             decreased increased unchanged
     ##   decreased       346        15        78
-    ##   increased        16       222        70
+    ##   increased        16       223        70
     ##   unchanged       131       116      1132
 
 Conditions with consistently increased or decreased alpha diversity:
@@ -658,6 +658,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Pancreatic carcinoma                                              9         1
     ## Smoking behaviour measurement                                     8         0
     ## Age                                                               6        13
+    ## Colorectal cancer                                                19        26
     ## Dry eye syndrome                                                  1         8
     ## Heart failure                                                     0         7
     ## Lung cancer                                                       2         9
@@ -674,13 +675,13 @@ tabDiv(exps, "Shannon", "Condition")
     ## Aging                                                             2         7
     ## Bronchiectasis                                                    0         5
     ## Cervical cancer                                                   5         0
-    ## Colorectal cancer                                                19        24
     ## Constipation                                                      8         3
     ## Epilepsy                                                          5         0
     ## Helminthiasis                                                     5         0
     ## Oxygen                                                            5         0
     ## Response to antibiotic                                            2         7
     ## Species design                                                   10        15
+    ## Type II diabetes mellitus                                        10         5
     ## Urinary tract infection                                           1         6
     ## Acute lymphoblastic leukemia                                      0         4
     ## Body mass index                                                   0         4
@@ -696,7 +697,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Human immunodeficiency virus                                      0         4
     ## Inflammatory bowel disease                                        1         5
     ## Non-alcoholic fatty liver disease                                 4         8
-    ## Type II diabetes mellitus                                         9         5
     ## Alcohol drinking                                                  3         0
     ## Antimicrobial agent                                               7        10
     ## Atopic asthma                                                     4         1
@@ -762,6 +762,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Clinical treatment                                                1         2
     ## Coccidiosis                                                       0         1
     ## Delivery method                                                   3         4
+    ## Diabetes mellitus                                                 0         1
     ## Diarrhea                                                          3         4
     ## Endometriosis                                                     2         3
     ## Esophageal cancer                                                 1         2
@@ -815,7 +816,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Colorectal adenoma                                                2         2
     ## Contraception                                                     0         0
     ## COVID-19 symptoms measurement                                     0         0
-    ## Diabetes mellitus                                                 1         1
     ## Diet measurement                                                  0         0
     ## Disease progression measurement                                   0         0
     ## Exposure                                                          1         1
@@ -870,6 +870,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Pancreatic carcinoma                                              6
     ## Smoking behaviour measurement                                     9
     ## Age                                                              10
+    ## Colorectal cancer                                                80
     ## Dry eye syndrome                                                 14
     ## Heart failure                                                     2
     ## Lung cancer                                                       8
@@ -886,13 +887,13 @@ tabDiv(exps, "Shannon", "Condition")
     ## Aging                                                             3
     ## Bronchiectasis                                                    0
     ## Cervical cancer                                                   6
-    ## Colorectal cancer                                                80
     ## Constipation                                                     13
     ## Epilepsy                                                          5
     ## Helminthiasis                                                     8
     ## Oxygen                                                            0
     ## Response to antibiotic                                           22
     ## Species design                                                   13
+    ## Type II diabetes mellitus                                        40
     ## Urinary tract infection                                          11
     ## Acute lymphoblastic leukemia                                     10
     ## Body mass index                                                   3
@@ -908,7 +909,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Human immunodeficiency virus                                      6
     ## Inflammatory bowel disease                                        1
     ## Non-alcoholic fatty liver disease                                17
-    ## Type II diabetes mellitus                                        40
     ## Alcohol drinking                                                  2
     ## Antimicrobial agent                                              25
     ## Atopic asthma                                                     7
@@ -974,6 +974,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Clinical treatment                                               12
     ## Coccidiosis                                                       4
     ## Delivery method                                                  12
+    ## Diabetes mellitus                                                 9
     ## Diarrhea                                                          7
     ## Endometriosis                                                    14
     ## Esophageal cancer                                                 2
@@ -1027,7 +1028,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Colorectal adenoma                                               20
     ## Contraception                                                     5
     ## COVID-19 symptoms measurement                                     5
-    ## Diabetes mellitus                                                 9
     ## Diet measurement                                                 60
     ## Disease progression measurement                                   5
     ## Exposure                                                          4
@@ -1088,6 +1088,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Pancreatic carcinoma                                          0.560     0.062
     ## Smoking behaviour measurement                                 0.470     0.000
     ## Age                                                           0.210     0.450
+    ## Colorectal cancer                                             0.150     0.210
     ## Dry eye syndrome                                              0.043     0.350
     ## Heart failure                                                 0.000     0.780
     ## Lung cancer                                                   0.110     0.470
@@ -1104,13 +1105,13 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Aging                                                         0.170     0.580
     ## Bronchiectasis                                                0.000     1.000
     ## Cervical cancer                                               0.450     0.000
-    ## Colorectal cancer                                             0.150     0.200
     ## Constipation                                                  0.330     0.120
     ## Epilepsy                                                      0.500     0.000
     ## Helminthiasis                                                 0.380     0.000
     ## Oxygen                                                        1.000     0.000
     ## Response to antibiotic                                        0.065     0.230
     ## Species design                                                0.260     0.390
+    ## Type II diabetes mellitus                                     0.180     0.091
     ## Urinary tract infection                                       0.056     0.330
     ## Acute lymphoblastic leukemia                                  0.000     0.290
     ## Body mass index                                               0.000     0.570
@@ -1126,7 +1127,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Human immunodeficiency virus                                  0.000     0.400
     ## Inflammatory bowel disease                                    0.140     0.710
     ## Non-alcoholic fatty liver disease                             0.140     0.280
-    ## Type II diabetes mellitus                                     0.170     0.093
     ## Alcohol drinking                                              0.600     0.000
     ## Antimicrobial agent                                           0.170     0.240
     ## Atopic asthma                                                 0.330     0.083
@@ -1192,6 +1192,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Clinical treatment                                            0.067     0.130
     ## Coccidiosis                                                   0.000     0.200
     ## Delivery method                                               0.160     0.210
+    ## Diabetes mellitus                                             0.000     0.100
     ## Diarrhea                                                      0.210     0.290
     ## Endometriosis                                                 0.110     0.160
     ## Esophageal cancer                                             0.200     0.400
@@ -1245,7 +1246,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Colorectal adenoma                                            0.083     0.083
     ## Contraception                                                 0.000     0.000
     ## COVID-19 symptoms measurement                                 0.000     0.000
-    ## Diabetes mellitus                                             0.091     0.091
     ## Diet measurement                                              0.000     0.000
     ## Disease progression measurement                               0.000     0.000
     ## Exposure                                                      0.170     0.170
@@ -1300,6 +1300,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Pancreatic carcinoma                                          0.380
     ## Smoking behaviour measurement                                 0.530
     ## Age                                                           0.340
+    ## Colorectal cancer                                             0.640
     ## Dry eye syndrome                                              0.610
     ## Heart failure                                                 0.220
     ## Lung cancer                                                   0.420
@@ -1316,13 +1317,13 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Aging                                                         0.250
     ## Bronchiectasis                                                0.000
     ## Cervical cancer                                               0.550
-    ## Colorectal cancer                                             0.650
     ## Constipation                                                  0.540
     ## Epilepsy                                                      0.500
     ## Helminthiasis                                                 0.620
     ## Oxygen                                                        0.000
     ## Response to antibiotic                                        0.710
     ## Species design                                                0.340
+    ## Type II diabetes mellitus                                     0.730
     ## Urinary tract infection                                       0.610
     ## Acute lymphoblastic leukemia                                  0.710
     ## Body mass index                                               0.430
@@ -1338,7 +1339,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Human immunodeficiency virus                                  0.600
     ## Inflammatory bowel disease                                    0.140
     ## Non-alcoholic fatty liver disease                             0.590
-    ## Type II diabetes mellitus                                     0.740
     ## Alcohol drinking                                              0.400
     ## Antimicrobial agent                                           0.600
     ## Atopic asthma                                                 0.580
@@ -1404,6 +1404,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Clinical treatment                                            0.800
     ## Coccidiosis                                                   0.800
     ## Delivery method                                               0.630
+    ## Diabetes mellitus                                             0.900
     ## Diarrhea                                                      0.500
     ## Endometriosis                                                 0.740
     ## Esophageal cancer                                             0.400
@@ -1457,7 +1458,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Colorectal adenoma                                            0.830
     ## Contraception                                                 1.000
     ## COVID-19 symptoms measurement                                 1.000
-    ## Diabetes mellitus                                             0.820
     ## Diet measurement                                              1.000
     ## Disease progression measurement                               1.000
     ## Exposure                                                      0.670
@@ -1524,6 +1524,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Environmental factor                                              0         5
     ## Human immunodeficiency virus                                      1         6
     ## Human papilloma virus infection                                   7         2
+    ## Type II diabetes mellitus                                         8         3
     ## Acute lymphoblastic leukemia                                      5         1
     ## Air pollution                                                     9         5
     ## Cervical glandular intraepithelial neoplasia                      4         0
@@ -1536,7 +1537,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Non-alcoholic steatohepatitis                                     1         5
     ## Smoking behavior                                                  6        10
     ## Stress-related disorder                                           0         4
-    ## Type II diabetes mellitus                                         7         3
     ## Ulcerative colitis                                                0         4
     ## Vesicle membrane                                                  5         1
     ## Alzheimer's disease                                               8         5
@@ -1659,6 +1659,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Environmental factor                                             17
     ## Human immunodeficiency virus                                      2
     ## Human papilloma virus infection                                  12
+    ## Type II diabetes mellitus                                        25
     ## Acute lymphoblastic leukemia                                      1
     ## Air pollution                                                     6
     ## Cervical glandular intraepithelial neoplasia                      2
@@ -1671,7 +1672,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Non-alcoholic steatohepatitis                                     0
     ## Smoking behavior                                                  8
     ## Stress-related disorder                                           1
-    ## Type II diabetes mellitus                                        25
     ## Ulcerative colitis                                                2
     ## Vesicle membrane                                                  0
     ## Alzheimer's disease                                              27
@@ -1800,6 +1800,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Environmental factor                                          0.000     0.230
     ## Human immunodeficiency virus                                  0.110     0.670
     ## Human papilloma virus infection                               0.330     0.095
+    ## Type II diabetes mellitus                                     0.220     0.083
     ## Acute lymphoblastic leukemia                                  0.710     0.140
     ## Air pollution                                                 0.450     0.250
     ## Cervical glandular intraepithelial neoplasia                  0.670     0.000
@@ -1812,7 +1813,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Non-alcoholic steatohepatitis                                 0.170     0.830
     ## Smoking behavior                                              0.250     0.420
     ## Stress-related disorder                                       0.000     0.800
-    ## Type II diabetes mellitus                                     0.200     0.086
     ## Ulcerative colitis                                            0.000     0.670
     ## Vesicle membrane                                              0.830     0.170
     ## Alzheimer's disease                                           0.200     0.120
@@ -1935,6 +1935,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Environmental factor                                           0.77
     ## Human immunodeficiency virus                                   0.22
     ## Human papilloma virus infection                                0.57
+    ## Type II diabetes mellitus                                      0.69
     ## Acute lymphoblastic leukemia                                   0.14
     ## Air pollution                                                  0.30
     ## Cervical glandular intraepithelial neoplasia                   0.33
@@ -1947,7 +1948,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Non-alcoholic steatohepatitis                                  0.00
     ## Smoking behavior                                               0.33
     ## Stress-related disorder                                        0.20
-    ## Type II diabetes mellitus                                      0.71
     ## Ulcerative colitis                                             0.33
     ## Vesicle membrane                                               0.00
     ## Alzheimer's disease                                            0.68
@@ -2056,10 +2056,10 @@ tabDiv(exps, "Shannon", "Body site")
     ## Sputum                                                  7        23        16
     ## Vagina                                                 21         8        42
     ## Posterior fornix of vagina                             12         0        10
+    ## Gastrointestinal system mucosa                          0        11         0
     ## Saliva                                                 40        50       194
     ## Blood serum                                             9         0         0
     ## Buccal mucosa                                          12         3         8
-    ## Gastrointestinal system mucosa                          0         9         0
     ## Oral cavity                                            15         6        27
     ## Stomach                                                 6        14         5
     ## Uterine cervix                                          9         1        20
@@ -2137,10 +2137,10 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Sputum                                              0.150     0.500      0.35
     ## Vagina                                              0.300     0.110      0.59
     ## Posterior fornix of vagina                          0.550     0.000      0.45
+    ## Gastrointestinal system mucosa                      0.000     1.000      0.00
     ## Saliva                                              0.140     0.180      0.68
     ## Blood serum                                         1.000     0.000      0.00
     ## Buccal mucosa                                       0.520     0.130      0.35
-    ## Gastrointestinal system mucosa                      0.000     1.000      0.00
     ## Oral cavity                                         0.310     0.120      0.56
     ## Stomach                                             0.240     0.560      0.20
     ## Uterine cervix                                      0.300     0.033      0.67
@@ -2214,7 +2214,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              234       373       848
+    ## Feces                              235       373       848
     ## Oral cavity                         16         4        20
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2338,7 +2338,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8089
+    ## [1] 8090
 
 Development of unique microbes captured over time:
 
@@ -2357,7 +2357,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.069   9.000 467.000
+    ##   1.000   2.000   4.000   8.064   9.000 467.000
 
 ``` r
 
@@ -2372,7 +2372,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6659
+    ## [1] 6673
 
 ### Microbe co-occurrence
 
@@ -2410,7 +2410,7 @@ top20
     ##    Streptococcus    Lactobacillus       Prevotella     Ruminococcus 
     ##              533              531              501              499 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
-    ##              493              491              456              423 
+    ##              493              490              455              423 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              366              360              348              306 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
@@ -2479,7 +2479,7 @@ top20.down
     ##    Streptococcus    Lactobacillus       Prevotella     Ruminococcus 
     ##              194              199              255              273 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
-    ##              236              325              194              228 
+    ##              236              324              193              228 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              125              205              199              119 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
