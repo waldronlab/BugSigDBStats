@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14332    51
+    ## [1] 14344    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2064
+    ## [1] 2066
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14332
+    ## [1] 14344
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14332
+    ## [1] 14344
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -224,13 +224,13 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                              randomized controlled trial 
     ##                                                                                       92 
     ##                                                 time series / longitudinal observational 
-    ##                                                                                      154 
+    ##                                                                                      155 
     ##                                                                       prospective cohort 
     ##                                                                                      163 
     ##                                                                    laboratory experiment 
     ##                                                                                      222 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      526 
+    ##                                                                                      527 
     ##                                                                             case-control 
     ##                                                                                      811
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6891                    934                    217 
+    ##                   6897                    934                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,9 +305,9 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3235                     1252                      328 
-    ##              South Korea                  Germany                    Italy 
-    ##                      221                      201                      201 
+    ##                     3235                     1256                      328 
+    ##              South Korea                    Italy                  Germany 
+    ##                      221                      202                      201 
     ##                    Spain                  Denmark                Australia 
     ##                      194                      183                      153 
     ##                   Canada 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5597                       448                       171 
+    ##                      5603                       448                       171 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       136                        93                        83 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -360,7 +360,7 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.78500                0.10600                0.02470 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01590                0.01530                0.00490 
+    ##                0.01590                0.01520                0.00489 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                0.00376                0.00319                0.00273 
     ##    Macaca fascicularis 
@@ -369,22 +369,22 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3690                   0.1430                   0.0374 
-    ##              South Korea                  Germany                    Italy 
-    ##                   0.0252                   0.0229                   0.0229 
+    ##                   0.3680                   0.1430                   0.0374 
+    ##              South Korea                    Italy                  Germany 
+    ##                   0.0252                   0.0230                   0.0229 
     ##                    Spain                  Denmark                Australia 
-    ##                   0.0221                   0.0209                   0.0174 
+    ##                   0.0221                   0.0208                   0.0174 
     ##                   Canada 
     ##                   0.0163 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.64000                   0.05130                   0.01960 
+    ##                   0.64100                   0.05120                   0.01960 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01560                   0.01060                   0.00950 
+    ##                   0.01560                   0.01060                   0.00949 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00915                   0.00767                   0.00744 
+    ##                   0.00915                   0.00766                   0.00743 
     ##                    Rectum 
     ##                   0.00675 
     ## 
@@ -395,7 +395,7 @@ sub.tab
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0193                    0.0148                    0.0140 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
-    ##                    0.0133                    0.0124                    0.0115 
+    ##                    0.0133                    0.0123                    0.0115 
     ##              Constipation 
     ##                    0.0106 
     ## 
@@ -419,13 +419,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             11.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               390.6474            61.44767
-    ## 3rd Qu.             50.0000            42.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1653.0000          1645.00000
+    ## Min.                  0.000              1.0000
+    ## 1st Qu.              11.000             10.0000
+    ## Median               24.000             21.0000
+    ## Mean                390.486             61.4388
+    ## 3rd Qu.              50.000             42.0000
+    ## Max.             308633.000          10413.0000
+    ## NA's               1656.000           1648.0000
 
 ### Lab analysis
 
@@ -442,19 +442,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6810       1537         83         76          5 
+    ##       6816       1537         83         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3245      1652       363       244       220       149       124        77 
+    ##      3245      1657       363       245       220       149       124        77 
     ##        56  23456789 
     ##        56        49 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7218                                   339 
+    ##                                  7219                                   339 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   295                                   143 
     ##                              Nanopore                           MGISEQ-2000 
@@ -476,14 +476,14 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.800000   0.181000   0.009750   0.008930   0.000587 
+    ##   0.800000   0.180000   0.009750   0.008920   0.000587 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51300   0.26100   0.05730   0.03850   0.03480   0.02350   0.01960   0.01220 
+    ##   0.51200   0.26200   0.05730   0.03870   0.03470   0.02350   0.01960   0.01220 
     ##        56  23456789 
-    ##   0.00885   0.00774 
+    ##   0.00884   0.00773 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -613,9 +613,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     961   591     333              81      623
+    ## decreased     92     967   597     333              81      626
     ## increased     66     733   434     206              60      447
-    ## unchanged    336    2806  1380    1123             277     1413
+    ## unchanged    336    2810  1384    1124             277     1413
 
 Correspondence of Shannon diversity and Richness:
 
@@ -626,7 +626,7 @@ table(exps$Shannon, exps$Richness)
 
     ##            
     ##             decreased increased unchanged
-    ##   decreased       346        15        79
+    ##   decreased       349        15        79
     ##   increased        16       223        70
     ##   unchanged       131       116      1133
 
@@ -701,6 +701,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Antimicrobial agent                                               7        10
     ## Atopic asthma                                                     4         1
     ## Birth measurement                                                 3         0
+    ## Disease recurrence                                                0         3
     ## Environmental exposure measurement                                3         0
     ## Extraction protocol                                              23        26
     ## Hematopoietic stem cell                                           0         3
@@ -860,7 +861,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## HIV infection                                                    27
     ## Ulcerative colitis                                                5
     ## Clostridium difficile infection                                   1
-    ## Crohn's disease                                                  11
+    ## Crohn's disease                                                   8
     ## Multiple sclerosis                                               32
     ## Obesity                                                          71
     ## Systemic inflammatory response syndrome                           4
@@ -914,6 +915,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Antimicrobial agent                                              25
     ## Atopic asthma                                                     7
     ## Birth measurement                                                 4
+    ## Disease recurrence                                                7
     ## Environmental exposure measurement                                4
     ## Extraction protocol                                              21
     ## Hematopoietic stem cell                                           3
@@ -1079,7 +1081,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## HIV infection                                                 0.025     0.300
     ## Ulcerative colitis                                            0.056     0.670
     ## Clostridium difficile infection                               0.910     0.000
-    ## Crohn's disease                                               0.000     0.480
+    ## Crohn's disease                                               0.000     0.560
     ## Multiple sclerosis                                            0.043     0.260
     ## Obesity                                                       0.074     0.180
     ## Systemic inflammatory response syndrome                       0.210     0.620
@@ -1133,6 +1135,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Antimicrobial agent                                           0.170     0.240
     ## Atopic asthma                                                 0.330     0.083
     ## Birth measurement                                             0.430     0.000
+    ## Disease recurrence                                            0.000     0.300
     ## Environmental exposure measurement                            0.430     0.000
     ## Extraction protocol                                           0.330     0.370
     ## Hematopoietic stem cell                                       0.000     0.500
@@ -1292,7 +1295,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## HIV infection                                                 0.680
     ## Ulcerative colitis                                            0.280
     ## Clostridium difficile infection                               0.091
-    ## Crohn's disease                                               0.520
+    ## Crohn's disease                                               0.440
     ## Multiple sclerosis                                            0.700
     ## Obesity                                                       0.750
     ## Systemic inflammatory response syndrome                       0.170
@@ -1346,6 +1349,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Antimicrobial agent                                           0.600
     ## Atopic asthma                                                 0.580
     ## Birth measurement                                             0.570
+    ## Disease recurrence                                            0.700
     ## Environmental exposure measurement                            0.570
     ## Extraction protocol                                           0.300
     ## Hematopoietic stem cell                                       0.500
@@ -2056,7 +2060,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 379       593      1700
+    ## Feces                                                 379       596      1701
     ## Sputum                                                  7        23        16
     ## Vagina                                                 21         8        42
     ## Posterior fornix of vagina                             12         0        10
@@ -2068,9 +2072,9 @@ tabDiv(exps, "Shannon", "Body site")
     ## Stomach                                                 6        14         5
     ## Uterine cervix                                          9         1        20
     ## Uterine cervix,Vaginal fluid                            9         1         0
+    ## Ileum                                                   3        10        14
     ## Skin of body                                            8        15         8
     ## Supragingival dental plaque                             3        10        14
-    ## Ileum                                                   3         9        13
     ## Pharynx                                                 6         1         2
     ## Space surrounding organism                              2         7        13
     ## Subgingival dental plaque                              13         8        44
@@ -2109,7 +2113,6 @@ tabDiv(exps, "Shannon", "Body site")
     ## Breast                                                  3         4        10
     ## Breast,Milk                                             1         0         4
     ## Bulbar conjunctiva                                      3         2         5
-    ## Colon                                                   6         5        20
     ## Dental plaque                                           3         4         6
     ## Digestive tract                                         2         1         2
     ## Gingival groove                                         2         1         6
@@ -2118,6 +2121,7 @@ tabDiv(exps, "Shannon", "Body site")
     ## Small intestine                                         3         4         1
     ## Vagina,Uterine cervix                                   3         2         7
     ## Bronchus                                                0         0         6
+    ## Colon                                                   6         6        21
     ## Endothelium of trachea                                  3         3         0
     ## Internal cheek pouch                                    0         0        11
     ## Jejunum                                                 1         1         8
@@ -2149,9 +2153,9 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Stomach                                             0.240     0.560      0.20
     ## Uterine cervix                                      0.300     0.033      0.67
     ## Uterine cervix,Vaginal fluid                        0.900     0.100      0.00
+    ## Ileum                                               0.110     0.370      0.52
     ## Skin of body                                        0.260     0.480      0.26
     ## Supragingival dental plaque                         0.110     0.370      0.52
-    ## Ileum                                               0.120     0.360      0.52
     ## Pharynx                                             0.670     0.110      0.22
     ## Space surrounding organism                          0.091     0.320      0.59
     ## Subgingival dental plaque                           0.200     0.120      0.68
@@ -2190,7 +2194,6 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Breast                                              0.180     0.240      0.59
     ## Breast,Milk                                         0.200     0.000      0.80
     ## Bulbar conjunctiva                                  0.300     0.200      0.50
-    ## Colon                                               0.190     0.160      0.65
     ## Dental plaque                                       0.230     0.310      0.46
     ## Digestive tract                                     0.400     0.200      0.40
     ## Gingival groove                                     0.220     0.110      0.67
@@ -2199,6 +2202,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Small intestine                                     0.380     0.500      0.12
     ## Vagina,Uterine cervix                               0.250     0.170      0.58
     ## Bronchus                                            0.000     0.000      1.00
+    ## Colon                                               0.180     0.180      0.64
     ## Endothelium of trachea                              0.500     0.500      0.00
     ## Internal cheek pouch                                0.000     0.000      1.00
     ## Jejunum                                             0.100     0.100      0.80
@@ -2218,7 +2222,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              235       373       850
+    ## Feces                              235       376       850
     ## Oral cavity                         16         4        20
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2361,7 +2365,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.051   9.000 467.000
+    ##   1.000   2.000   4.000   8.048   9.000 467.000
 
 ``` r
 
@@ -2376,7 +2380,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6680
+    ## [1] 6683
 
 ### Microbe co-occurrence
 
@@ -2410,13 +2414,13 @@ top20
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              870              620              605              581 
+    ##              874              621              605              583 
     ##    Streptococcus    Lactobacillus       Prevotella     Ruminococcus 
-    ##              534              532              501              500 
+    ##              534              533              501              500 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
-    ##              495              491              457              427 
+    ##              495              491              459              427 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              366              363              349              306 
+    ##              366              363              351              308 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
     ##              298              296              296              291
 
@@ -2457,13 +2461,13 @@ top20.up
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              429              210              324              268 
+    ##              433              211              324              270 
     ##    Streptococcus    Lactobacillus       Prevotella     Ruminococcus 
-    ##              335              331              243              222 
+    ##              335              332              243              222 
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
-    ##              252              163              260              191 
+    ##              252              163              262              191 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              238              154              145              184 
+    ##              238              154              145              186 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
     ##              139              157              212              123
 
@@ -2485,7 +2489,7 @@ top20.down
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
     ##              238              324              193              232 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              125              205              200              119 
+    ##              125              205              202              119 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
     ##              155              135               82              166
 
