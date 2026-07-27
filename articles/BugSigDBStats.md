@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14393    51
+    ## [1] 14400    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2069
+    ## [1] 2070
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14393
+    ## [1] 14400
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14393
+    ## [1] 14400
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -181,8 +181,6 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                                        1 
     ##                                                 randomized controlled trial,case-control 
     ##                                                                                        1 
-    ##                                           randomized controlled trial,prospective cohort 
-    ##                                                                                        1 
     ## time series / longitudinal observational,cross-sectional observational, not case-control 
     ##                                                                                        1 
     ##                                                          case-control,prospective cohort 
@@ -224,7 +222,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                            meta-analysis 
     ##                                                                                       34 
     ##                                                              randomized controlled trial 
-    ##                                                                                       91 
+    ##                                                                                       92 
     ##                                                 time series / longitudinal observational 
     ##                                                                                      155 
     ##                                                                       prospective cohort 
@@ -232,7 +230,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                    laboratory experiment 
     ##                                                                                      222 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      527 
+    ##                                                                                      528 
     ##                                                                             case-control 
     ##                                                                                      811
 
@@ -296,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   6927                    934                    217 
+    ##                   6932                    934                    217 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -307,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3240                     1266                      328 
+    ##                     3240                     1271                      328 
     ##              South Korea                    Italy                  Germany 
     ##                      221                      204                      201 
     ##                    Spain                  Denmark                Australia 
@@ -318,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5633                       448                       171 
+    ##                      5636                       448                       173 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       136                        93                        83 
     ##               Nasopharynx                     Mouth                     Colon 
@@ -362,9 +360,9 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.78600                0.10600                0.02460 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01590                0.01520                0.00488 
+    ##                0.01590                0.01520                0.00487 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00374                0.00318                0.00272 
+    ##                0.00374                0.00317                0.00272 
     ##    Macaca fascicularis 
     ##                0.00272 
     ## 
@@ -373,7 +371,7 @@ sub.tab
     ##                    China United States of America                    Japan 
     ##                   0.3680                   0.1440                   0.0372 
     ##              South Korea                    Italy                  Germany 
-    ##                   0.0251                   0.0232                   0.0228 
+    ##                   0.0251                   0.0231                   0.0228 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0220                   0.0208                   0.0174 
     ##                   Canada 
@@ -382,11 +380,11 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.64200                   0.05110                   0.01950 
+    ##                   0.64200                   0.05100                   0.01970 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01550                   0.01060                   0.00946 
+    ##                   0.01550                   0.01060                   0.00945 
     ##               Nasopharynx                     Mouth                     Colon 
-    ##                   0.00912                   0.00764                   0.00752 
+    ##                   0.00911                   0.00763                   0.00752 
     ##                    Rectum 
     ##                   0.00672 
     ## 
@@ -404,9 +402,9 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                  3 months                   1 month                  2 months 
-    ##                   0.33400                   0.27300                   0.09850 
+    ##                   0.33400                   0.27300                   0.09860 
     ##                  6 months                   2 weeks Recent use of antibiotics 
-    ##                   0.09580                   0.07070                   0.01430 
+    ##                   0.09590                   0.07080                   0.01430 
     ##                    1 week  currently on antibiotics                    1 year 
     ##                   0.01080                   0.00729                   0.00594 
     ##                   30 days 
@@ -424,10 +422,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               389.5479            61.48828
+    ## Mean               389.3439            61.50411
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1661.0000          1652.00000
+    ## NA's              1660.0000          1652.00000
 
 ### Lab analysis
 
@@ -444,19 +442,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6837       1546         83         76          5 
+    ##       6842       1546         83         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3247      1667       363       245       220       149       124        77 
+    ##      3247      1680       363       247       220       149       124        77 
     ##        56  23456789 
     ##        56        49 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7238                                   339 
+    ##                                  7241                                   341 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   295                                   143 
     ##                              Nanopore                           MGISEQ-2000 
@@ -483,18 +481,18 @@ lab.tab
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51100   0.26200   0.05710   0.03850   0.03460   0.02340   0.01950   0.01210 
+    ##    0.5100    0.2640    0.0570    0.0388    0.0346    0.0234    0.0195    0.0121 
     ##        56  23456789 
-    ##   0.00881   0.00771 
+    ##    0.0088    0.0077 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                               0.86400                               0.04050 
+    ##                               0.86400                               0.04070 
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03520                               0.01710 
     ##                              Nanopore                           MGISEQ-2000 
-    ##                               0.00943                               0.00681 
+    ##                               0.00943                               0.00680 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
     ##                               0.00549                               0.00370 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
@@ -617,7 +615,7 @@ apply(exps[,div.cols], 2, table)
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     92     970   599     334              81      628
     ## increased     66     734   434     207              60      447
-    ## unchanged    336    2816  1388    1127             278     1416
+    ## unchanged    336    2825  1388    1127             278     1416
 
 Correspondence of Shannon diversity and Richness:
 
@@ -840,6 +838,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Oral mucositis                                                    2         2
     ## Oxalate measurement                                               1         1
     ## Postpartum                                                        0         0
+    ## Protein intake measurement                                        0         0
     ## Psoriasis vulgaris                                                0         0
     ## Response to diet                                                  5         5
     ## Response to dietary antigen                                       0         0
@@ -1054,6 +1053,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Oral mucositis                                                    3
     ## Oxalate measurement                                               8
     ## Postpartum                                                        7
+    ## Protein intake measurement                                        9
     ## Psoriasis vulgaris                                               14
     ## Response to diet                                                 46
     ## Response to dietary antigen                                       6
@@ -1274,6 +1274,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Oral mucositis                                                0.290     0.290
     ## Oxalate measurement                                           0.100     0.100
     ## Postpartum                                                    0.000     0.000
+    ## Protein intake measurement                                    0.000     0.000
     ## Psoriasis vulgaris                                            0.000     0.000
     ## Response to diet                                              0.089     0.089
     ## Response to dietary antigen                                   0.000     0.000
@@ -1488,6 +1489,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Oral mucositis                                                0.430
     ## Oxalate measurement                                           0.800
     ## Postpartum                                                    1.000
+    ## Protein intake measurement                                    1.000
     ## Psoriasis vulgaris                                            1.000
     ## Response to diet                                              0.820
     ## Response to dietary antigen                                   1.000
@@ -2062,7 +2064,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 380       599      1707
+    ## Feces                                                 380       599      1716
     ## Sputum                                                  7        23        16
     ## Vagina                                                 21         8        42
     ## Posterior fornix of vagina                             12         0        10
@@ -2367,7 +2369,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.042   9.000 467.000
+    ##   1.000   2.000   4.000   8.039   9.000 467.000
 
 ``` r
 
@@ -2382,7 +2384,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6697
+    ## [1] 6698
 
 ### Microbe co-occurrence
 
@@ -2469,7 +2471,7 @@ top20.up
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
     ##              252              163              268              195 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              238              158              149              190 
+    ##              238              158              149              189 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
     ##              140              159              212              125
 
@@ -2491,7 +2493,7 @@ top20.down
     ##      Clostridium        Roseburia  Parabacteroides        Alistipes 
     ##              238              324              195              232 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              126              205              202              120 
+    ##              126              205              202              121 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
     ##              156              135               83              166
 
