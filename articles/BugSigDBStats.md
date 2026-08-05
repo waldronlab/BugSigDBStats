@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14532    51
+    ## [1] 14534    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14532
+    ## [1] 14534
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14532
+    ## [1] 14534
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7002                    938                    217 
+    ##                   7003                    938                    218 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     46 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -307,7 +307,7 @@ sub.tab
     ##                    China United States of America                    Japan 
     ##                     3260                     1272                      347 
     ##              South Korea                    Italy                  Germany 
-    ##                      224                      204                      201 
+    ##                      224                      204                      199 
     ##                    Spain                  Denmark                Australia 
     ##                      194                      183                      153 
     ##           United Kingdom 
@@ -316,11 +316,11 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5686                       451                       174 
+    ##                      5688                       451                       174 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       136                        91                        83 
     ##               Nasopharynx                     Colon                     Mouth 
-    ##                        80                        69                        67 
+    ##                        80                        68                        67 
     ##                    Rectum 
     ##                        59 
     ## 
@@ -360,7 +360,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.78700                0.10500                0.02440 
+    ##                0.78700                0.10500                0.02450 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01570                0.01510                0.00517 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -371,9 +371,9 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3670                   0.1430                   0.0390 
+    ##                   0.3660                   0.1430                   0.0390 
     ##              South Korea                    Italy                  Germany 
-    ##                   0.0252                   0.0229                   0.0226 
+    ##                   0.0252                   0.0229                   0.0224 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0218                   0.0206                   0.0172 
     ##           United Kingdom 
@@ -386,7 +386,7 @@ sub.tab
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01540                   0.01030                   0.00937 
     ##               Nasopharynx                     Colon                     Mouth 
-    ##                   0.00903                   0.00779                   0.00756 
+    ##                   0.00903                   0.00768                   0.00756 
     ##                    Rectum 
     ##                   0.00666 
     ## 
@@ -426,7 +426,7 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               386.9637            61.40617
+    ## Mean               386.9967            61.51998
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
     ## NA's              1677.0000          1669.00000
@@ -446,12 +446,12 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6909       1553         83         76          5 
+    ##       6910       1553         83         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3295      1698       363       247       220       149       124        77 
+    ##      3296      1698       363       247       220       149       124        77 
     ##        56  23456789 
     ##        56        49 
     ## 
@@ -619,7 +619,7 @@ apply(exps[,div.cols], 2, table)
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     92     978   599     333              81      628
     ## increased     66     731   434     207              60      450
-    ## unchanged    329    2831  1397    1119             279     1427
+    ## unchanged    330    2832  1398    1119             279     1428
 
 Correspondence of Shannon diversity and Richness:
 
@@ -632,7 +632,7 @@ table(exps$Shannon, exps$Richness)
     ##             decreased increased unchanged
     ##   decreased       353        15        80
     ##   increased        14       224        70
-    ##   unchanged       131       116      1146
+    ##   unchanged       131       116      1147
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -923,7 +923,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Environmental exposure measurement                                4
     ## Extraction protocol                                              21
     ## Hematopoietic stem cell                                           3
-    ## High fat diet                                                     4
+    ## High fat diet                                                     5
     ## Hypertension                                                      9
     ## Hypothyroidism                                                    4
     ## Lifestyle measurement                                            26
@@ -1144,7 +1144,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Environmental exposure measurement                            0.430     0.000
     ## Extraction protocol                                           0.330     0.370
     ## Hematopoietic stem cell                                       0.000     0.500
-    ## High fat diet                                                 0.440     0.110
+    ## High fat diet                                                 0.400     0.100
     ## Hypertension                                                  0.350     0.200
     ## Hypothyroidism                                                0.000     0.430
     ## Lifestyle measurement                                         0.150     0.061
@@ -1359,7 +1359,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Environmental exposure measurement                            0.570
     ## Extraction protocol                                           0.300
     ## Hematopoietic stem cell                                       0.500
-    ## High fat diet                                                 0.440
+    ## High fat diet                                                 0.500
     ## Hypertension                                                  0.450
     ## Hypothyroidism                                                0.570
     ## Lifestyle measurement                                         0.790
@@ -1563,6 +1563,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Food allergy                                                      0         3
     ## Graves disease                                                    2         5
     ## Hematopoietic stem cell                                           0         3
+    ## High fat diet                                                     0         3
     ## Hypertension                                                      1         4
     ## Hypertrophy                                                       3         0
     ## Iron biomarker measurement                                        1         4
@@ -1698,6 +1699,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Food allergy                                                      9
     ## Graves disease                                                    6
     ## Hematopoietic stem cell                                           3
+    ## High fat diet                                                     2
     ## Hypertension                                                      8
     ## Hypertrophy                                                       2
     ## Iron biomarker measurement                                        1
@@ -1839,6 +1841,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Food allergy                                                  0.000     0.250
     ## Graves disease                                                0.150     0.380
     ## Hematopoietic stem cell                                       0.000     0.500
+    ## High fat diet                                                 0.000     0.600
     ## Hypertension                                                  0.077     0.310
     ## Hypertrophy                                                   0.600     0.000
     ## Iron biomarker measurement                                    0.170     0.670
@@ -1974,6 +1977,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Food allergy                                                   0.75
     ## Graves disease                                                 0.46
     ## Hematopoietic stem cell                                        0.50
+    ## High fat diet                                                  0.40
     ## Hypertension                                                   0.62
     ## Hypertrophy                                                    0.40
     ## Iron biomarker measurement                                     0.17
@@ -2068,7 +2072,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 378       605      1711
+    ## Feces                                                 378       605      1712
     ## Sputum                                                  7        23        16
     ## Vagina                                                 21         8        41
     ## Posterior fornix of vagina                             12         0        10
@@ -2234,7 +2238,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              237       377       860
+    ## Feces                              237       377       861
     ## Oral cavity                         16         4        20
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2358,7 +2362,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8153
+    ## [1] 8152
 
 Development of unique microbes captured over time:
 
@@ -2392,7 +2396,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6760
+    ## [1] 6762
 
 ### Microbe co-occurrence
 
