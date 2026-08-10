@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14588    51
+    ## [1] 14589    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14588
+    ## [1] 14589
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14588
+    ## [1] 14589
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -446,7 +446,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6933       1553         83         76          5 
+    ##       6933       1552         83         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -458,7 +458,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7317                                   341 
+    ##                                  7316                                   341 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   311                                   143 
     ##                              Nanopore                           MGISEQ-2000 
@@ -480,7 +480,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.802000   0.180000   0.009600   0.008790   0.000578 
+    ##   0.802000   0.179000   0.009600   0.008790   0.000578 
     ## 
     ## $`16S variable region`
     ## 
@@ -492,7 +492,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                               0.86400                               0.04020 
+    ##                               0.86400                               0.04030 
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03670                               0.01690 
     ##                              Nanopore                           MGISEQ-2000 
@@ -2389,7 +2389,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.035   9.000 467.000
+    ##   1.000   2.000   4.000   8.034   9.000 467.000
 
 ``` r
 
@@ -2404,7 +2404,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6780
+    ## [1] 6781
 
 ### Microbe co-occurrence
 
