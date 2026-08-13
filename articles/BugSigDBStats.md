@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14631    51
+    ## [1] 14637    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14631
+    ## [1] 14637
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14631
+    ## [1] 14637
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7050                    938                    230 
+    ##                   7054                    938                    230 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     46 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -307,7 +307,7 @@ sub.tab
     ##                    China United States of America                    Japan 
     ##                     3291                     1273                      349 
     ##              South Korea                  Germany                    Italy 
-    ##                      224                      210                      203 
+    ##                      224                      213                      203 
     ##                    Spain                  Denmark                Australia 
     ##                      200                      183                      153 
     ##           United Kingdom 
@@ -316,11 +316,11 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5727                       451                       175 
+    ##                      5728                       451                       175 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       136                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                        81                        80                        67 
+    ##                        82                        80                        67 
     ##                    Rectum 
     ##                        59 
     ## 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                       1250                       1032 
+    ##                       1251                       1032 
     ##                   6 months                   2 months 
     ##                        373                        371 
     ##                    2 weeks  Recent use of antibiotics 
@@ -362,7 +362,7 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.78700                0.10500                0.02570 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01560                0.01500                0.00513 
+    ##                0.01560                0.01490                0.00513 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                0.00368                0.00312                0.00268 
     ##    Macaca fascicularis 
@@ -371,9 +371,9 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3680                   0.1420                   0.0390 
+    ##                   0.3670                   0.1420                   0.0390 
     ##              South Korea                  Germany                    Italy 
-    ##                   0.0250                   0.0235                   0.0227 
+    ##                   0.0250                   0.0238                   0.0227 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0223                   0.0204                   0.0171 
     ##           United Kingdom 
@@ -382,13 +382,13 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.64200                   0.05060                   0.01960 
+    ##                   0.64200                   0.05050                   0.01960 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01520                   0.01020                   0.00931 
+    ##                   0.01520                   0.01020                   0.00930 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00908                   0.00897                   0.00751 
+    ##                   0.00919                   0.00897                   0.00751 
     ##                    Rectum 
-    ##                   0.00662 
+    ##                   0.00661 
     ## 
     ## $Condition
     ## 
@@ -406,9 +406,9 @@ sub.tab
     ##                   3 months                    1 month 
     ##                    0.33000                    0.27200 
     ##                   6 months                   2 months 
-    ##                    0.09840                    0.09790 
+    ##                    0.09830                    0.09780 
     ##                    2 weeks  Recent use of antibiotics 
-    ##                    0.07150                    0.01400 
+    ##                    0.07140                    0.01400 
     ##                     1 week   currently on antibiotics 
     ##                    0.01030                    0.00712 
     ## Current use of antibiotics                     1 year 
@@ -423,13 +423,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                   0.00             1.00000
-    ## 1st Qu.               11.00            10.00000
-    ## Median                24.00            21.00000
-    ## Mean                 385.79            61.61956
-    ## 3rd Qu.               50.00            42.00000
-    ## Max.              308633.00         10413.00000
-    ## NA's                1709.00          1701.00000
+    ## Min.                 0.0000             1.00000
+    ## 1st Qu.             11.0000            10.00000
+    ## Median              24.0000            21.00000
+    ## Mean               385.6894            61.60741
+    ## 3rd Qu.             50.0000            42.00000
+    ## Max.            308633.0000         10413.00000
+    ## NA's              1711.0000          1703.00000
 
 ### Lab analysis
 
@@ -446,19 +446,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6960       1552         83         76          5 
+    ##       6964       1552         83         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3340      1698       364       247       220       150       127        77 
+    ##      3344      1698       364       247       220       150       127        77 
     ##        56  23456789 
     ##        56        55 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7337                                   341 
+    ##                                  7341                                   341 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   317                                   143 
     ##                              Nanopore                           MGISEQ-2000 
@@ -480,14 +480,14 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.802000   0.179000   0.009570   0.008760   0.000576 
+    ##   0.802000   0.179000   0.009560   0.008760   0.000576 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
     ##   0.51500   0.26200   0.05610   0.03810   0.03390   0.02310   0.01960   0.01190 
     ##        56  23456789 
-    ##   0.00864   0.00848 
+    ##   0.00863   0.00848 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -496,7 +496,7 @@ lab.tab
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03730                               0.01680 
     ##                              Nanopore                           MGISEQ-2000 
-    ##                               0.00930                               0.00694 
+    ##                               0.00929                               0.00694 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
     ##                               0.00541                               0.00365 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
@@ -617,8 +617,8 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     982   601     337              82      633
-    ## increased     67     734   438     210              60      454
+    ## decreased     92     982   601     338              82      633
+    ## increased     67     734   439     210              60      454
     ## unchanged    339    2844  1401    1123             279     1438
 
 Correspondence of Shannon diversity and Richness:
@@ -2389,7 +2389,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.025   9.000 467.000
+    ##   1.000   2.000   4.000   8.024   9.000 467.000
 
 ``` r
 
@@ -2404,7 +2404,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6793
+    ## [1] 6794
 
 ### Microbe co-occurrence
 
