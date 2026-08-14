@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14637    51
+    ## [1] 14646    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14637
+    ## [1] 14646
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14637
+    ## [1] 14646
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7054                    938                    230 
+    ##                   7059                    938                    230 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     46 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -307,11 +307,11 @@ sub.tab
     ##                    China United States of America                    Japan 
     ##                     3291                     1273                      349 
     ##              South Korea                  Germany                    Italy 
-    ##                      224                      213                      203 
+    ##                      224                      215                      203 
     ##                    Spain                  Denmark                Australia 
     ##                      200                      183                      153 
-    ##           United Kingdom 
-    ##                      144 
+    ##                   Canada 
+    ##                      146 
     ## 
     ## $`Body site`
     ## 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                       1251                       1032 
+    ##                       1254                       1032 
     ##                   6 months                   2 months 
     ##                        373                        371 
     ##                    2 weeks  Recent use of antibiotics 
@@ -360,7 +360,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.78700                0.10500                0.02570 
+    ##                0.78700                0.10500                0.02560 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01560                0.01490                0.00513 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -371,13 +371,13 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3670                   0.1420                   0.0390 
+    ##                   0.3670                   0.1420                   0.0389 
     ##              South Korea                  Germany                    Italy 
-    ##                   0.0250                   0.0238                   0.0227 
+    ##                   0.0250                   0.0240                   0.0226 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0223                   0.0204                   0.0171 
-    ##           United Kingdom 
-    ##                   0.0161 
+    ##                   Canada 
+    ##                   0.0163 
     ## 
     ## $`Body site`
     ## 
@@ -386,7 +386,7 @@ sub.tab
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01520                   0.01020                   0.00930 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00919                   0.00897                   0.00751 
+    ##                   0.00918                   0.00896                   0.00750 
     ##                    Rectum 
     ##                   0.00661 
     ## 
@@ -406,13 +406,13 @@ sub.tab
     ##                   3 months                    1 month 
     ##                    0.33000                    0.27200 
     ##                   6 months                   2 months 
-    ##                    0.09830                    0.09780 
+    ##                    0.09820                    0.09770 
     ##                    2 weeks  Recent use of antibiotics 
-    ##                    0.07140                    0.01400 
+    ##                    0.07130                    0.01400 
     ##                     1 week   currently on antibiotics 
-    ##                    0.01030                    0.00712 
+    ##                    0.01030                    0.00711 
     ## Current use of antibiotics                     1 year 
-    ##                    0.00633                    0.00580
+    ##                    0.00632                    0.00579
 
 Sample size:
 
@@ -426,10 +426,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               385.6894            61.60741
+    ## Mean               385.4898            61.59249
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1711.0000          1703.00000
+    ## NA's              1712.0000          1704.00000
 
 ### Lab analysis
 
@@ -446,19 +446,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6964       1552         83         76          5 
+    ##       6969       1552         83         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3344      1698       364       247       220       150       127        77 
+    ##      3346      1701       364       247       220       150       127        77 
     ##        56  23456789 
     ##        56        55 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7341                                   341 
+    ##                                  7347                                   341 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   317                                   143 
     ##                              Nanopore                           MGISEQ-2000 
@@ -480,14 +480,14 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.802000   0.179000   0.009560   0.008760   0.000576 
+    ##   0.802000   0.179000   0.009560   0.008750   0.000576 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51500   0.26200   0.05610   0.03810   0.03390   0.02310   0.01960   0.01190 
+    ##   0.51500   0.26200   0.05610   0.03800   0.03390   0.02310   0.01960   0.01190 
     ##        56  23456789 
-    ##   0.00863   0.00848 
+    ##   0.00862   0.00847 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -496,9 +496,9 @@ lab.tab
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03730                               0.01680 
     ##                              Nanopore                           MGISEQ-2000 
-    ##                               0.00929                               0.00694 
+    ##                               0.00928                               0.00693 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
-    ##                               0.00541                               0.00365 
+    ##                               0.00541                               0.00364 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
     ##                               0.00353                               0.00247
 
@@ -617,9 +617,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     982   601     338              82      633
+    ## decreased     92     983   602     338              82      634
     ## increased     67     734   439     210              60      454
-    ## unchanged    339    2844  1401    1123             279     1438
+    ## unchanged    339    2844  1403    1123             279     1438
 
 Correspondence of Shannon diversity and Richness:
 
@@ -630,7 +630,7 @@ table(exps$Shannon, exps$Richness)
 
     ##            
     ##             decreased increased unchanged
-    ##   decreased       353        15        80
+    ##   decreased       354        15        80
     ##   increased        14       225        70
     ##   unchanged       132       117      1157
 
@@ -765,6 +765,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Chronic obstructive pulmonary disease                             3         2
     ## Clinical treatment                                                1         2
     ## Coccidiosis                                                       0         1
+    ## Colon carcinoma                                                   0         1
     ## Delivery method                                                   3         4
     ## Diabetes mellitus                                                 0         1
     ## Diarrhea                                                          3         4
@@ -818,7 +819,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Bipolar disorder                                                  0         0
     ## Celiac disease                                                    0         0
     ## Chlamydia trachomatis                                             2         2
-    ## Colon carcinoma                                                   0         0
     ## Colorectal adenoma                                                2         2
     ## Contraception                                                     0         0
     ## COVID-19 symptoms measurement                                     0         0
@@ -981,6 +981,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Chronic obstructive pulmonary disease                             5
     ## Clinical treatment                                               12
     ## Coccidiosis                                                       4
+    ## Colon carcinoma                                                  10
     ## Delivery method                                                  13
     ## Diabetes mellitus                                                 9
     ## Diarrhea                                                         15
@@ -1034,7 +1035,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Bipolar disorder                                                  5
     ## Celiac disease                                                    6
     ## Chlamydia trachomatis                                             2
-    ## Colon carcinoma                                                  10
     ## Colorectal adenoma                                               20
     ## Contraception                                                     5
     ## COVID-19 symptoms measurement                                     5
@@ -1203,6 +1203,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Chronic obstructive pulmonary disease                         0.300     0.200
     ## Clinical treatment                                            0.067     0.130
     ## Coccidiosis                                                   0.000     0.200
+    ## Colon carcinoma                                               0.000     0.091
     ## Delivery method                                               0.150     0.200
     ## Diabetes mellitus                                             0.000     0.100
     ## Diarrhea                                                      0.140     0.180
@@ -1256,7 +1257,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Bipolar disorder                                              0.000     0.000
     ## Celiac disease                                                0.000     0.000
     ## Chlamydia trachomatis                                         0.330     0.330
-    ## Colon carcinoma                                               0.000     0.000
     ## Colorectal adenoma                                            0.083     0.083
     ## Contraception                                                 0.000     0.000
     ## COVID-19 symptoms measurement                                 0.000     0.000
@@ -1419,6 +1419,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Chronic obstructive pulmonary disease                         0.500
     ## Clinical treatment                                            0.800
     ## Coccidiosis                                                   0.800
+    ## Colon carcinoma                                               0.910
     ## Delivery method                                               0.650
     ## Diabetes mellitus                                             0.900
     ## Diarrhea                                                      0.680
@@ -1472,7 +1473,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Bipolar disorder                                              1.000
     ## Celiac disease                                                1.000
     ## Chlamydia trachomatis                                         0.330
-    ## Colon carcinoma                                               1.000
     ## Colorectal adenoma                                            0.830
     ## Contraception                                                 1.000
     ## COVID-19 symptoms measurement                                 1.000
@@ -1548,6 +1548,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Acute lymphoblastic leukemia                                      5         1
     ## Air pollution                                                     9         5
     ## Cervical glandular intraepithelial neoplasia                      4         0
+    ## Colon carcinoma                                                   0         4
     ## Crohn's disease                                                   2         6
     ## Diarrhea                                                          5         1
     ## Dry eye syndrome                                                  0         4
@@ -1561,7 +1562,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Vesicle membrane                                                  5         1
     ## Alzheimer's disease                                               8         5
     ## Atopic asthma                                                     4         1
-    ## Colon carcinoma                                                   0         3
     ## Delivery method                                                   4         1
     ## Depressive disorder                                               0         3
     ## Endometriosis                                                     4         1
@@ -1685,6 +1685,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Acute lymphoblastic leukemia                                      1
     ## Air pollution                                                     6
     ## Cervical glandular intraepithelial neoplasia                      2
+    ## Colon carcinoma                                                  10
     ## Crohn's disease                                                   4
     ## Diarrhea                                                          3
     ## Dry eye syndrome                                                  4
@@ -1698,7 +1699,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Vesicle membrane                                                  0
     ## Alzheimer's disease                                              27
     ## Atopic asthma                                                     7
-    ## Colon carcinoma                                                  10
     ## Delivery method                                                   9
     ## Depressive disorder                                               4
     ## Endometriosis                                                     8
@@ -1828,6 +1828,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Acute lymphoblastic leukemia                                  0.710     0.140
     ## Air pollution                                                 0.450     0.250
     ## Cervical glandular intraepithelial neoplasia                  0.670     0.000
+    ## Colon carcinoma                                               0.000     0.290
     ## Crohn's disease                                               0.170     0.500
     ## Diarrhea                                                      0.560     0.110
     ## Dry eye syndrome                                              0.000     0.500
@@ -1841,7 +1842,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Vesicle membrane                                              0.830     0.170
     ## Alzheimer's disease                                           0.200     0.120
     ## Atopic asthma                                                 0.330     0.083
-    ## Colon carcinoma                                               0.000     0.230
     ## Delivery method                                               0.290     0.071
     ## Depressive disorder                                           0.000     0.430
     ## Endometriosis                                                 0.310     0.077
@@ -1965,6 +1965,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Acute lymphoblastic leukemia                                   0.14
     ## Air pollution                                                  0.30
     ## Cervical glandular intraepithelial neoplasia                   0.33
+    ## Colon carcinoma                                                0.71
     ## Crohn's disease                                                0.33
     ## Diarrhea                                                       0.33
     ## Dry eye syndrome                                               0.50
@@ -1978,7 +1979,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Vesicle membrane                                               0.00
     ## Alzheimer's disease                                            0.68
     ## Atopic asthma                                                  0.58
-    ## Colon carcinoma                                                0.77
     ## Delivery method                                                0.64
     ## Depressive disorder                                            0.57
     ## Endometriosis                                                  0.62
@@ -2370,7 +2370,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8163
+    ## [1] 8164
 
 Development of unique microbes captured over time:
 
@@ -2389,7 +2389,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.024   9.000 467.000
+    ##   1.000   2.000   4.000   8.021   9.000 467.000
 
 ``` r
 
@@ -2404,7 +2404,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6794
+    ## [1] 6797
 
 ### Microbe co-occurrence
 
