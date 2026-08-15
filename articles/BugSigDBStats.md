@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14646    51
+    ## [1] 14652    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2098
+    ## [1] 2099
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14646
+    ## [1] 14652
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14646
+    ## [1] 14652
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -226,13 +226,13 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                 time series / longitudinal observational 
     ##                                                                                      155 
     ##                                                                       prospective cohort 
-    ##                                                                                      167 
+    ##                                                                                      168 
     ##                                                                    laboratory experiment 
     ##                                                                                      223 
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      534 
     ##                                                                             case-control 
-    ##                                                                                      821
+    ##                                                                                      822
 
 ## Experiment stats
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7059                    938                    230 
+    ##                   7064                    938                    230 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     46 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -311,12 +311,12 @@ sub.tab
     ##                    Spain                  Denmark                Australia 
     ##                      200                      183                      153 
     ##                   Canada 
-    ##                      146 
+    ##                      150 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5728                       451                       175 
+    ##                      5729                       451                       175 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       136                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -338,9 +338,9 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                       1254                       1032 
+    ##                       1258                       1032 
     ##                   6 months                   2 months 
-    ##                        373                        371 
+    ##                        373                        372 
     ##                    2 weeks  Recent use of antibiotics 
     ##                        271                         53 
     ##                     1 week   currently on antibiotics 
@@ -364,9 +364,9 @@ sub.tab
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01560                0.01490                0.00513 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00368                0.00312                0.00268 
+    ##                0.00368                0.00312                0.00267 
     ##    Macaca fascicularis 
-    ##                0.00268 
+    ##                0.00267 
     ## 
     ## $`Location of subjects`
     ## 
@@ -377,18 +377,18 @@ sub.tab
     ##                    Spain                  Denmark                Australia 
     ##                   0.0223                   0.0204                   0.0171 
     ##                   Canada 
-    ##                   0.0163 
+    ##                   0.0167 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.64200                   0.05050                   0.01960 
+    ##                   0.64100                   0.05050                   0.01960 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01520                   0.01020                   0.00930 
+    ##                   0.01520                   0.01020                   0.00929 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00918                   0.00896                   0.00750 
+    ##                   0.00918                   0.00895                   0.00750 
     ##                    Rectum 
-    ##                   0.00661 
+    ##                   0.00660 
     ## 
     ## $Condition
     ## 
@@ -397,22 +397,22 @@ sub.tab
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0189                    0.0145                    0.0137 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
-    ##                    0.0130                    0.0127                    0.0113 
+    ##                    0.0130                    0.0126                    0.0113 
     ##              Constipation 
     ##                    0.0104 
     ## 
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                    0.33000                    0.27200 
+    ##                    0.33100                    0.27100 
     ##                   6 months                   2 months 
-    ##                    0.09820                    0.09770 
+    ##                    0.09810                    0.09780 
     ##                    2 weeks  Recent use of antibiotics 
-    ##                    0.07130                    0.01400 
+    ##                    0.07120                    0.01390 
     ##                     1 week   currently on antibiotics 
-    ##                    0.01030                    0.00711 
+    ##                    0.01030                    0.00710 
     ## Current use of antibiotics                     1 year 
-    ##                    0.00632                    0.00579
+    ##                    0.00631                    0.00578
 
 Sample size:
 
@@ -426,10 +426,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               385.4898            61.59249
+    ## Mean               385.2915            61.58198
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1712.0000          1704.00000
+    ## NA's              1713.0000          1705.00000
 
 ### Lab analysis
 
@@ -446,21 +446,21 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       6969       1552         83         76          5 
+    ##       6973       1552         84         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3346      1701       364       247       220       150       127        77 
+    ##      3346      1705       364       247       220       150       127        77 
     ##        56  23456789 
     ##        56        55 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7347                                   341 
+    ##                                  7351                                   341 
     ##                           Ion Torrent                               RT-qPCR 
-    ##                                   317                                   143 
+    ##                                   317                                   144 
     ##                              Nanopore                           MGISEQ-2000 
     ##                                    79                                    59 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
@@ -480,27 +480,27 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.802000   0.179000   0.009560   0.008750   0.000576 
+    ##   0.802000   0.179000   0.009670   0.008750   0.000575 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51500   0.26200   0.05610   0.03800   0.03390   0.02310   0.01960   0.01190 
+    ##   0.51500   0.26200   0.05600   0.03800   0.03390   0.02310   0.01950   0.01180 
     ##        56  23456789 
-    ##   0.00862   0.00847 
+    ##   0.00862   0.00846 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
     ##                               0.86300                               0.04010 
     ##                           Ion Torrent                               RT-qPCR 
-    ##                               0.03730                               0.01680 
+    ##                               0.03720                               0.01690 
     ##                              Nanopore                           MGISEQ-2000 
     ##                               0.00928                               0.00693 
     ## PacBio Vega (VS)/Revio (RS)/Sequel II           Human Intestinal Tract Chip 
-    ##                               0.00541                               0.00364 
+    ##                               0.00540                               0.00364 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
-    ##                               0.00353                               0.00247
+    ##                               0.00352                               0.00247
 
 ### Statistical analysis
 
@@ -617,9 +617,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     983   602     338              82      634
+    ## decreased     92     983   603     338              82      634
     ## increased     67     734   439     210              60      454
-    ## unchanged    339    2844  1403    1123             279     1438
+    ## unchanged    339    2844  1405    1123             279     1438
 
 Correspondence of Shannon diversity and Richness:
 
@@ -2389,7 +2389,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.021   9.000 467.000
+    ##   1.000   2.000   4.000   8.022   9.000 467.000
 
 ``` r
 
@@ -2404,7 +2404,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6797
+    ## [1] 6799
 
 ### Microbe co-occurrence
 
@@ -2444,7 +2444,7 @@ top20
     ##     Ruminococcus      Clostridium  Parabacteroides        Alistipes 
     ##              502              501              470              434 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              371              368              359              320 
+    ##              371              368              360              320 
     ##     Anaerostipes      Collinsella        Dialister     Enterococcus 
     ##              306              305              301              301
 
@@ -2513,7 +2513,7 @@ top20.down
     ##     Ruminococcus      Clostridium  Parabacteroides        Alistipes 
     ##              277              245              197              233 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              128              208              206              123 
+    ##              128              208              207              123 
     ##     Anaerostipes      Collinsella        Dialister     Enterococcus 
     ##              162              137              172               85
 
