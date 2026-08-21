@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14780    51
+    ## [1] 14788    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14780
+    ## [1] 14788
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14780
+    ## [1] 14788
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -220,7 +220,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                       case-control,laboratory experiment 
     ##                                                                                        8 
     ##                                                                            meta-analysis 
-    ##                                                                                       34 
+    ##                                                                                       35 
     ##                                                              randomized controlled trial 
     ##                                                                                       99 
     ##                                                 time series / longitudinal observational 
@@ -232,7 +232,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      540 
     ##                                                                             case-control 
-    ##                                                                                      823
+    ##                                                                                      822
 
 ## Experiment stats
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7156                    938                    237 
+    ##                   7162                    938                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3366                     1281                      349 
+    ##                     3372                     1281                      349 
     ##              South Korea                  Germany                    Italy 
     ##                      224                      214                      203 
     ##                    Spain                  Denmark                Australia 
@@ -318,7 +318,7 @@ sub.tab
     ##                     Feces                    Saliva                    Vagina 
     ##                      5791                       451                       180 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                       140                        91                        83 
+    ##                       146                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
     ##                        82                        80                        67 
     ##                    Rectum 
@@ -327,7 +327,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                       301                       294                       235 
+    ##                       298                       294                       235 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                       166                       127                       120 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -342,7 +342,7 @@ sub.tab
     ##                   2 months                   6 months 
     ##                        410                        385 
     ##                    2 weeks                     1 week 
-    ##                        271                         55 
+    ##                        271                         61 
     ##  Recent use of antibiotics   currently on antibiotics 
     ##                         53                         28 
     ## Current use of antibiotics                     1 year 
@@ -364,14 +364,14 @@ sub.tab
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01540                0.01480                0.00474 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00364                0.00309                0.00265 
+    ##                0.00364                0.00308                0.00264 
     ##    Macaca fascicularis 
-    ##                0.00265 
+    ##                0.00264 
     ## 
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3710                   0.1410                   0.0385 
+    ##                   0.3720                   0.1410                   0.0385 
     ##              South Korea                  Germany                    Italy 
     ##                   0.0247                   0.0236                   0.0224 
     ##                    Spain                  Denmark                Australia 
@@ -384,35 +384,35 @@ sub.tab
     ##                     Feces                    Saliva                    Vagina 
     ##                   0.64100                   0.04990                   0.01990 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01550                   0.01010                   0.00919 
+    ##                   0.01620                   0.01010                   0.00919 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00908                   0.00886                   0.00742 
+    ##                   0.00907                   0.00885                   0.00741 
     ##                    Rectum 
-    ##                   0.00698 
+    ##                   0.00697 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0339                    0.0331                    0.0265 
+    ##                    0.0336                    0.0331                    0.0265 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0187                    0.0143                    0.0135 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
-    ##                    0.0129                    0.0125                    0.0114 
+    ##                    0.0128                    0.0125                    0.0114 
     ##              Constipation 
     ##                    0.0103 
     ## 
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                    0.32500                    0.26800 
+    ##                    0.32400                    0.26800 
     ##                   2 months                   6 months 
-    ##                    0.10600                    0.09920 
+    ##                    0.10500                    0.09900 
     ##                    2 weeks                     1 week 
-    ##                    0.06980                    0.01420 
+    ##                    0.06970                    0.01570 
     ##  Recent use of antibiotics   currently on antibiotics 
-    ##                    0.01370                    0.00721 
+    ##                    0.01360                    0.00720 
     ## Current use of antibiotics                     1 year 
-    ##                    0.00618                    0.00567
+    ##                    0.00617                    0.00566
 
 Sample size:
 
@@ -423,13 +423,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             11.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               385.7285            62.85779
-    ## 3rd Qu.             50.0000            42.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1766.0000          1758.00000
+    ## Min.                 0.0000              1.0000
+    ## 1st Qu.             11.0000             10.0000
+    ## Median              24.0000             21.0000
+    ## Mean               386.1032             62.8342
+    ## 3rd Qu.             50.0000             42.0000
+    ## Max.            308633.0000          10413.0000
+    ## NA's              1781.0000           1773.0000
 
 ### Lab analysis
 
@@ -446,23 +446,23 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7057       1565         84         76          5 
+    ##       7063       1565         84         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3357      1755       366       247       220       150       143        78 
+    ##      3357      1755       366       247       220       150       149        78 
     ##        56  23456789 
     ##        56        55 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7427                                   341 
+    ##                                  7432                                   341 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   317                                   144 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                                    79                                    62 
+    ##                                    79                                    68 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
     ##                                    59                                    31 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
@@ -480,27 +480,27 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.803000   0.178000   0.009560   0.008650   0.000569 
+    ##   0.803000   0.178000   0.009550   0.008640   0.000569 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51000   0.26700   0.05560   0.03750   0.03340   0.02280   0.02170   0.01190 
+    ##   0.50900   0.26600   0.05550   0.03750   0.03340   0.02280   0.02260   0.01180 
     ##        56  23456789 
-    ##   0.00851   0.00836 
+    ##   0.00850   0.00835 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                               0.86300                               0.03960 
+    ##                               0.86200                               0.03960 
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03680                               0.01670 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00918                               0.00720 
+    ##                               0.00917                               0.00789 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                               0.00686                               0.00360 
+    ##                               0.00685                               0.00360 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
-    ##                               0.00349                               0.00244
+    ##                               0.00348                               0.00244
 
 ### Statistical analysis
 
@@ -618,8 +618,8 @@ apply(exps[,div.cols], 2, table)
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     92     987   606     339              82      635
-    ## increased     67     736   437     210              60      454
-    ## unchanged    352    2864  1424    1134             279     1446
+    ## increased     67     736   436     210              60      454
+    ## unchanged    352    2864  1422    1134             279     1446
 
 Correspondence of Shannon diversity and Richness:
 
@@ -700,7 +700,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Food allergy                                                      6         2
     ## Gestational diabetes                                              4         0
     ## Human immunodeficiency virus                                      0         4
-    ## SARS-CoV-2-related disease                                        0         4
     ## Alcohol drinking                                                  3         0
     ## Antimicrobial agent                                               7        10
     ## Atopic asthma                                                     4         1
@@ -717,6 +716,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Non-alcoholic steatohepatitis                                     1         4
     ## Response to antiviral drug                                        2         5
     ## Response to immune checkpoint inhibitor                           3         0
+    ## SARS-CoV-2-related disease                                        0         3
     ## Schizophrenia                                                     1         4
     ## Traditional Chinese medicine type                                 2         5
     ## Tuberculosis                                                      2         5
@@ -917,7 +917,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Food allergy                                                     19
     ## Gestational diabetes                                             37
     ## Human immunodeficiency virus                                      6
-    ## SARS-CoV-2-related disease                                        5
     ## Alcohol drinking                                                  2
     ## Antimicrobial agent                                              25
     ## Atopic asthma                                                     7
@@ -934,6 +933,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Non-alcoholic steatohepatitis                                     4
     ## Response to antiviral drug                                       17
     ## Response to immune checkpoint inhibitor                           2
+    ## SARS-CoV-2-related disease                                        5
     ## Schizophrenia                                                    24
     ## Traditional Chinese medicine type                                 8
     ## Tuberculosis                                                      0
@@ -1140,7 +1140,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Food allergy                                                  0.220     0.074
     ## Gestational diabetes                                          0.098     0.000
     ## Human immunodeficiency virus                                  0.000     0.400
-    ## SARS-CoV-2-related disease                                    0.000     0.440
     ## Alcohol drinking                                              0.600     0.000
     ## Antimicrobial agent                                           0.170     0.240
     ## Atopic asthma                                                 0.330     0.083
@@ -1157,6 +1156,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Non-alcoholic steatohepatitis                                 0.110     0.440
     ## Response to antiviral drug                                    0.083     0.210
     ## Response to immune checkpoint inhibitor                       0.600     0.000
+    ## SARS-CoV-2-related disease                                    0.000     0.380
     ## Schizophrenia                                                 0.034     0.140
     ## Traditional Chinese medicine type                             0.130     0.330
     ## Tuberculosis                                                  0.290     0.710
@@ -1357,7 +1357,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Food allergy                                                  0.700
     ## Gestational diabetes                                          0.900
     ## Human immunodeficiency virus                                  0.600
-    ## SARS-CoV-2-related disease                                    0.560
     ## Alcohol drinking                                              0.400
     ## Antimicrobial agent                                           0.600
     ## Atopic asthma                                                 0.580
@@ -1374,6 +1373,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Non-alcoholic steatohepatitis                                 0.440
     ## Response to antiviral drug                                    0.710
     ## Response to immune checkpoint inhibitor                       0.400
+    ## SARS-CoV-2-related disease                                    0.620
     ## Schizophrenia                                                 0.830
     ## Traditional Chinese medicine type                             0.530
     ## Tuberculosis                                                  0.000
@@ -2393,7 +2393,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.019   9.000 467.000
+    ##   1.000   2.000   4.000   8.015   9.000 467.000
 
 ``` r
 
