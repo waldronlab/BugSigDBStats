@@ -31,10 +31,10 @@ The input signatures synchronized with the NCBI Taxonomy
  library(bugsigdbr)
 #> Note: After Feb. 16, 2025 PubMed ID replaced Study ID in BugSigDb. See https://github.com/waldronlab/BugSigDB/issues/263.
  df <- importBugSigDB()
-#> Using cached version from 2026-08-22 05:09:28
+#> Using cached version from 2026-08-23 05:10:38
  sigs <- getSignatures(df)
  onto <- getNcbiTaxonomyObo()
-#> Using cached version from 2026-08-22 05:10:27
+#> Using cached version from 2026-08-23 05:11:34
 #> Retrieveing NCBI taxonomy ontology from cache.
  sigs <- syncWithNCBI(sigs, onto)
  

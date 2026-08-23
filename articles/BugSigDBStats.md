@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14795    51
+    ## [1] 14798    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2111
+    ## [1] 2112
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14795
+    ## [1] 14798
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14795
+    ## [1] 14798
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -232,7 +232,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      540 
     ##                                                                             case-control 
-    ##                                                                                      823
+    ##                                                                                      824
 
 ## Experiment stats
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7168                    938                    237 
+    ##                   7171                    938                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -309,14 +309,14 @@ sub.tab
     ##              South Korea                  Germany                    Italy 
     ##                      224                      214                      203 
     ##                    Spain                  Denmark                Australia 
-    ##                      200                      183                      153 
+    ##                      200                      183                      154 
     ##                   Canada 
     ##                      150 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5793                       451                       180 
+    ##                      5796                       451                       180 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -327,7 +327,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                       298                       294                       235 
+    ##                       300                       294                       235 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                       166                       127                       120 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                       1260                       1041 
+    ##                       1261                       1041 
     ##                   2 months                   6 months 
     ##                        410                        385 
     ##                    2 weeks                     1 week 
@@ -362,7 +362,7 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.78900                0.10300                0.02610 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01540                0.01480                0.00473 
+    ##                0.01540                0.01470                0.00473 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                0.00363                0.00308                0.00264 
     ##    Macaca fascicularis 
@@ -371,11 +371,11 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3720                   0.1410                   0.0385 
+    ##                   0.3720                   0.1410                   0.0384 
     ##              South Korea                  Germany                    Italy 
     ##                   0.0247                   0.0236                   0.0224 
     ##                    Spain                  Denmark                Australia 
-    ##                   0.0220                   0.0202                   0.0169 
+    ##                   0.0220                   0.0202                   0.0170 
     ##                   Canada 
     ##                   0.0165 
     ## 
@@ -386,14 +386,14 @@ sub.tab
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01610                   0.01010                   0.00918 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00907                   0.00885                   0.00741 
+    ##                   0.00907                   0.00884                   0.00741 
     ##                    Rectum 
     ##                   0.00697 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0335                    0.0331                    0.0265 
+    ##                    0.0338                    0.0331                    0.0264 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0187                    0.0143                    0.0135 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -426,10 +426,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               385.9286            62.82754
+    ## Mean               385.8799            62.82277
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1783.0000          1777.00000
+    ## NA's              1785.0000          1779.00000
 
 ### Lab analysis
 
@@ -446,7 +446,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7069       1565         84         76          5 
+    ##       7069       1568         84         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -458,7 +458,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7427                                   341 
+    ##                                  7430                                   341 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   324                                   144 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -480,7 +480,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.803000   0.178000   0.009550   0.008640   0.000568 
+    ##   0.803000   0.178000   0.009540   0.008630   0.000568 
     ## 
     ## $`16S variable region`
     ## 
@@ -498,9 +498,9 @@ lab.tab
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
     ##                               0.00916                               0.00835 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                               0.00684                               0.00360 
+    ##                               0.00684                               0.00359 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
-    ##                               0.00348                               0.00244
+    ##                               0.00348                               0.00243
 
 ### Statistical analysis
 
@@ -617,9 +617,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     987   606     339              82      635
+    ## decreased     92     987   607     339              82      635
     ## increased     67     736   436     210              60      454
-    ## unchanged    352    2866  1422    1136             279     1446
+    ## unchanged    352    2867  1422    1136             279     1446
 
 Correspondence of Shannon diversity and Richness:
 
@@ -878,7 +878,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Chronic constipation                                             12
     ## Clostridium difficile infection                                   1
     ## Gingivitis                                                       13
-    ## Non-alcoholic fatty liver disease                                19
+    ## Non-alcoholic fatty liver disease                                20
     ## Pancreatic carcinoma                                              6
     ## Smoking behaviour measurement                                     9
     ## Age                                                              10
@@ -1102,7 +1102,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Chronic constipation                                          0.430     0.000
     ## Clostridium difficile infection                               0.830     0.083
     ## Gingivitis                                                    0.043     0.390
-    ## Non-alcoholic fatty liver disease                             0.140     0.350
+    ## Non-alcoholic fatty liver disease                             0.130     0.340
     ## Pancreatic carcinoma                                          0.560     0.062
     ## Smoking behaviour measurement                                 0.470     0.000
     ## Age                                                           0.210     0.450
@@ -1320,7 +1320,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Chronic constipation                                          0.570
     ## Clostridium difficile infection                               0.083
     ## Gingivitis                                                    0.570
-    ## Non-alcoholic fatty liver disease                             0.510
+    ## Non-alcoholic fatty liver disease                             0.530
     ## Pancreatic carcinoma                                          0.380
     ## Smoking behaviour measurement                                 0.530
     ## Age                                                           0.340
@@ -2088,7 +2088,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 379       612      1737
+    ## Feces                                                 379       612      1738
     ## Sputum                                                  7        23        16
     ## Vagina                                                 23         8        44
     ## Posterior fornix of vagina                             12         0        10
@@ -2378,7 +2378,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8189
+    ## [1] 8190
 
 Development of unique microbes captured over time:
 
