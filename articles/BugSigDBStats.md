@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14826    51
+    ## [1] 14833    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14826
+    ## [1] 14833
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14826
+    ## [1] 14833
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7188                    938                    237 
+    ##                   7192                    938                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5801                       451                       185 
+    ##                      5805                       451                       185 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -327,7 +327,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                       301                       294                       235 
+    ##                       303                       294                       235 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                       168                       127                       120 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -364,7 +364,7 @@ sub.tab
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01540                0.01470                0.00472 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00363                0.00308                0.00264 
+    ##                0.00362                0.00307                0.00264 
     ##    Macaca fascicularis 
     ##                0.00264 
     ## 
@@ -382,18 +382,18 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.64000                   0.04980                   0.02040 
+    ##                   0.64000                   0.04970                   0.02040 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01610                   0.01000                   0.00916 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00905                   0.00883                   0.00739 
+    ##                   0.00904                   0.00882                   0.00739 
     ##                    Rectum 
     ##                   0.00695 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0338                    0.0330                    0.0264 
+    ##                    0.0340                    0.0330                    0.0264 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0189                    0.0143                    0.0135 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -429,7 +429,7 @@ ssize
     ## Mean               385.1827            62.76041
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1786.0000          1778.00000
+    ## NA's              1790.0000          1782.00000
 
 ### Lab analysis
 
@@ -446,7 +446,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7079       1575         84         76          5 
+    ##       7079       1579         84         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -458,7 +458,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7442                                   346 
+    ##                                  7446                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   324                                   144 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -480,7 +480,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.803000   0.179000   0.009520   0.008620   0.000567 
+    ##   0.802000   0.179000   0.009520   0.008610   0.000567 
     ## 
     ## $`16S variable region`
     ## 
@@ -498,7 +498,7 @@ lab.tab
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
     ##                               0.00914                               0.00833 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                               0.00683                               0.00359 
+    ##                               0.00682                               0.00359 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
     ##                               0.00347                               0.00243
 
@@ -2401,7 +2401,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.015   9.000 467.000
+    ##   1.000   2.000   4.000   8.016   9.000 467.000
 
 ``` r
 
@@ -2454,7 +2454,7 @@ top20
     ##    Streptococcus    Lactobacillus       Prevotella        Roseburia 
     ##              547              544              515              515 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
-    ##              510              508              470              434 
+    ##              509              508              470              434 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              376              371              360              319 
     ##     Anaerostipes     Enterococcus      Collinsella        Dialister 
@@ -2523,7 +2523,7 @@ top20.down
     ##    Streptococcus    Lactobacillus       Prevotella        Roseburia 
     ##              197              200              263              341 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
-    ##              249              281              197              233 
+    ##              248              281              197              233 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              130              209              207              123 
     ##     Anaerostipes     Enterococcus      Collinsella        Dialister 
