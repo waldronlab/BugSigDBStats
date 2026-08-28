@@ -2382,7 +2382,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8200
+    ## [1] 8205
 
 Development of unique microbes captured over time:
 
