@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14836    51
+    ## [1] 14841    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2114
+    ## [1] 2115
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14836
+    ## [1] 14841
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14836
+    ## [1] 14841
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -232,7 +232,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      541 
     ##                                                                             case-control 
-    ##                                                                                      824
+    ##                                                                                      825
 
 ## Experiment stats
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7194                    938                    237 
+    ##                   7197                    938                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3379                     1287                      350 
+    ##                     3381                     1287                      350 
     ##              South Korea                  Germany                    Italy 
     ##                      224                      214                      203 
     ##                    Spain                  Denmark                Australia 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5799                       451                       179 
+    ##                      5800                       451                       179 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -327,7 +327,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                       304                       294                       235 
+    ##                       305                       294                       235 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                       168                       127                       120 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                       1265                       1041 
+    ##                       1267                       1041 
     ##                   2 months                   6 months 
     ##                        411                        388 
     ##                    2 weeks                     1 week 
@@ -371,7 +371,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3710                   0.1410                   0.0385 
+    ##                   0.3710                   0.1410                   0.0384 
     ##              South Korea                  Germany                    Italy 
     ##                   0.0246                   0.0235                   0.0223 
     ##                    Spain                  Denmark                Australia 
@@ -382,7 +382,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.64000                   0.04970                   0.01970 
+    ##                   0.63900                   0.04970                   0.01970 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01610                   0.01000                   0.00915 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -393,7 +393,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0341                    0.0330                    0.0264 
+    ##                    0.0342                    0.0330                    0.0264 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0189                    0.0143                    0.0135 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -404,15 +404,15 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                    0.32400                    0.26700 
+    ##                    0.32400                    0.26600 
     ##                   2 months                   6 months 
-    ##                    0.10500                    0.09940 
+    ##                    0.10500                    0.09930 
     ##                    2 weeks                     1 week 
     ##                    0.07040                    0.01660 
     ##  Recent use of antibiotics   currently on antibiotics 
     ##                    0.01360                    0.00768 
     ## Current use of antibiotics                     1 year 
-    ##                    0.00615                    0.00563
+    ##                    0.00614                    0.00563
 
 Sample size:
 
@@ -426,10 +426,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               384.9854            62.74669
+    ## Mean               384.8961            62.75126
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1788.0000          1782.00000
+    ## NA's              1789.0000          1783.00000
 
 ### Lab analysis
 
@@ -446,19 +446,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7082       1578         84         76          5 
+    ##       7084       1579         84         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3353      1757       367       246       220       154       153        84 
+    ##      3353      1757       369       246       220       154       153        84 
     ##        56  23456789 
     ##        56        55 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7445                                   346 
+    ##                                  7448                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   328                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -480,14 +480,14 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.802000   0.179000   0.009520   0.008610   0.000567 
+    ##   0.802000   0.179000   0.009520   0.008610   0.000566 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.50800   0.26600   0.05560   0.03720   0.03330   0.02330   0.02320   0.01270 
+    ##   0.50700   0.26600   0.05580   0.03720   0.03330   0.02330   0.02320   0.01270 
     ##        56  23456789 
-    ##   0.00848   0.00833 
+    ##   0.00847   0.00832 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -619,7 +619,7 @@ apply(exps[,div.cols], 2, table)
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     92     989   610     340              83      639
     ## increased     67     737   436     212              60      455
-    ## unchanged    355    2874  1424    1136             279     1451
+    ## unchanged    355    2875  1424    1136             279     1452
 
 Correspondence of Shannon diversity and Richness:
 
@@ -632,7 +632,7 @@ table(exps$Shannon, exps$Richness)
     ##             decreased increased unchanged
     ##   decreased       354        15        81
     ##   increased        11       225        70
-    ##   unchanged       139       118      1169
+    ##   unchanged       139       118      1170
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -2382,7 +2382,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8224
+    ## [1] 8227
 
 Development of unique microbes captured over time:
 
@@ -2401,7 +2401,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.021   9.000 467.000
+    ##    1.00    2.00    4.00    8.03    9.00  467.00
 
 ``` r
 
@@ -2416,7 +2416,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6860
+    ## [1] 6864
 
 ### Microbe co-occurrence
 
