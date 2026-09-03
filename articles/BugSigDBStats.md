@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14845    51
+    ## [1] 14846    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14845
+    ## [1] 14846
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14845
+    ## [1] 14846
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -218,7 +218,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                    case-control,time series / longitudinal observational 
     ##                                                                                        7 
     ##                                                       case-control,laboratory experiment 
-    ##                                                                                        9 
+    ##                                                                                        8 
     ##                                                                            meta-analysis 
     ##                                                                                       35 
     ##                                                              randomized controlled trial 
@@ -228,7 +228,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                       prospective cohort 
     ##                                                                                      169 
     ##                                                                    laboratory experiment 
-    ##                                                                                      223 
+    ##                                                                                      224 
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      543 
     ##                                                                             case-control 
@@ -2382,7 +2382,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8254
+    ## [1] 8257
 
 Development of unique microbes captured over time:
 
@@ -2401,7 +2401,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.062   9.000 467.000
+    ##   1.000   2.000   4.000   8.063   9.000 467.000
 
 ``` r
 
@@ -2416,7 +2416,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6875
+    ## [1] 6877
 
 ### Microbe co-occurrence
 
