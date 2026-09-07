@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14869    51
+    ## [1] 14877    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14869
+    ## [1] 14877
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14869
+    ## [1] 14877
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7211                    944                    237 
+    ##                   7215                    944                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3393                     1275                      350 
+    ##                     3397                     1275                      350 
     ##              South Korea                  Germany                    Italy 
     ##                      224                      217                      203 
     ##                    Spain                  Denmark                Australia 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                       1273                       1044 
+    ##                       1277                       1044 
     ##                   2 months                   6 months 
     ##                        410                        388 
     ##                    2 weeks                     1 week 
@@ -364,7 +364,7 @@ sub.tab
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01530                0.01470                0.00471 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
-    ##                0.00362                0.00307                0.00263 
+    ##                0.00361                0.00307                0.00263 
     ##    Macaca fascicularis 
     ##                0.00263 
     ## 
@@ -384,9 +384,9 @@ sub.tab
     ##                     Feces                    Saliva                    Vagina 
     ##                   0.63800                   0.04890                   0.01970 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01610                   0.01000                   0.00915 
+    ##                   0.01610                   0.01000                   0.00914 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00904                   0.00882                   0.00738 
+    ##                   0.00903                   0.00881                   0.00738 
     ##                    Rectum 
     ##                   0.00694 
     ## 
@@ -404,15 +404,15 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                    0.32400                    0.26600 
+    ##                    0.32500                    0.26600 
     ##                   2 months                   6 months 
-    ##                    0.10400                    0.09880 
+    ##                    0.10400                    0.09870 
     ##                    2 weeks                     1 week 
-    ##                    0.07160                    0.01660 
+    ##                    0.07150                    0.01650 
     ##  Recent use of antibiotics   currently on antibiotics 
-    ##                    0.01350                    0.00764 
+    ##                    0.01350                    0.00763 
     ##                    6 weeks Current use of antibiotics 
-    ##                    0.00713                    0.00611
+    ##                    0.00712                    0.00611
 
 Sample size:
 
@@ -429,7 +429,7 @@ ssize
     ## Mean               384.2968            62.63781
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1795.0000          1790.00000
+    ## NA's              1799.0000          1794.00000
 
 ### Lab analysis
 
@@ -446,7 +446,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7087       1589         85         76          5 
+    ##       7087       1593         85         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -458,7 +458,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7461                                   346 
+    ##                                  7465                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   328                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -480,7 +480,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.802000   0.180000   0.009610   0.008600   0.000565 
+    ##   0.801000   0.180000   0.009610   0.008590   0.000565 
     ## 
     ## $`16S variable region`
     ## 
@@ -494,9 +494,9 @@ lab.tab
     ##                              Illumina                              Roche454 
     ##                               0.86100                               0.03990 
     ##                           Ion Torrent                               RT-qPCR 
-    ##                               0.03790                               0.01650 
+    ##                               0.03780                               0.01650 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00912                               0.00831 
+    ##                               0.00911                               0.00831 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
     ##                               0.00681                               0.00358 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
@@ -2392,7 +2392,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8271
+    ## [1] 8266
 
 Development of unique microbes captured over time:
 
@@ -2411,7 +2411,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.072   9.000 467.000
+    ##   1.000   2.000   4.000   8.078   9.000 467.000
 
 ``` r
 
@@ -2426,7 +2426,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6895
+    ## [1] 6903
 
 ### Microbe co-occurrence
 
