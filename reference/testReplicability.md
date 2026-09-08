@@ -70,9 +70,9 @@ of abundance change in the study group.
 
 ``` r
  dat <- bugsigdbr::importBugSigDB(version = "10.5281/zenodo.5904281")
-#> Using cached version from 2026-09-07 05:09:00
+#> Error: download failed; see warnings()
  dat.feces <- subset(dat, `Body site` == "feces")
+#> Error: object 'dat' not found
  res <- testReplicability(dat.feces)
-#> Using cached version from 2026-09-07 05:08:15
-#> Retrieveing NCBI taxonomy ontology from cache.
+#> Error: object 'dat.feces' not found
 ```

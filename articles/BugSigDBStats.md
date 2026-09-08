@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14877    51
+    ## [1] 14885    51
 
 ``` r
 
@@ -80,7 +80,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 14877
+    ## [1] 14885
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14877
+    ## [1] 14885
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7215                    944                    237 
+    ##                   7219                    944                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    140                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3397                     1275                      350 
+    ##                     3402                     1275                      350 
     ##              South Korea                  Germany                    Italy 
     ##                      224                      217                      203 
     ##                    Spain                  Denmark                Australia 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5794                       444                       179 
+    ##                      5793                       444                       179 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                       1277                       1044 
+    ##                       1282                       1043 
     ##                   2 months                   6 months 
     ##                        410                        388 
     ##                    2 weeks                     1 week 
@@ -360,7 +360,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.79000                0.10300                0.02600 
+    ##                0.79000                0.10300                0.02590 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01530                0.01470                0.00471 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -371,9 +371,9 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3720                   0.1400                   0.0384 
+    ##                   0.3730                   0.1400                   0.0383 
     ##              South Korea                  Germany                    Italy 
-    ##                   0.0246                   0.0238                   0.0223 
+    ##                   0.0245                   0.0238                   0.0222 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0215                   0.0201                   0.0175 
     ##                   Canada 
@@ -393,7 +393,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0344                    0.0324                    0.0263 
+    ##                    0.0344                    0.0323                    0.0263 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0188                    0.0142                    0.0134 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -404,15 +404,15 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                    0.32500                    0.26600 
+    ##                    0.32600                    0.26500 
     ##                   2 months                   6 months 
-    ##                    0.10400                    0.09870 
+    ##                    0.10400                    0.09860 
     ##                    2 weeks                     1 week 
-    ##                    0.07150                    0.01650 
+    ##                    0.07140                    0.01650 
     ##  Recent use of antibiotics   currently on antibiotics 
-    ##                    0.01350                    0.00763 
+    ##                    0.01350                    0.00762 
     ##                    6 weeks Current use of antibiotics 
-    ##                    0.00712                    0.00611
+    ##                    0.00712                    0.00610
 
 Sample size:
 
@@ -423,13 +423,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             11.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               384.2968            62.63781
-    ## 3rd Qu.             50.0000            42.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1799.0000          1794.00000
+    ## Min.                  0.000             1.00000
+    ## 1st Qu.              11.000            10.00000
+    ## Median               24.000            21.00000
+    ## Mean                384.324            62.63904
+    ## 3rd Qu.              50.000            42.00000
+    ## Max.             308633.000         10413.00000
+    ## NA's               1803.000          1798.00000
 
 ### Lab analysis
 
@@ -446,19 +446,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7087       1593         85         76          5 
+    ##       7086       1598         85         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3383      1747       367       246       202       154       153        84 
+    ##      3382      1747       367       246       202       154       153        84 
     ##        56  23456789 
     ##        59        55 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7465                                   346 
+    ##                                  7469                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   328                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -480,14 +480,14 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.801000   0.180000   0.009610   0.008590   0.000565 
+    ##   0.801000   0.181000   0.009600   0.008590   0.000565 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
     ##   0.51200   0.26400   0.05550   0.03720   0.03060   0.02330   0.02310   0.01270 
     ##        56  23456789 
-    ##   0.00892   0.00832 
+    ##   0.00893   0.00832 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -496,9 +496,9 @@ lab.tab
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03780                               0.01650 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00911                               0.00831 
+    ##                               0.00911                               0.00830 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                               0.00681                               0.00358 
+    ##                               0.00680                               0.00357 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
     ##                               0.00346                               0.00242
 
@@ -619,7 +619,7 @@ apply(exps[,div.cols], 2, table)
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     92     990   611     341              83      643
     ## increased     67     740   434     213              59      452
-    ## unchanged    351    2853  1430    1137             275     1431
+    ## unchanged    350    2854  1432    1137             275     1430
 
 Correspondence of Shannon diversity and Richness:
 
@@ -632,7 +632,7 @@ table(exps$Shannon, exps$Richness)
     ##             decreased increased unchanged
     ##   decreased       355        15        81
     ##   increased        11       222        71
-    ##   unchanged       141       118      1151
+    ##   unchanged       141       118      1150
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -814,6 +814,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Vitiligo                                                          0         1
     ## Abnormal stool composition                                        0         0
     ## Acute myeloid leukemia                                            1         1
+    ## Adenomatous colon polyp                                           0         0
     ## Alcohol use disorder measurement                                  2         2
     ## Arthritis                                                         0         0
     ## Asthma                                                            3         3
@@ -876,7 +877,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Multiple sclerosis                                               32
     ## Obesity                                                          72
     ## Systemic inflammatory response syndrome                           4
-    ## Chronic constipation                                             12
+    ## Chronic constipation                                             11
     ## Clostridium difficile infection                                   1
     ## Crohn's disease                                                   8
     ## Lung cancer                                                       8
@@ -1034,6 +1035,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Vitiligo                                                          4
     ## Abnormal stool composition                                        6
     ## Acute myeloid leukemia                                            7
+    ## Adenomatous colon polyp                                           5
     ## Alcohol use disorder measurement                                  4
     ## Arthritis                                                         6
     ## Asthma                                                           17
@@ -1102,7 +1104,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Multiple sclerosis                                            0.043     0.260
     ## Obesity                                                       0.073     0.180
     ## Systemic inflammatory response syndrome                       0.210     0.620
-    ## Chronic constipation                                          0.430     0.000
+    ## Chronic constipation                                          0.450     0.000
     ## Clostridium difficile infection                               0.830     0.083
     ## Crohn's disease                                               0.000     0.530
     ## Lung cancer                                                   0.095     0.520
@@ -1260,6 +1262,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Vitiligo                                                      0.000     0.200
     ## Abnormal stool composition                                    0.000     0.000
     ## Acute myeloid leukemia                                        0.110     0.110
+    ## Adenomatous colon polyp                                       0.000     0.000
     ## Alcohol use disorder measurement                              0.250     0.250
     ## Arthritis                                                     0.000     0.000
     ## Asthma                                                        0.130     0.130
@@ -1322,7 +1325,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Multiple sclerosis                                            0.700
     ## Obesity                                                       0.750
     ## Systemic inflammatory response syndrome                       0.170
-    ## Chronic constipation                                          0.570
+    ## Chronic constipation                                          0.550
     ## Clostridium difficile infection                               0.083
     ## Crohn's disease                                               0.470
     ## Lung cancer                                                   0.380
@@ -1480,6 +1483,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Vitiligo                                                      0.800
     ## Abnormal stool composition                                    1.000
     ## Acute myeloid leukemia                                        0.780
+    ## Adenomatous colon polyp                                       1.000
     ## Alcohol use disorder measurement                              0.500
     ## Arthritis                                                     1.000
     ## Asthma                                                        0.740
@@ -1686,7 +1690,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Small for gestational age                                         0
     ## Species design                                                   14
     ## Aging                                                             2
-    ## Chronic constipation                                              7
+    ## Chronic constipation                                              6
     ## Gastric cancer                                                   14
     ## Gingivitis                                                        8
     ## Chronic kidney disease                                            7
@@ -1831,7 +1835,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Small for gestational age                                     0.000     1.000
     ## Species design                                                0.210     0.420
     ## Aging                                                         0.000     0.780
-    ## Chronic constipation                                          0.500     0.000
+    ## Chronic constipation                                          0.540     0.000
     ## Gastric cancer                                                0.160     0.390
     ## Gingivitis                                                    0.059     0.470
     ## Chronic kidney disease                                        0.000     0.460
@@ -1970,7 +1974,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Small for gestational age                                      0.00
     ## Species design                                                 0.37
     ## Aging                                                          0.22
-    ## Chronic constipation                                           0.50
+    ## Chronic constipation                                           0.46
     ## Gastric cancer                                                 0.45
     ## Gingivitis                                                     0.47
     ## Chronic kidney disease                                         0.54
@@ -2104,7 +2108,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 377       611      1743
+    ## Feces                                                 377       611      1742
     ## Sputum                                                  7        23        11
     ## Vagina                                                 22         8        44
     ## Posterior fornix of vagina                             12         0        10
@@ -2160,7 +2164,7 @@ tabDiv(exps, "Shannon", "Body site")
     ## Bulbar conjunctiva                                      3         2         5
     ## Dental plaque                                           3         4         6
     ## Digestive tract                                         2         1         2
-    ## feces                                                   1         2         4
+    ## feces                                                   1         2         6
     ## Gingival groove                                         2         1         6
     ## Intestinal mucosa                                       1         2        11
     ## Liver                                                   4         3         2
@@ -2243,7 +2247,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Bulbar conjunctiva                                  0.300     0.200      0.50
     ## Dental plaque                                       0.230     0.310      0.46
     ## Digestive tract                                     0.400     0.200      0.40
-    ## feces                                               0.140     0.290      0.57
+    ## feces                                               0.110     0.220      0.67
     ## Gingival groove                                     0.220     0.110      0.67
     ## Intestinal mucosa                                   0.071     0.140      0.79
     ## Liver                                               0.440     0.330      0.22
@@ -2270,7 +2274,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              237       383       877
+    ## Feces                              237       383       876
     ## Oral cavity                         16         4        20
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2392,7 +2396,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8266
+    ## [1] 8254
 
 Development of unique microbes captured over time:
 
@@ -2411,7 +2415,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.078   9.000 467.000
+    ##   1.000   2.000   4.000   8.079   9.000 467.000
 
 ``` r
 
@@ -2426,7 +2430,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6903
+    ## [1] 6906
 
 ### Microbe co-occurrence
 
@@ -2464,7 +2468,7 @@ top20
     ##    Streptococcus    Lactobacillus       Prevotella        Roseburia 
     ##              547              542              513              513 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
-    ##              511              509              467              434 
+    ##              511              509              466              434 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              376              371              360              319 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
@@ -2533,7 +2537,7 @@ top20.down
     ##    Streptococcus    Lactobacillus       Prevotella        Roseburia 
     ##              198              200              262              337 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
-    ##              252              280              196              232 
+    ##              252              280              195              232 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              130              209              207              123 
     ##     Anaerostipes      Collinsella     Enterococcus        Dialister 
