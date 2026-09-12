@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14858    51
+    ## [1] 14870    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2111
+    ## [1] 2112
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14858
+    ## [1] 14870
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14858
+    ## [1] 14870
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -232,7 +232,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      545 
     ##                                                                             case-control 
-    ##                                                                                      823
+    ##                                                                                      824
 
 ## Experiment stats
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7210                    932                    237 
+    ##                   7214                    932                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    141                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -327,7 +327,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                       311                       285                       235 
+    ##                       314                       285                       235 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                       168                       127                       114 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                       1271                       1051 
+    ##                       1271                       1049 
     ##                   2 months                   6 months 
     ##                        410                        388 
     ##                    2 weeks                     1 week 
@@ -360,7 +360,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.79100                0.10200                0.02600 
+    ##                0.79200                0.10200                0.02600 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01550                0.01470                0.00472 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -382,20 +382,20 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63700                   0.04840                   0.01980 
+    ##                   0.63700                   0.04830                   0.01980 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01610                   0.01000                   0.00916 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00905                   0.00883                   0.00740 
+    ##                   0.00905                   0.00883                   0.00739 
     ##                    Rectum 
-    ##                   0.00696 
+    ##                   0.00695 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0349                    0.0320                    0.0264 
+    ##                    0.0352                    0.0320                    0.0264 
     ##                   Obesity                  COVID-19          Diet measurement 
-    ##                    0.0189                    0.0143                    0.0128 
+    ##                    0.0188                    0.0142                    0.0128 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
     ##                    0.0128                    0.0126                    0.0113 
     ##              Constipation 
@@ -408,11 +408,11 @@ sub.tab
     ##                   2 months                   6 months 
     ##                    0.10400                    0.09870 
     ##                    2 weeks                     1 week 
-    ##                    0.07100                    0.01650 
+    ##                    0.07090                    0.01650 
     ##  Recent use of antibiotics   currently on antibiotics 
     ##                    0.01350                    0.00763 
     ##                    6 weeks Current use of antibiotics 
-    ##                    0.00712                    0.00611
+    ##                    0.00712                    0.00610
 
 Sample size:
 
@@ -426,10 +426,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             11.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               385.0882            62.65811
+    ## Mean               384.8829            62.65152
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1796.0000          1789.00000
+    ## NA's              1795.0000          1788.00000
 
 ### Lab analysis
 
@@ -446,23 +446,23 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7062       1599         85         76          5 
+    ##       7066       1599         85         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3382      1753       363       242       202       154       149        84 
+    ##      3386      1753       363       242       202       154       149        84 
     ##  23456789        56 
     ##        49        47 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7453                                   346 
+    ##                                  7457                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   322                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                                    77                                    72 
+    ##                                    77                                    73 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
     ##                                    59                                    31 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
@@ -485,9 +485,9 @@ lab.tab
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51400   0.26600   0.05510   0.03670   0.03070   0.02340   0.02260   0.01280 
+    ##   0.51400   0.26600   0.05510   0.03670   0.03070   0.02340   0.02260   0.01270 
     ##  23456789        56 
-    ##   0.00744   0.00714 
+    ##   0.00744   0.00713 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -496,7 +496,7 @@ lab.tab
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03720                               0.01650 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00890                               0.00832 
+    ##                               0.00890                               0.00844 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
     ##                               0.00682                               0.00358 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
@@ -617,9 +617,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     989   611     340              83      640
-    ## increased     66     739   435     212              59      450
-    ## unchanged    339    2838  1425    1131             269     1423
+    ## decreased     92     990   612     340              83      640
+    ## increased     66     740   436     214              59      450
+    ## unchanged    339    2842  1426    1132             269     1423
 
 Correspondence of Shannon diversity and Richness:
 
@@ -836,7 +836,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## High fat diet                                                     1         1
     ## HIV mother to child transmission                                  0         0
     ## Hydroxyproline measurement                                        1         1
-    ## Hypoxia                                                           4         4
+    ## Hypoxia                                                           5         5
     ## Ischemic stroke                                                   0         0
     ## Lactose intolerance                                               0         0
     ## Lung transplantation                                              2         2
@@ -863,12 +863,12 @@ tabDiv(exps, "Shannon", "Condition")
     ##                                                           unchanged
     ## Pulmonary tuberculosis                                           20
     ## Polycystic ovary syndrome                                        30
-    ## Gastric cancer                                                   27
+    ## Gastric cancer                                                   28
     ## COVID-19                                                         50
     ## Human papilloma virus infection                                  28
     ## Periodontitis                                                    16
     ## Alzheimer's disease                                              30
-    ## Colorectal cancer                                                84
+    ## Colorectal cancer                                                86
     ## Diet                                                             65
     ## HIV infection                                                    26
     ## Ulcerative colitis                                                5
@@ -1055,7 +1055,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## High fat diet                                                    15
     ## HIV mother to child transmission                                  8
     ## Hydroxyproline measurement                                        3
-    ## Hypoxia                                                           0
+    ## Hypoxia                                                           1
     ## Ischemic stroke                                                   5
     ## Lactose intolerance                                               5
     ## Lung transplantation                                              2
@@ -1088,7 +1088,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ##                                                           increased decreased
     ## Pulmonary tuberculosis                                        0.075     0.550
     ## Polycystic ovary syndrome                                     0.073     0.380
-    ## Gastric cancer                                                0.110     0.390
+    ## Gastric cancer                                                0.110     0.380
     ## COVID-19                                                      0.130     0.280
     ## Human papilloma virus infection                               0.310     0.024
     ## Periodontitis                                                 0.440     0.088
@@ -1280,7 +1280,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## High fat diet                                                 0.059     0.059
     ## HIV mother to child transmission                              0.000     0.000
     ## Hydroxyproline measurement                                    0.200     0.200
-    ## Hypoxia                                                       0.500     0.500
+    ## Hypoxia                                                       0.450     0.450
     ## Ischemic stroke                                               0.000     0.000
     ## Lactose intolerance                                           0.000     0.000
     ## Lung transplantation                                          0.330     0.330
@@ -1307,12 +1307,12 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ##                                                           unchanged
     ## Pulmonary tuberculosis                                        0.380
     ## Polycystic ovary syndrome                                     0.550
-    ## Gastric cancer                                                0.500
+    ## Gastric cancer                                                0.510
     ## COVID-19                                                      0.590
     ## Human papilloma virus infection                               0.670
     ## Periodontitis                                                 0.470
     ## Alzheimer's disease                                           0.730
-    ## Colorectal cancer                                             0.620
+    ## Colorectal cancer                                             0.630
     ## Diet                                                          0.570
     ## HIV infection                                                 0.670
     ## Ulcerative colitis                                            0.280
@@ -1499,7 +1499,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## High fat diet                                                 0.880
     ## HIV mother to child transmission                              1.000
     ## Hydroxyproline measurement                                    0.600
-    ## Hypoxia                                                       0.000
+    ## Hypoxia                                                       0.091
     ## Ischemic stroke                                               1.000
     ## Lactose intolerance                                           1.000
     ## Lung transplantation                                          0.330
@@ -2096,7 +2096,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 377       611      1727
+    ## Feces                                                 378       612      1728
     ## Sputum                                                  7        23        11
     ## Vagina                                                 22         8        44
     ## Posterior fornix of vagina                             12         0        10
@@ -2152,7 +2152,7 @@ tabDiv(exps, "Shannon", "Body site")
     ## Bulbar conjunctiva                                      3         2         5
     ## Dental plaque                                           3         4         6
     ## Digestive tract                                         2         1         2
-    ## feces                                                   1         2        10
+    ## feces                                                   1         2        12
     ## Gingival groove                                         2         1         6
     ## Intestinal mucosa                                       1         2        11
     ## Liver                                                   4         3         2
@@ -2235,7 +2235,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Bulbar conjunctiva                                  0.300     0.200      0.50
     ## Dental plaque                                       0.230     0.310      0.46
     ## Digestive tract                                     0.400     0.200      0.40
-    ## feces                                               0.077     0.150      0.77
+    ## feces                                               0.067     0.130      0.80
     ## Gingival groove                                     0.220     0.110      0.67
     ## Intestinal mucosa                                   0.071     0.140      0.79
     ## Liver                                               0.440     0.330      0.22
@@ -2384,7 +2384,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8096
+    ## [1] 8097
 
 Development of unique microbes captured over time:
 
@@ -2403,7 +2403,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.071   9.000 467.000
+    ##   1.000   2.000   4.000   8.073   9.000 467.000
 
 ``` r
 
@@ -2418,7 +2418,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6899
+    ## [1] 6909
 
 ### Microbe co-occurrence
 
