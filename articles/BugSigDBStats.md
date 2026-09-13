@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14870    51
+    ## [1] 14859    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2112
+    ## [1] 2111
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14870
+    ## [1] 14859
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14870
+    ## [1] 14859
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -203,6 +203,8 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                                        3 
     ##                              time series / longitudinal observational,prospective cohort 
     ##                                                                                        3 
+    ##                                                       laboratory experiment,case-control 
+    ##                                                                                        4 
     ##                           laboratory experiment,time series / longitudinal observational 
     ##                                                                                        4 
     ##                                                               meta-analysis,case-control 
@@ -212,8 +214,6 @@ sort(lengths(sds), decreasing = FALSE)
     ##                           time series / longitudinal observational,laboratory experiment 
     ##                                                                                        4 
     ##                                                               case-control,meta-analysis 
-    ##                                                                                        5 
-    ##                                                       laboratory experiment,case-control 
     ##                                                                                        5 
     ##                                    case-control,time series / longitudinal observational 
     ##                                                                                        7 
@@ -228,9 +228,9 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                       prospective cohort 
     ##                                                                                      169 
     ##                                                                    laboratory experiment 
-    ##                                                                                      222 
+    ##                                                                                      223 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      545 
+    ##                                                                                      544 
     ##                                                                             case-control 
     ##                                                                                      824
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7214                    932                    237 
+    ##                   7210                    932                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    141                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5768                       438                       179 
+    ##                      5769                       438                       179 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -360,7 +360,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.79200                0.10200                0.02600 
+    ##                0.79100                0.10200                0.02600 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01550                0.01470                0.00472 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -395,7 +395,7 @@ sub.tab
     ##         Colorectal cancer                      Diet       Parkinson's disease 
     ##                    0.0352                    0.0320                    0.0264 
     ##                   Obesity                  COVID-19          Diet measurement 
-    ##                    0.0188                    0.0142                    0.0128 
+    ##                    0.0189                    0.0143                    0.0128 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
     ##                    0.0128                    0.0126                    0.0113 
     ##              Constipation 
@@ -423,13 +423,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             11.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               384.8829            62.65152
-    ## 3rd Qu.             50.0000            42.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1795.0000          1788.00000
+    ## Min.                  0.000             1.00000
+    ## 1st Qu.              11.000            10.00000
+    ## Median               24.000            21.00000
+    ## Mean                385.055            62.61836
+    ## 3rd Qu.              50.000            42.00000
+    ## Max.             308633.000         10413.00000
+    ## NA's               1796.000          1789.00000
 
 ### Lab analysis
 
@@ -446,19 +446,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7066       1599         85         76          5 
+    ##       7062       1599         85         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3386      1753       363       242       202       154       149        84 
+    ##      3382      1753       363       242       202       154       149        84 
     ##  23456789        56 
     ##        49        47 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7457                                   346 
+    ##                                  7453                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   322                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -485,9 +485,9 @@ lab.tab
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51400   0.26600   0.05510   0.03670   0.03070   0.02340   0.02260   0.01270 
+    ##   0.51400   0.26600   0.05510   0.03670   0.03070   0.02340   0.02260   0.01280 
     ##  23456789        56 
-    ##   0.00744   0.00713 
+    ##   0.00744   0.00714 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -617,9 +617,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     990   612     340              83      640
+    ## decreased     92     989   612     340              83      640
     ## increased     66     740   436     214              59      450
-    ## unchanged    339    2842  1426    1132             269     1423
+    ## unchanged    338    2842  1425    1131             268     1422
 
 Correspondence of Shannon diversity and Richness:
 
@@ -630,7 +630,7 @@ table(exps$Shannon, exps$Richness)
 
     ##            
     ##             decreased increased unchanged
-    ##   decreased       354        15        81
+    ##   decreased       354        15        80
     ##   increased        11       222        71
     ##   unchanged       139       116      1143
 
@@ -2418,7 +2418,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6909
+    ## [1] 6901
 
 ### Microbe co-occurrence
 
@@ -2452,15 +2452,15 @@ top20
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              890              647              636              609 
+    ##              891              647              637              609 
     ##    Streptococcus    Lactobacillus       Prevotella        Roseburia 
-    ##              545              540              515              515 
+    ##              546              541              515              515 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
-    ##              511              510              466              434 
+    ##              511              510              467              434 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              376              369              359              321 
     ##     Anaerostipes     Enterococcus      Collinsella      Lachnospira 
-    ##              316              308              305              302
+    ##              316              309              306              302
 
 Subset heatmaps to the top 20 genera most frequently reported as
 differentially abundant:
@@ -2521,15 +2521,15 @@ top20.down
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              438              419              289              320 
+    ##              439              419              290              320 
     ##    Streptococcus    Lactobacillus       Prevotella        Roseburia 
-    ##              198              199              264              339 
+    ##              199              200              264              339 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
-    ##              252              281              195              232 
+    ##              252              281              196              232 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
     ##              130              207              207              124 
     ##     Anaerostipes     Enterococcus      Collinsella      Lachnospira 
-    ##              166               88              139              181
+    ##              166               89              140              181
 
 Plot the heatmap
 
