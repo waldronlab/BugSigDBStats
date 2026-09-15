@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14872    51
+    ## [1] 14878    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2112
+    ## [1] 2113
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14872
+    ## [1] 14878
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14872
+    ## [1] 14878
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -230,7 +230,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                    laboratory experiment 
     ##                                                                                      223 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      544 
+    ##                                                                                      545 
     ##                                                                             case-control 
     ##                                                                                      825
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7217                    933                    237 
+    ##                   7222                    933                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    141                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3414                     1263                      350 
+    ##                     3419                     1263                      350 
     ##              South Korea                  Germany                    Italy 
     ##                      224                      217                      203 
     ##                    Spain                  Denmark                Australia 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5771                       438                       179 
+    ##                      5771                       438                       185 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        83 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -331,7 +331,7 @@ sub.tab
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                       168                       127                       114 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
-    ##                       114                       112                       101 
+    ##                       114                       113                       101 
     ##              Constipation 
     ##                        91 
     ## 
@@ -340,9 +340,9 @@ sub.tab
     ##                   3 months                    1 month 
     ##                       1271                       1049 
     ##                   2 months                   6 months 
-    ##                        414                        388 
+    ##                        414                        386 
     ##                    2 weeks                     1 week 
-    ##                        279                         65 
+    ##                        284                         65 
     ##  Recent use of antibiotics   currently on antibiotics 
     ##                         53                         30 
     ##                    6 weeks Current use of antibiotics 
@@ -362,7 +362,7 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.79200                0.10200                0.02600 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01550                0.01470                0.00472 
+    ##                0.01550                0.01470                0.00471 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                0.00362                0.00307                0.00263 
     ##    Macaca fascicularis 
@@ -375,44 +375,44 @@ sub.tab
     ##              South Korea                  Germany                    Italy 
     ##                   0.0246                   0.0238                   0.0223 
     ##                    Spain                  Denmark                Australia 
-    ##                   0.0209                   0.0201                   0.0176 
+    ##                   0.0208                   0.0201                   0.0176 
     ##                   Canada 
     ##                   0.0159 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63600                   0.04830                   0.01970 
+    ##                   0.63600                   0.04830                   0.02040 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01610                   0.01000                   0.00915 
+    ##                   0.01610                   0.01000                   0.00914 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00904                   0.00882                   0.00739 
+    ##                   0.00903                   0.00881                   0.00738 
     ##                    Rectum 
-    ##                   0.00695 
+    ##                   0.00694 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0354                    0.0320                    0.0264 
+    ##                    0.0354                    0.0319                    0.0263 
     ##                   Obesity                  COVID-19          Diet measurement 
     ##                    0.0188                    0.0142                    0.0128 
     ##    Response to transplant          Response to diet Polycystic ovary syndrome 
-    ##                    0.0128                    0.0126                    0.0113 
+    ##                    0.0128                    0.0127                    0.0113 
     ##              Constipation 
     ##                    0.0102 
     ## 
     ## $`Antibiotics exclusion`
     ## 
     ##                   3 months                    1 month 
-    ##                    0.32300                    0.26600 
+    ##                    0.32200                    0.26600 
     ##                   2 months                   6 months 
-    ##                    0.10500                    0.09850 
+    ##                    0.10500                    0.09790 
     ##                    2 weeks                     1 week 
-    ##                    0.07080                    0.01650 
+    ##                    0.07200                    0.01650 
     ##  Recent use of antibiotics   currently on antibiotics 
-    ##                    0.01350                    0.00761 
+    ##                    0.01340                    0.00761 
     ##                    6 weeks Current use of antibiotics 
-    ##                    0.00711                    0.00609
+    ##                    0.00710                    0.00609
 
 Sample size:
 
@@ -423,13 +423,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             11.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               384.7528            62.60781
-    ## 3rd Qu.             50.0000            42.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1797.0000          1790.00000
+    ## Min.                   0.00             1.00000
+    ## 1st Qu.               11.00            10.00000
+    ## Median                24.00            21.00000
+    ## Mean                 384.66            62.60109
+    ## 3rd Qu.               50.00            42.00000
+    ## Max.              308633.00         10413.00000
+    ## NA's                1800.00          1793.00000
 
 ### Lab analysis
 
@@ -446,19 +446,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7066       1603         85         76          5 
+    ##       7071       1603         85         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3386      1753       363       242       202       154       149        84 
+    ##      3391      1753       363       242       202       154       149        84 
     ##  23456789        56 
     ##        49        47 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7461                                   346 
+    ##                                  7466                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   322                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -485,14 +485,14 @@ lab.tab
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51400   0.26600   0.05510   0.03670   0.03070   0.02340   0.02260   0.01270 
+    ##   0.51400   0.26600   0.05500   0.03670   0.03060   0.02340   0.02260   0.01270 
     ##  23456789        56 
-    ##   0.00744   0.00713 
+    ##   0.00743   0.00713 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                               0.86200                               0.04000 
+    ##                               0.86200                               0.03990 
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03720                               0.01650 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -500,7 +500,7 @@ lab.tab
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
     ##                               0.00681                               0.00358 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
-    ##                               0.00347                               0.00243
+    ##                               0.00346                               0.00242
 
 ### Statistical analysis
 
@@ -617,9 +617,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     990   612     340              83      640
-    ## increased     66     740   436     214              59      450
-    ## unchanged    342    2848  1429    1135             268     1427
+    ## decreased     92     985   612     340              83      637
+    ## increased     66     740   435     214              59      449
+    ## unchanged    342    2846  1430    1135             268     1429
 
 Correspondence of Shannon diversity and Richness:
 
@@ -630,9 +630,9 @@ table(exps$Shannon, exps$Richness)
 
     ##            
     ##             decreased increased unchanged
-    ##   decreased       354        15        81
-    ##   increased        11       222        71
-    ##   unchanged       139       116      1147
+    ##   decreased       350        15        81
+    ##   increased        11       221        73
+    ##   unchanged       140       116      1147
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -686,7 +686,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Inflammatory bowel disease                                        0         5
     ## Oxygen                                                            5         0
     ## Response to antibiotic                                            2         7
-    ## Species design                                                   10        15
     ## Type II diabetes mellitus                                        10         5
     ## Urinary tract infection                                           1         6
     ## Acute lymphoblastic leukemia                                      0         4
@@ -751,6 +750,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Sleep duration                                                    3         1
     ## Small for gestational age                                         0         2
     ## Smoking status measurement                                        2         0
+    ## Species design                                                    9        11
     ## Squamous cell carcinoma                                           2         0
     ## Streptococcus pneumoniae                                          0         2
     ## Stroke                                                            2         0
@@ -836,7 +836,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## High fat diet                                                     1         1
     ## HIV mother to child transmission                                  0         0
     ## Hydroxyproline measurement                                        1         1
-    ## Hypoxia                                                           5         5
+    ## Hypoxia                                                           4         4
     ## Ischemic stroke                                                   0         0
     ## Lactose intolerance                                               0         0
     ## Lung transplantation                                              2         2
@@ -847,7 +847,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Oral mucositis                                                    2         2
     ## Oxalate measurement                                               1         1
     ## Pathological complete response                                    0         0
-    ## Postpartum                                                        0         0
     ## Preeclampsia                                                      0         0
     ## Psoriasis vulgaris                                                0         0
     ## Response to dietary antigen                                       0         0
@@ -905,7 +904,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Inflammatory bowel disease                                        1
     ## Oxygen                                                            0
     ## Response to antibiotic                                           20
-    ## Species design                                                   13
     ## Type II diabetes mellitus                                        41
     ## Urinary tract infection                                          11
     ## Acute lymphoblastic leukemia                                     10
@@ -970,6 +968,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Sleep duration                                                    2
     ## Small for gestational age                                         6
     ## Smoking status measurement                                        4
+    ## Species design                                                   13
     ## Squamous cell carcinoma                                           4
     ## Streptococcus pneumoniae                                          4
     ## Stroke                                                           16
@@ -999,7 +998,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Infant                                                            4
     ## Liver enzyme measurement                                          5
     ## Major depressive disorder                                         6
-    ## Maternal milk                                                     2
+    ## Maternal milk                                                     3
     ## Metastatic colorectal cancer                                      3
     ## Myocardial infarction                                             8
     ## Obstructive sleep apnea                                          11
@@ -1055,7 +1054,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## High fat diet                                                    15
     ## HIV mother to child transmission                                  8
     ## Hydroxyproline measurement                                        3
-    ## Hypoxia                                                           1
+    ## Hypoxia                                                           0
     ## Ischemic stroke                                                   5
     ## Lactose intolerance                                               5
     ## Lung transplantation                                              2
@@ -1066,7 +1065,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Oral mucositis                                                    3
     ## Oxalate measurement                                               8
     ## Pathological complete response                                    7
-    ## Postpartum                                                        7
     ## Preeclampsia                                                      6
     ## Psoriasis vulgaris                                               14
     ## Response to dietary antigen                                       6
@@ -1130,7 +1128,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Inflammatory bowel disease                                    0.000     0.830
     ## Oxygen                                                        1.000     0.000
     ## Response to antibiotic                                        0.069     0.240
-    ## Species design                                                0.260     0.390
     ## Type II diabetes mellitus                                     0.180     0.089
     ## Urinary tract infection                                       0.056     0.330
     ## Acute lymphoblastic leukemia                                  0.000     0.290
@@ -1195,6 +1192,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Sleep duration                                                0.500     0.170
     ## Small for gestational age                                     0.000     0.250
     ## Smoking status measurement                                    0.330     0.000
+    ## Species design                                                0.270     0.330
     ## Squamous cell carcinoma                                       0.330     0.000
     ## Streptococcus pneumoniae                                      0.000     0.330
     ## Stroke                                                        0.110     0.000
@@ -1224,7 +1222,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Infant                                                        0.200     0.000
     ## Liver enzyme measurement                                      0.000     0.170
     ## Major depressive disorder                                     0.000     0.140
-    ## Maternal milk                                                 0.400     0.200
+    ## Maternal milk                                                 0.330     0.170
     ## Metastatic colorectal cancer                                  0.170     0.330
     ## Myocardial infarction                                         0.091     0.180
     ## Obstructive sleep apnea                                       0.000     0.083
@@ -1280,7 +1278,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## High fat diet                                                 0.059     0.059
     ## HIV mother to child transmission                              0.000     0.000
     ## Hydroxyproline measurement                                    0.200     0.200
-    ## Hypoxia                                                       0.450     0.450
+    ## Hypoxia                                                       0.500     0.500
     ## Ischemic stroke                                               0.000     0.000
     ## Lactose intolerance                                           0.000     0.000
     ## Lung transplantation                                          0.330     0.330
@@ -1291,7 +1289,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Oral mucositis                                                0.290     0.290
     ## Oxalate measurement                                           0.100     0.100
     ## Pathological complete response                                0.000     0.000
-    ## Postpartum                                                    0.000     0.000
     ## Preeclampsia                                                  0.000     0.000
     ## Psoriasis vulgaris                                            0.000     0.000
     ## Response to dietary antigen                                   0.000     0.000
@@ -1349,7 +1346,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Inflammatory bowel disease                                    0.170
     ## Oxygen                                                        0.000
     ## Response to antibiotic                                        0.690
-    ## Species design                                                0.340
     ## Type II diabetes mellitus                                     0.730
     ## Urinary tract infection                                       0.610
     ## Acute lymphoblastic leukemia                                  0.710
@@ -1414,6 +1410,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Sleep duration                                                0.330
     ## Small for gestational age                                     0.750
     ## Smoking status measurement                                    0.670
+    ## Species design                                                0.390
     ## Squamous cell carcinoma                                       0.670
     ## Streptococcus pneumoniae                                      0.670
     ## Stroke                                                        0.890
@@ -1443,7 +1440,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Infant                                                        0.800
     ## Liver enzyme measurement                                      0.830
     ## Major depressive disorder                                     0.860
-    ## Maternal milk                                                 0.400
+    ## Maternal milk                                                 0.500
     ## Metastatic colorectal cancer                                  0.500
     ## Myocardial infarction                                         0.730
     ## Obstructive sleep apnea                                       0.920
@@ -1499,7 +1496,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## High fat diet                                                 0.880
     ## HIV mother to child transmission                              1.000
     ## Hydroxyproline measurement                                    0.600
-    ## Hypoxia                                                       0.091
+    ## Hypoxia                                                       0.000
     ## Ischemic stroke                                               1.000
     ## Lactose intolerance                                           1.000
     ## Lung transplantation                                          0.330
@@ -1510,7 +1507,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Oral mucositis                                                0.430
     ## Oxalate measurement                                           0.800
     ## Pathological complete response                                1.000
-    ## Postpartum                                                    1.000
     ## Preeclampsia                                                  1.000
     ## Psoriasis vulgaris                                            1.000
     ## Response to dietary antigen                                   1.000
@@ -1541,7 +1537,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Parkinson's disease                                              19        27
     ## Phenotype                                                         9         1
     ## Small for gestational age                                         0         8
-    ## Species design                                                    8        16
     ## Aging                                                             0         7
     ## Chronic constipation                                              7         0
     ## Gastric cancer                                                    5        12
@@ -1556,6 +1551,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Environmental factor                                              0         5
     ## Human immunodeficiency virus                                      1         6
     ## Human papilloma virus infection                                   7         2
+    ## Species design                                                    7        12
     ## Type II diabetes mellitus                                         8         3
     ## Acute lymphoblastic leukemia                                      5         1
     ## Air pollution                                                     9         5
@@ -1679,7 +1675,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Parkinson's disease                                              33
     ## Phenotype                                                        11
     ## Small for gestational age                                         0
-    ## Species design                                                   14
     ## Aging                                                             2
     ## Chronic constipation                                              6
     ## Gastric cancer                                                   15
@@ -1694,6 +1689,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Environmental factor                                             17
     ## Human immunodeficiency virus                                      2
     ## Human papilloma virus infection                                  13
+    ## Species design                                                   14
     ## Type II diabetes mellitus                                        25
     ## Acute lymphoblastic leukemia                                      1
     ## Air pollution                                                     6
@@ -1823,7 +1819,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Parkinson's disease                                           0.240     0.340
     ## Phenotype                                                     0.430     0.048
     ## Small for gestational age                                     0.000     1.000
-    ## Species design                                                0.210     0.420
     ## Aging                                                         0.000     0.780
     ## Chronic constipation                                          0.540     0.000
     ## Gastric cancer                                                0.160     0.380
@@ -1838,6 +1833,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Environmental factor                                          0.000     0.230
     ## Human immunodeficiency virus                                  0.110     0.670
     ## Human papilloma virus infection                               0.320     0.091
+    ## Species design                                                0.210     0.360
     ## Type II diabetes mellitus                                     0.220     0.083
     ## Acute lymphoblastic leukemia                                  0.710     0.140
     ## Air pollution                                                 0.450     0.250
@@ -1961,7 +1957,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Parkinson's disease                                            0.42
     ## Phenotype                                                      0.52
     ## Small for gestational age                                      0.00
-    ## Species design                                                 0.37
     ## Aging                                                          0.22
     ## Chronic constipation                                           0.46
     ## Gastric cancer                                                 0.47
@@ -1976,6 +1971,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Environmental factor                                           0.77
     ## Human immunodeficiency virus                                   0.22
     ## Human papilloma virus infection                                0.59
+    ## Species design                                                 0.42
     ## Type II diabetes mellitus                                      0.69
     ## Acute lymphoblastic leukemia                                   0.14
     ## Air pollution                                                  0.30
@@ -2096,9 +2092,9 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 378       613      1728
+    ## Feces                                                 376       608      1725
     ## Sputum                                                  7        23        11
-    ## Vagina                                                 22         8        44
+    ## Vagina                                                 24         8        45
     ## Posterior fornix of vagina                             12         0        10
     ## Gastrointestinal system mucosa                          0        11         0
     ## Saliva                                                 40        50       185
@@ -2179,9 +2175,9 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                               0.140     0.230      0.64
+    ## Feces                                               0.140     0.220      0.64
     ## Sputum                                              0.170     0.560      0.27
-    ## Vagina                                              0.300     0.110      0.59
+    ## Vagina                                              0.310     0.100      0.58
     ## Posterior fornix of vagina                          0.550     0.000      0.45
     ## Gastrointestinal system mucosa                      0.000     1.000      0.00
     ## Saliva                                              0.150     0.180      0.67
@@ -2262,7 +2258,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              237       381       871
+    ## Feces                              236       377       871
     ## Oral cavity                         16         4        20
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2274,11 +2270,11 @@ tabDiv(exps, "Richness", "Body site")
     ## Uterine cervix                       8         1        11
     ## Oropharynx                           0         6         6
     ## Saliva                              24        30       101
-    ## Vagina                               8         2        17
     ## Rectum                               1         6         8
     ## Skin epidermis                       0         5         2
     ## Skin of body                         4         9         6
     ## Uterine cervix,Vaginal fluid         7         2         1
+    ## Vagina                               8         3        19
     ## Conjunctival sac                     0         4         1
     ## Subgingival dental plaque            9         5        30
     ## Throat                               1         5         5
@@ -2319,7 +2315,7 @@ tabDiv(exps, "Richness", "Body site", perc = TRUE)
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                            0.160     0.260      0.58
+    ## Feces                            0.160     0.250      0.59
     ## Oral cavity                      0.400     0.100      0.50
     ## Sputum                           0.000     0.690      0.31
     ## Posterior fornix of vagina       0.770     0.077      0.15
@@ -2331,11 +2327,11 @@ tabDiv(exps, "Richness", "Body site", perc = TRUE)
     ## Uterine cervix                   0.400     0.050      0.55
     ## Oropharynx                       0.000     0.500      0.50
     ## Saliva                           0.150     0.190      0.65
-    ## Vagina                           0.300     0.074      0.63
     ## Rectum                           0.067     0.400      0.53
     ## Skin epidermis                   0.000     0.710      0.29
     ## Skin of body                     0.210     0.470      0.32
     ## Uterine cervix,Vaginal fluid     0.700     0.200      0.10
+    ## Vagina                           0.270     0.100      0.63
     ## Conjunctival sac                 0.000     0.800      0.20
     ## Subgingival dental plaque        0.200     0.110      0.68
     ## Throat                           0.091     0.450      0.45
@@ -2405,7 +2401,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.079   9.000 467.000
+    ##   1.000   2.000   4.000   8.078   9.000 467.000
 
 ``` r
 
@@ -2420,7 +2416,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6908
+    ## [1] 6911
 
 ### Microbe co-occurrence
 
