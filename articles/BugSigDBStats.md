@@ -183,8 +183,6 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                                        1 
     ## time series / longitudinal observational,cross-sectional observational, not case-control 
     ##                                                                                        1 
-    ##                                                          case-control,prospective cohort 
-    ##                                                                                        2 
     ##                    cross-sectional observational, not case-control,laboratory experiment 
     ##                                                                                        2 
     ##                                                      meta-analysis,laboratory experiment 
@@ -195,6 +193,8 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                                        2 
     ##                     time series / longitudinal observational,randomized controlled trial 
     ##                                                                                        2 
+    ##                                                          case-control,prospective cohort 
+    ##                                                                                        3 
     ##                    laboratory experiment,cross-sectional observational, not case-control 
     ##                                                                                        3 
     ##                                                 laboratory experiment,prospective cohort 
@@ -215,9 +215,9 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                                        4 
     ##                                                               case-control,meta-analysis 
     ##                                                                                        5 
-    ##                                                       case-control,laboratory experiment 
-    ##                                                                                        8 
     ##                                    case-control,time series / longitudinal observational 
+    ##                                                                                        7 
+    ##                                                       case-control,laboratory experiment 
     ##                                                                                        8 
     ##                                                                            meta-analysis 
     ##                                                                                       35 
