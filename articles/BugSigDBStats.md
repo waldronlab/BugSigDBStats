@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 14935    51
+    ## [1] 14937    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2115
+    ## [1] 2116
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 14935
+    ## [1] 14937
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 14935
+    ## [1] 14937
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -222,7 +222,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                            meta-analysis 
     ##                                                                                       35 
     ##                                                              randomized controlled trial 
-    ##                                                                                       97 
+    ##                                                                                       98 
     ##                                                 time series / longitudinal observational 
     ##                                                                                      156 
     ##                                                                       prospective cohort 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7270                    933                    237 
+    ##                   7271                    933                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    141                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5776                       438                       207 
+    ##                      5776                       438                       208 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        85 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -373,7 +373,7 @@ sub.tab
     ##                    China United States of America                    Japan 
     ##                   0.3780                   0.1390                   0.0382 
     ##              South Korea                  Germany                    Italy 
-    ##                   0.0244                   0.0237                   0.0222 
+    ##                   0.0244                   0.0237                   0.0221 
     ##                    Spain                  Denmark                Australia 
     ##                   0.0207                   0.0200                   0.0175 
     ##                   Canada 
@@ -382,11 +382,11 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63300                   0.04800                   0.02270 
+    ##                   0.63300                   0.04800                   0.02280 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01600                   0.00997                   0.00931 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00898                   0.00877                   0.00734 
+    ##                   0.00898                   0.00876                   0.00734 
     ##                     feces 
     ##                   0.00723 
     ## 
@@ -423,13 +423,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                  0.000             1.00000
-    ## 1st Qu.              11.000            10.00000
-    ## Median               24.000            21.00000
-    ## Mean                383.432            62.55587
-    ## 3rd Qu.              50.000            42.00000
-    ## Max.             308633.000         10413.00000
-    ## NA's               1822.000          1815.00000
+    ## Min.                 0.0000             1.00000
+    ## 1st Qu.             11.0000            10.00000
+    ## Median              24.0000            21.00000
+    ## Mean               383.3841            62.55158
+    ## 3rd Qu.             50.0000            42.00000
+    ## Max.            308633.0000         10413.00000
+    ## NA's              1822.0000          1815.00000
 
 ### Lab analysis
 
@@ -446,7 +446,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7093       1629         85         76          5 
+    ##       7094       1629         85         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -458,7 +458,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7512                                   346 
+    ##                                  7513                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   322                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -480,14 +480,14 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.798000   0.183000   0.009560   0.008550   0.000563 
+    ##   0.798000   0.183000   0.009560   0.008550   0.000562 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
     ##   0.51500   0.26500   0.05490   0.03660   0.03050   0.02330   0.02250   0.01270 
     ##  23456789        56 
-    ##   0.00741   0.00711 
+    ##   0.00741   0.00710 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -617,7 +617,7 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92     985   612     340              83      629
+    ## decreased     92     986   612     340              83      629
     ## increased     66     743   436     214              59      446
     ## unchanged    344    2852  1431    1137             274     1431
 
@@ -704,6 +704,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Alcohol drinking                                                  3         0
     ## Antimicrobial agent                                               7        10
     ## Atopic asthma                                                     4         1
+    ## Bacterial vaginosis                                               4         1
     ## Birth measurement                                                 3         0
     ## Diarrhea                                                          0         3
     ## Disease recurrence                                                0         3
@@ -923,6 +924,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Alcohol drinking                                                  2
     ## Antimicrobial agent                                              25
     ## Atopic asthma                                                     7
+    ## Bacterial vaginosis                                               0
     ## Birth measurement                                                 4
     ## Diarrhea                                                         15
     ## Disease recurrence                                                7
@@ -1148,6 +1150,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Alcohol drinking                                              0.600     0.000
     ## Antimicrobial agent                                           0.170     0.240
     ## Atopic asthma                                                 0.330     0.083
+    ## Bacterial vaginosis                                           0.800     0.200
     ## Birth measurement                                             0.430     0.000
     ## Diarrhea                                                      0.000     0.170
     ## Disease recurrence                                            0.000     0.300
@@ -1367,6 +1370,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Alcohol drinking                                              0.400
     ## Antimicrobial agent                                           0.600
     ## Atopic asthma                                                 0.580
+    ## Bacterial vaginosis                                           0.000
     ## Birth measurement                                             0.570
     ## Diarrhea                                                      0.830
     ## Disease recurrence                                            0.700
@@ -2097,7 +2101,7 @@ tabDiv(exps, "Shannon", "Body site")
 
     ##                                                 increased decreased unchanged
     ## Feces                                                 377       608      1725
-    ## Vagina                                                 26         8        45
+    ## Vagina                                                 26         9        45
     ## Sputum                                                  7        23        11
     ## Posterior fornix of vagina                             12         0        10
     ## Gastrointestinal system mucosa                          0        11         0
@@ -2181,7 +2185,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
 
     ##                                                 increased decreased unchanged
     ## Feces                                               0.140     0.220      0.64
-    ## Vagina                                              0.330     0.100      0.57
+    ## Vagina                                              0.320     0.110      0.56
     ## Sputum                                              0.170     0.560      0.27
     ## Posterior fornix of vagina                          0.550     0.000      0.45
     ## Gastrointestinal system mucosa                      0.000     1.000      0.00
@@ -2405,7 +2409,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.066   9.000 467.000
+    ##   1.000   2.000   4.000   8.065   9.000 467.000
 
 ``` r
 
@@ -2420,7 +2424,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6930
+    ## [1] 6931
 
 ### Microbe co-occurrence
 
