@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 15008    51
+    ## [1] 15014    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2124
+    ## [1] 2126
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 15008
+    ## [1] 15014
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 15008
+    ## [1] 15014
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -226,13 +226,13 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                 time series / longitudinal observational 
     ##                                                                                      157 
     ##                                                                       prospective cohort 
-    ##                                                                                      170 
+    ##                                                                                      171 
     ##                                                                    laboratory experiment 
     ##                                                                                      223 
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      545 
     ##                                                                             case-control 
-    ##                                                                                      831
+    ##                                                                                      832
 
 ## Experiment stats
 
@@ -294,9 +294,9 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7306                    943                    237 
+    ##                   7309                    943                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                    141                    134                     43 
+    ##                    142                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                     33                     28                     24 
     ##    Macaca fascicularis 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3474                     1270                      359 
+    ##                     3478                     1270                      359 
     ##              South Korea                  Germany                    Italy 
     ##                      224                      217                      203 
     ##                    Spain                  Denmark                Australia 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5816                       440                       208 
+    ##                      5819                       440                       208 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        85 
     ##                     Colon               Nasopharynx                     feces 
@@ -338,7 +338,7 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                  3 months                   1 month                  2 months 
-    ##                      1283                      1038                       436 
+    ##                      1284                      1040                       436 
     ##                  6 months                   2 weeks                    1 week 
     ##                       383                       279                        70 
     ## Recent use of antibiotics                   30 days  currently on antibiotics 
@@ -360,7 +360,7 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.79300                0.10200                0.02570 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01530                0.01450                0.00467 
+    ##                0.01540                0.01450                0.00466 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                0.00358                0.00304                0.00260 
     ##    Macaca fascicularis 
@@ -380,9 +380,9 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63400                   0.04800                   0.02270 
+    ##                   0.63400                   0.04790                   0.02270 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01590                   0.00992                   0.00927 
+    ##                   0.01590                   0.00992                   0.00926 
     ##                     Colon               Nasopharynx                     feces 
     ##                   0.00894                   0.00872                   0.00741 
     ##                     Mouth 
@@ -404,11 +404,11 @@ sub.tab
     ##                  3 months                   1 month                  2 months 
     ##                   0.32000                   0.25900                   0.10900 
     ##                  6 months                   2 weeks                    1 week 
-    ##                   0.09550                   0.06950                   0.01740 
+    ##                   0.09540                   0.06950                   0.01740 
     ## Recent use of antibiotics                   30 days  currently on antibiotics 
-    ##                   0.01320                   0.00947                   0.00748 
+    ##                   0.01320                   0.00946                   0.00747 
     ##  Currently on antibiotics 
-    ##                   0.00748
+    ##                   0.00747
 
 Sample size:
 
@@ -422,7 +422,7 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             12.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               381.9227            62.45765
+    ## Mean               381.7493            62.47498
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
     ## NA's              1834.0000          1827.00000
@@ -442,12 +442,12 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7134       1634         85         76          5 
+    ##       7136       1636         85         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3411      1789       363       242       202       154       149        84 
+    ##      3413      1789       363       242       202       154       149        84 
     ##  23456789        56 
     ##        49        47 
     ## 
@@ -460,7 +460,7 @@ lab.tab
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
     ##                                    78                                    73 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                                    59                                    31 
+    ##                                    61                                    31 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
     ##                                    30                                    21
 
@@ -476,12 +476,12 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##    0.79900    0.18300    0.00951    0.00851    0.00056 
+    ##   0.798000   0.183000   0.009510   0.008500   0.000559 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51300   0.26900   0.05460   0.03640   0.03040   0.02310   0.02240   0.01260 
+    ##   0.51300   0.26900   0.05450   0.03640   0.03030   0.02310   0.02240   0.01260 
     ##  23456789        56 
     ##   0.00736   0.00706 
     ## 
@@ -494,7 +494,7 @@ lab.tab
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
     ##                               0.00891                               0.00834 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                               0.00674                               0.00354 
+    ##                               0.00697                               0.00354 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
     ##                               0.00343                               0.00240
 
@@ -613,9 +613,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92    1003   615     338              83      629
-    ## increased     66     743   436     216              59      450
-    ## unchanged    345    2863  1432    1140             275     1432
+    ## decreased     92    1004   616     338              82      629
+    ## increased     66     744   437     217              60      450
+    ## unchanged    345    2864  1433    1141             275     1433
 
 Correspondence of Shannon diversity and Richness:
 
@@ -628,7 +628,7 @@ table(exps$Shannon, exps$Richness)
     ##             decreased increased unchanged
     ##   decreased       350        15        81
     ##   increased        11       221        73
-    ##   unchanged       140       118      1150
+    ##   unchanged       140       118      1151
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -2092,7 +2092,7 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 377       610      1734
+    ## Feces                                                 378       611      1735
     ## Vagina                                                 26         9        45
     ## Sputum                                                  7        23        11
     ## Posterior fornix of vagina                             12         0        10
@@ -2260,7 +2260,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              236       377       871
+    ## Feces                              236       377       872
     ## Oral cavity                         16         4        22
     ## Sputum                               0        11         5
     ## Posterior fornix of vagina          10         1         2
@@ -2382,7 +2382,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8109
+    ## [1] 8136
 
 Development of unique microbes captured over time:
 
@@ -2401,7 +2401,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   8.051   9.000 467.000
+    ##    1.00    2.00    4.00    8.06    9.00  467.00
 
 ``` r
 
@@ -2416,7 +2416,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 6953
+    ## [1] 6958
 
 ### Microbe co-occurrence
 
@@ -2450,15 +2450,15 @@ top20
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              898              646              643              609 
+    ##              899              646              643              609 
     ##    Lactobacillus    Streptococcus       Prevotella        Roseburia 
-    ##              548              545              515              515 
+    ##              548              547              515              515 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
-    ##              514              513              473              434 
+    ##              514              513              473              435 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              378              369              359              321 
+    ##              379              369              359              321 
     ##     Anaerostipes      Collinsella     Enterococcus      Lachnospira 
-    ##              318              310              308              303
+    ##              318              310              308              304
 
 Subset heatmaps to the top 20 genera most frequently reported as
 differentially abundant:
@@ -2499,7 +2499,7 @@ top20.up
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
     ##              448              223              345              285 
     ##    Lactobacillus    Streptococcus       Prevotella        Roseburia 
-    ##              344              342              248              172 
+    ##              344              343              248              172 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
     ##              257              225              269              198 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
@@ -2519,15 +2519,15 @@ top20.down
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              445              419              293              320 
+    ##              446              419              293              320 
     ##    Lactobacillus    Streptococcus       Prevotella        Roseburia 
-    ##              202              198              264              339 
+    ##              202              199              264              339 
     ##      Clostridium     Ruminococcus  Parabacteroides        Alistipes 
-    ##              252              284              200              232 
+    ##              252              284              200              233 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              131              207              207              124 
+    ##              132              207              207              124 
     ##     Anaerostipes      Collinsella     Enterococcus      Lachnospira 
-    ##              168              140               88              182
+    ##              168              140               88              183
 
 Plot the heatmap
 
