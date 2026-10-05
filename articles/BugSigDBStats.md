@@ -447,7 +447,7 @@ lab.tab
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3428      1795       363       242       202       154       149        84 
+    ##      3428      1795       363       242       202       154       154        84 
     ##        56  23456789 
     ##        51        49 
     ## 
@@ -481,7 +481,7 @@ lab.tab
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51300   0.26900   0.05430   0.03620   0.03020   0.02300   0.02230   0.01260 
+    ##   0.51300   0.26800   0.05430   0.03620   0.03020   0.02300   0.02300   0.01260 
     ##        56  23456789 
     ##   0.00763   0.00733 
     ## 
@@ -613,7 +613,7 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased     92    1005   616     338              83      637
+    ## decreased     93    1004   616     338              83      637
     ## increased     66     754   439     218              63      452
     ## unchanged    346    2873  1438    1144             280     1435
 
@@ -626,7 +626,7 @@ table(exps$Shannon, exps$Richness)
 
     ##            
     ##             decreased increased unchanged
-    ##   decreased       350        16        81
+    ##   decreased       350        15        81
     ##   increased        11       222        73
     ##   unchanged       140       118      1151
 
@@ -642,8 +642,8 @@ tabDiv(exps, "Shannon", "Condition")
     ## Diet                                                             19        43
     ## Polycystic ovary syndrome                                         4        21
     ## Gastric cancer                                                    6        22
-    ## Colorectal cancer                                                21        34
     ## COVID-19                                                         11        24
+    ## Colorectal cancer                                                21        33
     ## Human papilloma virus infection                                  13         1
     ## Periodontitis                                                    15         3
     ## Alzheimer's disease                                               0        11
@@ -862,8 +862,8 @@ tabDiv(exps, "Shannon", "Condition")
     ## Diet                                                             65
     ## Polycystic ovary syndrome                                        33
     ## Gastric cancer                                                   28
-    ## Colorectal cancer                                                99
     ## COVID-19                                                         50
+    ## Colorectal cancer                                                99
     ## Human papilloma virus infection                                  28
     ## Periodontitis                                                    16
     ## Alzheimer's disease                                              30
@@ -1088,8 +1088,8 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Diet                                                          0.150     0.340
     ## Polycystic ovary syndrome                                     0.069     0.360
     ## Gastric cancer                                                0.110     0.390
-    ## Colorectal cancer                                             0.140     0.220
     ## COVID-19                                                      0.130     0.280
+    ## Colorectal cancer                                             0.140     0.220
     ## Human papilloma virus infection                               0.310     0.024
     ## Periodontitis                                                 0.440     0.088
     ## Alzheimer's disease                                           0.000     0.270
@@ -1308,8 +1308,8 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Diet                                                          0.510
     ## Polycystic ovary syndrome                                     0.570
     ## Gastric cancer                                                0.500
-    ## Colorectal cancer                                             0.640
     ## COVID-19                                                      0.590
+    ## Colorectal cancer                                             0.650
     ## Human papilloma virus infection                               0.670
     ## Periodontitis                                                 0.470
     ## Alzheimer's disease                                           0.730
