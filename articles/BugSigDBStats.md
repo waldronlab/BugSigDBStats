@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 15102    51
+    ## [1] 15101    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2137
+    ## [1] 2138
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 15102
+    ## [1] 15101
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 15102
+    ## [1] 15101
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -230,7 +230,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                    laboratory experiment 
     ##                                                                                      223 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      548 
+    ##                                                                                      549 
     ##                                                                             case-control 
     ##                                                                                      837
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7362                    943                    237 
+    ##                   7364                    943                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    142                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3487                     1281                      359 
+    ##                     3489                     1281                      359 
     ##              South Korea                  Germany                    Italy 
     ##                      224                      217                      210 
     ##                    Spain                  Denmark                Australia 
@@ -316,13 +316,13 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5856                       440                       213 
+    ##                      5858                       440                       213 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        85 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                        82                        80                        67 
+    ##                        83                        80                        67 
     ##                    Rectum 
-    ##                        63 
+    ##                        64 
     ## 
     ## $Condition
     ## 
@@ -358,7 +358,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.79400                0.10200                0.02560 
+    ##                0.79400                0.10200                0.02550 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01530                0.01440                0.00464 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -380,13 +380,13 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63400                   0.04770                   0.02310 
+    ##                   0.63500                   0.04770                   0.02310 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                   0.01580                   0.00986                   0.00921 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00888                   0.00867                   0.00726 
+    ##                   0.00899                   0.00867                   0.00726 
     ##                    Rectum 
-    ##                   0.00683 
+    ##                   0.00693 
     ## 
     ## $Condition
     ## 
@@ -422,10 +422,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             12.0000            10.00000
     ## Median              24.0000            21.00000
-    ## Mean               381.1654            64.09183
+    ## Mean               381.1673            64.09196
     ## 3rd Qu.             50.0000            42.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              1845.0000          1836.00000
+    ## NA's              1847.0000          1838.00000
 
 ### Lab analysis
 
@@ -442,19 +442,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7172       1646         85         76          5 
+    ##       7174       1646         85         76          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##      3428      1795       363       242       202       154       154        84 
+    ##      3428      1797       363       242       202       154       154        84 
     ##        56  23456789 
     ##        51        49 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7587                                   346 
+    ##                                  7589                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   323                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -476,14 +476,14 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##   0.798000   0.183000   0.009460   0.008460   0.000557 
+    ##   0.798000   0.183000   0.009460   0.008460   0.000556 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45       345 123456789         3 
-    ##   0.51300   0.26800   0.05430   0.03620   0.03020   0.02300   0.02300   0.01260 
+    ##   0.51200   0.26900   0.05430   0.03620   0.03020   0.02300   0.02300   0.01260 
     ##        56  23456789 
-    ##   0.00763   0.00733 
+    ##   0.00762   0.00733 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -492,7 +492,7 @@ lab.tab
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03670                               0.01630 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00944                               0.00830 
+    ##                               0.00943                               0.00830 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
     ##                               0.00693                               0.00352 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
@@ -2420,7 +2420,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 7001
+    ## [1] 6999
 
 ### Microbe co-occurrence
 
@@ -2460,9 +2460,9 @@ top20
     ##       Prevotella     Ruminococcus  Parabacteroides        Alistipes 
     ##              515              515              476              440 
     ##      Akkermansia            Dorea      Coprococcus     Anaerostipes 
-    ##              385              372              361              323 
+    ##              385              372              361              324 
     ##      Veillonella      Collinsella     Enterococcus      Lachnospira 
-    ##              323              310              309              309
+    ##              323              310              310              309
 
 Subset heatmaps to the top 20 genera most frequently reported as
 differentially abundant:
@@ -2507,9 +2507,9 @@ top20.up
     ##       Prevotella     Ruminococcus  Parabacteroides        Alistipes 
     ##              248              226              272              201 
     ##      Akkermansia            Dorea      Coprococcus     Anaerostipes 
-    ##              247              159              148              148 
+    ##              247              159              148              149 
     ##      Veillonella      Collinsella     Enterococcus      Lachnospira 
-    ##              194              166              218              118
+    ##              194              166              219              118
 
 ``` r
 
