@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 15153    51
+    ## [1] 15161    51
 
 ``` r
 
@@ -73,14 +73,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2143
+    ## [1] 2144
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 15153
+    ## [1] 15161
 
 ### Publication date of the curated papers:
 
@@ -111,7 +111,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 15153
+    ## [1] 15161
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -230,7 +230,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                                    laboratory experiment 
     ##                                                                                      223 
     ##                                          cross-sectional observational, not case-control 
-    ##                                                                                      550 
+    ##                                                                                      551 
     ##                                                                             case-control 
     ##                                                                                      840
 
@@ -294,7 +294,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   7399                    943                    237 
+    ##                   7403                    943                    237 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    142                    134                     43 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
@@ -305,7 +305,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3498                     1291                      362 
+    ##                     3502                     1290                      362 
     ##              South Korea                  Germany                    Italy 
     ##                      224                      217                      210 
     ##                    Spain                  Denmark                Australia 
@@ -316,7 +316,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      5870                       441                       224 
+    ##                      5874                       441                       225 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
     ##                       146                        91                        85 
     ##                     Colon               Nasopharynx                     Mouth 
@@ -327,7 +327,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                       347                       287                       235 
+    ##                       351                       287                       235 
     ##                   Obesity                  COVID-19    Response to transplant 
     ##                       168                       127                       125 
     ##          Response to diet          Diet measurement Polycystic ovary syndrome 
@@ -341,10 +341,10 @@ sub.tab
     ##                      1287                      1045                       436 
     ##                  6 months                   2 weeks                    1 week 
     ##                       383                       289                        73 
-    ## Recent use of antibiotics                   30 days                   6 weeks 
-    ##                        53                        41                        35 
-    ##  currently on antibiotics 
-    ##                        30
+    ## Recent use of antibiotics  Currently on antibiotics                   30 days 
+    ##                        53                        42                        41 
+    ##                   6 weeks 
+    ##                        35
 
 Proportions instead:
 
@@ -358,9 +358,9 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.79500                0.10100                0.02550 
+    ##                0.79500                0.10100                0.02540 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01530                0.01440                0.00462 
+    ##                0.01520                0.01440                0.00462 
     ##         Macaca mulatta             Ovis aries             Bos taurus 
     ##                0.00354                0.00301                0.00258 
     ##    Macaca fascicularis 
@@ -373,25 +373,25 @@ sub.tab
     ##              South Korea                  Germany                    Italy 
     ##                   0.0241                   0.0233                   0.0226 
     ##                    Spain                  Denmark                Australia 
-    ##                   0.0210                   0.0203                   0.0172 
+    ##                   0.0209                   0.0203                   0.0172 
     ##                   Canada 
     ##                   0.0156 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.63300                   0.04760                   0.02420 
+    ##                   0.63400                   0.04760                   0.02430 
     ## Subgingival dental plaque                    Caecum               Oral cavity 
-    ##                   0.01580                   0.00982                   0.00917 
+    ##                   0.01570                   0.00982                   0.00917 
     ##                     Colon               Nasopharynx                     Mouth 
-    ##                   0.00896                   0.00863                   0.00723 
+    ##                   0.00895                   0.00863                   0.00723 
     ##                    Rectum 
-    ##                   0.00691 
+    ##                   0.00690 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0381                    0.0315                    0.0258 
+    ##                    0.0385                    0.0315                    0.0258 
     ##                   Obesity                  COVID-19    Response to transplant 
     ##                    0.0184                    0.0139                    0.0137 
     ##          Response to diet          Diet measurement Polycystic ovary syndrome 
@@ -405,10 +405,10 @@ sub.tab
     ##                   0.31700                   0.25700                   0.10700 
     ##                  6 months                   2 weeks                    1 week 
     ##                   0.09430                   0.07120                   0.01800 
-    ## Recent use of antibiotics                   30 days                   6 weeks 
-    ##                   0.01310                   0.01010                   0.00862 
-    ##  currently on antibiotics 
-    ##                   0.00739
+    ## Recent use of antibiotics  Currently on antibiotics                   30 days 
+    ##                   0.01310                   0.01030                   0.01010 
+    ##                   6 weeks 
+    ##                   0.00862
 
 Sample size:
 
@@ -419,13 +419,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000             1.00000
-    ## 1st Qu.             12.0000            10.00000
-    ## Median              24.0000            21.00000
-    ## Mean               379.6288            63.98421
-    ## 3rd Qu.             50.0000            42.00000
-    ## Max.            308633.0000         10413.00000
-    ## NA's              1847.0000          1838.00000
+    ## Min.                  0.000             1.00000
+    ## 1st Qu.              12.000            10.00000
+    ## Median               24.000            21.00000
+    ## Mean                379.434            64.07405
+    ## 3rd Qu.              50.000            42.00000
+    ## Max.             308633.000         10413.00000
+    ## NA's               1843.000          1834.00000
 
 ### Lab analysis
 
@@ -442,7 +442,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2        18S 
-    ##       7200       1657         83         76          5 
+    ##       7204       1657         83         76          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -454,7 +454,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                              Roche454 
-    ##                                  7620                                   346 
+    ##                                  7623                                   346 
     ##                           Ion Torrent                               RT-qPCR 
     ##                                   323                                   143 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -483,7 +483,7 @@ lab.tab
     ##        34         4        12       123        45       345 123456789         3 
     ##   0.51100   0.27000   0.05450   0.03600   0.03010   0.02290   0.02290   0.01250 
     ##        56  23456789 
-    ##   0.00759   0.00730 
+    ##   0.00759   0.00729 
     ## 
     ## $`Sequencing platform`
     ## 
@@ -492,9 +492,9 @@ lab.tab
     ##                           Ion Torrent                               RT-qPCR 
     ##                               0.03660                               0.01620 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00940                               0.00826 
+    ##                               0.00939                               0.00826 
     ##                           MGISEQ-2000           Human Intestinal Tract Chip 
-    ##                               0.00691                               0.00351 
+    ##                               0.00690                               0.00351 
     ##                             DNBSEQ-T7                 BGISEQ-500 Sequencing 
     ##                               0.00340                               0.00238
 
@@ -614,8 +614,8 @@ apply(exps[,div.cols], 2, table)
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased     93    1004   616     338              83      638
-    ## increased     66     756   439     221              63      453
-    ## unchanged    346    2886  1438    1148             280     1439
+    ## increased     66     757   439     221              63      453
+    ## unchanged    346    2890  1442    1153             280     1439
 
 Correspondence of Shannon diversity and Richness:
 
@@ -665,6 +665,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Dry eye syndrome                                                  1         8
     ## Heart failure                                                     0         7
     ## Mycobacterium tuberculosis                                        7         0
+    ## Spontaneous preterm birth                                        14         7
     ## Atopic eczema                                                     5        11
     ## Autism spectrum disorder                                          7         1
     ## Cervical cancer                                                   7         1
@@ -672,7 +673,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Mastitis                                                          0         6
     ## Parkinson's disease                                              20        14
     ## Response to allogeneic hematopoietic stem cell transplant         0         6
-    ## Spontaneous preterm birth                                        13         7
     ## Acute pancreatitis                                                0         5
     ## Aging                                                             2         7
     ## Bronchiectasis                                                    0         5
@@ -863,7 +863,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Polycystic ovary syndrome                                        33
     ## Gastric cancer                                                   28
     ## COVID-19                                                         50
-    ## Colorectal cancer                                                99
+    ## Colorectal cancer                                               103
     ## Human papilloma virus infection                                  32
     ## Periodontitis                                                    16
     ## Alzheimer's disease                                              30
@@ -885,6 +885,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Dry eye syndrome                                                 14
     ## Heart failure                                                     2
     ## Mycobacterium tuberculosis                                        5
+    ## Spontaneous preterm birth                                         6
     ## Atopic eczema                                                    72
     ## Autism spectrum disorder                                         12
     ## Cervical cancer                                                  12
@@ -892,7 +893,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Mastitis                                                          0
     ## Parkinson's disease                                              95
     ## Response to allogeneic hematopoietic stem cell transplant         0
-    ## Spontaneous preterm birth                                         6
     ## Acute pancreatitis                                                3
     ## Aging                                                             3
     ## Bronchiectasis                                                    0
@@ -1089,7 +1089,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Polycystic ovary syndrome                                     0.069     0.360
     ## Gastric cancer                                                0.110     0.390
     ## COVID-19                                                      0.130     0.280
-    ## Colorectal cancer                                             0.140     0.220
+    ## Colorectal cancer                                             0.130     0.210
     ## Human papilloma virus infection                               0.280     0.022
     ## Periodontitis                                                 0.440     0.088
     ## Alzheimer's disease                                           0.000     0.270
@@ -1111,6 +1111,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Dry eye syndrome                                              0.043     0.350
     ## Heart failure                                                 0.000     0.780
     ## Mycobacterium tuberculosis                                    0.580     0.000
+    ## Spontaneous preterm birth                                     0.520     0.260
     ## Atopic eczema                                                 0.057     0.120
     ## Autism spectrum disorder                                      0.350     0.050
     ## Cervical cancer                                               0.350     0.050
@@ -1118,7 +1119,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Mastitis                                                      0.000     1.000
     ## Parkinson's disease                                           0.160     0.110
     ## Response to allogeneic hematopoietic stem cell transplant     0.000     1.000
-    ## Spontaneous preterm birth                                     0.500     0.270
     ## Acute pancreatitis                                            0.000     0.620
     ## Aging                                                         0.170     0.580
     ## Bronchiectasis                                                0.000     1.000
@@ -1309,7 +1309,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Polycystic ovary syndrome                                     0.570
     ## Gastric cancer                                                0.500
     ## COVID-19                                                      0.590
-    ## Colorectal cancer                                             0.650
+    ## Colorectal cancer                                             0.660
     ## Human papilloma virus infection                               0.700
     ## Periodontitis                                                 0.470
     ## Alzheimer's disease                                           0.730
@@ -1331,6 +1331,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Dry eye syndrome                                              0.610
     ## Heart failure                                                 0.220
     ## Mycobacterium tuberculosis                                    0.420
+    ## Spontaneous preterm birth                                     0.220
     ## Atopic eczema                                                 0.820
     ## Autism spectrum disorder                                      0.600
     ## Cervical cancer                                               0.600
@@ -1338,7 +1339,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Mastitis                                                      0.000
     ## Parkinson's disease                                           0.740
     ## Response to allogeneic hematopoietic stem cell transplant     0.000
-    ## Spontaneous preterm birth                                     0.230
     ## Acute pancreatitis                                            0.380
     ## Aging                                                         0.250
     ## Bronchiectasis                                                0.000
@@ -2096,8 +2096,8 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 381       611      1747
-    ## Vagina                                                 28         9        50
+    ## Feces                                                 381       611      1751
+    ## Vagina                                                 29         9        50
     ## Sputum                                                  7        23        11
     ## Posterior fornix of vagina                             12         0        10
     ## Gastrointestinal system mucosa                          0        11         0
@@ -2181,7 +2181,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
 
     ##                                                 increased decreased unchanged
     ## Feces                                               0.140     0.220      0.64
-    ## Vagina                                              0.320     0.100      0.57
+    ## Vagina                                              0.330     0.100      0.57
     ## Sputum                                              0.170     0.560      0.27
     ## Posterior fornix of vagina                          0.550     0.000      0.45
     ## Gastrointestinal system mucosa                      0.000     1.000      0.00
@@ -2386,7 +2386,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8185
+    ## [1] 8188
 
 Development of unique microbes captured over time:
 
@@ -2420,7 +2420,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 7012
+    ## [1] 7018
 
 ### Microbe co-occurrence
 
@@ -2454,11 +2454,11 @@ top20
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              902              653              649              612 
+    ##              902              654              651              612 
     ##    Lactobacillus    Streptococcus        Roseburia      Clostridium 
     ##              552              551              522              519 
     ##       Prevotella     Ruminococcus  Parabacteroides        Alistipes 
-    ##              515              515              476              440 
+    ##              515              515              477              440 
     ##      Akkermansia            Dorea      Coprococcus     Anaerostipes 
     ##              385              372              361              325 
     ##      Veillonella      Collinsella     Enterococcus      Lachnospira 
@@ -2501,11 +2501,11 @@ top20.up
 
     ## 
     ##      Bacteroides Faecalibacterium  Bifidobacterium          Blautia 
-    ##              450              225              346              286 
+    ##              450              226              348              286 
     ##    Lactobacillus    Streptococcus        Roseburia      Clostridium 
     ##              346              345              174              259 
     ##       Prevotella     Ruminococcus  Parabacteroides        Alistipes 
-    ##              248              226              272              201 
+    ##              248              226              273              201 
     ##      Akkermansia            Dorea      Coprococcus     Anaerostipes 
     ##              247              159              148              150 
     ##      Veillonella      Collinsella     Enterococcus      Lachnospira 
