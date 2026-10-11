@@ -31,14 +31,11 @@ The input signatures synchronized with the NCBI Taxonomy
  library(bugsigdbr)
 #> Note: After Feb. 16, 2025 PubMed ID replaced Study ID in BugSigDb. See https://github.com/waldronlab/BugSigDB/issues/263.
  df <- importBugSigDB()
-#> Error in curl::curl_fetch_memory(url, handle = handle): Timeout was reached [zenodo.org]:
-#> SSL connection timeout
+#> Using cached version from 2026-10-11 05:06:35
  sigs <- getSignatures(df)
-#> Error in getSignatures(df): is.data.frame(df) is not TRUE
  onto <- getNcbiTaxonomyObo()
-#> Using cached version from 2026-10-10 05:08:44
+#> Using cached version from 2026-10-11 05:07:18
 #> Retrieveing NCBI taxonomy ontology from cache.
  sigs <- syncWithNCBI(sigs, onto)
-#> Error: object 'sigs' not found
  
 ```
