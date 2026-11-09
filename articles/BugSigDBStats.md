@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 17011    57
+    ## [1] 17034    57
 
 ``` r
 
@@ -76,14 +76,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2370
+    ## [1] 2375
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 17011
+    ## [1] 17034
 
 ### Publication date of the curated papers:
 
@@ -114,7 +114,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 17011
+    ## [1] 17034
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -172,58 +172,40 @@ sds <- lapply(spl, unique)
 sort(lengths(sds), decreasing = FALSE)
 ```
 
+    ##                                                 case-control,randomized controlled trial 
+    ##                                                                                        1 
     ##              cross-sectional observational, not case-control,randomized controlled trial 
     ##                                                                                        1 
-    ##                                        laboratory experiment,randomized controlled trial 
-    ##                                                                                        1 
-    ##                                                         meta-analysis,prospective cohort 
-    ##                                                                                        1 
-    ##                                                 prospective cohort,laboratory experiment 
-    ##                                                                                        1 
-    ##                                                         prospective cohort,meta-analysis 
+    ## cross-sectional observational, not case-control,time series / longitudinal observational 
     ##                                                                                        1 
     ##                                           prospective cohort,randomized controlled trial 
     ##                                                                                        1 
-    ##                                                 randomized controlled trial,case-control 
-    ##                                                                                        1 
-    ## time series / longitudinal observational,cross-sectional observational, not case-control 
-    ##                                                                                        1 
-    ##                    cross-sectional observational, not case-control,laboratory experiment 
+    ##                                                      laboratory experiment,meta-analysis 
     ##                                                                                        2 
-    ##                                                      meta-analysis,laboratory experiment 
-    ##                                                                                        2 
-    ##                                    time series / longitudinal observational,case-control 
-    ##                                                                                        2 
-    ##                     time series / longitudinal observational,randomized controlled trial 
+    ##                                                         meta-analysis,prospective cohort 
     ##                                                                                        2 
     ##                                                          case-control,prospective cohort 
     ##                                                                                        3 
-    ##                    laboratory experiment,cross-sectional observational, not case-control 
-    ##                                                                                        3 
+    ##                       cross-sectional observational, not case-control,prospective cohort 
+    ##                                                                                        4 
     ##                                                 laboratory experiment,prospective cohort 
-    ##                                                                                        3 
-    ##                     randomized controlled trial,time series / longitudinal observational 
-    ##                                                                                        3 
-    ##                                                       laboratory experiment,case-control 
     ##                                                                                        4 
-    ##                           laboratory experiment,time series / longitudinal observational 
+    ##                              prospective cohort,time series / longitudinal observational 
     ##                                                                                        4 
-    ##                                                               meta-analysis,case-control 
-    ##                                                                                        4 
-    ##                       prospective cohort,cross-sectional observational, not case-control 
-    ##                                                                                        4 
-    ##                                        randomized controlled trial,laboratory experiment 
-    ##                                                                                        4 
-    ##                           time series / longitudinal observational,laboratory experiment 
-    ##                                                                                        4 
-    ##                              time series / longitudinal observational,prospective cohort 
-    ##                                                                                        4 
-    ##                                                               case-control,meta-analysis 
+    ##                    cross-sectional observational, not case-control,laboratory experiment 
     ##                                                                                        5 
+    ##                                        laboratory experiment,randomized controlled trial 
+    ##                                                                                        5 
+    ##                     randomized controlled trial,time series / longitudinal observational 
+    ##                                                                                        5 
+    ##                           laboratory experiment,time series / longitudinal observational 
+    ##                                                                                        8 
+    ##                                                               case-control,meta-analysis 
+    ##                                                                                        9 
     ##                                    case-control,time series / longitudinal observational 
-    ##                                                                                        7 
+    ##                                                                                        9 
     ##                                                       case-control,laboratory experiment 
-    ##                                                                                       10 
+    ##                                                                                       14 
     ##                                                                            meta-analysis 
     ##                                                                                       38 
     ##                                                              randomized controlled trial 
@@ -231,13 +213,13 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                 time series / longitudinal observational 
     ##                                                                                      174 
     ##                                                                       prospective cohort 
-    ##                                                                                      193 
+    ##                                                                                      194 
     ##                                                                    laboratory experiment 
-    ##                                                                                      248 
+    ##                                                                                      249 
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      596 
     ##                                                                             case-control 
-    ##                                                                                      954
+    ##                                                                                      957
 
 ## Experiment stats
 
@@ -299,7 +281,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   8422                   1042                    258 
+    ##                   8434                   1043                    258 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    143                    135                     43 
     ##         Macaca mulatta             Bos taurus             Ovis aries 
@@ -310,18 +292,18 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3881                     1503                      366 
+    ##                     3883                     1507                      366 
     ##                    Spain              South Korea                  Germany 
     ##                      263                      249                      239 
     ##                    Italy                   Canada                  Denmark 
-    ##                      232                      207                      193 
+    ##                      232                      207                      196 
     ##           United Kingdom 
-    ##                      169 
+    ##                      170 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      6570                       480                       331 
+    ##                      6576                       481                       335 
     ## Subgingival dental plaque                    Caecum                     Colon 
     ##                       179                        99                        88 
     ##               Oral cavity               Nasopharynx                     Mouth 
@@ -343,9 +325,9 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                  3 months                   1 month                  2 months 
-    ##                      1431                      1175                       475 
+    ##                      1434                      1176                       475 
     ##                  6 months                   2 weeks                    1 week 
-    ##                       447                       320                        88 
+    ##                       447                       321                        88 
     ## Recent use of antibiotics                   30 days  Currently on antibiotics 
     ##                        55                        52                        48 
     ##                   6 weeks 
@@ -363,57 +345,57 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                0.80300                0.09940                0.02460 
+    ##                0.80400                0.09940                0.02460 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                0.01360                0.01290                0.00410 
     ##         Macaca mulatta             Bos taurus             Ovis aries 
-    ##                0.00315                0.00286                0.00267 
+    ##                0.00314                0.00286                0.00267 
     ##    Macaca fascicularis 
     ##                0.00229 
     ## 
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3700                   0.1430                   0.0349 
+    ##                   0.3700                   0.1440                   0.0349 
     ##                    Spain              South Korea                  Germany 
-    ##                   0.0251                   0.0238                   0.0228 
+    ##                   0.0251                   0.0237                   0.0228 
     ##                    Italy                   Canada                  Denmark 
-    ##                   0.0221                   0.0198                   0.0184 
+    ##                   0.0221                   0.0197                   0.0187 
     ##           United Kingdom 
-    ##                   0.0161 
+    ##                   0.0162 
     ## 
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                   0.62900                   0.04600                   0.03170 
+    ##                   0.62900                   0.04600                   0.03210 
     ## Subgingival dental plaque                    Caecum                     Colon 
-    ##                   0.01710                   0.00948                   0.00843 
+    ##                   0.01710                   0.00947                   0.00842 
     ##               Oral cavity               Nasopharynx                     Mouth 
-    ##                   0.00843                   0.00776                   0.00738 
+    ##                   0.00842                   0.00775                   0.00737 
     ##                    Rectum 
-    ##                   0.00661 
+    ##                   0.00660 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                   0.03810                   0.02890                   0.02300 
+    ##                   0.03800                   0.02890                   0.02290 
     ##                   Obesity                  COVID-19          Response to diet 
     ##                   0.01780                   0.01360                   0.01350 
     ## Polycystic ovary syndrome    Response to transplant          Diet measurement 
-    ##                   0.01290                   0.01230                   0.01180 
+    ##                   0.01280                   0.01230                   0.01180 
     ## Type II diabetes mellitus 
-    ##                   0.00954 
+    ##                   0.00953 
     ## 
     ## $`Antibiotics exclusion`
     ## 
     ##                  3 months                   1 month                  2 months 
-    ##                   0.30600                   0.25100                   0.10200 
+    ##                   0.30700                   0.25100                   0.10200 
     ##                  6 months                   2 weeks                    1 week 
-    ##                   0.09570                   0.06850                   0.01880 
+    ##                   0.09560                   0.06860                   0.01880 
     ## Recent use of antibiotics                   30 days  Currently on antibiotics 
     ##                   0.01180                   0.01110                   0.01030 
     ##                   6 weeks 
-    ##                   0.00963
+    ##                   0.00962
 
 Sample size:
 
@@ -427,7 +409,7 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             12.0000            10.00000
     ## Median              25.0000            22.00000
-    ## Mean               350.9218            66.57214
+    ## Mean               350.4367            66.51787
     ## 3rd Qu.             53.0000            43.00000
     ## Max.            308633.0000         10413.00000
     ## NA's              2111.0000          2104.00000
@@ -447,21 +429,21 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2    RNA-Seq        18S 
-    ##       8192       1814         90         78         13          5 
+    ##       8204       1814         91         78         13          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45 123456789       345  23456789 
-    ##      3851      2101       410       260       214       197       156        90 
+    ##      3853      2111       411       260       214       197       156        90 
     ##         3        56 
     ##        88        63 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                           Ion Torrent 
-    ##                                  8577                                   400 
+    ##                                  8590                                   400 
     ##                              Roche454                               RT-qPCR 
-    ##                                   370                                   140 
+    ##                                   370                                   141 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
     ##                                    97                                    95 
     ##                           MGISEQ-2000                 BGISEQ-500 Sequencing 
@@ -481,27 +463,27 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2    RNA-Seq        18S 
-    ##   0.804000   0.178000   0.008830   0.007650   0.001280   0.000491 
+    ##    0.80400    0.17800    0.00892    0.00764    0.00127    0.00049 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45 123456789       345  23456789 
-    ##   0.50400   0.27500   0.05360   0.03400   0.02800   0.02580   0.02040   0.01180 
+    ##   0.50300   0.27600   0.05370   0.03390   0.02790   0.02570   0.02040   0.01180 
     ##         3        56 
-    ##   0.01150   0.00824 
+    ##   0.01150   0.00823 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                           Ion Torrent 
-    ##                               0.85900                               0.04010 
+    ##                               0.86000                               0.04000 
     ##                              Roche454                               RT-qPCR 
-    ##                               0.03710                               0.01400 
+    ##                               0.03700                               0.01410 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00972                               0.00952 
+    ##                               0.00971                               0.00951 
     ##                           MGISEQ-2000                 BGISEQ-500 Sequencing 
-    ##                               0.00611                               0.00371 
+    ##                               0.00610                               0.00370 
     ##                             DNBSEQ-T7           Human Intestinal Tract Chip 
-    ##                               0.00311                               0.00311
+    ##                               0.00310                               0.00310
 
 ### Statistical analysis
 
@@ -617,33 +599,10 @@ Overall distribution:
 apply(exps[,div.cols], 2, table)
 ```
 
-    ## $Pielou
-    ## < table of extent 0 >
-    ## 
-    ## $Shannon
-    ## 
-    ## decreased increased unchanged 
-    ##      1133       857      3261 
-    ## 
-    ## $Chao1
-    ## 
-    ## decreased increased unchanged 
-    ##       680       509      1655 
-    ## 
-    ## $Simpson
-    ## 
-    ## decreased increased unchanged 
-    ##       376       246      1307 
-    ## 
-    ## $`Inverse Simpson`
-    ## 
-    ## decreased increased unchanged 
-    ##        94        83       340 
-    ## 
-    ## $Richness
-    ## 
-    ## decreased increased unchanged 
-    ##       718       525      1651
+    ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
+    ## decreased    102    1134   681     377              94      719
+    ## increased     86     858   509     247              83      527
+    ## unchanged    425    3265  1656    1308             341     1655
 
 Correspondence of Shannon diversity and Richness:
 
@@ -654,9 +613,9 @@ table(exps$Shannon, exps$Richness)
 
     ##            
     ##             decreased increased unchanged
-    ##   decreased       396        21        88
-    ##   increased        15       251        82
-    ##   unchanged       168       134      1335
+    ##   decreased       396        21        89
+    ##   increased        15       252        82
+    ##   unchanged       169       134      1338
 
 Conditions with consistently increased or decreased alpha diversity:
 
@@ -898,7 +857,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Sample collection protocol                                        0         0
     ## SARS coronavirus                                                  0         0
     ## Smoking behavior                                                 10        10
-    ## Smoking behavior,Pregnancy                                        0         0
     ## Social deprivation,Psychological measurement                      0         0
     ## Systemic lupus erythematosus                                      2         2
     ## Transplant outcome measurement                                    0         0
@@ -1020,7 +978,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Phenotype                                                        19
     ## Phenylketonuria                                                   4
     ## Population                                                       28
-    ## Pregnancy                                                        22
+    ## Pregnancy                                                        23
     ## Reproductive behaviour measurement                                3
     ## Response to anti-tuberculosis drug                               13
     ## Response to antidepressant                                        5
@@ -1103,7 +1061,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Arthritis                                                         6
     ## Biological sex                                                   14
     ## Bipolar disorder                                                  5
-    ## Celiac disease                                                    7
+    ## Celiac disease                                                    8
     ## Chlamydia trachomatis                                             2
     ## Colon carcinoma                                                  10
     ## Contraception                                                     5
@@ -1137,7 +1095,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Sample collection protocol                                        9
     ## SARS coronavirus                                                  6
     ## Smoking behavior                                                 27
-    ## Smoking behavior,Pregnancy                                        5
     ## Social deprivation,Psychological measurement                     12
     ## Systemic lupus erythematosus                                      8
     ## Transplant outcome measurement                                   11
@@ -1265,7 +1222,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Phenotype                                                     0.095     0.000
     ## Phenylketonuria                                               0.120     0.380
     ## Population                                                    0.120     0.180
-    ## Pregnancy                                                     0.140     0.071
+    ## Pregnancy                                                     0.140     0.069
     ## Reproductive behaviour measurement                            0.400     0.000
     ## Response to anti-tuberculosis drug                            0.260     0.320
     ## Response to antidepressant                                    0.290     0.000
@@ -1382,7 +1339,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Sample collection protocol                                    0.000     0.000
     ## SARS coronavirus                                              0.000     0.000
     ## Smoking behavior                                              0.210     0.210
-    ## Smoking behavior,Pregnancy                                    0.000     0.000
     ## Social deprivation,Psychological measurement                  0.000     0.000
     ## Systemic lupus erythematosus                                  0.170     0.170
     ## Transplant outcome measurement                                0.000     0.000
@@ -1621,7 +1577,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Sample collection protocol                                    1.000
     ## SARS coronavirus                                              1.000
     ## Smoking behavior                                              0.570
-    ## Smoking behavior,Pregnancy                                    1.000
     ## Social deprivation,Psychological measurement                  1.000
     ## Systemic lupus erythematosus                                  0.670
     ## Transplant outcome measurement                                1.000
@@ -2252,16 +2207,16 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 419       716      1966
-    ## Vagina                                                 57        14        73
+    ## Feces                                                 419       717      1968
+    ## Vagina                                                 57        14        74
     ## Sputum                                                  7        23        19
     ## Posterior fornix of vagina                             16         2        11
-    ## Uterine cervix                                         15         1        28
+    ## Uterine cervix                                         15         1        27
     ## Gastrointestinal system mucosa                          0        11         1
-    ## Saliva                                                 42        52       198
     ## Blood serum                                             9         0         0
     ## Buccal mucosa                                          12         3         8
     ## Oral cavity                                            15         6        30
+    ## Saliva                                                 43        52       198
     ## Subgingival dental plaque                              17         8        56
     ## Stomach                                                 6        14         5
     ## Uterine cervix,Vaginal fluid                            9         1         0
@@ -2289,7 +2244,7 @@ tabDiv(exps, "Shannon", "Body site")
     ## Intestine                                               1         4        21
     ## Skin of forearm                                         3         0         3
     ## Sputum,Feces                                            1         4         1
-    ## Urine                                                   4         1        20
+    ## Urine                                                   4         1        21
     ## Bile                                                    2         0         3
     ## Brachialis muscle                                       0         2         3
     ## Cecum mucosa                                            2         4         6
@@ -2344,16 +2299,16 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                               0.140     0.230     0.630
-    ## Vagina                                              0.400     0.097     0.510
+    ## Feces                                               0.130     0.230     0.630
+    ## Vagina                                              0.390     0.097     0.510
     ## Sputum                                              0.140     0.470     0.390
     ## Posterior fornix of vagina                          0.550     0.069     0.380
-    ## Uterine cervix                                      0.340     0.023     0.640
+    ## Uterine cervix                                      0.350     0.023     0.630
     ## Gastrointestinal system mucosa                      0.000     0.920     0.083
-    ## Saliva                                              0.140     0.180     0.680
     ## Blood serum                                         1.000     0.000     0.000
     ## Buccal mucosa                                       0.520     0.130     0.350
     ## Oral cavity                                         0.290     0.120     0.590
+    ## Saliva                                              0.150     0.180     0.680
     ## Subgingival dental plaque                           0.210     0.099     0.690
     ## Stomach                                             0.240     0.560     0.200
     ## Uterine cervix,Vaginal fluid                        0.900     0.100     0.000
@@ -2381,7 +2336,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
     ## Intestine                                           0.038     0.150     0.810
     ## Skin of forearm                                     0.500     0.000     0.500
     ## Sputum,Feces                                        0.170     0.670     0.170
-    ## Urine                                               0.160     0.040     0.800
+    ## Urine                                               0.150     0.038     0.810
     ## Bile                                                0.400     0.000     0.600
     ## Brachialis muscle                                   0.000     0.400     0.600
     ## Cecum mucosa                                        0.170     0.330     0.500
@@ -2436,39 +2391,39 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              274       451       998
+    ## Feces                              274       452      1000
     ## Oral cavity                         16         4        22
     ## Sputum                               0        12         7
     ## Posterior fornix of vagina          12         1         2
-    ## Vagina                              19         8        31
+    ## Vagina                              19         8        32
     ## Supragingival dental plaque          0         9         9
     ## Ileum                                3        11        10
     ## Stomach                              4        12         3
     ## Mouth                               10         3         9
-    ## Uterine cervix                       9         2        11
     ## Oropharynx                           0         6         6
     ## Rectum                               1         7         9
     ## Subgingival dental plaque           11         5        38
+    ## Uterine cervix                       8         2        11
     ## Skin epidermis                       0         5         2
     ## Skin of body                         4         9         6
     ## Uterine cervix,Vaginal fluid         7         2         1
     ## Conjunctival sac                     0         4         1
     ## Throat                               1         5         5
+    ## Vaginal fluid                        4         0         2
     ## Ascending colon                      3         0         6
     ## Colon                               10         7        17
     ## Colostrum                            3         0         2
     ## Lung                                 0         3         4
-    ## Saliva                              27        30       114
     ## Small intestine                      1         4         0
-    ## Vaginal fluid                        3         0         2
     ## Cecum mucosa                         2         4         1
     ## Colorectal mucosa                    2         0         9
     ## Ear                                  2         0         3
     ## Esophagus                            0         2         4
+    ## Saliva                              28        30       114
     ## Semen                                1         3         3
     ## Surface of tongue                    4         2         1
     ## Tongue                               2         4         7
-    ## Urine                                4         2        16
+    ## Urine                                4         2        17
     ## Blood                                1         2         2
     ## Buccal mucosa                        3         2         6
     ## Caecum                               5         6        12
@@ -2502,35 +2457,35 @@ tabDiv(exps, "Richness", "Body site", perc = TRUE)
     ## Oral cavity                      0.380     0.095      0.52
     ## Sputum                           0.000     0.630      0.37
     ## Posterior fornix of vagina       0.800     0.067      0.13
-    ## Vagina                           0.330     0.140      0.53
+    ## Vagina                           0.320     0.140      0.54
     ## Supragingival dental plaque      0.000     0.500      0.50
     ## Ileum                            0.120     0.460      0.42
     ## Stomach                          0.210     0.630      0.16
     ## Mouth                            0.450     0.140      0.41
-    ## Uterine cervix                   0.410     0.091      0.50
     ## Oropharynx                       0.000     0.500      0.50
     ## Rectum                           0.059     0.410      0.53
     ## Subgingival dental plaque        0.200     0.093      0.70
+    ## Uterine cervix                   0.380     0.095      0.52
     ## Skin epidermis                   0.000     0.710      0.29
     ## Skin of body                     0.210     0.470      0.32
     ## Uterine cervix,Vaginal fluid     0.700     0.200      0.10
     ## Conjunctival sac                 0.000     0.800      0.20
     ## Throat                           0.091     0.450      0.45
+    ## Vaginal fluid                    0.670     0.000      0.33
     ## Ascending colon                  0.330     0.000      0.67
     ## Colon                            0.290     0.210      0.50
     ## Colostrum                        0.600     0.000      0.40
     ## Lung                             0.000     0.430      0.57
-    ## Saliva                           0.160     0.180      0.67
     ## Small intestine                  0.200     0.800      0.00
-    ## Vaginal fluid                    0.600     0.000      0.40
     ## Cecum mucosa                     0.290     0.570      0.14
     ## Colorectal mucosa                0.180     0.000      0.82
     ## Ear                              0.400     0.000      0.60
     ## Esophagus                        0.000     0.330      0.67
+    ## Saliva                           0.160     0.170      0.66
     ## Semen                            0.140     0.430      0.43
     ## Surface of tongue                0.570     0.290      0.14
     ## Tongue                           0.150     0.310      0.54
-    ## Urine                            0.180     0.091      0.73
+    ## Urine                            0.170     0.087      0.74
     ## Blood                            0.200     0.400      0.40
     ## Buccal mucosa                    0.270     0.180      0.55
     ## Caecum                           0.220     0.260      0.52
@@ -2570,7 +2525,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8534
+    ## [1] 8555
 
 Development of unique microbes captured over time:
 
@@ -2589,7 +2544,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   7.911   9.000 467.000
+    ##   1.000   2.000   4.000   7.916   9.000 467.000
 
 ``` r
 
@@ -2604,7 +2559,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 7707
+    ## [1] 7717
 
 ### Microbe co-occurrence
 
@@ -2638,15 +2593,15 @@ top20
 
     ## 
     ##      Bacteroides  Bifidobacterium Faecalibacterium          Blautia 
-    ##              983              735              720              677 
+    ##              987              735              723              678 
     ##    Lactobacillus    Streptococcus        Roseburia      Clostridium 
-    ##              606              604              582              572 
+    ##              607              606              583              574 
     ##     Ruminococcus       Prevotella  Parabacteroides        Alistipes 
-    ##              570              556              543              488 
+    ##              570              559              544              488 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              424              407              374              370 
+    ##              426              407              375              372 
     ##      Lachnospira     Enterococcus     Anaerostipes      Collinsella 
-    ##              350              346              345              342
+    ##              353              347              345              343
 
 Subset heatmaps to the top 20 genera most frequently reported as
 differentially abundant:
@@ -2685,15 +2640,15 @@ top20.up
 
     ## 
     ##      Bacteroides  Bifidobacterium Faecalibacterium          Blautia 
-    ##              489              378              248              311 
+    ##              491              378              248              312 
     ##    Lactobacillus    Streptococcus        Roseburia      Clostridium 
-    ##              383              377              193              287 
+    ##              384              379              194              288 
     ##     Ruminococcus       Prevotella  Parabacteroides        Alistipes 
-    ##              250              265              309              219 
+    ##              250              267              309              219 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              271              180              154              225 
+    ##              272              180              154              227 
     ##      Lachnospira     Enterococcus     Anaerostipes      Collinsella 
-    ##              128              248              161              180
+    ##              130              248              161              181
 
 ``` r
 
@@ -2707,15 +2662,15 @@ top20.down
 
     ## 
     ##      Bacteroides  Bifidobacterium Faecalibacterium          Blautia 
-    ##              489              352              468              362 
+    ##              491              352              471              362 
     ##    Lactobacillus    Streptococcus        Roseburia      Clostridium 
-    ##              221              222              385              280 
+    ##              221              222              385              281 
     ##     Ruminococcus       Prevotella  Parabacteroides        Alistipes 
-    ##              316              288              230              265 
+    ##              316              289              231              265 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              150              223              216              142 
+    ##              151              223              217              142 
     ##      Lachnospira     Enterococcus     Anaerostipes      Collinsella 
-    ##              218               96              180              158
+    ##              219               97              180              158
 
 Plot the heatmap
 
