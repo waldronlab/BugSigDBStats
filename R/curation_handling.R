@@ -57,19 +57,66 @@ stripEmptySignatures <- function(dat, col = "NCBI Taxonomy IDs")
   dat[non.empty.sigs,]
 }
 
-#' Stratify curation output by curator 
+#' Stratify curation output by curator
+#'
+#' Counts the number of signatures and papers each person contributed to.
+#' Columns such as \code{"Revision editor"} can list several people per
+#' signature (e.g. \code{"Claregrieve1,Chloe,WikiWorks743"}); these entries
+#' are split so that each person is credited individually, regardless of
+#' their position in the list.
+#'
 #' @param dat a \code{data.frame} storing BugSigDB data
-#' @return a numeric \code{matrix} storing number of papers and number of 
-#' signatures curated for each curator 
+#' @param col character. The column of \code{dat} listing the people to
+#' count. Defaults to \code{"Curator"}; use \code{"Revision editor"} to count
+#' revision contributions.
+#' @param sep character. Separator between multiple people in \code{col}.
+#' @param exclude character. A regular expression; people whose name matches
+#' it are dropped. Defaults to dropping the \code{WikiWorks} maintenance
+#' accounts. Use \code{NULL} to keep everyone.
+#' @param short.names logical. Shorten names to the first word for display
+#' (e.g. \code{"Aleru Divine"} becomes \code{"Aleru"})? Names whose first word
+#' is shared by more than one person are kept in full.
+#' @return a numeric \code{matrix} with rows \code{"signatures"} and
+#' \code{"papers"} and one column per person, ordered by increasing number
+#' of papers.
+#' @examples
+#' dat <- data.frame(PMID = c(1, 1, 2, 3),
+#'                   `Revision editor` = c("Ann,WikiWorks743", "Ann,Bob",
+#'                                         "Bob", "WikiWorks"),
+#'                   check.names = FALSE)
+#' stratifyByCurator(dat, col = "Revision editor")
 #' @export
-stratifyByCurator <- function(dat)
+stratifyByCurator <- function(dat, col = "Curator", sep = ",",
+                              exclude = "^WikiWorks", short.names = TRUE)
 {
-  pc <- split(dat[,"PMID"], dat[,"Curator"])
-  spc <- sort(lengths(pc))
+  stopifnot(all(c("PMID", col) %in% colnames(dat)))
+
+  # one row per (signature, person)
+  people <- as.character(dat[[col]])
+  people[is.na(people)] <- ""
+  people <- lapply(strsplit(people, sep, fixed = TRUE),
+                   function(p) unique(trimws(p)))
+  long <- data.frame(PMID = rep(dat[["PMID"]], lengths(people)),
+                     person = unlist(people, use.names = FALSE))
+
+  keep <- !is.na(long$person) & long$person != ""
+  if(length(exclude)) keep <- keep & !grepl(exclude, long$person)
+  long <- long[keep,]
+
+  pc <- split(long$PMID, long$person)
   ppc <- sort(lengths(lapply(pc, unique)))
-  
-  npc <- rbind(spc[names(ppc)], ppc)
-  colnames(npc) <- vapply(colnames(npc), function(n) unlist(strsplit(n, " "))[1], character(1))
-  rownames(npc) <- c("signatures", "papers")
-  npc[,!is.na(colnames(npc))]
+  spc <- lengths(pc)[names(ppc)]
+
+  npc <- rbind(signatures = spc, papers = ppc)
+  if(short.names) colnames(npc) <- .shortenNames(colnames(npc))
+  npc
+}
+
+# first word of each name, unless that would merge different people
+.shortenNames <- function(x)
+{
+  first <- sub(" .*", "", x)
+  ambiguous <- first %in% first[duplicated(first)]
+  first[ambiguous] <- x[ambiguous]
+  first
 }

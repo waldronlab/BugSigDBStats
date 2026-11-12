@@ -93,10 +93,27 @@ plotCuratorStats(dat, npc)
 ```
 
 Number of complete and revised signatures:
-Turned off because it's way too long these days
-```{r eval = FALSE}
+```{r}
 table(dat[["State"]])
-table(dat[,"Revision editor"])
+```
+
+Revisions stratified by editor. Signatures revised by several people are
+credited to each of them, and the WikiWorks maintenance accounts are excluded:
+```{r revisionEditors}
+rpc <- stratifyByCurator(dat, col = "Revision editor")
+DT::datatable(
+  data.frame(Editor = colnames(rpc),
+             Signatures = rpc["signatures",],
+             Papers = rpc["papers",]),
+  rownames = FALSE,
+  options = list(pageLength = 10, order = list(list(2, "desc"))),
+  caption = "Revision contributions per editor"
+)
+```
+
+Top 30 revision editors:
+```{r revisionEditorsPlot, fig.width=10, fig.height=10}
+plotCuratorStats(dat, rpc[,tail(seq_len(ncol(rpc)), 30)])
 ```
 
 # Study stats
@@ -338,6 +355,23 @@ Number unique microbes contained in the signatures:
 Development of unique microbes captured over time:
 ```{r}
 plotUniqueMicrobesOverTime(dat)
+```
+
+Collector's curves: number of unique microbes as a function of the number of
+signatures and papers curated. The solid line follows the order in which
+signatures were curated; the dashed line and grey band show the mean and 95%
+interval over 100 random orderings. A curve that levels off indicates that newly
+curated signatures mostly report microbes already in the database.
+```{r collectorsCurve, fig.width=8, fig.height=5}
+set.seed(1)
+plotCollectorsCurve(dat, by = "signatures")
+plotCollectorsCurve(dat, by = "papers")
+```
+
+At the genus and species level:
+```{r collectorsCurveTaxLevel, fig.width=8, fig.height=5}
+plotCollectorsCurve(dat, by = "signatures", tax.level = "genus")
+plotCollectorsCurve(dat, by = "signatures", tax.level = "species")
 ```
 
 ## Microbe set size distribution
