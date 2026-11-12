@@ -15,7 +15,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/waldronlab/BugSigDBStats/blob/feature/curator-split-collectors-curve/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/waldronlab/BugSigDBStats/blob/main/DESCRIPTION)
 
 Geistlinger L, Waldron L (2026). *BugSigDBStats: BugSigDB Stats and
 Analysis*. R package version 0.99.3,
