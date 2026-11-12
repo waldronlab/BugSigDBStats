@@ -15,7 +15,7 @@ their position in the list.'></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">BugSigDB Stats and Analysis</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.99.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +91,8 @@ is shared by more than one person are kept in full.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>a numeric <code>matrix</code> with rows <code>"signatures"</code> and
 <code>"papers"</code> and one column per person, ordered by increasing number
-of papers.</p>
+of papers. If no people remain after removing empty and excluded entries,
+a warning is issued and a matrix with zero columns is returned.</p>
     </div>
 
     <div class="section level2">

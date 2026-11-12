@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 17149    57
+    ## [1] 17151    57
 
 ``` r
 
@@ -76,14 +76,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2386
+    ## [1] 2387
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 17149
+    ## [1] 17151
 
 ### Publication date of the curated papers:
 
@@ -114,7 +114,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 17149
+    ## [1] 17151
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -161,7 +161,7 @@ table(dat[["State"]])
 
     ## 
     ## Complete 
-    ##    16742
+    ##    16745
 
 Revisions stratified by editor. Signatures revised by several people are
 credited to each of them, and the WikiWorks maintenance accounts are
@@ -247,7 +247,7 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      597 
     ##                                                                             case-control 
-    ##                                                                                      964
+    ##                                                                                      965
 
 ## Experiment stats
 
@@ -309,7 +309,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   8490                   1060                    258 
+    ##                   8491                   1060                    258 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    143                    138                     43 
     ##         Macaca mulatta             Bos taurus             Ovis aries 
@@ -320,7 +320,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3903                     1536                      366 
+    ##                     3903                     1537                      366 
     ##                    Spain              South Korea                  Germany 
     ##                      268                      249                      239 
     ##                    Italy                   Canada                  Denmark 
@@ -331,7 +331,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      6617                       484                       333 
+    ##                      6618                       484                       333 
     ## Subgingival dental plaque                    Caecum                     Colon 
     ##                       179                        99                        98 
     ##               Oral cavity               Nasopharynx                     Mouth 
@@ -388,7 +388,7 @@ sub.tab
     ##                    Spain              South Korea                  Germany 
     ##                   0.0254                   0.0236                   0.0226 
     ##                    Italy                   Canada                  Denmark 
-    ##                   0.0220                   0.0196                   0.0186 
+    ##                   0.0220                   0.0196                   0.0185 
     ##           United Kingdom 
     ##                   0.0160 
     ## 
@@ -437,8 +437,8 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             12.0000            10.00000
     ## Median              25.0000            22.00000
-    ## Mean               349.2265            67.73989
-    ## 3rd Qu.             53.0000            43.75000
+    ## Mean               349.1892            67.73531
+    ## 3rd Qu.             53.0000            43.50000
     ## Max.            308633.0000         10413.00000
     ## NA's              2118.0000          2114.00000
 
@@ -457,7 +457,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2    RNA-Seq        18S 
-    ##       8260       1834         91         78         13          5 
+    ##       8260       1834         92         78         13          5 
     ## 
     ## $`16S variable region`
     ## 
@@ -469,7 +469,7 @@ lab.tab
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                           Ion Torrent 
-    ##                                  8661                                   400 
+    ##                                  8662                                   400 
     ##                              Roche454                               RT-qPCR 
     ##                                   370                                   141 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -491,7 +491,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2    RNA-Seq        18S 
-    ##   0.803000   0.178000   0.008850   0.007590   0.001260   0.000486 
+    ##   0.803000   0.178000   0.008950   0.007590   0.001260   0.000486 
     ## 
     ## $`16S variable region`
     ## 
@@ -630,7 +630,7 @@ apply(exps[,div.cols], 2, table)
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
     ## decreased    102    1135   682     377              94      720
     ## increased     86     862   510     248              83      530
-    ## unchanged    430    3306  1673    1329             344     1678
+    ## unchanged    430    3306  1673    1326             344     1678
 
 Correspondence of Shannon diversity and Richness:
 
@@ -2637,7 +2637,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 7764
+    ## [1] 7765
 
 ### Microbe co-occurrence
 

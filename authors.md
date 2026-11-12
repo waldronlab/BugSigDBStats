@@ -18,13 +18,13 @@ Source:
 [`DESCRIPTION`](https://github.com/waldronlab/BugSigDBStats/blob/feature/curator-split-collectors-curve/DESCRIPTION)
 
 Geistlinger L, Waldron L (2026). *BugSigDBStats: BugSigDB Stats and
-Analysis*. R package version 0.99.2,
+Analysis*. R package version 0.99.3,
 <https://github.com/waldronlab/BugSigDBStats>.
 
     @Manual{,
       title = {BugSigDBStats: BugSigDB Stats and Analysis},
       author = {Ludwig Geistlinger and Levi Waldron},
       year = {2026},
-      note = {R package version 0.99.2},
+      note = {R package version 0.99.3},
       url = {https://github.com/waldronlab/BugSigDBStats},
     }

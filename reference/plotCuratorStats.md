@@ -12,13 +12,16 @@ plotCuratorStats(dat, npc)
 
 - dat:
 
-  a `data.frame` storing BugSigDB data.
+  a `data.frame` storing BugSigDB data. Used for the plot title (total
+  number of papers and signatures).
 
 - npc:
 
-  character. A column of `dat` that contain the curation date in dmy
-  format.
+  a numeric `matrix` with rows `"signatures"` and `"papers"` and one
+  column per curator, as returned by
+  [`stratifyByCurator`](http://waldronlab.io/BugSigDBStats/reference/stratifyByCurator.md).
 
 ## Value
 
-None. Plots to a graphics device.
+None. Plots to a graphics device. Graphical parameters are restored on
+exit.

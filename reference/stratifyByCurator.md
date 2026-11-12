@@ -49,7 +49,9 @@ stratifyByCurator(
 ## Value
 
 a numeric `matrix` with rows `"signatures"` and `"papers"` and one
-column per person, ordered by increasing number of papers.
+column per person, ordered by increasing number of papers. If no people
+remain after removing empty and excluded entries, a warning is issued
+and a matrix with zero columns is returned.
 
 ## Examples
 
