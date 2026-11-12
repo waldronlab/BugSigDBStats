@@ -4,15 +4,48 @@
 \alias{stratifyByCurator}
 \title{Stratify curation output by curator}
 \usage{
-stratifyByCurator(dat)
+stratifyByCurator(
+  dat,
+  col = "Curator",
+  sep = ",",
+  exclude = "^WikiWorks",
+  short.names = TRUE
+)
 }
 \arguments{
 \item{dat}{a \code{data.frame} storing BugSigDB data}
+
+\item{col}{character. The column of \code{dat} listing the people to
+count. Defaults to \code{"Curator"}; use \code{"Revision editor"} to count
+revision contributions.}
+
+\item{sep}{character. Separator between multiple people in \code{col}.}
+
+\item{exclude}{character. A regular expression; people whose name matches
+it are dropped. Defaults to dropping the \code{WikiWorks} maintenance
+accounts. Use \code{NULL} to keep everyone.}
+
+\item{short.names}{logical. Shorten names to the first word for display
+(e.g. \code{"Aleru Divine"} becomes \code{"Aleru"})? Names whose first word
+is shared by more than one person are kept in full.}
 }
 \value{
-a numeric \code{matrix} storing number of papers and number of 
-signatures curated for each curator
+a numeric \code{matrix} with rows \code{"signatures"} and
+\code{"papers"} and one column per person, ordered by increasing number
+of papers. If no people remain after removing empty and excluded entries,
+a warning is issued and a matrix with zero columns is returned.
 }
 \description{
-Stratify curation output by curator
+Counts the number of signatures and papers each person contributed to.
+Columns such as \code{"Revision editor"} can list several people per
+signature (e.g. \code{"Claregrieve1,Chloe,WikiWorks743"}); these entries
+are split so that each person is credited individually, regardless of
+their position in the list.
+}
+\examples{
+dat <- data.frame(PMID = c(1, 1, 2, 3),
+                  `Revision editor` = c("Ann,WikiWorks743", "Ann,Bob",
+                                        "Bob", "WikiWorks"),
+                  check.names = FALSE)
+stratifyByCurator(dat, col = "Revision editor")
 }

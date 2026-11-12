@@ -57,22 +57,32 @@ plotProgressOverTime <- function(dat, col = "Curated date", diff = FALSE)
 
 #' Plot curation output for each curator
 #'
-#' @param dat a \code{data.frame} storing BugSigDB data.
-#' @param npc character. A column of \code{dat} that contain the curation date
-#' in dmy format. 
-#' @return None. Plots to a graphics device.
+#' @param dat a \code{data.frame} storing BugSigDB data. Used for the plot
+#' title (total number of papers and signatures).
+#' @param npc a numeric \code{matrix} with rows \code{"signatures"} and
+#' \code{"papers"} and one column per curator, as returned by
+#' \code{\link{stratifyByCurator}}.
+#' @return None. Plots to a graphics device. Graphical parameters are
+#' restored on exit.
 #' @export
 plotCuratorStats <- function(dat, npc)
 {
-    par(las=1)
-    par(mar=c(5, 5, 4, 1))
-    title <- paste("#papers:", length(unique(dat[,"PMID"])), 
+    if(!ncol(npc))
+        stop("'npc' contains no curators to plot. ",
+             "Were all entries empty or excluded in stratifyByCurator()?")
+
+    # widen the left margin so that long names are not cut off
+    left <- max(5, max(nchar(colnames(npc))) * 0.6 + 1)
+    op <- par(las=1, mar=c(5, left, 4, 1))
+    on.exit(par(op))
+
+    title <- paste("#papers:", length(unique(dat[,"PMID"])),
                     ", #signatures:", nrow(dat))
-    bp <- barplot(npc, xlim=c(0, max(npc) + 25), beside=TRUE, horiz=TRUE, 
-                    main=title, legend.text=c("signatures", "papers"), 
+    bp <- barplot(npc, xlim=c(0, max(npc) * 1.1), beside=TRUE, horiz=TRUE,
+                    main=title, legend.text=c("signatures", "papers"),
                     args.legend=list(x="bottomright"))
-    par(cex=0.8)
-    for(i in 1:ncol(npc)) text(y=bp[,i], x=npc[,i], labels=npc[,i], pos=4) 
+    text(y=bp, x=npc, labels=npc, pos=4, cex=0.8)
+    invisible(NULL)
 }
 
 #' Plot curation output for each curator
@@ -100,6 +110,130 @@ plotUniqueMicrobesOverTime <- function(dat,
                       ylab = "Number of unique microbes", xlab = "", 
                       ggtheme = ggplot2::theme_bw(), color = "darkblue") + 
                       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1))
+}
+
+#' Plot a collector's curve of unique microbes
+#'
+#' A collector's curve (species accumulation curve) shows the cumulative
+#' number of unique taxa observed as a function of sampling effort, here the
+#' number of signatures or papers curated, rather than calendar time. A curve
+#' that levels off indicates that newly curated signatures/papers mostly report
+#' taxa that are already in the database.
+#'
+#' @param dat a \code{data.frame} storing BugSigDB data.
+#' @param by character. Unit of sampling effort on the x-axis: either
+#' \code{"signatures"} or \code{"papers"} (grouped by PMID; signatures without
+#' a PMID are grouped by \code{"Study"}).
+#' @param tax.level character. Taxonomic level at which unique taxa are
+#' counted, e.g. \code{"species"} or \code{"genus"}. Defaults to
+#' \code{"mixed"}, i.e. taxa are counted at the level they were reported.
+#' See \code{\link[bugsigdbr]{restrictTaxLevel}}.
+#' @param exact.tax.level logical. Should only taxa reported exactly at
+#' \code{tax.level} be counted (\code{TRUE}), or should taxa below it be
+#' summarized up to \code{tax.level} (\code{FALSE})?
+#' @param date.col character. Column of \code{dat} holding the curation date,
+#' used to order signatures chronologically. Accepts ISO (\code{"2021-01-10"})
+#' or BugSigDB (\code{"10 January 2021"}) dates; signatures with missing or
+#' unparseable dates are placed last.
+#' @param n.perm integer. Number of random orderings of the signatures/papers
+#' used to compute the expected curve and its 95\% interval. Use \code{0} to
+#' plot only the observed, chronological curve.
+#' @return A \code{ggplot} object. The underlying data are available via its
+#' \code{data} element.
+#' @examples
+#' dat <- data.frame(PMID = c(1, 1, 2, 3),
+#'                   Study = paste("Study", c(1, 1, 2, 3)),
+#'                   `Curated date` = c("2021-01-10", "2021-01-10",
+#'                                      "2021-02-01", "2021-03-05"),
+#'                   check.names = FALSE)
+#' dat[["MetaPhlAn taxon names"]] <- list(c("a", "b"), "b", c("b", "c"), "a")
+#' plotCollectorsCurve(dat, by = "signatures", n.perm = 10)
+#' @importFrom ggplot2 .data
+#' @export
+plotCollectorsCurve <- function(dat,
+                                by = c("signatures", "papers"),
+                                tax.level = "mixed",
+                                exact.tax.level = FALSE,
+                                date.col = "Curated date",
+                                n.perm = 100)
+{
+    by <- match.arg(by)
+    if(tax.level != "mixed")
+        dat <- bugsigdbr::restrictTaxLevel(dat, tax.level, exact.tax.level)
+
+    # chronological order
+    dates <- .parseCurationDate(dat[[date.col]])
+    dat <- dat[order(dates, na.last = TRUE),]
+
+    # sampling units: signatures, or papers
+    taxa <- lapply(dat[["MetaPhlAn taxon names"]], unique)
+    if(by == "papers")
+    {
+        paper <- as.character(dat[["PMID"]])
+        nopmid <- is.na(paper) | paper == ""
+        paper[nopmid] <- paste("study", dat[["Study"]][nopmid])
+        taxa <- split(taxa, factor(paper, levels = unique(paper)))
+        taxa <- lapply(taxa, function(x) unique(unlist(x, use.names = FALSE)))
+    }
+    n <- length(taxa)
+    if(n == 0) stop("No ", by, " left to plot")
+
+    df <- data.frame(effort = seq_len(n),
+                     observed = .accumulate(taxa))
+
+    if(n.perm > 0)
+    {
+        perm <- vapply(seq_len(n.perm),
+                       function(i) .accumulate(taxa[sample.int(n)]),
+                       numeric(n))
+        perm <- matrix(perm, nrow = n)
+        df$expected <- rowMeans(perm)
+        df$lower <- apply(perm, 1, stats::quantile, probs = 0.025)
+        df$upper <- apply(perm, 1, stats::quantile, probs = 0.975)
+    }
+
+    xlab <- paste("Number of", by, "curated")
+    ylab <- "Number of unique microbes"
+    if(tax.level != "mixed")
+        ylab <- paste0("Number of unique taxa (", tax.level, " level)")
+
+    p <- ggplot2::ggplot(df, ggplot2::aes(x = .data$effort))
+    if(n.perm > 0)
+        p <- p + ggplot2::geom_ribbon(ggplot2::aes(ymin = .data$lower,
+                                                   ymax = .data$upper),
+                                      fill = "grey80") +
+                 ggplot2::geom_line(ggplot2::aes(y = .data$expected,
+                                    linetype = "random order"),
+                                    color = "grey40")
+    p + ggplot2::geom_line(ggplot2::aes(y = .data$observed,
+                                        linetype = "chronological"),
+                           color = "darkblue") +
+        ggplot2::scale_linetype_manual(name = "",
+            values = c(chronological = "solid", `random order` = "dashed")) +
+        ggplot2::labs(x = xlab, y = ylab) +
+        ggplot2::theme_bw() +
+        ggplot2::theme(legend.position = "bottom")
+}
+
+# cumulative number of unique elements over a list of sampling units
+.accumulate <- function(units)
+{
+    unit <- rep(seq_along(units), lengths(units))
+    first <- unit[!duplicated(unlist(units, use.names = FALSE))]
+    cumsum(tabulate(first, nbins = length(units)))
+}
+
+.parseCurationDate <- function(x)
+{
+    x <- as.character(x)
+    d <- as.Date(x, format = "%Y-%m-%d", optional = TRUE)
+    miss <- is.na(d)
+    d[miss] <- as.Date(x[miss], format = "%d %B %Y", optional = TRUE)
+    # month names are locale-dependent; lubridate parses them reliably
+    miss <- is.na(d) & !is.na(x) & x != ""
+    if(any(miss) && requireNamespace("lubridate", quietly = TRUE))
+        d[miss] <- suppressWarnings(lubridate::dmy(x[miss], quiet = TRUE))
+    d
 }
 
 #' Plot composition of a table of a categorical variable
