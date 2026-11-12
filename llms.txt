@@ -63,6 +63,8 @@ Biotechnology*, doi:
   : Plot microbe co-occurrence in a heatmap
 - [`paperStat()`](http://waldronlab.io/BugSigDBStats/reference/paperStat.md)
   : Paper stats
+- [`plotCollectorsCurve()`](http://waldronlab.io/BugSigDBStats/reference/plotCollectorsCurve.md)
+  : Plot a collector's curve of unique microbes
 - [`plotComposition()`](http://waldronlab.io/BugSigDBStats/reference/plotComposition.md)
   : Plot composition of a table of a categorical variable
 - [`plotCuratorStats()`](http://waldronlab.io/BugSigDBStats/reference/plotCuratorStats.md)
