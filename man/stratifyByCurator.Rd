@@ -32,7 +32,8 @@ is shared by more than one person are kept in full.}
 \value{
 a numeric \code{matrix} with rows \code{"signatures"} and
 \code{"papers"} and one column per person, ordered by increasing number
-of papers.
+of papers. If no people remain after removing empty and excluded entries,
+a warning is issued and a matrix with zero columns is returned.
 }
 \description{
 Counts the number of signatures and papers each person contributed to.

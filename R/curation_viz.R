@@ -57,24 +57,32 @@ plotProgressOverTime <- function(dat, col = "Curated date", diff = FALSE)
 
 #' Plot curation output for each curator
 #'
-#' @param dat a \code{data.frame} storing BugSigDB data.
-#' @param npc character. A column of \code{dat} that contain the curation date
-#' in dmy format. 
-#' @return None. Plots to a graphics device.
+#' @param dat a \code{data.frame} storing BugSigDB data. Used for the plot
+#' title (total number of papers and signatures).
+#' @param npc a numeric \code{matrix} with rows \code{"signatures"} and
+#' \code{"papers"} and one column per curator, as returned by
+#' \code{\link{stratifyByCurator}}.
+#' @return None. Plots to a graphics device. Graphical parameters are
+#' restored on exit.
 #' @export
 plotCuratorStats <- function(dat, npc)
 {
-    par(las=1)
+    if(!ncol(npc))
+        stop("'npc' contains no curators to plot. ",
+             "Were all entries empty or excluded in stratifyByCurator()?")
+
     # widen the left margin so that long names are not cut off
-    left <- max(5, max(nchar(colnames(npc)), 0) * 0.6 + 1)
-    par(mar=c(5, left, 4, 1))
-    title <- paste("#papers:", length(unique(dat[,"PMID"])), 
+    left <- max(5, max(nchar(colnames(npc))) * 0.6 + 1)
+    op <- par(las=1, mar=c(5, left, 4, 1))
+    on.exit(par(op))
+
+    title <- paste("#papers:", length(unique(dat[,"PMID"])),
                     ", #signatures:", nrow(dat))
-    bp <- barplot(npc, xlim=c(0, max(npc) * 1.1), beside=TRUE, horiz=TRUE, 
-                    main=title, legend.text=c("signatures", "papers"), 
+    bp <- barplot(npc, xlim=c(0, max(npc) * 1.1), beside=TRUE, horiz=TRUE,
+                    main=title, legend.text=c("signatures", "papers"),
                     args.legend=list(x="bottomright"))
-    par(cex=0.8)
-    for(i in 1:ncol(npc)) text(y=bp[,i], x=npc[,i], labels=npc[,i], pos=4) 
+    text(y=bp, x=npc, labels=npc, pos=4, cex=0.8)
+    invisible(NULL)
 }
 
 #' Plot curation output for each curator

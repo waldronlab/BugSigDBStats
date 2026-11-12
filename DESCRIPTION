@@ -1,5 +1,5 @@
 Package: BugSigDBStats
-Version: 0.99.2
+Version: 0.99.3
 Title: BugSigDB Stats and Analysis
 Authors@R: c(
     person(given = "Ludwig",

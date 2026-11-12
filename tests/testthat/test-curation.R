@@ -53,3 +53,24 @@ test_that("plotCollectorsCurve groups by paper and computes permutation band", {
     expect_true(all(p$data$expected <= p$data$upper))
     expect_equal(tail(p$data$expected, 1), 4)
 })
+
+test_that("stratifyByCurator warns and returns zero columns when nobody is left", {
+    dat <- data.frame(PMID = 1:3,
+                      `Revision editor` = c("WikiWorks", "WikiWorks743", NA),
+                      check.names = FALSE)
+    expect_warning(npc <- stratifyByCurator(dat, col = "Revision editor"),
+                   "No people left")
+    expect_equal(dim(npc), c(2L, 0L))
+    expect_error(plotCuratorStats(dat, npc), "no curators to plot")
+})
+
+test_that("plotCuratorStats plots and restores graphical parameters", {
+    dat <- data.frame(PMID = c(1, 1, 2),
+                      Curator = c("A Very Long Curator Name", "Bob", "Bob"))
+    npc <- stratifyByCurator(dat, short.names = FALSE)
+    pdf(NULL)
+    on.exit(dev.off())
+    before <- par(c("las", "mar", "cex"))
+    expect_silent(plotCuratorStats(dat, npc))
+    expect_equal(par(c("las", "mar", "cex")), before)
+})

@@ -78,7 +78,8 @@ stripEmptySignatures <- function(dat, col = "NCBI Taxonomy IDs")
 #' is shared by more than one person are kept in full.
 #' @return a numeric \code{matrix} with rows \code{"signatures"} and
 #' \code{"papers"} and one column per person, ordered by increasing number
-#' of papers.
+#' of papers. If no people remain after removing empty and excluded entries,
+#' a warning is issued and a matrix with zero columns is returned.
 #' @examples
 #' dat <- data.frame(PMID = c(1, 1, 2, 3),
 #'                   `Revision editor` = c("Ann,WikiWorks743", "Ann,Bob",
@@ -102,6 +103,9 @@ stratifyByCurator <- function(dat, col = "Curator", sep = ",",
   keep <- !is.na(long$person) & long$person != ""
   if(length(exclude)) keep <- keep & !grepl(exclude, long$person)
   long <- long[keep,]
+  if(!nrow(long))
+    warning("No people left in column '", col,
+            "' after removing empty and excluded entries")
 
   pc <- split(long$PMID, long$person)
   ppc <- sort(lengths(lapply(pc, unique)))

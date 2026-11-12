@@ -7,13 +7,16 @@
 plotCuratorStats(dat, npc)
 }
 \arguments{
-\item{dat}{a \code{data.frame} storing BugSigDB data.}
+\item{dat}{a \code{data.frame} storing BugSigDB data. Used for the plot
+title (total number of papers and signatures).}
 
-\item{npc}{character. A column of \code{dat} that contain the curation date
-in dmy format.}
+\item{npc}{a numeric \code{matrix} with rows \code{"signatures"} and
+\code{"papers"} and one column per curator, as returned by
+\code{\link{stratifyByCurator}}.}
 }
 \value{
-None. Plots to a graphics device.
+None. Plots to a graphics device. Graphical parameters are
+restored on exit.
 }
 \description{
 Plot curation output for each curator
