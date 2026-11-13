@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 17151    57
+    ## [1] 17166    57
 
 ``` r
 
@@ -83,7 +83,7 @@ length(pmids)
 nrow(full.dat)
 ```
 
-    ## [1] 17151
+    ## [1] 17166
 
 ### Publication date of the curated papers:
 
@@ -114,7 +114,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 17151
+    ## [1] 17166
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -161,7 +161,7 @@ table(dat[["State"]])
 
     ## 
     ## Complete 
-    ##    16745
+    ##    16762
 
 Revisions stratified by editor. Signatures revised by several people are
 credited to each of them, and the WikiWorks maintenance accounts are
@@ -309,7 +309,7 @@ sub.tab
     ## $`Host species`
     ## 
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
-    ##                   8491                   1060                    258 
+    ##                   8501                   1060                    258 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
     ##                    143                    138                     43 
     ##         Macaca mulatta             Bos taurus             Ovis aries 
@@ -320,7 +320,7 @@ sub.tab
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                     3903                     1537                      366 
+    ##                     3908                     1541                      366 
     ##                    Spain              South Korea                  Germany 
     ##                      268                      249                      239 
     ##                    Italy                   Canada                  Denmark 
@@ -330,21 +330,23 @@ sub.tab
     ## 
     ## $`Body site`
     ## 
-    ##                     Feces                    Saliva                    Vagina 
-    ##                      6618                       484                       333 
-    ## Subgingival dental plaque                    Caecum                     Colon 
-    ##                       179                        99                        98 
-    ##               Oral cavity               Nasopharynx                     Mouth 
-    ##                        88                        81                        77 
-    ##                    Rectum 
-    ##                        69 
+    ##                      Feces                     Saliva 
+    ##                       6623                        484 
+    ##                     Vagina  Subgingival dental plaque 
+    ##                        333                        179 
+    ##                     Caecum                      Colon 
+    ##                         99                         98 
+    ##                Oral cavity                Nasopharynx 
+    ##                         88                         81 
+    ##                      Mouth Posterior fornix of vagina 
+    ##                         77                         69 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
     ##                       391                       297                       236 
     ##                   Obesity                  COVID-19          Response to diet 
-    ##                       183                       140                       140 
+    ##                       182                       140                       140 
     ## Polycystic ovary syndrome    Response to transplant          Diet measurement 
     ##                       132                       127                       121 
     ## Type II diabetes mellitus 
@@ -353,9 +355,9 @@ sub.tab
     ## $`Antibiotics exclusion`
     ## 
     ##                  3 months                   1 month                  2 months 
-    ##                      1448                      1180                       475 
+    ##                      1449                      1180                       475 
     ##                  6 months                   2 weeks                    1 week 
-    ##                       447                       321                        89 
+    ##                       447                       321                        94 
     ## Recent use of antibiotics                   30 days  Currently on antibiotics 
     ##                        55                        52                        48 
     ##                   6 weeks 
@@ -375,55 +377,57 @@ sub.tab
     ##           Homo sapiens           Mus musculus      Rattus norvegicus 
     ##                0.80300                0.10000                0.02440 
     ##  Sus scrofa domesticus Canis lupus familiaris          Not specified 
-    ##                0.01350                0.01310                0.00407 
+    ##                0.01350                0.01300                0.00406 
     ##         Macaca mulatta             Bos taurus             Ovis aries 
-    ##                0.00312                0.00284                0.00265 
+    ##                0.00312                0.00283                0.00265 
     ##    Macaca fascicularis 
     ##                0.00227 
     ## 
     ## $`Location of subjects`
     ## 
     ##                    China United States of America                    Japan 
-    ##                   0.3690                   0.1450                   0.0346 
+    ##                   0.3690                   0.1460                   0.0346 
     ##                    Spain              South Korea                  Germany 
-    ##                   0.0254                   0.0236                   0.0226 
+    ##                   0.0253                   0.0235                   0.0226 
     ##                    Italy                   Canada                  Denmark 
-    ##                   0.0220                   0.0196                   0.0185 
+    ##                   0.0219                   0.0196                   0.0185 
     ##           United Kingdom 
     ##                   0.0160 
     ## 
     ## $`Body site`
     ## 
-    ##                     Feces                    Saliva                    Vagina 
-    ##                   0.62900                   0.04600                   0.03160 
-    ## Subgingival dental plaque                    Caecum                     Colon 
-    ##                   0.01700                   0.00940                   0.00931 
-    ##               Oral cavity               Nasopharynx                     Mouth 
-    ##                   0.00836                   0.00769                   0.00731 
-    ##                    Rectum 
-    ##                   0.00655 
+    ##                      Feces                     Saliva 
+    ##                    0.62800                    0.04590 
+    ##                     Vagina  Subgingival dental plaque 
+    ##                    0.03160                    0.01700 
+    ##                     Caecum                      Colon 
+    ##                    0.00939                    0.00930 
+    ##                Oral cavity                Nasopharynx 
+    ##                    0.00835                    0.00769 
+    ##                      Mouth Posterior fornix of vagina 
+    ##                    0.00731                    0.00655 
     ## 
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                   0.03780                   0.02870                   0.02280 
+    ##                   0.03770                   0.02870                   0.02280 
     ##                   Obesity                  COVID-19          Response to diet 
-    ##                   0.01770                   0.01350                   0.01350 
+    ##                   0.01760                   0.01350                   0.01350 
     ## Polycystic ovary syndrome    Response to transplant          Diet measurement 
     ##                   0.01270                   0.01230                   0.01170 
     ## Type II diabetes mellitus 
-    ##                   0.00946 
+    ##                   0.00945 
     ## 
     ## $`Antibiotics exclusion`
     ## 
     ##                  3 months                   1 month                  2 months 
     ##                   0.30800                   0.25100                   0.10100 
     ##                  6 months                   2 weeks                    1 week 
-    ##                   0.09520                   0.06830                   0.01890 
+    ##                   0.09500                   0.06830                   0.02000 
     ## Recent use of antibiotics                   30 days  Currently on antibiotics 
     ##                   0.01170                   0.01110                   0.01020 
     ##                   6 weeks 
-    ##                   0.00958
+    ##                   0.00957
 
 Sample size:
 
@@ -437,10 +441,10 @@ ssize
     ## Min.                 0.0000             1.00000
     ## 1st Qu.             12.0000            10.00000
     ## Median              25.0000            22.00000
-    ## Mean               349.1892            67.73531
-    ## 3rd Qu.             53.0000            43.50000
+    ## Mean               349.1031            67.74454
+    ## 3rd Qu.             53.0000            44.00000
     ## Max.            308633.0000         10413.00000
-    ## NA's              2118.0000          2114.00000
+    ## NA's              2124.0000          2120.00000
 
 ### Lab analysis
 
@@ -457,12 +461,12 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2    RNA-Seq        18S 
-    ##       8260       1834         92         78         13          5 
+    ##       8270       1834         92         78         13          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45 123456789       345  23456789 
-    ##      3882      2138       411       260       214       196       156        90 
+    ##      3882      2138       411       260       214       200       160        90 
     ##         3        56 
     ##        88        63 
     ## 
@@ -471,9 +475,9 @@ lab.tab
     ##                              Illumina                           Ion Torrent 
     ##                                  8662                                   400 
     ##                              Roche454                               RT-qPCR 
-    ##                                   370                                   141 
+    ##                                   374                                   141 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                                    99                                    93 
+    ##                                   100                                    98 
     ##                           MGISEQ-2000                 BGISEQ-500 Sequencing 
     ##                                    61                                    37 
     ##                             DNBSEQ-T7           Human Intestinal Tract Chip 
@@ -491,25 +495,25 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2    RNA-Seq        18S 
-    ##   0.803000   0.178000   0.008950   0.007590   0.001260   0.000486 
+    ##   0.804000   0.178000   0.008940   0.007580   0.001260   0.000486 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45 123456789       345  23456789 
-    ##   0.50300   0.27700   0.05330   0.03370   0.02770   0.02540   0.02020   0.01170 
+    ##   0.50300   0.27700   0.05320   0.03370   0.02770   0.02590   0.02070   0.01170 
     ##         3        56 
-    ##   0.01140   0.00817 
+    ##   0.01140   0.00816 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                           Ion Torrent 
-    ##                               0.86100                               0.03970 
+    ##                               0.86000                               0.03970 
     ##                              Roche454                               RT-qPCR 
-    ##                               0.03680                               0.01400 
+    ##                               0.03710                               0.01400 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
-    ##                               0.00984                               0.00924 
+    ##                               0.00993                               0.00973 
     ##                           MGISEQ-2000                 BGISEQ-500 Sequencing 
-    ##                               0.00606                               0.00368 
+    ##                               0.00605                               0.00367 
     ##                             DNBSEQ-T7           Human Intestinal Tract Chip 
     ##                               0.00308                               0.00308
 
@@ -628,9 +632,9 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased    102    1135   682     377              94      720
-    ## increased     86     862   510     248              83      530
-    ## unchanged    430    3306  1673    1326             344     1678
+    ## decreased    102    1136   682     377              94      720
+    ## increased     86     863   510     248              83      530
+    ## unchanged    430    3308  1672    1326             344     1678
 
 Correspondence of Shannon diversity and Richness:
 
@@ -677,19 +681,19 @@ tabDiv(exps, "Shannon", "Condition")
     ## Gingivitis                                                        1         9
     ## Pancreatic carcinoma                                              9         1
     ## Smoking behaviour measurement                                     8         0
+    ## Cesarean section                                                  8         1
     ## Dry eye syndrome                                                  1         8
     ## Endometrial cancer                                                9         2
     ## Heart failure                                                     0         7
     ## Mycobacterium tuberculosis                                        7         0
+    ## Obesity                                                          10        17
     ## Acute pancreatitis                                                0         6
     ## Atopic eczema                                                     5        11
     ## Autism spectrum disorder                                          7         1
     ## Brain hypoxia-Ischemia                                            0         6
     ## Cervical intraepithelial neoplasia                                6         0
-    ## Cesarean section                                                  7         1
     ## Graves disease                                                    1         7
     ## Mastitis                                                          0         6
-    ## Obesity                                                          11        17
     ## Parkinson's disease                                              20        14
     ## Premature birth                                                   9         3
     ## Response to allogeneic hematopoietic stem cell transplant         0         6
@@ -705,11 +709,13 @@ tabDiv(exps, "Shannon", "Condition")
     ## Age                                                               9        13
     ## Bacterial vaginosis                                               5         1
     ## Body mass index                                                   0         4
+    ## Breastfeeding duration                                            3         7
     ## Chronic kidney disease                                            2         6
     ## Chronic periodontitis                                             4         0
     ## Colitis                                                           4         0
     ## Constipation                                                      7         3
     ## Depressive disorder                                               0         4
+    ## Ethnic group                                                      5         9
     ## Female infertility                                                4         0
     ## Food allergy                                                      6         2
     ## Human immunodeficiency virus                                      0         4
@@ -720,10 +726,8 @@ tabDiv(exps, "Shannon", "Condition")
     ## Antimicrobial agent                                               7        10
     ## Atopic asthma                                                     4         1
     ## Birth measurement                                                 3         0
-    ## Breastfeeding duration                                            3         6
     ## Cervical Intraepithelial Neoplasia Grade 2/3                      3         0
     ## Disease recurrence                                                0         3
-    ## Ethnic group                                                      5         8
     ## Extraction protocol                                              23        26
     ## Hematopoietic stem cell                                           0         3
     ## Hypertension                                                      7         4
@@ -791,7 +795,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Age-related macular degeneration                                  0         1
     ## Air pollution                                                     7         6
     ## Anxiety disorder                                                  0         1
-    ## Asthma                                                            3         4
     ## Attention deficit-hyperactivity disorder                          2         1
     ## Biological sex                                                    2         1
     ## Breast cancer                                                     4         5
@@ -821,6 +824,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Menopause                                                         2         1
     ## Mitochondrial complex I deficiency                                0         1
     ## Myocardial infarction                                             1         2
+    ## Obese body mass index status                                      1         2
     ## Obstructive sleep apnea                                           0         1
     ## Oral cavity carcinoma                                             0         1
     ## Oral squamous cell carcinoma                                      3         2
@@ -851,6 +855,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Abnormal stool composition                                        0         0
     ## Acute myeloid leukemia                                            1         1
     ## Arthritis                                                         0         0
+    ## Asthma                                                            3         3
     ## Bipolar disorder                                                  0         0
     ## Celiac disease                                                    0         0
     ## Chlamydia trachomatis                                             2         2
@@ -916,19 +921,19 @@ tabDiv(exps, "Shannon", "Condition")
     ## Gingivitis                                                       13
     ## Pancreatic carcinoma                                              6
     ## Smoking behaviour measurement                                     9
+    ## Cesarean section                                                 21
     ## Dry eye syndrome                                                 14
     ## Endometrial cancer                                                7
     ## Heart failure                                                     2
     ## Mycobacterium tuberculosis                                        5
+    ## Obesity                                                          76
     ## Acute pancreatitis                                               15
     ## Atopic eczema                                                    72
     ## Autism spectrum disorder                                         12
     ## Brain hypoxia-Ischemia                                            3
     ## Cervical intraepithelial neoplasia                                2
-    ## Cesarean section                                                 21
     ## Graves disease                                                    7
     ## Mastitis                                                          2
-    ## Obesity                                                          76
     ## Parkinson's disease                                              95
     ## Premature birth                                                   8
     ## Response to allogeneic hematopoietic stem cell transplant         0
@@ -944,11 +949,13 @@ tabDiv(exps, "Shannon", "Condition")
     ## Age                                                              15
     ## Bacterial vaginosis                                               0
     ## Body mass index                                                   4
+    ## Breastfeeding duration                                            9
     ## Chronic kidney disease                                           11
     ## Chronic periodontitis                                             8
     ## Colitis                                                           2
     ## Constipation                                                     10
     ## Depressive disorder                                               7
+    ## Ethnic group                                                     11
     ## Female infertility                                                3
     ## Food allergy                                                     19
     ## Human immunodeficiency virus                                      6
@@ -959,10 +966,8 @@ tabDiv(exps, "Shannon", "Condition")
     ## Antimicrobial agent                                              25
     ## Atopic asthma                                                     7
     ## Birth measurement                                                 4
-    ## Breastfeeding duration                                            9
     ## Cervical Intraepithelial Neoplasia Grade 2/3                      2
     ## Disease recurrence                                                7
-    ## Ethnic group                                                     11
     ## Extraction protocol                                              21
     ## Hematopoietic stem cell                                           3
     ## Hypertension                                                     13
@@ -981,7 +986,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Traditional Chinese medicine type                                 8
     ## Tuberculosis                                                      0
     ## Acne                                                              3
-    ## Adenomatous colon polyp                                           7
+    ## Adenomatous colon polyp                                           8
     ## Age at assessment                                                 1
     ## Aging                                                             4
     ## Alcohol use disorder measurement                                  5
@@ -1030,7 +1035,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Age-related macular degeneration                                  4
     ## Air pollution                                                     3
     ## Anxiety disorder                                                  7
-    ## Asthma                                                           18
     ## Attention deficit-hyperactivity disorder                          6
     ## Biological sex                                                   14
     ## Breast cancer                                                    35
@@ -1060,6 +1064,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Menopause                                                         3
     ## Mitochondrial complex I deficiency                                4
     ## Myocardial infarction                                             8
+    ## Obese body mass index status                                      2
     ## Obstructive sleep apnea                                          11
     ## Oral cavity carcinoma                                             7
     ## Oral squamous cell carcinoma                                      3
@@ -1090,6 +1095,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Abnormal stool composition                                        6
     ## Acute myeloid leukemia                                            7
     ## Arthritis                                                         6
+    ## Asthma                                                           18
     ## Bipolar disorder                                                  5
     ## Celiac disease                                                   15
     ## Chlamydia trachomatis                                             2
@@ -1161,19 +1167,19 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Gingivitis                                                    0.043     0.390
     ## Pancreatic carcinoma                                          0.560     0.062
     ## Smoking behaviour measurement                                 0.470     0.000
+    ## Cesarean section                                              0.270     0.033
     ## Dry eye syndrome                                              0.043     0.350
     ## Endometrial cancer                                            0.500     0.110
     ## Heart failure                                                 0.000     0.780
     ## Mycobacterium tuberculosis                                    0.580     0.000
+    ## Obesity                                                       0.097     0.170
     ## Acute pancreatitis                                            0.000     0.290
     ## Atopic eczema                                                 0.057     0.120
     ## Autism spectrum disorder                                      0.350     0.050
     ## Brain hypoxia-Ischemia                                        0.000     0.670
     ## Cervical intraepithelial neoplasia                            0.750     0.000
-    ## Cesarean section                                              0.240     0.034
     ## Graves disease                                                0.067     0.470
     ## Mastitis                                                      0.000     0.750
-    ## Obesity                                                       0.110     0.160
     ## Parkinson's disease                                           0.160     0.110
     ## Premature birth                                               0.450     0.150
     ## Response to allogeneic hematopoietic stem cell transplant     0.000     1.000
@@ -1189,11 +1195,13 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Age                                                           0.240     0.350
     ## Bacterial vaginosis                                           0.830     0.170
     ## Body mass index                                               0.000     0.500
+    ## Breastfeeding duration                                        0.160     0.370
     ## Chronic kidney disease                                        0.110     0.320
     ## Chronic periodontitis                                         0.330     0.000
     ## Colitis                                                       0.670     0.000
     ## Constipation                                                  0.350     0.150
     ## Depressive disorder                                           0.000     0.360
+    ## Ethnic group                                                  0.200     0.360
     ## Female infertility                                            0.570     0.000
     ## Food allergy                                                  0.220     0.074
     ## Human immunodeficiency virus                                  0.000     0.400
@@ -1204,10 +1212,8 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Antimicrobial agent                                           0.170     0.240
     ## Atopic asthma                                                 0.330     0.083
     ## Birth measurement                                             0.430     0.000
-    ## Breastfeeding duration                                        0.170     0.330
     ## Cervical Intraepithelial Neoplasia Grade 2/3                  0.600     0.000
     ## Disease recurrence                                            0.000     0.300
-    ## Ethnic group                                                  0.210     0.330
     ## Extraction protocol                                           0.330     0.370
     ## Hematopoietic stem cell                                       0.000     0.500
     ## Hypertension                                                  0.290     0.170
@@ -1226,7 +1232,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Traditional Chinese medicine type                             0.130     0.330
     ## Tuberculosis                                                  0.290     0.710
     ## Acne                                                          0.000     0.400
-    ## Adenomatous colon polyp                                       0.220     0.000
+    ## Adenomatous colon polyp                                       0.200     0.000
     ## Age at assessment                                             0.600     0.200
     ## Aging                                                         0.310     0.440
     ## Alcohol use disorder measurement                              0.000     0.290
@@ -1275,7 +1281,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Age-related macular degeneration                              0.000     0.200
     ## Air pollution                                                 0.440     0.380
     ## Anxiety disorder                                              0.000     0.120
-    ## Asthma                                                        0.120     0.160
     ## Attention deficit-hyperactivity disorder                      0.220     0.110
     ## Biological sex                                                0.120     0.059
     ## Breast cancer                                                 0.091     0.110
@@ -1305,6 +1310,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Menopause                                                     0.330     0.170
     ## Mitochondrial complex I deficiency                            0.000     0.200
     ## Myocardial infarction                                         0.091     0.180
+    ## Obese body mass index status                                  0.200     0.400
     ## Obstructive sleep apnea                                       0.000     0.083
     ## Oral cavity carcinoma                                         0.000     0.120
     ## Oral squamous cell carcinoma                                  0.380     0.250
@@ -1335,6 +1341,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Abnormal stool composition                                    0.000     0.000
     ## Acute myeloid leukemia                                        0.110     0.110
     ## Arthritis                                                     0.000     0.000
+    ## Asthma                                                        0.120     0.120
     ## Bipolar disorder                                              0.000     0.000
     ## Celiac disease                                                0.000     0.000
     ## Chlamydia trachomatis                                         0.330     0.330
@@ -1400,19 +1407,19 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Gingivitis                                                    0.570
     ## Pancreatic carcinoma                                          0.380
     ## Smoking behaviour measurement                                 0.530
+    ## Cesarean section                                              0.700
     ## Dry eye syndrome                                              0.610
     ## Endometrial cancer                                            0.390
     ## Heart failure                                                 0.220
     ## Mycobacterium tuberculosis                                    0.420
+    ## Obesity                                                       0.740
     ## Acute pancreatitis                                            0.710
     ## Atopic eczema                                                 0.820
     ## Autism spectrum disorder                                      0.600
     ## Brain hypoxia-Ischemia                                        0.330
     ## Cervical intraepithelial neoplasia                            0.250
-    ## Cesarean section                                              0.720
     ## Graves disease                                                0.470
     ## Mastitis                                                      0.250
-    ## Obesity                                                       0.730
     ## Parkinson's disease                                           0.740
     ## Premature birth                                               0.400
     ## Response to allogeneic hematopoietic stem cell transplant     0.000
@@ -1428,11 +1435,13 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Age                                                           0.410
     ## Bacterial vaginosis                                           0.000
     ## Body mass index                                               0.500
+    ## Breastfeeding duration                                        0.470
     ## Chronic kidney disease                                        0.580
     ## Chronic periodontitis                                         0.670
     ## Colitis                                                       0.330
     ## Constipation                                                  0.500
     ## Depressive disorder                                           0.640
+    ## Ethnic group                                                  0.440
     ## Female infertility                                            0.430
     ## Food allergy                                                  0.700
     ## Human immunodeficiency virus                                  0.600
@@ -1443,10 +1452,8 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Antimicrobial agent                                           0.600
     ## Atopic asthma                                                 0.580
     ## Birth measurement                                             0.570
-    ## Breastfeeding duration                                        0.500
     ## Cervical Intraepithelial Neoplasia Grade 2/3                  0.400
     ## Disease recurrence                                            0.700
-    ## Ethnic group                                                  0.460
     ## Extraction protocol                                           0.300
     ## Hematopoietic stem cell                                       0.500
     ## Hypertension                                                  0.540
@@ -1465,7 +1472,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Traditional Chinese medicine type                             0.530
     ## Tuberculosis                                                  0.000
     ## Acne                                                          0.600
-    ## Adenomatous colon polyp                                       0.780
+    ## Adenomatous colon polyp                                       0.800
     ## Age at assessment                                             0.200
     ## Aging                                                         0.250
     ## Alcohol use disorder measurement                              0.710
@@ -1514,7 +1521,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Age-related macular degeneration                              0.800
     ## Air pollution                                                 0.190
     ## Anxiety disorder                                              0.880
-    ## Asthma                                                        0.720
     ## Attention deficit-hyperactivity disorder                      0.670
     ## Biological sex                                                0.820
     ## Breast cancer                                                 0.800
@@ -1544,6 +1550,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Menopause                                                     0.500
     ## Mitochondrial complex I deficiency                            0.800
     ## Myocardial infarction                                         0.730
+    ## Obese body mass index status                                  0.400
     ## Obstructive sleep apnea                                       0.920
     ## Oral cavity carcinoma                                         0.880
     ## Oral squamous cell carcinoma                                  0.380
@@ -1574,6 +1581,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Abnormal stool composition                                    1.000
     ## Acute myeloid leukemia                                        0.780
     ## Arthritis                                                     1.000
+    ## Asthma                                                        0.750
     ## Bipolar disorder                                              1.000
     ## Celiac disease                                                1.000
     ## Chlamydia trachomatis                                         0.330
@@ -2243,8 +2251,8 @@ tabDiv(exps, "Shannon", "Body site")
 ```
 
     ##                                                 increased decreased unchanged
-    ## Feces                                                 421       717      1989
-    ## Vagina                                                 56        14        73
+    ## Feces                                                 422       718      1992
+    ## Vagina                                                 56        14        72
     ## Posterior fornix of vagina                             18         2        12
     ## Sputum                                                  7        23        19
     ## Uterine cervix                                         15         1        27
@@ -2337,7 +2345,7 @@ tabDiv(exps, "Shannon", "Body site", perc = TRUE)
 
     ##                                                 increased decreased unchanged
     ## Feces                                               0.130     0.230     0.640
-    ## Vagina                                              0.390     0.098     0.510
+    ## Vagina                                              0.390     0.099     0.510
     ## Posterior fornix of vagina                          0.560     0.062     0.380
     ## Sputum                                              0.140     0.470     0.390
     ## Uterine cervix                                      0.350     0.023     0.630
@@ -2565,7 +2573,7 @@ Number unique microbes contained in the signatures:
 (nuniq <- length(unique(unlist(sigs))))
 ```
 
-    ## [1] 8611
+    ## [1] 8618
 
 Development of unique microbes captured over time:
 
@@ -2622,7 +2630,7 @@ summary(lengths(sigs))
 ```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-    ##   1.000   2.000   4.000   7.916   9.000 467.000
+    ##   1.000   2.000   4.000   7.912   9.000 467.000
 
 ``` r
 
@@ -2637,7 +2645,7 @@ gghistogram(lengths(sigs), bins = 30, ylab = "number of signatures",
 sum(lengths(sigs) > 4)
 ```
 
-    ## [1] 7765
+    ## [1] 7769
 
 ### Microbe co-occurrence
 
@@ -2671,13 +2679,13 @@ top20
 
     ## 
     ##      Bacteroides  Bifidobacterium Faecalibacterium          Blautia 
-    ##              995              739              726              677 
+    ##              996              739              726              676 
     ##    Lactobacillus    Streptococcus        Roseburia      Clostridium 
     ##              609              608              583              578 
     ##     Ruminococcus       Prevotella  Parabacteroides        Alistipes 
     ##              572              561              543              491 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              432              407              378              376 
+    ##              433              406              378              377 
     ##      Lachnospira     Enterococcus      Collinsella     Anaerostipes 
     ##              354              350              347              345
 
@@ -2724,7 +2732,7 @@ top20.up
     ##     Ruminococcus       Prevotella  Parabacteroides        Alistipes 
     ##              251              268              308              220 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              276              180              155              228 
+    ##              277              180              155              229 
     ##      Lachnospira     Enterococcus      Collinsella     Anaerostipes 
     ##              130              250              182              161
 
@@ -2740,13 +2748,13 @@ top20.down
 
     ## 
     ##      Bacteroides  Bifidobacterium Faecalibacterium          Blautia 
-    ##              495              355              472              361 
+    ##              496              355              472              360 
     ##    Lactobacillus    Streptococcus        Roseburia      Clostridium 
     ##              223              222              385              283 
     ##     Ruminococcus       Prevotella  Parabacteroides        Alistipes 
     ##              317              290              231              267 
     ##      Akkermansia            Dorea      Coprococcus      Veillonella 
-    ##              153              223              219              145 
+    ##              153              222              219              145 
     ##      Lachnospira     Enterococcus      Collinsella     Anaerostipes 
     ##              220               98              161              180
 
