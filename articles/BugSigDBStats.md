@@ -20,7 +20,7 @@ full.dat <- bugsigdbr::importBugSigDB(version = "devel", cache = FALSE)
 dim(full.dat)
 ```
 
-    ## [1] 17606    57
+    ## [1] 17607    57
 
 ``` r
 
@@ -76,14 +76,14 @@ pmids <- unique(full.dat[,"PMID"])
 length(pmids)
 ```
 
-    ## [1] 2436
+    ## [1] 2437
 
 ``` r
 
 nrow(full.dat)
 ```
 
-    ## [1] 17606
+    ## [1] 17607
 
 ### Publication date of the curated papers:
 
@@ -114,7 +114,7 @@ dat <- full.dat[ind1 & ind2,]
 nrow(dat)
 ```
 
-    ## [1] 17606
+    ## [1] 17607
 
 Papers containing only empty UP and DOWN signatures (under curation?):
 
@@ -161,7 +161,7 @@ table(dat[["State"]])
 
     ## 
     ## Complete 
-    ##    17198
+    ##    17199
 
 Revisions stratified by editor. Signatures revised by several people are
 credited to each of them, and the WikiWorks maintenance accounts are
@@ -241,13 +241,13 @@ sort(lengths(sds), decreasing = FALSE)
     ##                                                 time series / longitudinal observational 
     ##                                                                                      180 
     ##                                                                       prospective cohort 
-    ##                                                                                      203 
+    ##                                                                                      202 
     ##                                                                    laboratory experiment 
-    ##                                                                                      252 
+    ##                                                                                      253 
     ##                                          cross-sectional observational, not case-control 
     ##                                                                                      600 
     ##                                                                             case-control 
-    ##                                                                                      982
+    ##                                                                                      983
 
 ## Experiment stats
 
@@ -331,7 +331,7 @@ sub.tab
     ## $`Body site`
     ## 
     ##                     Feces                    Saliva                    Vagina 
-    ##                      6802                       480                       362 
+    ##                      6803                       480                       362 
     ## Subgingival dental plaque                     Colon                    Caecum 
     ##                       167                       101                        99 
     ##               Oral cavity               Nasopharynx                    Rectum 
@@ -342,7 +342,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                       401                       308                       236 
+    ##                       399                       308                       236 
     ##                   Obesity          Response to diet                  COVID-19 
     ##                       186                       143                       142 
     ## Polycystic ovary syndrome    Response to transplant          Diet measurement 
@@ -397,7 +397,7 @@ sub.tab
     ##                     Feces                    Saliva                    Vagina 
     ##                   0.62900                   0.04440                   0.03350 
     ## Subgingival dental plaque                     Colon                    Caecum 
-    ##                   0.01540                   0.00934                   0.00916 
+    ##                   0.01540                   0.00934                   0.00915 
     ##               Oral cavity               Nasopharynx                    Rectum 
     ##                   0.00795                   0.00786                   0.00777 
     ##                     Mouth 
@@ -406,7 +406,7 @@ sub.tab
     ## $Condition
     ## 
     ##         Colorectal cancer                      Diet       Parkinson's disease 
-    ##                    0.0377                    0.0290                    0.0222 
+    ##                    0.0375                    0.0290                    0.0222 
     ##                   Obesity          Response to diet                  COVID-19 
     ##                    0.0175                    0.0134                    0.0133 
     ## Polycystic ovary syndrome    Response to transplant          Diet measurement 
@@ -434,13 +434,13 @@ ssize
 ```
 
     ##         Group 0 sample size Group 1 sample size
-    ## Min.                 0.0000              1.0000
-    ## 1st Qu.             12.0000             10.0000
-    ## Median              25.0000             22.0000
-    ## Mean               341.8523             68.1126
-    ## 3rd Qu.             54.0000             43.0000
-    ## Max.            308633.0000          10413.0000
-    ## NA's              2129.0000           2111.0000
+    ## Min.                 0.0000             1.00000
+    ## 1st Qu.             12.0000            10.00000
+    ## Median              25.0000            22.00000
+    ## Mean               341.8561            68.11306
+    ## 3rd Qu.             54.0000            43.00000
+    ## Max.            308633.0000         10413.00000
+    ## NA's              2130.0000          2112.00000
 
 ### Lab analysis
 
@@ -457,19 +457,19 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2    RNA-Seq        18S 
-    ##       8500       1872         93         79         13          5 
+    ##       8502       1872         93         79         13          5 
     ## 
     ## $`16S variable region`
     ## 
     ##        34         4        12       123        45 123456789       345         3 
-    ##      3975      2255       419       260       214       202       160        93 
+    ##      3976      2255       419       260       214       202       160        93 
     ##  23456789        56 
     ##        90        63 
     ## 
     ## $`Sequencing platform`
     ## 
     ##                              Illumina                           Ion Torrent 
-    ##                                  8930                                   408 
+    ##                                  8932                                   408 
     ##                              Roche454                               RT-qPCR 
     ##                                   374                                   142 
     ##                              Nanopore PacBio Vega (VS)/Revio (RS)/Sequel II 
@@ -491,7 +491,7 @@ lab.tab
     ## $`Sequencing type`
     ## 
     ##        16S        WMS        PCR ITS / ITS2    RNA-Seq        18S 
-    ##   0.805000   0.177000   0.008810   0.007480   0.001230   0.000473 
+    ##   0.805000   0.177000   0.008800   0.007480   0.001230   0.000473 
     ## 
     ## $`16S variable region`
     ## 
@@ -628,8 +628,8 @@ apply(exps[,div.cols], 2, table)
 ```
 
     ##           Pielou Shannon Chao1 Simpson Inverse Simpson Richness
-    ## decreased    105    1176   684     383             100      728
-    ## increased     92     892   518     256              81      553
+    ## decreased    105    1176   683     383             100      727
+    ## increased     92     892   517     257              81      553
     ## unchanged    451    3403  1752    1376             363     1737
 
 Correspondence of Shannon diversity and Richness:
@@ -764,6 +764,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Esophageal adenocarcinoma                                         0         2
     ## Esophageal cancer                                                 1         3
     ## Hepatic steatosis                                                 0         2
+    ## Hepatocellular carcinoma                                          4         6
     ## Iron biomarker measurement                                        1         3
     ## Irritable bowel syndrome                                          5         7
     ## Metastatic colorectal cancer                                      1         3
@@ -817,7 +818,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Fungal infectious disease                                         2         1
     ## Gestational age                                                   1         2
     ## Glaucoma                                                          4         5
-    ## Hepatocellular carcinoma                                          4         5
     ## Hypertrophy                                                       1         0
     ## Infant                                                            1         0
     ## Liver enzyme measurement                                          0         1
@@ -1009,6 +1009,7 @@ tabDiv(exps, "Shannon", "Condition")
     ## Esophageal adenocarcinoma                                         4
     ## Esophageal cancer                                                 2
     ## Hepatic steatosis                                                 5
+    ## Hepatocellular carcinoma                                         10
     ## Iron biomarker measurement                                        2
     ## Irritable bowel syndrome                                         29
     ## Metastatic colorectal cancer                                      4
@@ -1062,7 +1063,6 @@ tabDiv(exps, "Shannon", "Condition")
     ## Fungal infectious disease                                         4
     ## Gestational age                                                   3
     ## Glaucoma                                                          6
-    ## Hepatocellular carcinoma                                         10
     ## Hypertrophy                                                       4
     ## Infant                                                            4
     ## Liver enzyme measurement                                          5
@@ -1260,6 +1260,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Esophageal adenocarcinoma                                     0.000     0.330
     ## Esophageal cancer                                             0.170     0.500
     ## Hepatic steatosis                                             0.000     0.290
+    ## Hepatocellular carcinoma                                      0.200     0.300
     ## Iron biomarker measurement                                    0.170     0.500
     ## Irritable bowel syndrome                                      0.120     0.170
     ## Metastatic colorectal cancer                                  0.120     0.380
@@ -1313,7 +1314,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Fungal infectious disease                                     0.290     0.140
     ## Gestational age                                               0.170     0.330
     ## Glaucoma                                                      0.270     0.330
-    ## Hepatocellular carcinoma                                      0.210     0.260
     ## Hypertrophy                                                   0.200     0.000
     ## Infant                                                        0.200     0.000
     ## Liver enzyme measurement                                      0.000     0.170
@@ -1505,6 +1505,7 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Esophageal adenocarcinoma                                     0.670
     ## Esophageal cancer                                             0.330
     ## Hepatic steatosis                                             0.710
+    ## Hepatocellular carcinoma                                      0.500
     ## Iron biomarker measurement                                    0.330
     ## Irritable bowel syndrome                                      0.710
     ## Metastatic colorectal cancer                                  0.500
@@ -1558,7 +1559,6 @@ tabDiv(exps, "Shannon", "Condition", perc = TRUE)
     ## Fungal infectious disease                                     0.570
     ## Gestational age                                               0.500
     ## Glaucoma                                                      0.400
-    ## Hepatocellular carcinoma                                      0.530
     ## Hypertrophy                                                   0.800
     ## Infant                                                        0.800
     ## Liver enzyme measurement                                      0.830
@@ -1672,7 +1672,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Schizophrenia                                                     1         7
     ## Alcohol drinking                                                  5         0
     ## Antimicrobial agent                                               2         7
-    ## Colorectal cancer                                                24        29
     ## Environmental factor                                              0         5
     ## Human immunodeficiency virus                                      1         6
     ## Human papilloma virus infection                                   7         2
@@ -1683,6 +1682,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Air pollution                                                     9         5
     ## Cervical glandular intraepithelial neoplasia                      4         0
     ## Colon carcinoma                                                   0         4
+    ## Colorectal cancer                                                24        28
     ## Diarrhea                                                          5         1
     ## Dry eye syndrome                                                  0         4
     ## Epilepsy                                                          4         0
@@ -1828,7 +1828,6 @@ tabDiv(exps, "Richness", "Condition")
     ## Schizophrenia                                                    14
     ## Alcohol drinking                                                  0
     ## Antimicrobial agent                                              10
-    ## Colorectal cancer                                                64
     ## Environmental factor                                             17
     ## Human immunodeficiency virus                                      2
     ## Human papilloma virus infection                                  17
@@ -1839,6 +1838,7 @@ tabDiv(exps, "Richness", "Condition")
     ## Air pollution                                                     6
     ## Cervical glandular intraepithelial neoplasia                      2
     ## Colon carcinoma                                                  10
+    ## Colorectal cancer                                                64
     ## Diarrhea                                                          3
     ## Dry eye syndrome                                                  4
     ## Epilepsy                                                          3
@@ -1990,7 +1990,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Schizophrenia                                                 0.045     0.320
     ## Alcohol drinking                                              1.000     0.000
     ## Antimicrobial agent                                           0.110     0.370
-    ## Colorectal cancer                                             0.210     0.250
     ## Environmental factor                                          0.000     0.230
     ## Human immunodeficiency virus                                  0.110     0.670
     ## Human papilloma virus infection                               0.270     0.077
@@ -2001,6 +2000,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Air pollution                                                 0.450     0.250
     ## Cervical glandular intraepithelial neoplasia                  0.670     0.000
     ## Colon carcinoma                                               0.000     0.290
+    ## Colorectal cancer                                             0.210     0.240
     ## Diarrhea                                                      0.560     0.110
     ## Dry eye syndrome                                              0.000     0.500
     ## Epilepsy                                                      0.570     0.000
@@ -2146,7 +2146,6 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Schizophrenia                                                  0.64
     ## Alcohol drinking                                               0.00
     ## Antimicrobial agent                                            0.53
-    ## Colorectal cancer                                              0.55
     ## Environmental factor                                           0.77
     ## Human immunodeficiency virus                                   0.22
     ## Human papilloma virus infection                                0.65
@@ -2157,6 +2156,7 @@ tabDiv(exps, "Richness", "Condition", perc = TRUE)
     ## Air pollution                                                  0.30
     ## Cervical glandular intraepithelial neoplasia                   0.33
     ## Colon carcinoma                                                0.71
+    ## Colorectal cancer                                              0.55
     ## Diarrhea                                                       0.33
     ## Dry eye syndrome                                               0.50
     ## Epilepsy                                                       0.43
@@ -2471,7 +2471,7 @@ tabDiv(exps, "Richness", "Body site")
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                              284       459      1047
+    ## Feces                              283       458      1047
     ## Sputum                               0        12        11
     ## Vagina                              20         8        31
     ## Posterior fornix of vagina          12         1         3
@@ -2535,7 +2535,7 @@ tabDiv(exps, "Richness", "Body site", perc = TRUE)
 ```
 
     ##                              increased decreased unchanged
-    ## Feces                            0.160     0.260      0.58
+    ## Feces                            0.160     0.260      0.59
     ## Sputum                           0.000     0.520      0.48
     ## Vagina                           0.340     0.140      0.53
     ## Posterior fornix of vagina       0.750     0.062      0.19
@@ -2721,7 +2721,7 @@ top20
     ##    Parabacteroides          Alistipes      Lactobacillus         Prevotella 
     ##                897                895                799                780 
     ##        Akkermansia              Dorea        Eubacterium        Lachnospira 
-    ##                652                645                617                605 
+    ##                651                645                617                605 
     ##        Veillonella Mediterraneibacter        Collinsella       Anaerostipes 
     ##                587                557                555                537
 
@@ -2768,7 +2768,7 @@ top20.up
     ##    Parabacteroides          Alistipes      Lactobacillus         Prevotella 
     ##                475                411                498                404 
     ##        Akkermansia              Dorea        Eubacterium        Lachnospira 
-    ##                407                297                267                212 
+    ##                406                297                267                212 
     ##        Veillonella Mediterraneibacter        Collinsella       Anaerostipes 
     ##                367                285                275                234
 
